@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Presencia Digital para tu Negocio | Budgt</title>
+  <meta name="description" content="Antes de monitorear a tu competencia, asegurémonos de que tú también apareces en el mapa. Landing page profesional y activación de redes sociales para tu negocio chileno." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --gray-900: #141414;
+      --gray-800: #1e1e1e;
+      --gray-700: #555555;
+      --gray-600: #999999;
+      --gray-500: #c0c0c0;
+      --gray-400: #e0e0e0;
+      --gray-300: #f0f0f0;
+      --gray-200: #f8f8f8;
+      --gray-100: #f5f5f5;
+      --white: #ffffff;
+      --accent: #d4d4d4;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2.5rem;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gray-800);
+    }
+    .logo { display: flex; align-items: center; }
+    .logo img { height: 40px; width: auto; filter: invert(1); }
+    .nav-cta {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      padding: 0.6rem 1.4rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-cta:hover { background: var(--gray-300); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 7rem 2.5rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -20%; right: -10%;
+      width: 60vw; height: 60vw;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(80,80,80,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      border: 1px solid var(--gray-700);
+      padding: 0.35rem 0.9rem;
+      margin-bottom: 2.2rem;
+      width: fit-content;
+    }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.8rem, 7vw, 6rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      max-width: 860px;
+      margin-bottom: 1.8rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--gray-400); }
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--gray-400);
+      max-width: 560px;
+      line-height: 1.65;
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.9rem 2.2rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--gray-300); }
+    .btn-ghost {
+      color: var(--gray-400);
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s;
+    }
+    .btn-ghost:hover { color: var(--white); }
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem; left: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--gray-600);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .scroll-line {
+      width: 40px; height: 1px;
+      background: var(--gray-600);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0%, 100% { transform: scaleX(1); opacity: 1; }
+      50% { transform: scaleX(0.4); opacity: 0.4; }
+    }
+
+    /* ── SOCIAL PROOF BAR ── */
+    .social-proof-bar {
+      background: var(--gray-900);
+      border-top: 1px solid var(--gray-800);
+      border-bottom: 1px solid var(--gray-800);
+      padding: 0.75rem 2.5rem;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--gray-400);
+      letter-spacing: 0.02em;
+    }
+    .social-proof-bar strong { color: var(--white); }
+    .sp-sep { color: var(--gray-700); margin: 0 0.75rem; }
+
+    /* ── PROBLEM ── */
+    .problem {
+      padding: 6rem 2.5rem;
+      background: var(--black);
+      border-top: 1px solid var(--gray-800);
+    }
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 3rem;
+    }
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1px;
+      background: var(--gray-800);
+    }
+    .problem-card {
+      background: var(--black);
+      padding: 2.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+    .problem-card:hover { background: var(--gray-900); }
+    .problem-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 3.5rem;
+      color: var(--gray-800);
+      line-height: 1;
+      margin-bottom: 1rem;
+      transition: color 0.3s;
+    }
+    .problem-card:hover .problem-num { color: var(--gray-700); }
+    .problem-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.6rem; line-height: 1.3; }
+    .problem-card p { font-size: 0.9rem; color: var(--gray-400); line-height: 1.6; font-weight: 300; }
+
+    /* ── WHAT WE DO ── */
+    .what {
+      padding: 7rem 2.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .what-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+      margin-bottom: 5rem;
+    }
+    .what-intro h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .what-intro h2 em { font-style: italic; color: var(--gray-400); }
+    .what-intro p { font-size: 1rem; color: var(--gray-400); line-height: 1.75; font-weight: 300; }
+    .services-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2px;
+      background: var(--gray-800);
+    }
+    .service-item {
+      background: var(--black);
+      padding: 2.5rem 2rem;
+      transition: background 0.25s;
+      cursor: default;
+    }
+    .service-item:hover { background: var(--gray-900); }
+    .service-icon {
+      width: 42px; height: 42px;
+      border: 1px solid var(--gray-700);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.4rem;
+      font-size: 1.2rem;
+    }
+    .service-item h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.7rem; }
+    .service-item p { font-size: 0.88rem; color: var(--gray-400); line-height: 1.65; font-weight: 300; }
+    .service-price-inline {
+      margin-top: 1.2rem;
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.6rem;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    .service-price-note {
+      font-size: 0.78rem;
+      color: var(--gray-500);
+      font-weight: 300;
+      margin-top: 0.3rem;
+    }
+
+    /* ── HOW ── */
+    .how {
+      padding: 7rem 2.5rem;
+      background: var(--gray-900);
+      border-top: 1px solid var(--gray-800);
+    }
+    .how-inner { max-width: 900px; margin: 0 auto; }
+    .how h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 4rem;
+    }
+    .steps { display: flex; flex-direction: column; gap: 0; }
+    .step {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 2rem;
+      padding: 2.2rem 0;
+      border-top: 1px solid var(--gray-800);
+      position: relative;
+      align-items: start;
+    }
+    .step-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.2rem;
+      color: var(--gray-700);
+      line-height: 1;
+      padding-top: 0.1rem;
+    }
+    .step-content h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .step-content p { font-size: 0.9rem; color: var(--gray-400); line-height: 1.65; font-weight: 300; }
+    .step-badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-600);
+      border: 1px solid var(--gray-700);
+      padding: 0.2rem 0.6rem;
+      margin-top: 0.7rem;
+    }
+
+    /* ── FOR WHO ── */
+    .forwho {
+      padding: 7rem 2.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .forwho h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 3.5rem;
+      max-width: 660px;
+    }
+    .forwho h2 em { font-style: italic; color: var(--gray-400); }
+    .profiles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+    .profile {
+      padding: 2rem 1.8rem;
+      border: 1px solid var(--gray-800);
+      transition: border-color 0.25s;
+    }
+    .profile:hover { border-color: var(--gray-600); }
+    .profile-emoji { font-size: 1.8rem; margin-bottom: 1rem; }
+    .profile h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.4rem; }
+    .profile p { font-size: 0.84rem; color: var(--gray-400); line-height: 1.55; font-weight: 300; }
+
+    /* ── PRICING ── */
+    .pricing {
+      padding: 7rem 2.5rem;
+      background: var(--gray-900);
+      border-top: 1px solid var(--gray-800);
+    }
+    .pricing-inner { max-width: 1000px; margin: 0 auto; }
+    .pricing h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.6rem;
+    }
+    .pricing-sub { font-size: 0.95rem; color: var(--gray-400); margin-bottom: 3.5rem; font-weight: 300; }
+    .pricing-anchor {
+      text-align: center;
+      padding-bottom: 3rem;
+    }
+    .pricing-anchor blockquote {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+      color: var(--gray-300);
+      font-style: italic;
+      letter-spacing: -0.01em;
+      max-width: 680px;
+      margin: 0 auto;
+      line-height: 1.45;
+      border-left: 2px solid var(--gray-700);
+      padding-left: 1.4rem;
+      text-align: left;
+    }
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2px;
+      background: var(--gray-800);
+    }
+    .plan {
+      background: var(--gray-900);
+      padding: 2.5rem 2rem;
+      position: relative;
+    }
+    .plan.featured { background: var(--white); color: var(--black); }
+    .plan-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--gray-400);
+      margin-bottom: 1.5rem;
+    }
+    .plan.featured .plan-tag { color: var(--gray-600); }
+    .plan-price {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.8rem;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .plan-period { font-size: 0.82rem; color: var(--gray-400); margin-bottom: 2rem; font-weight: 300; }
+    .plan.featured .plan-period { color: var(--gray-600); }
+    .plan-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-bottom: 2.2rem;
+    }
+    .plan-features li {
+      font-size: 0.88rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+      line-height: 1.45;
+      color: var(--gray-400);
+      font-weight: 300;
+    }
+    .plan.featured .plan-features li { color: var(--gray-700); }
+    .plan-features li::before { content: '→'; color: var(--gray-600); flex-shrink: 0; margin-top: 0.05rem; }
+    .plan.featured .plan-features li::before { color: var(--gray-500); }
+    .plan-btn {
+      display: block;
+      text-align: center;
+      padding: 0.85rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border: 1px solid var(--gray-700);
+      color: var(--white);
+      transition: border-color 0.2s, background 0.2s, color 0.2s;
+    }
+    .plan-btn:hover { border-color: var(--gray-400); }
+    .plan.featured .plan-btn { background: var(--black); color: var(--white); border-color: var(--black); }
+    .plan.featured .plan-btn:hover { background: var(--gray-800); }
+
+    /* ── GUARANTEE ── */
+    .guarantee {
+      margin-top: 2.8rem;
+      border: 1px solid var(--gray-700);
+      padding: 1.8rem 2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+    }
+    .guarantee-icon { font-size: 1.6rem; flex-shrink: 0; padding-top: 0.1rem; }
+    .guarantee-text h4 { font-size: 0.92rem; font-weight: 600; margin-bottom: 0.4rem; }
+    .guarantee-text p  { font-size: 0.85rem; color: var(--gray-400); line-height: 1.65; font-weight: 300; }
+
+    /* ── FAQ ── */
+    .faq {
+      padding: 7rem 2.5rem;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .faq h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 3rem;
+    }
+    .faq-item { border-top: 1px solid var(--gray-800); padding: 1.6rem 0; }
+    .faq-q {
+      font-size: 0.98rem;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 0.7rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    .faq-q .faq-arrow { font-size: 1.1rem; color: var(--gray-600); flex-shrink: 0; transition: transform 0.25s; }
+    .faq-item.open .faq-arrow { transform: rotate(45deg); }
+    .faq-a {
+      font-size: 0.88rem;
+      color: var(--gray-400);
+      line-height: 1.7;
+      font-weight: 300;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, opacity 0.3s;
+      opacity: 0;
+    }
+    .faq-item.open .faq-a { max-height: 400px; opacity: 1; }
+
+    /* ── CTA FINAL ── */
+    .cta-final {
+      padding: 8rem 2.5rem;
+      background: var(--white);
+      color: var(--black);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-final::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,0,0,0.04) 0%, transparent 70%);
+    }
+    .cta-final h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      letter-spacing: -0.03em;
+      margin-bottom: 1.2rem;
+      line-height: 1.05;
+      position: relative;
+    }
+    .cta-final h2 em { font-style: italic; color: var(--gray-600); }
+    .cta-final p {
+      font-size: 1rem;
+      color: var(--gray-600);
+      max-width: 500px;
+      margin: 0 auto 2.8rem;
+      line-height: 1.65;
+      font-weight: 300;
+      position: relative;
+    }
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 1rem 2.2rem;
+      text-decoration: none;
+      border: 2px solid var(--black);
+      transition: background 0.2s, color 0.2s;
+      position: relative;
+      margin-bottom: 1rem;
+    }
+    .btn-wa:hover { background: var(--gray-300); border-color: var(--gray-300); color: var(--black); }
+    .cta-note { font-size: 0.78rem; color: var(--gray-500); position: relative; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2.5rem 2.5rem;
+      border-top: 1px solid var(--gray-800);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-logo { display: flex; align-items: center; }
+    .footer-logo img { height: clamp(28px, 3vw, 38px); width: auto; filter: invert(1); opacity: 0.7; }
+    footer p { font-size: 0.78rem; color: var(--gray-400); }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { font-size: 0.78rem; color: var(--gray-500); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gray-300); }
+
+    /* ── WHATSAPP FLOAT ── */
+    .wa-float {
+      position: fixed;
+      bottom: 1.8rem; right: 1.8rem;
+      z-index: 999;
+      width: 58px; height: 58px;
+      border-radius: 50%;
+      background: #25D366;
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .wa-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.55); }
+
+    /* ── REVEAL ANIMATION ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 720px) {
+      nav { padding: 1rem 1.4rem; }
+      .hero, .problem, .what, .how, .forwho, .pricing, .faq, .cta-final { padding-left: 1.4rem; padding-right: 1.4rem; }
+      .what-intro { grid-template-columns: 1fr; gap: 2rem; }
+      .services-list { grid-template-columns: 1fr; }
+      .social-proof-bar { padding-left: 1.4rem; padding-right: 1.4rem; font-size: 0.78rem; }
+      .sp-sep { display: none; }
+      .guarantee { flex-direction: column; gap: 0.8rem; }
+      footer { flex-direction: column; align-items: flex-start; }
+      .wa-float { bottom: 1.2rem; right: 1.2rem; width: 52px; height: 52px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="logo"><img src="Logo Budgt transparente.png" alt="Budgt" /></a>
+    <a href="https://wa.me/56997135470?text=Hola%2C%20me%20interesa%20el%20servicio%20de%20Presencia%20Digital%20para%20mi%20negocio." class="nav-cta" target="_blank" rel="noopener">Quiero aparecer en Internet</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-tag">Presencia Digital · Landing page · Google Business · Redes sociales</div>
+    <h1>Antes de preocuparte por la competencia, asegurémonos de que <em>tú también apareces en el mapa.</em></h1>
+    <p class="hero-sub">Muchos negocios funcionan bien, pero no existen en internet. Sin página web ni perfil en Google, los clientes que te buscan simplemente no te encuentran. Eso lo arreglamos.</p>
+    <div class="hero-actions">
+      <a href="#contacto" class="btn-primary">Quiero aparecer en Internet</a>
+      <a href="#servicios" class="btn-ghost">¿Qué incluye? Cuéntame →</a>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      Desplázate
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF BAR -->
+  <div class="social-proof-bar">
+    Más del <strong>60% de los pequeños negocios en Chile no tiene presencia digital</strong>
+    <span class="sp-sep">·</span>
+    Si no apareces en Google, <strong>no existes para tus clientes</strong>
+  </div>
+
+  <!-- PROBLEM -->
+  <section class="problem">
+    <p class="section-label reveal">La realidad de muchos negocios hoy</p>
+    <div class="problem-grid">
+      <div class="problem-card reveal">
+        <div class="problem-num">01</div>
+        <h3>Alguien te busca en Google y no apareces</h3>
+        <p>Un cliente potencial escribe el nombre de tu negocio o tu rubro en Google y no encuentra nada. Ahí termina esa venta. Y tú ni siquiera te enteraste.</p>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-num">02</div>
+        <h3>Tu negocio existe, pero en internet no</h3>
+        <p>Tienes clientes, vendes, das buen servicio. Pero si alguien te busca online, parece que no existieras. En 2025, eso es como no tener letrero en la puerta.</p>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-num">03</div>
+        <h3>La competencia te gana aunque tú seas mejor</h3>
+        <p>El negocio del frente tiene su perfil de Google Maps, su página web y sus redes activas. Tú haces mejor el trabajo, pero ellos aparecen primero. Y el cliente elige al que encuentra.</p>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-num">04</div>
+        <h3>Armar esto solo parece complicado y caro</h3>
+        <p>Una web parece un proyecto enorme. Google Business tiene formularios que no se entienden. Las redes hay que configurarlas bien. No tienes tiempo ni ganas de lidiar con todo eso.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE DO -->
+  <section class="what" id="servicios">
+    <div class="what-intro">
+      <h2 class="reveal">Dos servicios puntuales para ponerte <em>en el mapa.</em></h2>
+      <p class="reveal">No son suscripciones ni contratos largos. Son servicios de pago único que te dejan con todo listo y funcionando. Tú eliges lo que necesitas ahora, y nosotros lo hacemos por ti.</p>
+    </div>
+    <div class="services-list">
+      <div class="service-item reveal">
+        <div class="service-icon">🌐</div>
+        <h3>Landing page básica</h3>
+        <p>Una página web de una sola página diseñada para tu negocio: quién eres, qué ofreces, dónde estás y cómo contactarte. Más la configuración de tu perfil de Google Business para que aparezcas en Google Maps cuando alguien busque tu rubro cerca.</p>
+        <div class="service-price-inline">$150.000</div>
+        <div class="service-price-note">CLP · pago único · entrega en 5 días hábiles</div>
+      </div>
+      <div class="service-item reveal">
+        <div class="service-icon">📱</div>
+        <h3>Activación de redes sociales</h3>
+        <p>Configuración y optimización de tu perfil en Instagram y/o Facebook: foto de portada, descripción del negocio y las primeras 3 publicaciones de presentación. Todo listo para que empieces a publicar desde el día uno.</p>
+        <div class="service-price-inline">$60.000</div>
+        <div class="service-price-note">CLP · pago único · entrega en 3 días hábiles</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="como-funciona">
+    <div class="how-inner">
+      <h2 class="reveal">Cómo funciona</h2>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h3>Me cuentas sobre tu negocio</h3>
+            <p>Una conversación breve por WhatsApp donde me explicas a qué te dedicas, qué servicio te interesa y qué información quieres mostrar. Con eso ya tengo todo lo que necesito para empezar.</p>
+            <span class="step-badge">Sin costo ni compromiso</span>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h3>Creamos tu presencia digital</h3>
+            <p>Diseñamos tu landing page o configuramos tus redes según lo acordado. Te vamos mostrando el avance para que puedas pedir ajustes antes de la entrega final. Nada se publica sin tu aprobación.</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h3>Recibes todo listo para publicar</h3>
+            <p>Te entregamos el sitio web activo, el perfil de Google configurado o tus redes listas según el servicio contratado. A partir de ese momento, tu negocio existe en internet.</p>
+            <span class="step-badge">Landing page: 5 días hábiles · Redes: 3 días hábiles</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOR WHO -->
+  <section class="forwho">
+    <h2 class="reveal">¿Tienes un negocio que funciona bien pero que <em>nadie encuentra online</em>?</h2>
+    <div class="profiles">
+      <div class="profile reveal">
+        <div class="profile-emoji">🏪</div>
+        <h3>Tienes una tienda o local físico</h3>
+        <p>Atiendes bien a tus clientes presenciales, pero cuando alguien te busca en Google, no apareces. Pierdes a todos los que preguntan online antes de salir a buscar.</p>
+      </div>
+      <div class="profile reveal">
+        <div class="profile-emoji">🔧</div>
+        <h3>Ofreces servicios a domicilio</h3>
+        <p>Plomero, electricista, gasista, jardinero, pintor. Tus clientes te encuentran por el boca a boca, pero te estás perdiendo a todos los que googlean directamente.</p>
+      </div>
+      <div class="profile reveal">
+        <div class="profile-emoji">💬</div>
+        <h3>Vendes solo por WhatsApp</h3>
+        <p>Tu número circula entre conocidos, pero no tienes nada que mostrarle a alguien que no te conoce. Una página web cambia eso de inmediato.</p>
+      </div>
+      <div class="profile reveal">
+        <div class="profile-emoji">🚀</div>
+        <h3>Recién empezaste tu negocio</h3>
+        <p>Quieres arrancar con el pie derecho y tener presencia digital desde el principio, sin pagar una agencia entera ni esperar semanas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing">
+    <div class="pricing-inner">
+      <div class="pricing-anchor reveal">
+        <blockquote>Antes de monitorear a tu competencia, asegurémonos de que tú también apareces en el mapa.</blockquote>
+      </div>
+      <h2 class="reveal">Servicios simples, precio claro</h2>
+      <p class="pricing-sub reveal">Pago único. Sin mensualidades. Sin sorpresas.</p>
+      <div class="plans">
+        <div class="plan reveal">
+          <div class="plan-tag">Landing page básica</div>
+          <div class="plan-price">$150.000</div>
+          <div class="plan-period">CLP · pago único</div>
+          <ul class="plan-features">
+            <li>Diseño de una landing page profesional (una página)</li>
+            <li>Secciones de presentación, servicios y contacto</li>
+            <li>Adaptada para verse bien en celular</li>
+            <li>Configuración de perfil de Google Business</li>
+            <li>Apareces en Google Maps cuando te buscan</li>
+            <li>Entrega en 5 días hábiles</li>
+          </ul>
+          <a href="https://wa.me/56997135470?text=Hola%2C%20me%20interesa%20el%20servicio%20de%20Landing%20Page%20para%20mi%20negocio." class="plan-btn" target="_blank" rel="noopener">Quiero mi página web</a>
+        </div>
+        <div class="plan featured reveal">
+          <div class="plan-tag">Pack completo · Ahorro $20.000</div>
+          <div class="plan-price">$190.000</div>
+          <div class="plan-period">CLP · pago único</div>
+          <ul class="plan-features">
+            <li>Diseño de una landing page profesional (una página)</li>
+            <li>Secciones de presentación, servicios y contacto</li>
+            <li>Adaptada para verse bien en celular</li>
+            <li>Configuración de perfil de Google Business</li>
+            <li>Apareces en Google Maps cuando te buscan</li>
+            <li>Entrega en 5 días hábiles</li>
+            <li>Configuración y optimización de perfil en Instagram y/o Facebook</li>
+            <li>Foto de portada y foto de perfil con tu marca</li>
+            <li>Descripción del negocio redactada y optimizada</li>
+            <li>Primeras 3 publicaciones de presentación</li>
+            <li>Perfil listo para empezar a publicar</li>
+          </ul>
+          <a href="https://wa.me/56997135470?text=Hola%2C%20me%20interesa%20el%20Pack%20Completo%20de%20Presencia%20Digital%20para%20mi%20negocio." class="plan-btn" target="_blank" rel="noopener">Quiero los dos servicios</a>
+        </div>
+        <div class="plan reveal">
+          <div class="plan-tag">Activación de redes sociales</div>
+          <div class="plan-price">$60.000</div>
+          <div class="plan-period">CLP · pago único</div>
+          <ul class="plan-features">
+            <li>Configuración y optimización de perfil en Instagram y/o Facebook</li>
+            <li>Foto de portada y foto de perfil con tu marca</li>
+            <li>Descripción del negocio redactada y optimizada</li>
+            <li>Primeras 3 publicaciones de presentación</li>
+            <li>Perfil listo para empezar a publicar</li>
+            <li>Entrega en 3 días hábiles</li>
+          </ul>
+          <a href="https://wa.me/56997135470?text=Hola%2C%20me%20interesa%20el%20servicio%20de%20Activaci%C3%B3n%20de%20Redes%20Sociales%20para%20mi%20negocio." class="plan-btn" target="_blank" rel="noopener">Quiero activar mis redes</a>
+        </div>
+      </div>
+
+      <!-- GUARANTEE -->
+      <div class="guarantee reveal">
+        <div class="guarantee-icon">📅</div>
+        <div class="guarantee-text">
+          <h4>Entrega en el plazo acordado, o te devolvemos el dinero</h4>
+          <p>Nos comprometemos con los plazos: 5 días hábiles para la landing page, 3 días para la activación de redes. Si no cumplimos, devolvemos el pago sin discusión. Queremos que confíes en nosotros desde el primer momento.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <h2 class="reveal">Preguntas frecuentes</h2>
+
+    <div class="faq-item reveal">
+      <div class="faq-q">¿Necesito saber de tecnología para contratar esto? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">No. Nosotros nos encargamos de todo. Tú solo nos cuentas sobre tu negocio y nosotros hacemos el resto. Al final recibes todo funcionando, sin necesidad de saber nada técnico.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">¿Qué incluye exactamente la landing page? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Una página web de una sola página con secciones de presentación (quién eres), servicios o productos que ofreces, y datos de contacto. Adaptada para verse bien en celular y computador. Además configuramos tu perfil de Google Business para que aparezcas en Google Maps.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">¿Puedo contratar solo uno de los dos servicios? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Sí, son servicios independientes. Puedes contratar solo la landing page, solo la activación de redes, o los dos juntos. No hay paquete obligatorio.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">¿Trabajan con negocios fuera de Santiago? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Sí. El servicio es completamente remoto y trabajamos con negocios en todo Chile. Toda la coordinación es por WhatsApp o email, así que no importa dónde estés.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">¿Cómo se paga? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Acordamos los detalles por WhatsApp y el pago es al inicio del servicio por transferencia bancaria. Una vez confirmado el pago, empezamos de inmediato.</div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final" id="contacto">
+    <h2>Tu negocio merece <em>aparecer</em> cuando alguien lo busca.</h2>
+    <p>Escríbenos por WhatsApp. Sin formularios, sin esperas. Te respondemos el mismo día.</p>
+    <a href="https://wa.me/56997135470?text=Hola%2C%20me%20interesa%20el%20servicio%20de%20Presencia%20Digital%20para%20mi%20negocio." class="btn-wa" target="_blank" rel="noopener">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.533 5.852L.057 23.5l5.797-1.52A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.9 9.9 0 0 1-5.032-1.371l-.361-.214-3.741.981.999-3.648-.235-.374A9.86 9.86 0 0 1 2.1 12c0-5.461 4.439-9.9 9.9-9.9 5.462 0 9.9 4.439 9.9 9.9 0 5.462-4.438 9.9-9.9 9.9z"/></svg>
+      Hablar con un asesor ahora
+    </a>
+    <p class="cta-note">Respondemos en menos de 24 horas, de lunes a viernes.</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo"><img src="Logo Budgt transparente.png" alt="Budgt" /></div>
+    <p>Presencia digital para negocios chilenos — Budgt © 2025</p>
+    <div class="footer-links">
+      <a href="emprendedores.html">Inteligencia de mercado</a>
+      <a href="licitaciones.html">Licitaciones</a>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP FLOAT -->
+  <a class="wa-float" href="https://wa.me/56997135470?text=Hola%2C%20me%20interesa%20el%20servicio%20de%20Presencia%20Digital%20para%20mi%20negocio." target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.533 5.852L.057 23.5l5.797-1.52A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.9 9.9 0 0 1-5.032-1.371l-.361-.214-3.741.981.999-3.648-.235-.374A9.86 9.86 0 0 1 2.1 12c0-5.461 4.439-9.9 9.9-9.9 5.462 0 9.9 4.439 9.9 9.9 0 5.462-4.438 9.9-9.9 9.9z"/></svg>
+  </a>
+
+  <script>
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 60);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.querySelector('.faq-q').addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asesoría en Licitaciones MercadoPublico | Budgt</title>
+  <meta name="description" content="El Estado es el cliente más grande de Chile. Te ayudamos a encontrar las licitaciones que calzan con tu negocio y te acompañamos en todo el proceso de postulación. Sin estrés, sin burocracia." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --gray-900: #141414;
+      --gray-800: #1e1e1e;
+      --gray-700: #555555;
+      --gray-600: #999999;
+      --gray-500: #c0c0c0;
+      --gray-400: #e0e0e0;
+      --gray-300: #f0f0f0;
+      --gray-200: #f8f8f8;
+      --gray-100: #f5f5f5;
+      --white: #ffffff;
+      --accent: #d4d4d4;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2.5rem;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gray-800);
+    }
+    .logo { display: flex; align-items: center; }
+    .logo img { height: 40px; width: auto; filter: invert(1); }
+    .nav-cta {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      padding: 0.6rem 1.4rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-cta:hover { background: var(--gray-300); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 7rem 2.5rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -20%; right: -10%;
+      width: 60vw; height: 60vw;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(80,80,80,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      border: 1px solid var(--gray-700);
+      padding: 0.35rem 0.9rem;
+      margin-bottom: 2.2rem;
+      width: fit-content;
+    }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.8rem, 7vw, 6rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      max-width: 860px;
+      margin-bottom: 1.8rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--gray-400); }
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--gray-400);
+      max-width: 560px;
+      line-height: 1.65;
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.9rem 2.2rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--gray-300); }
+    .btn-ghost {
+      color: var(--gray-400);
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s;
+    }
+    .btn-ghost:hover { color: var(--white); }
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem; left: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--gray-600);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .scroll-line {
+      width: 40px; height: 1px;
+      background: var(--gray-600);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0%, 100% { transform: scaleX(1); opacity: 1; }
+      50% { transform: scaleX(0.4); opacity: 0.4; }
+    }
+
+    /* ── SOCIAL PROOF BAR ── */
+    .social-proof-bar {
+      background: var(--gray-900);
+      border-top: 1px solid var(--gray-800);
+      border-bottom: 1px solid var(--gray-800);
+      padding: 0.75rem 2.5rem;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--gray-400);
+      letter-spacing: 0.02em;
+    }
+    .social-proof-bar strong { color: var(--white); }
+    .sp-sep { color: var(--gray-700); margin: 0 0.75rem; }
+
+    /* ── STAT BAR ── */
+    .stat-bar {
+      padding: 3.5rem 2.5rem;
+      background: var(--gray-900);
+      border-bottom: 1px solid var(--gray-800);
+    }
+    .stat-bar-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--gray-800);
+    }
+    .stat-item {
+      background: var(--gray-900);
+      padding: 2rem 2.5rem;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .stat-label {
+      font-size: 0.82rem;
+      color: var(--gray-400);
+      font-weight: 300;
+      line-height: 1.4;
+    }
+
+    /* ── PROBLEM ── */
+    .problem {
+      padding: 6rem 2.5rem;
+      background: var(--black);
+      border-top: 1px solid var(--gray-800);
+    }
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 3rem;
+    }
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1px;
+      background: var(--gray-800);
+    }
+    .problem-card {
+      background: var(--black);
+      padding: 2.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+    .problem-card:hover { background: var(--gray-900); }
+    .problem-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 3.5rem;
+      color: var(--gray-800);
+      line-height: 1;
+      margin-bottom: 1rem;
+      transition: color 0.3s;
+    }
+    .problem-card:hover .problem-num { color: var(--gray-700); }
+    .problem-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.6rem; line-height: 1.3; }
+    .problem-card p { font-size: 0.9rem; color: var(--gray-400); line-height: 1.6; font-weight: 300; }
+
+    /* ── DIFFERENTIATOR ── */
+    .diff {
+      padding: 7rem 2.5rem;
+      background: var(--gray-900);
+      border-top: 1px solid var(--gray-800);
+    }
+    .diff-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+    .diff h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 2rem;
+    }
+    .diff h2 em { font-style: italic; color: var(--gray-400); }
+    .diff-col p {
+      font-size: 1rem;
+      color: var(--gray-400);
+      line-height: 1.75;
+      font-weight: 300;
+      margin-bottom: 1.2rem;
+    }
+    .diff-col p:last-child { margin-bottom: 0; }
+    .diff-compare {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: var(--gray-800);
+    }
+    .diff-row {
+      background: var(--gray-900);
+      padding: 1.4rem 1.6rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .diff-row-head {
+      background: var(--black);
+      padding: 0.9rem 1.6rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .diff-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+    }
+    .diff-label.ours { color: var(--white); }
+    .diff-text-bad {
+      font-size: 0.88rem;
+      color: var(--gray-500);
+      line-height: 1.5;
+      font-weight: 300;
+      text-decoration: line-through;
+      text-decoration-color: var(--gray-700);
+    }
+    .diff-text-good {
+      font-size: 0.88rem;
+      color: var(--gray-300);
+      line-height: 1.5;
+      font-weight: 400;
+    }
+
+    /* ── WHAT WE DO ── */
+    .what {
+      padding: 7rem 2.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .what-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+      margin-bottom: 5rem;
+    }
+    .what-intro h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .what-intro h2 em { font-style: italic; color: var(--gray-400); }
+    .what-intro p { font-size: 1rem; color: var(--gray-400); line-height: 1.75; font-weight: 300; }
+    .services-list {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      background: var(--gray-800);
+    }
+    .service-item {
+      background: var(--black);
+      padding: 2.5rem 2rem;
+      transition: background 0.25s;
+      cursor: default;
+    }
+    .service-item:hover { background: var(--gray-900); }
+    .service-icon {
+      width: 42px; height: 42px;
+      border: 1px solid var(--gray-700);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.4rem;
+      font-size: 1.2rem;
+    }
+    .service-item h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.7rem; }
+    .service-item p { font-size: 0.88rem; color: var(--gray-400); line-height: 1.65; font-weight: 300; }
+
+    /* ── HOW ── */
+    .how {
+      padding: 7rem 2.5rem;
+      background: var(--gray-900);
+      border-top: 1px solid var(--gray-800);
+    }
+    .how-inner { max-width: 900px; margin: 0 auto; }
+    .how h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 4rem;
+    }
+    .steps { display: flex; flex-direction: column; gap: 0; }
+    .step {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 2rem;
+      padding: 2.2rem 0;
+      border-top: 1px solid var(--gray-800);
+      position: relative;
+      align-items: start;
+    }
+    .step-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.2rem;
+      color: var(--gray-700);
+      line-height: 1;
+      padding-top: 0.1rem;
+    }
+    .step-content h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .step-content p { font-size: 0.9rem; color: var(--gray-400); line-height: 1.65; font-weight: 300; }
+    .step-badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-600);
+      border: 1px solid var(--gray-700);
+      padding: 0.2rem 0.6rem;
+      margin-top: 0.7rem;
+    }
+
+    /* ── FOR WHO ── */
+    .forwho {
+      padding: 7rem 2.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .forwho h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 3.5rem;
+      max-width: 660px;
+    }
+    .forwho h2 em { font-style: italic; color: var(--gray-400); }
+    .profiles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+    .profile {
+      padding: 2rem 1.8rem;
+      border: 1px solid var(--gray-800);
+      transition: border-color 0.25s;
+    }
+    .profile:hover { border-color: var(--gray-600); }
+    .profile-emoji { font-size: 1.8rem; margin-bottom: 1rem; }
+    .profile h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.4rem; }
+    .profile p { font-size: 0.84rem; color: var(--gray-400); line-height: 1.55; font-weight: 300; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials {
+      padding: 7rem 2.5rem;
+      border-top: 1px solid var(--gray-800);
+    }
+    .testimonials-inner { max-width: 1100px; margin: 0 auto; }
+    .testimonials h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 3.5rem;
+    }
+    .testimonials h2 em { font-style: italic; color: var(--gray-400); }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 1px;
+      background: var(--gray-800);
+    }
+    .testimonial-card {
+      background: var(--black);
+      padding: 2.5rem 2rem;
+      transition: background 0.25s;
+    }
+    .testimonial-card:hover { background: var(--gray-900); }
+    .testimonial-quote {
+      font-size: 0.95rem;
+      color: var(--gray-300);
+      line-height: 1.75;
+      font-weight: 300;
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+    .testimonial-quote::before { content: '\201C'; }
+    .testimonial-quote::after  { content: '\201D'; }
+    .testimonial-author { display: flex; align-items: center; gap: 0.9rem; }
+    .testimonial-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: var(--gray-800);
+      border: 1px solid var(--gray-700);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .testimonial-name  { font-size: 0.88rem; font-weight: 600; margin-bottom: 0.15rem; }
+    .testimonial-role  { font-size: 0.78rem; color: var(--gray-500); }
+
+    /* ── PRICING ── */
+    .pricing {
+      padding: 7rem 2.5rem;
+      background: var(--gray-900);
+      border-top: 1px solid var(--gray-800);
+    }
+    .pricing-inner { max-width: 1000px; margin: 0 auto; }
+    .pricing h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.6rem;
+    }
+    .pricing-sub { font-size: 0.95rem; color: var(--gray-400); margin-bottom: 3.5rem; font-weight: 300; }
+    .pricing-anchor {
+      text-align: center;
+      padding-bottom: 3rem;
+    }
+    .pricing-anchor blockquote {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+      color: var(--gray-300);
+      font-style: italic;
+      letter-spacing: -0.01em;
+      max-width: 680px;
+      margin: 0 auto;
+      line-height: 1.45;
+      border-left: 2px solid var(--gray-700);
+      padding-left: 1.4rem;
+      text-align: left;
+    }
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2px;
+      background: var(--gray-800);
+    }
+    .plan {
+      background: var(--gray-900);
+      padding: 2.5rem 2rem;
+      position: relative;
+    }
+    .plan.featured { background: var(--white); color: var(--black); }
+    .plan-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--gray-400);
+      margin-bottom: 1.5rem;
+    }
+    .plan.featured .plan-tag { color: var(--gray-600); }
+    .plan-price {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.8rem;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .plan-period { font-size: 0.82rem; color: var(--gray-400); margin-bottom: 2rem; font-weight: 300; }
+    .plan.featured .plan-period { color: var(--gray-600); }
+    .plan-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-bottom: 2.2rem;
+    }
+    .plan-features li {
+      font-size: 0.88rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+      line-height: 1.45;
+      color: var(--gray-400);
+      font-weight: 300;
+    }
+    .plan.featured .plan-features li { color: var(--gray-700); }
+    .plan-features li::before { content: '→'; color: var(--gray-600); flex-shrink: 0; margin-top: 0.05rem; }
+    .plan.featured .plan-features li::before { color: var(--gray-500); }
+    .plan-btn {
+      display: block;
+      text-align: center;
+      padding: 0.85rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border: 1px solid var(--gray-700);
+      color: var(--white);
+      transition: border-color 0.2s, background 0.2s, color 0.2s;
+    }
+    .plan-btn:hover { border-color: var(--gray-400); }
+    .plan.featured .plan-btn { background: var(--black); color: var(--white); border-color: var(--black); }
+    .plan.featured .plan-btn:hover { background: var(--gray-800); }
+
+    /* ── PLAN NOTE ── */
+    .plan-note {
+      font-size: 0.8rem;
+      color: var(--gray-500);
+      font-weight: 400;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.01em;
+    }
+    .plan.featured .plan-note { color: var(--gray-700); }
+
+    /* ── GUARANTEE ── */
+    .guarantee {
+      margin-top: 2.8rem;
+      border: 1px solid var(--gray-700);
+      padding: 1.8rem 2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+    }
+    .guarantee-icon { font-size: 1.6rem; flex-shrink: 0; padding-top: 0.1rem; }
+    .guarantee-text h4 { font-size: 0.92rem; font-weight: 600; margin-bottom: 0.4rem; }
+    .guarantee-text p  { font-size: 0.85rem; color: var(--gray-400); line-height: 1.65; font-weight: 300; }
+
+    /* ── FAQ ── */
+    .faq {
+      padding: 7rem 2.5rem;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .faq h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 3rem;
+    }
+    .faq-item { border-top: 1px solid var(--gray-800); padding: 1.6rem 0; }
+    .faq-q {
+      font-size: 0.98rem;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 0.7rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    .faq-q .faq-arrow { font-size: 1.1rem; color: var(--gray-600); flex-shrink: 0; transition: transform 0.25s; }
+    .faq-item.open .faq-arrow { transform: rotate(45deg); }
+    .faq-a {
+      font-size: 0.88rem;
+      color: var(--gray-400);
+      line-height: 1.7;
+      font-weight: 300;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, opacity 0.3s;
+      opacity: 0;
+    }
+    .faq-item.open .faq-a { max-height: 400px; opacity: 1; }
+
+    /* ── CTA FINAL ── */
+    .cta-final {
+      padding: 8rem 2.5rem;
+      background: var(--white);
+      color: var(--black);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-final::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,0,0,0.04) 0%, transparent 70%);
+    }
+    .cta-final h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      letter-spacing: -0.03em;
+      margin-bottom: 1.2rem;
+      line-height: 1.05;
+      position: relative;
+    }
+    .cta-final h2 em { font-style: italic; color: var(--gray-600); }
+    .cta-final p {
+      font-size: 1rem;
+      color: var(--gray-600);
+      max-width: 500px;
+      margin: 0 auto 2.8rem;
+      line-height: 1.65;
+      font-weight: 300;
+      position: relative;
+    }
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 1rem 2.2rem;
+      text-decoration: none;
+      border: 2px solid var(--black);
+      transition: background 0.2s, color 0.2s;
+      position: relative;
+      margin-bottom: 1rem;
+    }
+    .btn-wa:hover { background: var(--gray-300); border-color: var(--gray-300); color: var(--black); }
+    .cta-note { font-size: 0.78rem; color: var(--gray-500); position: relative; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2.5rem 2.5rem;
+      border-top: 1px solid var(--gray-800);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-logo { display: flex; align-items: center; }
+    .footer-logo img { height: clamp(28px, 3vw, 38px); width: auto; filter: invert(1); opacity: 0.7; }
+    footer p { font-size: 0.78rem; color: var(--gray-400); }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { font-size: 0.78rem; color: var(--gray-500); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gray-300); }
+
+    /* ── WHATSAPP FLOAT ── */
+    .wa-float {
+      position: fixed;
+      bottom: 1.8rem; right: 1.8rem;
+      z-index: 999;
+      width: 58px; height: 58px;
+      border-radius: 50%;
+      background: #25D366;
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .wa-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.55); }
+
+    /* ── REVEAL ANIMATION ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 720px) {
+      nav { padding: 1rem 1.4rem; }
+      .hero, .problem, .what, .how, .forwho, .testimonials, .pricing, .faq, .cta-final, .diff, .stat-bar { padding-left: 1.4rem; padding-right: 1.4rem; }
+      .what-intro { grid-template-columns: 1fr; gap: 2rem; }
+      .diff-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .diff-row, .diff-row-head { grid-template-columns: 1fr 1fr; }
+      footer { flex-direction: column; align-items: flex-start; }
+      .services-list { grid-template-columns: 1fr; }
+      .social-proof-bar { padding-left: 1.4rem; padding-right: 1.4rem; font-size: 0.78rem; }
+      .sp-sep { display: none; }
+      .guarantee { flex-direction: column; gap: 0.8rem; }
+      .wa-float { bottom: 1.2rem; right: 1.2rem; width: 52px; height: 52px; }
+      .stat-bar-inner { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="logo"><img src="C:\Users\lrodr\OneDrive\Desarrollos\BUDGT\Logo Budgt transparente.png" alt="Budgt" /></a>
+    <a href="https://wa.me/56997135470?text=Hola%2C%20me%20interesa%20la%20asesor%C3%ADa%20en%20licitaciones%20de%20MercadoPublico%20para%20mi%20negocio." class="nav-cta" target="_blank" rel="noopener">Agendar consulta</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-tag">Asesoría en licitaciones · MercadoPublico · Chile</div>
+    <h1>El Estado compra millones cada día. Tú podrías ser <em>uno de sus proveedores.</em></h1>
+    <p class="hero-sub">Nos encargamos de estudiar las licitaciones, detectar las que calzan con tu negocio y acompañarte en todo el proceso de postulación. Sin estrés, sin burocracia, sin perder tiempo.</p>
+    <div class="hero-actions">
+      <a href="#contacto" class="btn-primary">Quiero saber si califico</a>
+      <a href="#como-funciona" class="btn-ghost">¿Cómo funciona? Cuéntame →</a>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      Desplázate
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF BAR -->
+  <div class="social-proof-bar">
+    El Estado chileno compra <strong>más de $8 billones</strong> al año en MercadoPublico
+    <span class="sp-sep">·</span>
+    Más del <strong>40% va a micro y pequeñas empresas</strong>
+    <span class="sp-sep">·</span>
+    ¿Tu empresa ya está ahí?
+  </div>
+
+  <!-- STAT BAR -->
+  <div class="stat-bar">
+    <div class="stat-bar-inner">
+      <div class="stat-item reveal">
+        <div class="stat-num">+100.000</div>
+        <div class="stat-label">licitaciones publicadas por año<br>en MercadoPublico</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-num">600+</div>
+        <div class="stat-label">organismos del Estado<br>comprando activamente</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-num">0</div>
+        <div class="stat-label">licitaciones ganadas por empresas<br>que nunca se animaron a postular</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROBLEM -->
+  <section class="problem">
+    <p class="section-label reveal">Por qué la mayoría nunca lo intenta</p>
+    <div class="problem-grid">
+      <div class="problem-card reveal">
+        <div class="problem-num">01</div>
+        <h3>"Eso es para empresas grandes, no para mí"</h3>
+        <p>La realidad es que el Estado compra desde limpieza hasta consultoría, desde servicios de imprenta hasta catering. Si tienes un negocio formal, probablemente ya puedes postular.</p>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-num">02</div>
+        <h3>MercadoPublico parece complicado y lleno de trámites</h3>
+        <p>La plataforma tiene su curva de aprendizaje y los documentos técnicos pueden asustar. Sin guía, es fácil cometer errores que te descalifican antes de que lean tu oferta.</p>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-num">03</div>
+        <h3>No tienes tiempo de revisar cientos de licitaciones</h3>
+        <p>Cada día se publican decenas de oportunidades. Filtrar las que realmente te sirven, leerlas en detalle y preparar la postulación es trabajo de tiempo completo.</p>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-num">04</div>
+        <h3>Postulaste una vez y no ganaste. No sabes por qué.</h3>
+        <p>Sin retroalimentación experta es difícil entender si fallaste en el precio, en los documentos, en los plazos o en la propuesta técnica. Y sin eso, el próximo intento es igual de incierto.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIFFERENTIATOR -->
+  <section class="diff">
+    <div class="diff-inner">
+      <div class="diff-col">
+        <h2 class="reveal">No es un software. <em>Es un servicio que trabaja por ti.</em></h2>
+        <p class="reveal">Existen plataformas que te muestran licitaciones y te dejan solo frente a la pantalla. Nosotros hacemos el trabajo contigo y por ti.</p>
+        <p class="reveal">Estudiamos las bases, identificamos las oportunidades reales para tu negocio y te acompañamos a armar la postulación correctamente. Tú te dedicas a tu negocio; nosotros nos encargamos del Estado.</p>
+        <p class="reveal">Para una micro o pequeña empresa, la diferencia entre ganar una licitación y no entrar nunca es tener a alguien que entienda el proceso a tu lado.</p>
+      </div>
+      <div class="diff-col reveal">
+        <div class="diff-compare">
+          <div class="diff-row-head">
+            <div class="diff-label">Lo que hacen los demás</div>
+            <div class="diff-label ours">Lo que hace Budgt</div>
+          </div>
+          <div class="diff-row">
+            <div class="diff-text-bad">Te dan acceso a una plataforma y te dejan explorar solo</div>
+            <div class="diff-text-good">Estudiamos las licitaciones y te presentamos sólo las que te convienen</div>
+          </div>
+          <div class="diff-row">
+            <div class="diff-text-bad">Filtras tú, lees tú, decides tú</div>
+            <div class="diff-text-good">Filtramos, analizamos y te entregamos el resumen listo</div>
+          </div>
+          <div class="diff-row">
+            <div class="diff-text-bad">La postulación la preparas tú mismo</div>
+            <div class="diff-text-good">Te acompañamos en todo el proceso de postulación</div>
+          </div>
+          <div class="diff-row">
+            <div class="diff-text-bad">Si algo falla, buscas la respuesta en el foro</div>
+            <div class="diff-text-good">Tienes un asesor real que responde tus dudas</div>
+          </div>
+          <div class="diff-row">
+            <div class="diff-text-bad">Pagas aunque no postules a nada</div>
+            <div class="diff-text-good">Sólo avanzamos si hay oportunidades reales para ti</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE DO -->
+  <section class="what">
+    <div class="what-intro">
+      <h2 class="reveal">Lo que hacemos por tu negocio, <em>paso a paso.</em></h2>
+      <p class="reveal">Nuestro equipo monitorea diariamente MercadoPublico, identifica las oportunidades que calzan con tu rubro y capacidad, y te apoya desde la primera revisión hasta que envías tu oferta. No te dejamos solo en ninguna etapa.</p>
+    </div>
+    <div class="services-list">
+      <div class="service-item reveal">
+        <div class="service-icon">🔍</div>
+        <h3>Búsqueda y filtro de oportunidades</h3>
+        <p>Revisamos diariamente las licitaciones publicadas y seleccionamos las que son viables para tu negocio según rubro, monto, plazo y requisitos técnicos.</p>
+      </div>
+      <div class="service-item reveal">
+        <div class="service-icon">📄</div>
+        <h3>Análisis de bases y requisitos</h3>
+        <p>Leemos las bases de licitación en detalle, identificamos los documentos necesarios y te explicamos en lenguaje simple qué se te exige para participar.</p>
+      </div>
+      <div class="service-item reveal">
+        <div class="service-icon">✍️</div>
+        <h3>Apoyo en la postulación</h3>
+        <p>Te acompañamos en la preparación de tu oferta técnica y económica, revisamos que esté completa y que cumpla con todos los requisitos antes de enviarla.</p>
+      </div>
+      <div class="service-item reveal">
+        <div class="service-icon">📊</div>
+        <h3>Seguimiento y retroalimentación</h3>
+        <p>Monitoreamos el estado de tu oferta y si no ganás, analizamos contigo los resultados para afinar la estrategia en la siguiente oportunidad.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="como-funciona">
+    <div class="how-inner">
+      <h2 class="reveal">Cómo funciona</h2>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h3>Me cuentas sobre tu negocio</h3>
+            <p>Una conversación breve donde me explicas a qué te dedicas, qué productos o servicios ofreces, en qué regiones puedes operar y si ya tienes RUT y estás en ChileProveedores. Con eso armamos tu perfil.</p>
+            <span class="step-badge">Sin costo ni compromiso</span>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h3>Analizamos tu perfil y buscamos oportunidades</h3>
+            <p>Con tu perfil en mano, monitoreamos MercadoPublico y te presentamos las licitaciones activas que calzan con lo que ofreces. Te explicamos cada una: monto, requisitos, plazo y por qué creemos que tienes chances reales.</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h3>Decides si quieres postular y te acompañamos</h3>
+            <p>Tú decides en qué oportunidades quieres participar. Nosotros te guiamos en la preparación de la oferta: qué documentos juntar, cómo presentar el precio, cómo redactar la propuesta técnica si se requiere.</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h3>Revisamos y enviamos juntos</h3>
+            <p>Antes de que tu oferta quede enviada en el sistema, la revisamos completa para que no haya documentos faltantes ni errores que te descalifiquen. Luego hacemos seguimiento del resultado contigo.</p>
+            <span class="step-badge">Tú siempre decides</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOR WHO -->
+  <section class="forwho">
+    <h2 class="reveal">¿Tu negocio puede venderle <em>al Estado?</em></h2>
+    <div class="profiles">
+      <div class="profile reveal">
+        <div class="profile-emoji">🏗️</div>
+        <h3>Construcción y mantención</h3>
+        <p>Pintura, gasfitería, electricidad, jardines, aseo. El Estado compra servicios de mantención para cientos de edificios públicos en todo Chile.</p>
+      </div>
+      <div class="profile reveal">
+        <div class="profile-emoji">🖨️</div>
+        <h3>Imprenta y servicios gráficos</h3>
+        <p>Afiches, folletos, señalética, artículos promocionales. Municipalidades y organismos públicos contratan constantemente este tipo de servicios.</p>
+      </div>
+      <div class="profile reveal">
+        <div class="profile-emoji">🍱</div>
+        <h3>Catering y alimentación</h3>
+        <p>Colaciones, coffee breaks, almuerzos para eventos. Servicios de alimentación son una de las categorías más compradas por el Estado.</p>
+      </div>
+      <div class="profile reveal">
+        <div class="profile-emoji">💻</div>
+        <h3>Tecnología y servicios digitales</h3>
+        <p>Desarrollo web, soporte técnico, diseño gráfico digital. La transformación digital del Estado genera demanda constante de estos servicios.</p>
+      </div>
+      <div class="profile reveal">
+        <div class="profile-emoji">📦</div>
+        <h3>Proveedores de insumos y materiales</h3>
+        <p>Material de oficina, insumos de limpieza, uniformes, equipamiento. Cualquier proveedor de productos puede participar en compras ágiles.</p>
+      </div>
+      <div class="profile reveal">
+        <div class="profile-emoji">🎓</div>
+        <h3>Capacitación y consultoría</h3>
+        <p>Talleres, asesorías, relatorías. Si tienes un servicio basado en conocimiento o habilidades, hay licitaciones que buscan exactamente eso.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="testimonials-inner">
+      <h2 class="reveal">Lo que dicen quienes ya <em>dieron el paso</em></h2>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal">
+          <p class="testimonial-quote">Excelente servicio, nos quitaron el miedo a participar en las licitaciones. Si bien el Estado es lento para pagar, siempre paga y los chicos siempre han estado ahi para apoyarnos</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">🖨️</div>
+            <div>
+              <div class="testimonial-name">Roberto A.</div>
+              <div class="testimonial-role">Imprenta, Temuco</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <p class="testimonial-quote">Muy buen servicio, sobre todo para nosotras que no nos manejamos en el tema de de las licitaciones y los computadores.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">🍱</div>
+            <div>
+              <div class="testimonial-name">Patricia M.</div>
+              <div class="testimonial-role">Servicio de catering, Concepción</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <p class="testimonial-quote">Había intentado postular antes por mi cuenta y me rechazaron por un documento mal adjuntado. Ahora todas las postulaciones suben sin problemas</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">🏗️</div>
+            <div>
+              <div class="testimonial-name">Marco T.</div>
+              <div class="testimonial-role">Empresa de mantención, Valparaíso</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing">
+    <div class="pricing-inner">
+      <div class="pricing-anchor reveal">
+        <blockquote>¿Cuánto vale ganar un contrato con el Estado? Una sola licitación puede cambiar el año de tu negocio.</blockquote>
+      </div>
+      <h2 class="reveal">Planes de asesoría</h2>
+      <p class="pricing-sub reveal">Transparentes, sin letra chica. Elige según cuánto acompañamiento necesitas.</p>
+      <div class="plans">
+        <div class="plan reveal">
+          <div class="plan-tag">Exploración</div>
+          <div class="plan-price">$49.990</div>
+          <div class="plan-period">CLP / mes</div>
+          <ul class="plan-features">
+            <li>Monitoreo mensual de oportunidades en tu rubro</li>
+            <li>Reporte con las licitaciones que calzan con tu negocio</li>
+            <li>Análisis básico de requisitos y plazos</li>
+            <li>Orientación inicial para inscribirse en ChileProveedores</li>
+          </ul>
+          <p class="plan-note">Sin licitaciones en el mes → sin cobro.</p>
+          <a href="https://wa.me/56997135470?text=Hola%2C%20me%20interesa%20el%20plan%20de%20Exploraci%C3%B3n%20de%20licitaciones%20de%20Budgt." class="plan-btn" target="_blank" rel="noopener">Quiero empezar</a>
+        </div>
+        <div class="plan featured reveal">
+          <div class="plan-tag">Más popular · Postulación</div>
+          <div class="plan-price">$129.990</div>
+          <div class="plan-period">CLP / mes (hasta 2 postulaciones)</div>
+          <ul class="plan-features">
+            <li>Todo lo del plan Exploración</li>
+            <li>Análisis completo de bases de licitación</li>
+            <li>Apoyo en la preparación de la oferta técnica y económica</li>
+            <li>Revisión de documentos antes del envío</li>
+            <li>Seguimiento del resultado y retroalimentación</li>
+            <li>Soporte por WhatsApp durante el proceso</li>
+          </ul>
+          <p class="plan-note">Sin licitaciones en el mes → sin cobro.</p>
+          <a href="https://wa.me/56997135470?text=Hola%2C%20me%20interesa%20el%20plan%20de%20Postulaci%C3%B3n%20de%20licitaciones%20de%20Budgt." class="plan-btn" target="_blank" rel="noopener">Este es el mío</a>
+        </div>
+        <div class="plan reveal">
+          <div class="plan-tag">A medida · Volumen</div>
+          <div class="plan-price">Cotiza</div>
+          <div class="plan-period">según tu necesidad</div>
+          <ul class="plan-features">
+            <li>Postulaciones ilimitadas en el mes</li>
+            <li>Asesoría estratégica para definir rubros objetivo</li>
+            <li>Revisión de historial de licitaciones ganadas en tu sector</li>
+            <li>Análisis competitivo de proveedores del Estado</li>
+            <li>Reuniones de estrategia quincenales</li>
+          </ul>
+          <a href="https://wa.me/56997135470?text=Hola%2C%20me%20interesa%20el%20plan%20a%20medida%20de%20licitaciones%20de%20Budgt." class="plan-btn" target="_blank" rel="noopener">Conversemos</a>
+        </div>
+      </div>
+
+      <!-- GUARANTEE -->
+      <div class="guarantee reveal">
+        <div class="guarantee-icon">🛡️</div>
+        <div class="guarantee-text">
+          <h4>Sin riesgo de entrada</h4>
+          <p>La primera conversación es gratis. Te decimos honestamente si tu negocio tiene perfil para licitaciones y cuáles son las oportunidades reales que vemos. Si no hay oportunidades concretas para ti en este momento, te lo decimos antes de que pagues un peso.</p>
+          <p>Sin licitaciones disponibles en tu rubro durante el mes, o si no se concreta ninguna postulación, no se realiza cobro. Solo pagas los meses en que trabajamos activamente contigo.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <h2 class="reveal">Preguntas frecuentes</h2>
+
+    <div class="faq-item reveal">
+      <div class="faq-q">¿Necesito estar inscrito en ChileProveedores para empezar? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Para postular a licitaciones públicas en Chile es necesario estar inscrito en ChileProveedores (antes Registro de Proveedores). Si aún no lo estás, te orientamos en el proceso de inscripción como parte del servicio. Es un trámite que se puede hacer online y no tiene costo base.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">¿Qué pasa si no ganamos la licitación? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Ganar una licitación no está garantizado — ningún servicio puede garantizarlo. Lo que sí garantizamos es que tu postulación va a estar bien preparada y completa. Además, analizamos los resultados contigo para entender por qué otro proveedor fue seleccionado y cómo mejorar en la siguiente oportunidad. Ganar licitaciones es un proceso que mejora con cada intento.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">¿Mi empresa es demasiado pequeña para participar? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Probablemente no. El Estado chileno compra a negocios de todos los tamaños. Hay licitaciones de montos bajos — desde $500.000 hasta varios millones — y hay compras ágiles que se resuelven en días. Si tienes un RUT, emites boleta o factura y puedes cumplir con lo que se pide, es muy probable que ya estés en condiciones de participar.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">¿Cuánto tiempo demora el proceso de una licitación? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Depende del tipo y monto. Las Compras Ágiles (Trato Directo) pueden resolverse en 24 a 72 horas. Las licitaciones formales tienen plazos de publicación de entre 10 y 30 días para preparar y enviar la oferta. La adjudicación puede demorar semanas adicionales. Te ayudamos a gestionar los tiempos para que nunca pierdas un plazo.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">¿Trabajan con empresas fuera de Santiago? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Sí. El servicio es completamente remoto y trabajamos con empresas en todo Chile. Muchas licitaciones son de organismos regionales — municipalidades, servicios de salud, intendencias — y justamente ahí la competencia suele ser menor y las chances de ganar son más altas. Tenemos especial interés en apoyar negocios en regiones.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">¿Budgt redacta mi propuesta técnica? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Te acompañamos en la redacción y te orientamos sobre qué debe incluir según las bases, pero el conocimiento técnico de lo que ofreces viene de ti. Nuestra labor es estructurar bien la propuesta, asegurarnos de que responda exactamente lo que pide la licitación y revisarla antes de enviarla. El trabajo es en equipo.</div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final" id="contacto">
+    <h2>Tu negocio ya podría estar <em>vendiéndole al Estado.</em></h2>
+    <p>Cuéntanos a qué te dedicas y te decimos en menos de 24 horas si hay oportunidades reales en MercadoPublico para ti. Sin costo, sin compromiso.</p>
+    <a href="https://wa.me/56997135470?text=Hola%2C%20me%20interesa%20la%20asesor%C3%ADa%20en%20licitaciones%20de%20MercadoPublico%20para%20mi%20negocio.%20%C2%BFPueden%20orientarme%3F" class="btn-wa" target="_blank" rel="noopener">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.533 5.852L.057 23.5l5.797-1.52A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.9 9.9 0 0 1-5.032-1.371l-.361-.214-3.741.981.999-3.648-.235-.374A9.86 9.86 0 0 1 2.1 12c0-5.461 4.439-9.9 9.9-9.9 5.462 0 9.9 4.439 9.9 9.9 0 5.462-4.438 9.9-9.9 9.9z"/></svg>
+      Hablar con un asesor ahora
+    </a>
+    <p class="cta-note">Respondemos en menos de 24 horas, de lunes a viernes.</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo"><img src="../Logo Budgt transparente.png" alt="Budgt" /></div>
+    <div class="footer-links">
+      <a href="index.html">Inteligencia de mercado</a>
+      <a href="licitaciones.html">Licitaciones</a>
+    </div>
+    <p>Asesoría en licitaciones para micro y pequeñas empresas — Chile © 2025</p>
+  </footer>
+
+  <!-- WHATSAPP FLOAT -->
+  <a class="wa-float" href="https://wa.me/56997135470?text=Hola%2C%20me%20interesa%20la%20asesor%C3%ADa%20en%20licitaciones%20de%20MercadoPublico%20para%20mi%20negocio." target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.533 5.852L.057 23.5l5.797-1.52A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.9 9.9 0 0 1-5.032-1.371l-.361-.214-3.741.981.999-3.648-.235-.374A9.86 9.86 0 0 1 2.1 12c0-5.461 4.439-9.9 9.9-9.9 5.462 0 9.9 4.439 9.9 9.9 0 5.462-4.438 9.9-9.9 9.9z"/></svg>
+  </a>
+
+  <script>
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 60);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.querySelector('.faq-q').addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
+</body>
+</html>

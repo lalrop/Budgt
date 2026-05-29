@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inteligencia de Mercado para tu Negocio | Budgt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --gray-900: #141414;
+      --gray-800: #1e1e1e;
+      --gray-700: #555555;
+      --gray-600: #999999;
+      --gray-500: #c0c0c0;
+      --gray-400: #e0e0e0;
+      --gray-300: #f0f0f0;
+      --gray-200: #f8f8f8;
+      --gray-100: #f5f5f5;
+      --white: #ffffff;
+      --accent: #d4d4d4;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2.5rem;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gray-800);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo img {
+      height: 40px;
+      width: auto;
+      filter: invert(1);
+    }
+    .nav-cta {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      padding: 0.6rem 1.4rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-cta:hover { background: var(--gray-300); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 7rem 2.5rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -20%; right: -10%;
+      width: 60vw; height: 60vw;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(80,80,80,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      border: 1px solid var(--gray-700);
+      padding: 0.35rem 0.9rem;
+      margin-bottom: 2.2rem;
+      width: fit-content;
+    }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.8rem, 7vw, 6rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      max-width: 800px;
+      margin-bottom: 1.8rem;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gray-400);
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--gray-400);
+      max-width: 520px;
+      line-height: 1.65;
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.9rem 2.2rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--gray-300); }
+    .btn-ghost {
+      color: var(--gray-400);
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s;
+    }
+    .btn-ghost:hover { color: var(--white); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem; left: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--gray-600);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .scroll-line {
+      width: 40px; height: 1px;
+      background: var(--gray-600);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0%, 100% { transform: scaleX(1); opacity: 1; }
+      50% { transform: scaleX(0.4); opacity: 0.4; }
+    }
+
+    /* ── PROBLEM ── */
+    .problem {
+      padding: 6rem 2.5rem;
+      background: var(--gray-900);
+      border-top: 1px solid var(--gray-800);
+    }
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 3rem;
+    }
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1px;
+      background: var(--gray-800);
+    }
+    .problem-card {
+      background: var(--gray-900);
+      padding: 2.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+    }
+    .problem-card:hover { background: var(--gray-800); }
+    .problem-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 3.5rem;
+      color: var(--gray-800);
+      line-height: 1;
+      margin-bottom: 1rem;
+      transition: color 0.3s;
+    }
+    .problem-card:hover .problem-num { color: var(--gray-700); }
+    .problem-card h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      line-height: 1.3;
+    }
+    .problem-card p {
+      font-size: 0.9rem;
+      color: var(--gray-400);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* ── WHAT WE DO ── */
+    .what {
+      padding: 7rem 2.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .what-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+      margin-bottom: 5rem;
+    }
+    .what-intro h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .what-intro h2 em { font-style: italic; color: var(--gray-400); }
+    .what-intro p {
+      font-size: 1rem;
+      color: var(--gray-400);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    .services-list {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      background: var(--gray-800);
+    }
+    .service-item {
+      background: var(--black);
+      padding: 2.5rem 2rem;
+      border-bottom: none;
+      transition: background 0.25s;
+      cursor: default;
+    }
+    .service-item:hover { background: var(--gray-900); }
+    .service-icon {
+      width: 42px; height: 42px;
+      border: 1px solid var(--gray-700);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.4rem;
+      font-size: 1.2rem;
+    }
+    .service-item h3 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-bottom: 0.7rem;
+    }
+    .service-item p {
+      font-size: 0.88rem;
+      color: var(--gray-400);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    /* ── HOW ── */
+    .how {
+      padding: 7rem 2.5rem;
+      background: var(--gray-900);
+      border-top: 1px solid var(--gray-800);
+    }
+    .how-inner { max-width: 900px; margin: 0 auto; }
+    .how h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 4rem;
+    }
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .step {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 2rem;
+      padding: 2.2rem 0;
+      border-top: 1px solid var(--gray-800);
+      position: relative;
+      align-items: start;
+    }
+    .step-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.2rem;
+      color: var(--gray-700);
+      line-height: 1;
+      padding-top: 0.1rem;
+    }
+    .step-content h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    .step-content p {
+      font-size: 0.9rem;
+      color: var(--gray-400);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    /* ── FOR WHO ── */
+    .forwho {
+      padding: 7rem 2.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .forwho h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 3.5rem;
+      max-width: 600px;
+    }
+    .forwho h2 em { font-style: italic; color: var(--gray-400); }
+    .profiles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+    .profile {
+      padding: 2rem 1.8rem;
+      border: 1px solid var(--gray-800);
+      transition: border-color 0.25s;
+    }
+    .profile:hover { border-color: var(--gray-600); }
+    .profile-emoji { font-size: 1.8rem; margin-bottom: 1rem; }
+    .profile h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.4rem; }
+    .profile p { font-size: 0.84rem; color: var(--gray-400); line-height: 1.55; font-weight: 300; }
+
+    /* ── PRICING ── */
+    .pricing {
+      padding: 7rem 2.5rem;
+      background: var(--gray-900);
+      border-top: 1px solid var(--gray-800);
+    }
+    .pricing-inner { max-width: 1000px; margin: 0 auto; }
+    .pricing h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.6rem;
+    }
+    .pricing-sub {
+      font-size: 0.95rem;
+      color: var(--gray-400);
+      margin-bottom: 3.5rem;
+      font-weight: 300;
+    }
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2px;
+      background: var(--gray-800);
+    }
+    .plan {
+      background: var(--gray-900);
+      padding: 2.5rem 2rem;
+      position: relative;
+    }
+    .plan.featured {
+      background: var(--white);
+      color: var(--black);
+    }
+    .plan-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--gray-400);
+      margin-bottom: 1.5rem;
+    }
+    .plan.featured .plan-tag { color: var(--gray-600); }
+    .plan-price {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.8rem;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .plan-period {
+      font-size: 0.82rem;
+      color: var(--gray-400);
+      margin-bottom: 2rem;
+      font-weight: 300;
+    }
+    .plan.featured .plan-period { color: var(--gray-600); }
+    .plan-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-bottom: 2.2rem;
+    }
+    .plan-features li {
+      font-size: 0.88rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+      line-height: 1.45;
+      color: var(--gray-400);
+      font-weight: 300;
+    }
+    .plan.featured .plan-features li { color: var(--gray-700); }
+    .plan-features li::before {
+      content: '→';
+      color: var(--gray-600);
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+    .plan.featured .plan-features li::before { color: var(--gray-500); }
+    .plan-btn {
+      display: block;
+      text-align: center;
+      padding: 0.85rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border: 1px solid var(--gray-700);
+      color: var(--white);
+      transition: border-color 0.2s, background 0.2s, color 0.2s;
+    }
+    .plan-btn:hover { border-color: var(--gray-400); }
+    .plan.featured .plan-btn {
+      background: var(--black);
+      color: var(--white);
+      border-color: var(--black);
+    }
+    .plan.featured .plan-btn:hover { background: var(--gray-800); }
+
+    /* ── FAQ ── */
+    .faq {
+      padding: 7rem 2.5rem;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .faq h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 3rem;
+    }
+    .faq-item {
+      border-top: 1px solid var(--gray-800);
+      padding: 1.6rem 0;
+    }
+    .faq-q {
+      font-size: 0.98rem;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 0.7rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    .faq-q .faq-arrow {
+      font-size: 1.1rem;
+      color: var(--gray-600);
+      flex-shrink: 0;
+      transition: transform 0.25s;
+    }
+    .faq-item.open .faq-arrow { transform: rotate(45deg); }
+    .faq-a {
+      font-size: 0.88rem;
+      color: var(--gray-400);
+      line-height: 1.7;
+      font-weight: 300;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, opacity 0.3s;
+      opacity: 0;
+    }
+    .faq-item.open .faq-a { max-height: 300px; opacity: 1; }
+
+    /* ── CTA FINAL ── */
+    .cta-final {
+      padding: 8rem 2.5rem;
+      background: var(--white);
+      color: var(--black);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-final::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,0,0,0.04) 0%, transparent 70%);
+    }
+    .cta-final h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      letter-spacing: -0.03em;
+      margin-bottom: 1.2rem;
+      line-height: 1.05;
+      position: relative;
+    }
+    .cta-final h2 em { font-style: italic; color: var(--gray-600); }
+    .cta-final p {
+      font-size: 1rem;
+      color: var(--gray-600);
+      max-width: 480px;
+      margin: 0 auto 2.8rem;
+      line-height: 1.65;
+      font-weight: 300;
+      position: relative;
+    }
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 1rem 2.2rem;
+      text-decoration: none;
+      border: 2px solid var(--black);
+      transition: background 0.2s, color 0.2s;
+      position: relative;
+      margin-bottom: 1rem;
+    }
+    .btn-wa:hover { background: var(--gray-300); border-color: var(--gray-300); color: var(--black); }
+    .cta-note { font-size: 0.78rem; color: var(--gray-500); position: relative; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2.5rem 2.5rem;
+      border-top: 1px solid var(--gray-800);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+    }
+    .footer-logo img {
+      height: clamp(28px, 3vw, 38px);
+      width: auto;
+      filter: invert(1);
+      opacity: 0.7;
+    }
+    footer p {
+      font-size: 0.78rem;
+      color: var(--gray-400);
+    }
+
+    /* ── SOCIAL PROOF BAR ── */
+    .social-proof-bar {
+      background: var(--gray-900);
+      border-top: 1px solid var(--gray-800);
+      border-bottom: 1px solid var(--gray-800);
+      padding: 0.75rem 2.5rem;
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--gray-400);
+      letter-spacing: 0.02em;
+    }
+    .social-proof-bar strong { color: var(--white); }
+    .sp-sep { color: var(--gray-700); margin: 0 0.75rem; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials {
+      padding: 7rem 2.5rem;
+      border-top: 1px solid var(--gray-800);
+    }
+    .testimonials-inner { max-width: 1100px; margin: 0 auto; }
+    .testimonials h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 3.5rem;
+    }
+    .testimonials h2 em { font-style: italic; color: var(--gray-400); }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 1px;
+      background: var(--gray-800);
+    }
+    .testimonial-card {
+      background: var(--black);
+      padding: 2.5rem 2rem;
+      transition: background 0.25s;
+    }
+    .testimonial-card:hover { background: var(--gray-900); }
+    .testimonial-quote {
+      font-size: 0.95rem;
+      color: var(--gray-300);
+      line-height: 1.75;
+      font-weight: 300;
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+    .testimonial-quote::before { content: '\201C'; }
+    .testimonial-quote::after  { content: '\201D'; }
+    .testimonial-author { display: flex; align-items: center; gap: 0.9rem; }
+    .testimonial-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: var(--gray-800);
+      border: 1px solid var(--gray-700);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .testimonial-name  { font-size: 0.88rem; font-weight: 600; margin-bottom: 0.15rem; }
+    .testimonial-role  { font-size: 0.78rem; color: var(--gray-500); }
+
+    /* ── PRICING ANCHOR QUESTION ── */
+    .pricing-anchor {
+      text-align: center;
+      padding-bottom: 3rem;
+    }
+    .pricing-anchor blockquote {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.15rem, 2.5vw, 1.55rem);
+      color: var(--gray-300);
+      font-style: italic;
+      letter-spacing: -0.01em;
+      max-width: 640px;
+      margin: 0 auto;
+      line-height: 1.45;
+      border-left: 2px solid var(--gray-700);
+      padding-left: 1.4rem;
+      text-align: left;
+    }
+
+    /* ── GUARANTEE ── */
+    .guarantee {
+      margin-top: 2.8rem;
+      border: 1px solid var(--gray-700);
+      padding: 1.8rem 2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+    }
+    .guarantee-icon { font-size: 1.6rem; flex-shrink: 0; padding-top: 0.1rem; }
+    .guarantee-text h4 { font-size: 0.92rem; font-weight: 600; margin-bottom: 0.4rem; }
+    .guarantee-text p  { font-size: 0.85rem; color: var(--gray-400); line-height: 1.65; font-weight: 300; }
+
+    /* ── WHATSAPP FLOAT ── */
+    .wa-float {
+      position: fixed;
+      bottom: 1.8rem;
+      right: 1.8rem;
+      z-index: 999;
+      width: 58px; height: 58px;
+      border-radius: 50%;
+      background: #25D366;
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .wa-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 28px rgba(37,211,102,0.55);
+    }
+
+    /* ── REVEAL ANIMATION ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 720px) {
+      nav { padding: 1rem 1.4rem; }
+      .hero, .problem, .what, .how, .forwho, .testimonials, .pricing, .faq, .cta-final { padding-left: 1.4rem; padding-right: 1.4rem; }
+      .what-intro { grid-template-columns: 1fr; gap: 2rem; }
+      .cta-form { flex-direction: column; }
+      .cta-form input { border-right: 1.5px solid var(--gray-300); border-bottom: none; }
+      .cta-form button { width: 100%; }
+      footer { flex-direction: column; align-items: flex-start; }
+      .services-list { grid-template-columns: 1fr; }
+      .social-proof-bar { padding-left: 1.4rem; padding-right: 1.4rem; font-size: 0.78rem; }
+      .sp-sep { display: none; }
+      .pricing-anchor blockquote { font-size: 1.05rem; }
+      .guarantee { flex-direction: column; gap: 0.8rem; }
+      .wa-float { bottom: 1.2rem; right: 1.2rem; width: 52px; height: 52px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="logo"><img src="Logo Budgt transparente.png" alt="Budgt" /></a>
+    <a href="https://wa.me/56997135470?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20el%20servicio%20de%20inteligencia%20de%20mercado%20para%20mi%20negocio." class="nav-cta" target="_blank" rel="noopener">Quiero saber más</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-tag">Para emprendedores que quieren ir un paso adelante</div>
+    <h1>Mientras tú atiendes tu negocio, nosotros miramos lo que hace la competencia.</h1>
+    <p class="hero-sub">Cada semana (o una vez al mes) te contamos qué publicó la competencia, cuales son las principales tendencias y qué podrías hacer tú para no quedarte atrás.</p>
+    <div class="hero-actions">
+      <a href="#contacto" class="btn-primary">Comenzar ahora</a>
+      <a href="#como-funciona" class="btn-ghost">¿Cómo funciona? Cuéntame →</a>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      Desplázate
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF BAR -->
+  <div class="social-proof-bar">
+    ✓ <strong>Más de 30 negocios en Chile</strong> ya reciben su resumen semanal de inteligencia de mercado
+    <span class="sp-sep">·</span>
+    Sin contrato &nbsp;·&nbsp; Cancelas cuando quieras
+  </div>
+
+  <!-- PROBLEM -->
+  <section class="problem">
+    <p class="section-label reveal">¿Te suena alguna de estas situaciones?</p>
+    <div class="problem-grid">
+      <div class="problem-card reveal">
+        <div class="problem-num">01</div>
+        <h3>La competencia se mueve y tú te enteras después</h3>
+        <p>Ves sus publicaciones de vez en cuando, pero para cuando reaccionas, ellos ya llevan semanas adelantados.</p>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-num">02</div>
+        <h3>Te enterás tarde de lo que está de moda</h3>
+        <p>Cuando ves que algo está pegando en el mercado, la competencia ya lo está vendiendo hace semanas.</p>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-num">03</div>
+        <h3>¿Bajo el precio? ¿Subo? ¿Lanzo esto o aquello?</h3>
+        <p>Tomar decisiones sin información concreta es como andar manejando con los vidrios empañados.</p>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-num">04</div>
+        <h3>Tienes mil cosas que hacer, y esto no puede ser una más</h3>
+        <p>Atender clientes, hacer pedidos, pagar cuentas. ¿Cuándo vas a ponerte a revisar Instagram de la competencia?</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE DO -->
+  <section class="what">
+    <div class="what-intro">
+      <h2 class="reveal">Tú te dedicas a tu negocio. De lo otro nos encargamos nosotros.</h2>
+      <p class="reveal">Usamos herramientas especializadas de recolección de datos para monitorear tu competencia en redes sociales, detectar qué está creciendo en tu rubro y entregarte un informe claro cada semana (o una vez al mes). Tú solo lees el resumen y decides.</p>
+    </div>
+    <div class="services-list">
+      <div class="service-item reveal">
+        <div class="service-icon">👁</div>
+        <h3>Monitoreo de competencia</h3>
+        <p>Revisamos las redes sociales de tus competidores directos: qué publican, con qué frecuencia, qué contenido tiene más respuesta del público.</p>
+      </div>
+      <div class="service-item reveal">
+        <div class="service-icon">📈</div>
+        <h3>Detección de tendencias</h3>
+        <p>Te contamos qué productos, temas o formatos están creciendo en tu industria. Así puedes moverlo antes que los demás.</p>
+      </div>
+      <div class="service-item reveal">
+        <div class="service-icon">📋</div>
+        <h3>Informes en lenguaje simple</h3>
+        <p>No recibirás gráficos complicados. Recibirás un resumen claro con los puntos clave que necesitas saber para actuar.</p>
+      </div>
+      <div class="service-item reveal">
+        <div class="service-icon">💬</div>
+        <h3>Sesión de revisión mensual</h3>
+        <p>Una llamada contigo para revisar los datos del mes, responder tus preguntas y ayudarte a convertir esa información en decisiones concretas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how" id="como-funciona">
+    <div class="how-inner">
+      <h2 class="reveal">Cómo funciona</h2>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h3>Me cuentas sobre tu negocio</h3>
+            <p>Una conversación breve donde me dices a qué te dedicas, quiénes son tus competidores principales y qué información te sería más útil.</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h3>Configuramos el monitoreo</h3>
+            <p>Con las herramientas que usamos, definimos a quiénes investigar, que palabras son mas relevantes y qué tendencias vamos a rastrear para que la información sea relevante para tu negocio.</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h3>Recibes tu informe cada semana</h3>
+            <p>Te mandamos directo al WhatsApp o email: qué movió la competencia, qué está sonando en tu rubro y qué te recomendamos hacer.</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h3>Una vez al mes, conversamos y afinamos</h3>
+            <p>Una reunión mensual para analizar el panorama completo y ajustar la estrategia según lo que vamos descubriendo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOR WHO -->
+  <section class="forwho">
+    <h2 class="reveal">¿Tienes un negocio y alguna vez te has preguntado qué está haciendo <em>tu competencia</em>?</h2>
+    <div class="profiles">
+      <div class="profile reveal">
+        <div class="profile-emoji">🛍️</div>
+        <h3>Tienes una tienda física o online</h3>
+        <p>Y quieres saber qué están ofreciendo tus competidores y cómo comunican sus productos.</p>
+      </div>
+      <div class="profile reveal">
+        <div class="profile-emoji">🍽️</div>
+        <h3>Tienes un restaurante o servicio de comida</h3>
+        <p>Y quieres estar al tanto de lo que ofrece la competencia y qué tipo de contenido conecta con los clientes.</p>
+      </div>
+      <div class="profile reveal">
+        <div class="profile-emoji">💅</div>
+        <h3>Ofreces servicios personales</h3>
+        <p>Peluquería, manicure, taller, nutricionista. Quieres saber por qué los clientes eligen al de al lado y cómo puedes hacer para que te elijan a ti.</p>
+      </div>
+      <div class="profile reveal">
+        <div class="profile-emoji">🧑‍💻</div>
+        <h3>Eres emprendedor digital</h3>
+        <p>Vendes por Instagram, TikTok o WhatsApp y ves que a otros les va bien, pero no entiendes exactamente qué están haciendo diferente.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="testimonials-inner">
+      <h2 class="reveal">Lo que dicen quienes <em>ya lo usan</em></h2>
+      <div class="testimonials-grid">
+
+        <div class="testimonial-card reveal">
+          <p class="testimonial-quote">Me ayuda mucho con la gestion de instagram. Ahora me llega un resumen cada lunes y tengo claro que es lo que esta publicando mi competencia y le funciona. Me ayudaron mucho con el tema de los precios, muy buen servicio</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">🛍️</div>
+            <div>
+              <div class="testimonial-name">Valentina R.</div>
+              <div class="testimonial-role">Tienda de ropa online, Santiago</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal">
+          <p class="testimonial-quote">Los chicos tienen mucha paciencia y eso se agradece. Me ayudaron a mejorar mi la visibilidad de mi negocio en las redes</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">🍽️</div>
+            <div>
+              <div class="testimonial-name">Carlos M.</div>
+              <div class="testimonial-role">Dueño de restaurante, Viña del Mar</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal">
+          <p class="testimonial-quote">Muy buen servicio pero un poco adictivo, empece con el plan simple y rapidamente escalamos al otro nivel. Luis me ayudo mucho a mejorar mi estrategia en redes sociales y sobre todo a mejorar las ventas.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">🧑‍💻</div>
+            <div>
+              <div class="testimonial-name">Daniela F.</div>
+              <div class="testimonial-role">Emprendedora digital, Concepción</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing">
+    <div class="pricing-inner">
+      <div class="pricing-anchor reveal">
+        <blockquote>¿Cuánto te costó perder un cliente por no saber lo que ofrecía la competencia?</blockquote>
+      </div>
+      <h2 class="reveal">Planes simples</h2>
+      <p class="pricing-sub reveal">Sin contratos largos. Sin letra chica. Cancelas cuando quieras.</p>
+      <div class="plans">
+        <div class="plan reveal">
+          <div class="plan-tag">Básico</div>
+          <div class="plan-price">$19.990</div>
+          <div class="plan-period">CLP / mes</div>
+          <ul class="plan-features">
+            <li>Monitoreo simple de hasta 2 competidores</li>
+            <li>1 informe semanal vía email</li>
+            <li>Detección básica de tendencias de tu rubro</li>
+          </ul>
+          <a href="#contacto" class="plan-btn">Quiero empezar</a>
+        </div>
+        <div class="plan featured reveal">
+          <div class="plan-tag">Más popular</div>
+          <div class="plan-price">$59.990</div>
+          <div class="plan-period">CLP / mes</div>
+          <ul class="plan-features">
+            <li>Monitoreo de hasta 6 competidores</li>
+            <li>Informe semanal con recomendaciones</li>
+            <li>Detección ampliada de tendencias</li>
+            <li>1 sesión mensual de revisión (30 min)</li>
+            <li>Soporte prioritario por WhatsApp</li>
+          </ul>
+          <a href="#contacto" class="plan-btn">Este es el mío</a>
+        </div>
+        <div class="plan reveal">
+          <div class="plan-tag">A medida</div>
+          <div class="plan-price">Cotiza</div>
+          <div class="plan-period">según tu necesidad</div>
+          <ul class="plan-features">
+            <li>Competidores ilimitados</li>
+            <li>Informes personalizados (diarios, semanales, o mensuales)</li>
+            <li>Análisis de campañas específicas</li>
+            <li>Sesiones de estrategia quincenales</li>
+          </ul>
+          <a href="#contacto" class="plan-btn">Conversemos</a>
+        </div>
+      </div>
+
+      <!-- GUARANTEE -->
+      <div class="guarantee reveal">
+        <div class="guarantee-icon">🛡️</div>
+        <div class="guarantee-text">
+          <h4>Garantía de satisfacción</h4>
+          <p>Si después de tu primer informe sientes que no era lo que necesitabas, te devolvemos el dinero. Sin preguntas, sin burocracia. Queremos que pruebes sin riesgo.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <h2 class="reveal">Preguntas frecuentes</h2>
+
+    <div class="faq-item reveal">
+      <div class="faq-q">¿Necesito saber de tecnología y redes sociales para usar este servicio? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">No. Nosotros hacemos todo el trabajo técnico. Tú recibes un informe escrito en lenguaje simple, como si te lo contara un amigo que entiende el mercado.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">¿Cómo obtienen la información de la competencia? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Usamos herramientas de recolección ética de datos públicos en redes sociales e internet. No accedemos a información privada ni realizamos prácticas que violen los términos de uso de las plataformas.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">¿En cuánto tiempo veo resultados? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">La primera semana ya tienes tu primer resumen, una vez nos comentes lo que necesitas, en 48 horas recibirás tu primer informe con información relevante sobre tu competencia y tendencias de tu rubro. Luego seguiremos semanalmente enviadote la informacion el dia que tu nos indiques.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">¿Puedo cancelar cuando quiera? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Sí. El servicio es mensual y puedes cancelar en cualquier momento sin costo adicional. Solo necesitas avisarnos antes del siguiente ciclo de facturación.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q">¿Trabajan con negocios fuera de Santiago? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Sí. El servicio es completamente remoto y funcionamos con emprendedores en todo Chile. De hecho, tenemos especial interés en apoyar a negocios en regiones extremas.</div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final" id="contacto">
+    <h2>¿Listo para dejar de adivinar y empezar a saber?</h2>
+    <p>Escríbenos por WhatsApp. Sin formularios, sin esperas. Te respondemos el mismo día.</p>
+    <a href="https://wa.me/56997135470?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20el%20servicio%20de%20inteligencia%20de%20mercado%20para%20mi%20negocio." class="btn-wa" target="_blank" rel="noopener">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.533 5.852L.057 23.5l5.797-1.52A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.9 9.9 0 0 1-5.032-1.371l-.361-.214-3.741.981.999-3.648-.235-.374A9.86 9.86 0 0 1 2.1 12c0-5.461 4.439-9.9 9.9-9.9 5.462 0 9.9 4.439 9.9 9.9 0 5.462-4.438 9.9-9.9 9.9z"/></svg>
+      Hablar con un asesor ahora
+    </a>
+    <p class="cta-note">Respondemos en menos de 24 horas, de lunes a viernes.</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo"><img src="C:\Users\lrodr\OneDrive\Desarrollos\BUDGT\nutria.png" alt="Budgt" /></div>
+    <p>Inteligencia de mercado para emprendedores — Chile © 2025</p>
+  </footer>
+
+  <!-- WHATSAPP FLOAT -->
+  <a class="wa-float" href="https://wa.me/56997135470?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20el%20servicio%20de%20inteligencia%20de%20mercado%20para%20mi%20negocio." target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.533 5.852L.057 23.5l5.797-1.52A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.9 9.9 0 0 1-5.032-1.371l-.361-.214-3.741.981.999-3.648-.235-.374A9.86 9.86 0 0 1 2.1 12c0-5.461 4.439-9.9 9.9-9.9 5.462 0 9.9 4.439 9.9 9.9 0 5.462-4.438 9.9-9.9 9.9z"/></svg>
+  </a>
+
+  <script>
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 60);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.querySelector('.faq-q').addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
+
+  </script>
+</body>
+</html>

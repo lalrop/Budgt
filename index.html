@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Budgt — Tecnología e inteligencia para pequeños negocios de Chile</title>
+  <meta name="description" content="Automatizamos el contenido, la atención al cliente y la inteligencia de mercado de tu negocio. Para que tú te dediques a lo que realmente importa. planes desde $149.000/mes." />
+  <meta name="keywords" content="automatización negocios Chile, contenido para redes sociales, chatbot WhatsApp, análisis de competidores, pequeñas empresas Chile" />
+  <link rel="canonical" href="https://budgt.cl/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Budgt",
+    "description": "Automatización de contenido, atención al cliente e inteligencia de mercado para pequeños negocios en Chile.",
+    "url": "https://budgt.cl",
+    "areaServed": "Chile",
+    "priceRange": "$$"
+  }
+  </script>
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --gray-900: #141414;
+      --gray-800: #1e1e1e;
+      --gray-700: #555555;
+      --gray-600: #999999;
+      --gray-500: #c0c0c0;
+      --gray-400: #e0e0e0;
+      --gray-300: #f0f0f0;
+      --gray-200: #f8f8f8;
+      --gray-100: #f5f5f5;
+      --white: #ffffff;
+      --accent: #d4d4d4;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2.5rem;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gray-800);
+    }
+    .logo { display: flex; align-items: center; text-decoration: none; }
+    .logo img { height: 40px; width: auto; filter: invert(1); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .nav-link {
+      color: var(--gray-400);
+      font-size: 1rem;
+      font-weight: 500;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: var(--white); }
+    .nav-cta {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      padding: 0.6rem 1.4rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-cta:hover { background: var(--gray-300); }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 7rem 2.5rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -20%; right: -10%;
+      width: 60vw; height: 60vw;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(80,80,80,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      border: 1px solid var(--gray-700);
+      padding: 0.35rem 0.9rem;
+      margin-bottom: 2.2rem;
+      width: fit-content;
+    }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      max-width: 900px;
+      margin-bottom: 1.8rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--gray-400); }
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--gray-400);
+      max-width: 600px;
+      line-height: 1.65;
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.9rem 2.2rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--gray-300); }
+    .btn-ghost {
+      color: var(--gray-400);
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s;
+    }
+    .btn-ghost:hover { color: var(--white); }
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem; left: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--gray-600);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .scroll-line {
+      width: 40px; height: 1px;
+      background: var(--gray-600);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0%, 100% { transform: scaleX(1); opacity: 1; }
+      50% { transform: scaleX(0.4); opacity: 0.4; }
+    }
+
+    .credibility-bar {
+      background: var(--gray-900);
+      border-top: 1px solid var(--gray-800);
+      border-bottom: 1px solid var(--gray-800);
+      padding: 1rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+    .cred-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      color: var(--gray-400);
+    }
+    .cred-item strong { color: var(--white); }
+    .cred-sep { color: var(--gray-700); }
+
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+      margin-bottom: 3rem;
+    }
+
+    .product-section {
+      padding: 7rem 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .product-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: end;
+      margin-bottom: 4rem;
+    }
+    .product-header h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .product-header h2 em { font-style: italic; color: var(--gray-400); }
+    .product-header p {
+      font-size: 1rem;
+      color: var(--gray-400);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+    .product-anchor {
+      display: block;
+      margin-bottom: 1rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray-600);
+    }
+    .profiles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .profile {
+      padding: 2rem 1.8rem;
+      border: 1px solid var(--gray-800);
+      transition: border-color 0.25s;
+    }
+    .profile:hover { border-color: var(--gray-700); }
+    .profile-emoji { font-size: 1.8rem; margin-bottom: 1rem; }
+    .profile h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.4rem; }
+    .profile p { font-size: 0.84rem; color: var(--gray-400); line-height: 1.55; font-weight: 300; }
+
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2px;
+      background: var(--gray-800);
+    }
+    .plan {
+      background: var(--gray-900);
+      padding: 2.5rem 2rem;
+      position: relative;
+    }
+    .plan.featured { background: var(--white); color: var(--black); }
+    .plan-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--gray-400);
+      margin-bottom: 1.5rem;
+    }
+    .plan.featured .plan-tag { color: #777777; }
+    .plan-price {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.8rem;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .plan-period { font-size: 0.82rem; color: var(--gray-500); margin-bottom: 2rem; font-weight: 300; }
+    .plan.featured .plan-period { color: #888888; }
+    .plan-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-bottom: 2.2rem;
+    }
+    .plan-features li {
+      font-size: 0.88rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+      line-height: 1.45;
+      color: var(--gray-400);
+      font-weight: 300;
+    }
+    .plan.featured .plan-features li { color: #444444; }
+    .plan-features li::before { content: '→'; color: var(--gray-600); flex-shrink: 0; margin-top: 0.05rem; }
+    .plan.featured .plan-features li::before { color: #888888; }
+    .plan-btn {
+      display: block;
+      text-align: center;
+      padding: 0.85rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border: 1px solid var(--gray-800);
+      color: var(--white);
+      transition: border-color 0.2s, background 0.2s, color 0.2s;
+    }
+    .plan-btn:hover { border-color: var(--gray-600); }
+    .plan.featured .plan-btn { background: var(--black); color: var(--white); border-color: var(--black); }
+    .plan.featured .plan-btn:hover { background: var(--gray-800); }
+
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 4rem;
+    }
+    .how-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.5rem;
+      border: 1px solid var(--gray-800);
+    }
+    .how-step-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.8rem;
+      color: var(--gray-700);
+      flex-shrink: 0;
+    }
+    .how-step h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.3rem; }
+    .how-step p { font-size: 0.85rem; color: var(--gray-400); line-height: 1.55; font-weight: 300; }
+
+    .compare-section {
+      padding: 7rem 2.5rem;
+      background: var(--gray-900);
+      border-top: 1px solid var(--gray-800);
+    }
+    .compare-inner { max-width: 1100px; margin: 0 auto; }
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--gray-800);
+      margin-top: 3rem;
+    }
+    .compare-row {
+      background: var(--gray-900);
+      padding: 1.4rem 1.6rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .compare-row-head {
+      background: var(--black);
+      padding: 0.9rem 1.6rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .compare-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+    }
+    .compare-label.ours { color: var(--white); }
+    .compare-text-bad {
+      font-size: 0.88rem;
+      color: var(--gray-500);
+      line-height: 1.5;
+      font-weight: 300;
+      text-decoration: line-through;
+      text-decoration-color: var(--gray-700);
+    }
+    .compare-text-good {
+      font-size: 0.88rem;
+      color: var(--gray-300);
+      line-height: 1.5;
+      font-weight: 400;
+    }
+
+    .product-divider {
+      border-top: 1px solid var(--gray-800);
+      margin: 0;
+    }
+
+    .about {
+      padding: 7rem 2.5rem;
+      background: var(--gray-900);
+      border-top: 1px solid var(--gray-800);
+    }
+    .about-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+    .about h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.8rem;
+    }
+    .about h2 em { font-style: italic; color: var(--gray-400); }
+    .about p {
+      font-size: 1rem;
+      color: var(--gray-400);
+      line-height: 1.8;
+      font-weight: 300;
+      margin-bottom: 1.2rem;
+    }
+    .about p:last-child { margin-bottom: 0; }
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--gray-800);
+    }
+    .about-stat {
+      background: var(--gray-900);
+      padding: 2rem 1.8rem;
+      transition: background 0.25s;
+    }
+    .about-stat:hover { background: var(--gray-800); }
+    .about-stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.4rem;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+    .about-stat-label {
+      font-size: 0.82rem;
+      color: var(--gray-400);
+      font-weight: 300;
+      line-height: 1.4;
+    }
+
+    .faq {
+      padding: 7rem 2.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .faq h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 3rem;
+    }
+    .faq-item { border-top: 1px solid var(--gray-800); padding: 1.6rem 0; }
+    .faq-q {
+      font-size: 0.98rem;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 0.7rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    .faq-q .faq-arrow { font-size: 1.1rem; color: var(--gray-700); flex-shrink: 0; transition: transform 0.25s; }
+    .faq-item.open .faq-arrow { transform: rotate(45deg); }
+    .faq-a {
+      font-size: 0.88rem;
+      color: var(--gray-400);
+      line-height: 1.7;
+      font-weight: 300;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, opacity 0.3s;
+      opacity: 0;
+    }
+    .faq-item.open .faq-a { max-height: 400px; opacity: 1; }
+
+    .cta-final {
+      padding: 8rem 2.5rem;
+      background: var(--white);
+      color: var(--black);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-final::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,0,0,0.04) 0%, transparent 70%);
+    }
+    .cta-final h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      letter-spacing: -0.03em;
+      margin-bottom: 1.2rem;
+      line-height: 1.05;
+      position: relative;
+    }
+    .cta-final h2 em { font-style: italic; color: var(--gray-600); }
+    .cta-final > p {
+      font-size: 1rem;
+      color: var(--gray-600);
+      max-width: 500px;
+      margin: 0 auto 2.8rem;
+      line-height: 1.65;
+      font-weight: 300;
+      position: relative;
+    }
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 1rem 2.2rem;
+      text-decoration: none;
+      border: 2px solid var(--black);
+      transition: background 0.2s, color 0.2s;
+      position: relative;
+      margin-bottom: 1rem;
+    }
+    .btn-wa:hover { background: var(--gray-300); border-color: var(--gray-300); color: var(--black); }
+    .cta-note { font-size: 0.78rem; color: var(--gray-500); position: relative; }
+
+    footer {
+      padding: 2.5rem 2.5rem;
+      border-top: 1px solid var(--gray-800);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-logo { display: flex; align-items: center; }
+    .footer-logo img { height: clamp(28px, 3vw, 38px); width: auto; filter: invert(1); opacity: 0.7; }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { font-size: 0.78rem; color: var(--gray-500); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gray-300); }
+    footer p { font-size: 0.78rem; color: var(--gray-400); }
+
+    .wa-float {
+      position: fixed;
+      bottom: 1.8rem; right: 1.8rem;
+      z-index: 999;
+      width: 58px; height: 58px;
+      border-radius: 50%;
+      background: #25D366;
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .wa-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.55); }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+    }
+    @media (max-width: 720px) {
+      nav { padding: 1rem 1.4rem; }
+      .hero, .product-section, .about, .compare-section, .faq, .cta-final, .credibility-bar { padding-left: 1.4rem; padding-right: 1.4rem; }
+      .product-header { grid-template-columns: 1fr; gap: 1.5rem; }
+      .plans { grid-template-columns: 1fr; }
+      .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .compare-grid { grid-template-columns: 1fr; }
+      .how-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; align-items: flex-start; }
+      .footer-links { flex-wrap: wrap; }
+      .wa-float { bottom: 1.2rem; right: 1.2rem; width: 52px; height: 52px; }
+      .credibility-bar { gap: 1.5rem; font-size: 0.78rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="logo">
+      <img src="Logo Budgt transparente.png" alt="Budgt" />
+    </a>
+    <div class="nav-links">
+      <a href="contenido.html" class="nav-link">Contenido</a>
+      <a href="automatico.html" class="nav-link">Automático</a>
+      <a href="mercado.html" class="nav-link">Mercado</a>
+    </div>
+    <a href="https://wa.me/56997135470?text=Hola%2C%20quiero%20conocer%20m%C3%A1s%20sobre%20los%20servicios%20de%20Budgt." class="nav-cta" target="_blank" rel="noopener">Hablar con nosotros</a>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-tag">Budgt · Tecnología para negocios reales · Chile</div>
+    <h1>Tu negocio tiene todo para crecer. <em>Solo le falta la tecnología correcta.</em></h1>
+    <p class="hero-sub">Automatizamos el contenido, la atención al cliente y la inteligencia de mercado de tu negocio. Para que tú te dediques a lo que realmente importa.</p>
+    <div class="hero-actions">
+      <a href="#productos" class="btn-primary">Ver planes y precios</a>
+      <a href="https://wa.me/56997135470?text=Hola%2C%20quiero%20conocer%20m%C3%A1s%20sobre%20los%20servicios%20de%20Budgt." class="btn-ghost" target="_blank" rel="noopener">Hablar con un asesor →</a>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      Desplázate
+    </div>
+  </section>
+
+  <div class="credibility-bar">
+    <div class="cred-item"><strong>+30</strong> negocios digitalizados</div>
+    <span class="cred-sep">·</span>
+    <div class="cred-item"><strong>Resultados</strong> desde semana 1</div>
+    <span class="cred-sep">·</span>
+    <div class="cred-item"><strong>100%</strong> remoto · todo Chile</div>
+    <span class="cred-sep">·</span>
+    <div class="cred-item"><strong>Sin contratos</strong> largos ni letra chica</div>
+  </div>
+
+  <section class="product-section" id="productos">
+    <span class="product-anchor reveal">Producto 1</span>
+    <div class="product-header">
+      <h2 class="reveal">Contenido que Trabaja</h2>
+      <p class="reveal">Tienes ideas, tienes conocimiento, tienes algo importante que decir. Nosotros lo convertimos automáticamente en clips para Reels, posts y carruseles. Tú subes. Nosotros producimos.</p>
+    </div>
+    <div class="profiles reveal">
+      <div class="profile">
+        <div class="profile-emoji">🎙️</div>
+        <h3>Podcasters y YouTubers</h3>
+        <p>que graban horas de contenido pero no lo distribuyen bien</p>
+      </div>
+      <div class="profile">
+        <div class="profile-emoji">💡</div>
+        <h3>Coaches y consultores</h3>
+        <p>que comparten su conocimiento pero no tienen tiempo de producir</p>
+      </div>
+      <div class="profile">
+        <div class="profile-emoji">🌟</div>
+        <h3>Emprendedores con marca personal</h3>
+        <p>que quieren presencia constante sin vivir en el celular</p>
+      </div>
+      <div class="profile">
+        <div class="profile-emoji">📚</div>
+        <h3>Infoproductores</h3>
+        <p>que necesitan visibilidad para vender sus cursos y asesorías</p>
+      </div>
+    </div>
+    <div class="plans reveal">
+      <div class="plan">
+        <div class="plan-tag">Básico</div>
+        <div class="plan-price">$149.000</div>
+        <div class="plan-period">CLP / mes</div>
+        <ul class="plan-features">
+          <li>1 video o podcast largo/semana</li>
+          <li>4 clips verticales/semana (16/mes)</li>
+          <li>Subtítulos automáticos incluidos</li>
+          <li>Hook de apertura redactado por IA</li>
+          <li>Copy para descripción y hashtags</li>
+          <li>Entrega en 48 hrs hábiles</li>
+          <li>Formato para 1 red social</li>
+        </ul>
+        <a href="https://wa.me/56997135470?text=Hola%2C%20me%20interesa%20el%20plan%20B%C3%A1sico%20de%20Contenido%20que%20Trabaja." class="plan-btn" target="_blank" rel="noopener">Empezar con el Básico</a>
+      </div>
+      <div class="plan featured">
+        <div class="plan-tag">Medio · Más popular</div>
+        <div class="plan-price">$249.000</div>
+        <div class="plan-period">CLP / mes</div>
+        <ul class="plan-features">
+          <li>Todo lo del plan Básico</li>
+          <li>8 clips verticales/semana (32/mes)</li>
+          <li>4 posts/carrusel derivados del contenido</li>
+          <li>Newsletter mensual derivada del contenido</li>
+          <li>Calendario editorial completo</li>
+          <li>Entrega en 24 hrs hábiles</li>
+          <li>Formato para 2 redes sociales</li>
+          <li>1 sesión mensual de estrategia (30 min)</li>
+        </ul>
+        <a href="https://wa.me/56997135470?text=Hola%2C%20me%20interesa%20el%20plan%20Medio%20de%20Contenido%20que%20Trabaja." class="plan-btn" target="_blank" rel="noopener">Este es el mío</a>
+      </div>
+      <div class="plan">
+        <div class="plan-tag">Premium</div>
+        <div class="plan-price">$390.000</div>
+        <div class="plan-period">CLP / mes</div>
+        <ul class="plan-features">
+          <li>Todo lo del plan Medio</li>
+          <li>12 clips verticales/semana (48/mes)</li>
+          <li>Gestión de comunidad (WhatsApp/Telegram)</li>
+          <li>Formato para todas tus redes</li>
+          <li>1 sesión quincenal de estrategia (45 min)</li>
+          <li>Soporte prioritario 24/7</li>
+        </ul>
+        <a href="https://wa.me/56997135470?text=Hola%2C%20me%20interesa%20el%20plan%20Premium%20de%20Contenido%20que%20Trabaja." class="plan-btn" target="_blank" rel="noopener">Quiero el Premium</a>
+      </div>
+    </div>
+    <div class="how-grid reveal">
+      <div class="how-step">
+        <div class="how-step-num">1</div>
+        <div>
+          <h4>Nos cuentas tu marca</h4>
+          <p>Cuéntanos sobre tu negocio, tu audiencia y en qué redes quieres estar. En 24 hrs tenemos tu perfil armado.</p>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num">2</div>
+        <div>
+          <h4>Subes tu contenido</h4>
+          <p>Cada semana nos mandas por WhatsApp o Drive tu video o audio. Eso es todo lo que tienes que hacer.</p>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num">3</div>
+        <div>
+          <h4>Nosotros producimos todo</h4>
+          <p>Nuestro sistema extrae los mejores momentos, genera subtítulos, corta los clips y redacta el copy.</p>
+        </div>
+      </div>
+      <div class="how-step">
+        <div class="how-step-num">4</div>
+        <div>
+          <h4>Tú publicas y creces</h4>
+          <p>Recibes los archivos listos para subir. Opciones de programación disponibles. Tú decides cuándo publicar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="product-divider"></div>
+
+  <section class="product-section" id="automatico">
+    <span class="product-anchor reveal">Producto 2</span>
+    <div class="product-header">
+      <h2 class="reveal">Tu Negocio en Automático</h2>
+      <p class="reveal">La mayoría de los pequeños negocios pierden clientes entre las 6 PM y las 9 AM. Con Tu Negocio en Automático, tu empresa tiene presencia digital profesional respondiendo 24/7.</p>
+    </div>
+    <div class="profiles reveal">
+      <div class="profile">
+        <div class="profile-emoji">🏪</div>
+        <h3>Tiendas y locales físicos</h3>
+        <p>que quieren capturar clientes que buscan online</p>
+      </div>
+      <div class="profile">
+        <div class="profile-emoji">🔧</div>
+        <h3>Servicios a domicilio</h3>
+        <p>que pierden llamadas fuera del horario de trabajo</p>
+      </div>
+      <div class="profile">
+        <div class="profile-emoji">📱</div>
+        <h3>Negocios por WhatsApp</h3>
+        <p>que necesitan escalar sin contratar personal</p>
+      </div>
+      <div class="profile">
+        <div class="profile-emoji">🚀</div>
+        <h3>Emprendedores que arrancan</h3>
+        <p>y quieren empezar con una presencia profesional desde el día uno</p>
+      </div>
+    </div>
+    <div class="plans reveal">
+      <div class="plan">
+        <div class="plan-tag">Básico</div>
+        <div class="plan-price">$390.000</div>
+        <div class="plan-period">CLP · pago único + $19.000/mes</div>
+        <ul class="plan-features">
+          <li>Landing page profesional (1 página)</li>
+          <li>Secciones: quiénes somos, servicios, contacto</li>
+          <li>Adaptada para celular</li>
+          <li>Dominio .cl + SSL incluidos</li>
+          <li>Botón WhatsApp + formulario Brevo</li>
+          <li>Google Business configurado (apareces en Maps)</li>
+          <li>Entrega en 5 días hábiles</li>
+        </ul>
+        <a href="https://wa.me/56997135470?text=Hola%2C%20me%20interesa%20el%20plan%20B%C3%A1sico%20de%20Tu%20Negocio%20en%20Autom%C3%A1tico." class="plan-btn" target="_blank" rel="noopener">Quiero mi web</a>
+      </div>
+      <div class="plan featured">
+        <div class="plan-tag">Medio · Más popular</div>
+        <div class="plan-price">$249.000</div>
+        <div class="plan-period">CLP setup + $79.000/mes</div>
+        <ul class="plan-features">
+          <li>Web del plan Básico incluida</li>
+          <li>Chatbot IA para WhatsApp Business</li>
+          <li>Responde preguntas frecuentes 24/7</li>
+          <li>Captura de leads automática</li>
+          <li>Derivación a humano cuando hace falta</li>
+          <li>Base de conocimiento con tu información</li>
+          <li>Reportes mensuales de consultas</li>
+          <li>1 sesión mensual de revisión (30 min)</li>
+        </ul>
+        <a href="https://wa.me/56997135470?text=Hola%2C%20me%20interesa%20el%20plan%20Medio%20de%20Tu%20Negocio%20en%20Autom%C3%A1tico." class="plan-btn" target="_blank" rel="noopener">Quiero el chatbot</a>
+      </div>
+      <div class="plan">
+        <div class="plan-tag">Premium</div>
+        <div class="plan-price">$249.000</div>
+        <div class="plan-period">CLP / mes (todo incluido)</div>
+        <ul class="plan-features">
+          <li>Todo lo del plan Medio</li>
+          <li>8 posts/mes en redes (redactados con IA)</li>
+          <li>1 newsletter mensual a tus clientes (Brevo)</li>
+          <li>Agendamiento de citas integrado</li>
+          <li>Dashboard de métricas (Power BI)</li>
+          <li>Soporte prioritario WhatsApp 48 hrs</li>
+          <li>Actualización mensual de contenido</li>
+          <li>Sesiones de estrategia quincenales (45 min)</li>
+        </ul>
+        <a href="https://wa.me/56997135470?text=Hola%2C%20me%20interesa%20el%20plan%20Premium%20de%20Tu%20Negocio%20en%20Autom%C3%A1tico." class="plan-btn" target="_blank" rel="noopener">Lo quiero todo</a>
+      </div>
+    </div>
+    <p class="reveal" style="font-size: 0.85rem; color: var(--gray-400); margin-top: 1.5rem; font-weight: 300; border-left: 2px solid var(--gray-800); padding-left: 1rem;">
+      📅 Entrega en el plazo acordado o te devolvemos el dinero. 5 días para la web · 3 días para el chatbot. Si no cumplimos, devolvemos el pago sin preguntas.
+    </p>
+  </section>
+
+  <div class="product-divider"></div>
+
+  <section class="product-section" id="mercado">
+    <span class="product-anchor reveal">Producto 3</span>
+    <div class="product-header">
+      <h2 class="reveal">Inteligencia de Mercado</h2>
+      <p class="reveal">Cada semana tu competencia publica, ajusta precios y lanza promociones. Con Inteligencia de Mercado, recibes el resumen directo a tu WhatsApp: qué les funciona, qué tendencias van y qué deberías hacer tú.</p>
+    </div>
+    <div class="profiles reveal">
+      <div class="profile">
+        <div class="profile-emoji">🏢</div>
+        <h3>Dueños de negocios</h3>
+        <p>que quieren tomar decisiones basadas en datos, no en intuición</p>
+      </div>
+      <div class="profile">
+        <div class="profile-emoji">🛒</div>
+        <h3>Comercios y tiendas</h3>
+        <p>que quieren saber qué precios y promociones usa su competencia</p>
+      </div>
+      <div class="profile">
+        <div class="profile-emoji">📈</div>
+        <h3>Emprendedores en crecimiento</h3>
+        <p>que buscan detectar oportunidades antes que los demás</p>
+      </div>
+      <div class="profile">
+        <div class="profile-emoji">📲</div>
+        <h3>Marcas con redes sociales</h3>
+        <p>que quieren saber qué contenido funciona en su rubro</p>
+      </div>
+    </div>
+    <div class="plans reveal">
+      <div class="plan">
+        <div class="plan-tag">Básico</div>
+        <div class="plan-price">$49.990</div>
+        <div class="plan-period">CLP / mes</div>
+        <ul class="plan-features">
+          <li>Monitoreo de hasta 2 competidores</li>
+          <li>1 resumen semanal vía WhatsApp</li>
+          <li>Detección básica de tendencias del rubro</li>
+          <li>Alertas de cambios importantes</li>
+        </ul>
+        <a href="https://wa.me/56997135470?text=Hola%2C%20me%20interesa%20el%20plan%20B%C3%A1sico%20de%20Inteligencia%20de%20Mercado." class="plan-btn" target="_blank" rel="noopener">Quiero empezar</a>
+      </div>
+      <div class="plan featured">
+        <div class="plan-tag">Medio · Más popular</div>
+        <div class="plan-price">$79.990</div>
+        <div class="plan-period">CLP / mes</div>
+        <ul class="plan-features">
+          <li>Monitoreo de hasta 6 competidores</li>
+          <li>Resumen semanal con recomendaciones</li>
+          <li>Detección ampliada de tendencias</li>
+          <li>Análisis de precios y promociones</li>
+          <li>Benchmarking de precios y contenido</li>
+          <li>1 sesión mensual de revisión (30 min)</li>
+          <li>Soporte prioritario WhatsApp</li>
+        </ul>
+        <a href="https://wa.me/56997135470?text=Hola%2C%20me%20interesa%20el%20plan%20Medio%20de%20Inteligencia%20de%20Mercado." class="plan-btn" target="_blank" rel="noopener">Este es el mío</a>
+      </div>
+      <div class="plan">
+        <div class="plan-tag">Premium</div>
+        <div class="plan-price">$149.990</div>
+        <div class="plan-period">CLP / mes</div>
+        <ul class="plan-features">
+          <li>Competidores ilimitados</li>
+          <li>Dashboard visual de métricas (Power BI)</li>
+          <li>Informes personalizados (semanal + mensual)</li>
+          <li>Análisis de campañas específicas</li>
+          <li>Alertas en tiempo real</li>
+          <li>Sesiones de estrategia quincenales (45 min)</li>
+        </ul>
+        <a href="https://wa.me/56997135470?text=Hola%2C%20me%20interesa%20el%20plan%20Premium%20de%20Inteligencia%20de%20Mercado." class="plan-btn" target="_blank" rel="noopener">Quiero el Premium</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="compare-section">
+    <div class="compare-inner">
+      <p class="section-label reveal">Lo que NO hacemos</p>
+      <h2 class="reveal" style="font-family: 'DM Serif Display', serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); letter-spacing: -0.02em; margin-bottom: 1rem;">Y por qué importa saberlo</h2>
+      <div class="compare-grid reveal">
+        <div class="compare-row-head">
+          <div class="compare-label">Lo que hacen los demás</div>
+          <div class="compare-label ours">Lo que hace Budgt</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-text-bad">Te dan acceso a una plataforma y te dejan explorar solo</div>
+          <div class="compare-text-good">Estudiamos los datos y te presentamos solo lo que te sirve</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-text-bad">Filtras tú, lees tú, decides a ciegas</div>
+          <div class="compare-text-good">Filtramos, analizamos y te enviamos el resumen listo</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-text-bad">Pagas aunque no uses la plataforma ese mes</div>
+          <div class="compare-text-good">Pagas solo por un servicio activo que trabaja para ti</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="about-inner">
+      <div>
+        <p class="section-label reveal">Quiénes somos</p>
+        <h2 class="reveal">Un equipo pequeño con <em>mucha experiencia.</em></h2>
+        <p class="reveal">Somos un equipo pequeño con experiencia en apoyo a pequeñas y medianas empresas y amplia formación en herramientas tecnológicas e inteligencia artificial. Nos movemos en el espacio donde la tecnología se vuelve práctica para los negocios que más lo necesitan: los más reales, los más auténticos.</p>
+        <p class="reveal">Hablamos tu idioma: traducimos el lenguaje del marketing digital, la inteligencia artificial y las ventas a términos del día a día. Sin humo, sin promesas vacías, sin contratos eternos.</p>
+      </div>
+      <div class="about-stats reveal">
+        <div class="about-stat">
+          <div class="about-stat-num">3</div>
+          <div class="about-stat-label">personas detrás<br>de Budgt</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-num">+30</div>
+          <div class="about-stat-label">negocios que ya<br>crecen con nosotros</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-num">3</div>
+          <div class="about-stat-label">servicios activos<br>disponibles hoy</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-num">100%</div>
+          <div class="about-stat-label">enfocados en<br>pequeñas empresas</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq">
+    <h2 class="reveal">Preguntas frecuentes</h2>
+
+    <div class="faq-item reveal">
+      <div class="faq-q">¿Necesito saber de tecnología para contratar esto? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">No. Nos encargamos de todo el trabajo técnico. Tú solo nos cuentas sobre tu negocio y nosotros hacemos el resto. Al final recibes todo funcionando, explicado en lenguaje simple.</div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-q">¿Trabajan con negocios fuera de Santiago? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Sí. El servicio es completamente remoto y trabajamos con negocios en todo Chile. Toda la coordinación es por WhatsApp o email, sin importar dónde estés.</div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-q">¿Puedo contratar solo un servicio o necesito tomar todos? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Puedes contratar solo el servicio que necesitas ahora. No hay paquete obligatorio ni dependencia entre productos. Eso sí, si los combinas, se potencian mucho mejor.</div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-q">¿Cómo se paga? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Acordamos los detalles por WhatsApp y el pago es por transferencia bancaria. Para servicios de setup (web, chatbot), el pago es al inicio. Para planes mensuales, se cobra al inicio de cada ciclo.</div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-q">¿Puedo cancelar cuando quiera? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Sí. Los servicios mensuales no tienen permanencia mínima. Puedes cancelar en cualquier momento avisándonos antes del siguiente ciclo de facturación.</div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-q">¿Qué pasa si no me convence el primer mes? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Garantía de satisfacción en todos nuestros servicios: si después del primer resumen, clip o entrega sientes que no era lo que necesitabas, te devolvemos el dinero. Sin preguntas, sin burocracia.</div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-q">¿Con qué herramientas trabajan? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Usamos tecnología de punta: inteligencia artificial (Claude, Whisper), automatización (Python, Apify), email marketing (Brevo), análisis de datos (Power BI) y WhatsApp Business API. Tú no necesitas conocer ninguna de ellas.</div>
+    </div>
+  </section>
+
+  <section class="cta-final" id="contacto">
+    <h2 class="reveal">¿Listo para dar el <em>siguiente paso?</em></h2>
+    <p class="reveal">Escríbenos por WhatsApp. Te respondemos el mismo día. Cuéntanos sobre tu negocio y te orientamos hacia el servicio que más te conviene. Sin compromiso, sin presión.</p>
+    <a href="https://wa.me/56997135470?text=Hola%2C%20quiero%20conocer%20m%C3%A1s%20sobre%20los%20servicios%20de%20Budgt." class="btn-wa reveal" target="_blank" rel="noopener">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.167 1.618 5.955L.057 23.928a.5.5 0 0 0 .611.611l5.973-1.561A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.96 9.96 0 0 1-5.073-1.384l-.363-.215-3.763.984.984-3.763-.215-.363A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+      </svg>
+      Escribirnos por WhatsApp
+    </a>
+    <p class="cta-note reveal">Respondemos en menos de 24 horas · Sin compromiso</p>
+  </section>
+
+  <footer>
+    <div class="footer-logo">
+      <img src="Logo Budgt transparente.png" alt="Budgt" />
+    </div>
+    <div class="footer-links">
+      <a href="contenido.html">Contenido</a>
+      <a href="automatico.html">Automático</a>
+      <a href="mercado.html">Mercado</a>
+    </div>
+    <p>© 2025 Budgt · Chile</p>
+  </footer>
+
+  <a href="https://wa.me/56997135470?text=Hola%2C%20quiero%20conocer%20m%C3%A1s%20sobre%20los%20servicios%20de%20Budgt." class="wa-float" target="_blank" rel="noopener" aria-label="Escribirnos por WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.167 1.618 5.955L.057 23.928a.5.5 0 0 0 .611.611l5.973-1.561A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.96 9.96 0 0 1-5.073-1.384l-.363-.215-3.763.984.984-3.763-.215-.363A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+    </svg>
+  </a>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.querySelector('.faq-q').addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
+
+</body>
+</html>

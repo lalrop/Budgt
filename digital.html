@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digitalización para tu Negocio | Budgt</title>
+  <meta name="description" content="Primero que te encuentren, después que sepas qué hace tu competencia. Presencia digital y análisis de competidores para pequeños negocios chilenos. Sin contratos, sin tecnicismos." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --gray-900: #141414;
+      --gray-800: #1e1e1e;
+      --gray-700: #555555;
+      --gray-600: #999999;
+      --gray-500: #c0c0c0;
+      --gray-400: #e0e0e0;
+      --gray-300: #f0f0f0;
+      --gray-200: #f8f8f8;
+      --gray-100: #f5f5f5;
+      --white: #ffffff;
+      --accent: #d4d4d4;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2.5rem;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--gray-800);
+    }
+    .logo { display: flex; align-items: center; }
+    .logo img { height: 40px; width: auto; filter: invert(1); }
+    .nav-cta {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      padding: 0.6rem 1.4rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-cta:hover { background: var(--gray-300); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 7rem 2.5rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -20%; right: -10%;
+      width: 60vw; height: 60vw;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(80,80,80,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray-500);
+      border: 1px solid var(--gray-800);
+      padding: 0.35rem 0.9rem;
+      margin-bottom: 2.2rem;
+      width: fit-content;
+    }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.8rem, 7vw, 6rem);
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      max-width: 860px;
+      margin-bottom: 1.8rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--gray-600); }
+    .hero-sub {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--gray-500);
+      max-width: 560px;
+      line-height: 1.65;
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--white);
+      color: var(--black);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.9rem 2.2rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--gray-300); }
+    .btn-ghost {
+      color: var(--gray-500);
+      font-size: 0.9rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s;
+    }
+    .btn-ghost:hover { color: var(--white); }
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem; left: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--gray-700);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .scroll-line {
+      width: 40px; height: 1px;
+      background: var(--gray-700);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+    @keyframes scrollLine {
+      0%, 100% { transform: scaleX(1); opacity: 1; }
+      50% { transform: scaleX(0.4); opacity: 0.4; }
+    }
+
+    /* ── CONTEXT BAR ── */
+    .context-bar {
+      background: var(--gray-900);
+      border-top: 1px solid var(--gray-800);
+      border-bottom: 1px solid var(--gray-800);
+      padding: 0.9rem 2.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--gray-600);
+      letter-spacing: 0.03em;
+    }
+    .cb-sep { color: var(--gray-800); margin: 0 0.8rem; }
+
+    /* ── ETAPAS ── */
+    .etapas {
+      padding: 7rem 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .etapas-intro {
+      max-width: 740px;
+      margin-bottom: 5rem;
+    }
+    .etapas-intro h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      line-height: 1.1;
+    }
+    .etapas-intro p {
+      font-size: 1rem;
+      color: var(--gray-400);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    .etapa-header {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 3rem;
+      align-items: start;
+      margin-bottom: 3.5rem;
+      padding-top: 3.5rem;
+      border-top: 1px solid var(--gray-800);
+    }
+    .etapa-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 5rem;
+      line-height: 1;
+      color: var(--gray-800);
+      letter-spacing: -0.02em;
+      padding-top: 0.1rem;
+    }
+    .etapa-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gray-600);
+      margin-bottom: 0.8rem;
+    }
+    .etapa-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .etapa-desc {
+      font-size: 1rem;
+      color: var(--gray-400);
+      line-height: 1.75;
+      font-weight: 300;
+      max-width: 620px;
+    }
+
+    .etapa-separator {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding: 4rem 0;
+      color: var(--gray-600);
+      font-size: 0.85rem;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+    }
+    .etapa-separator::before,
+    .etapa-separator::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--gray-800);
+    }
+
+    .etapa-intro-note {
+      font-size: 0.88rem;
+      color: var(--gray-600);
+      font-weight: 300;
+      font-style: italic;
+      margin-bottom: 2.5rem;
+      padding: 1rem 1.4rem;
+      border-left: 2px solid var(--gray-800);
+      line-height: 1.65;
+      max-width: 680px;
+    }
+
+    /* ── PLANS ── */
+    .plans {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2px;
+      background: var(--gray-800);
+    }
+    .plan {
+      background: var(--gray-900);
+      padding: 2.5rem 2rem;
+      position: relative;
+    }
+    .plan.featured { background: var(--white); color: var(--black); }
+    .plan-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--gray-500);
+      margin-bottom: 1.5rem;
+    }
+    .plan.featured .plan-tag { color: #777777; }
+    .plan-price {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.8rem;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .plan-period { font-size: 0.82rem; color: var(--gray-500); margin-bottom: 2rem; font-weight: 300; }
+    .plan.featured .plan-period { color: #888888; }
+    .plan-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-bottom: 2.2rem;
+    }
+    .plan-features li {
+      font-size: 0.88rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7rem;
+      line-height: 1.45;
+      color: var(--gray-400);
+      font-weight: 300;
+    }
+    .plan.featured .plan-features li { color: #444444; }
+    .plan-features li::before { content: '→'; color: var(--gray-600); flex-shrink: 0; margin-top: 0.05rem; }
+    .plan.featured .plan-features li::before { color: #888888; }
+    .plan-btn {
+      display: block;
+      text-align: center;
+      padding: 0.85rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      border: 1px solid var(--gray-800);
+      color: var(--white);
+      transition: border-color 0.2s, background 0.2s, color 0.2s;
+    }
+    .plan-btn:hover { border-color: var(--gray-600); }
+    .plan.featured .plan-btn { background: var(--black); color: var(--white); border-color: var(--black); }
+    .plan.featured .plan-btn:hover { background: var(--gray-900); }
+
+    /* ── GUARANTEE ── */
+    .guarantee {
+      margin-top: 2.8rem;
+      border: 1px solid var(--gray-800);
+      padding: 1.8rem 2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+    }
+    .guarantee-icon { font-size: 1.6rem; flex-shrink: 0; padding-top: 0.1rem; }
+    .guarantee-text h4 { font-size: 0.92rem; font-weight: 600; margin-bottom: 0.4rem; }
+    .guarantee-text p { font-size: 0.85rem; color: var(--gray-400); line-height: 1.65; font-weight: 300; }
+
+    /* ── FOR WHO ── */
+    .forwho {
+      padding: 7rem 2.5rem;
+      background: var(--gray-900);
+      border-top: 1px solid var(--gray-800);
+    }
+    .forwho-inner { max-width: 1100px; margin: 0 auto; }
+    .forwho h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 3.5rem;
+      max-width: 660px;
+    }
+    .forwho h2 em { font-style: italic; color: var(--gray-600); }
+    .profiles {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+    .profile {
+      padding: 2rem 1.8rem;
+      border: 1px solid var(--gray-800);
+      transition: border-color 0.25s;
+    }
+    .profile:hover { border-color: var(--gray-700); }
+    .profile-emoji { font-size: 1.8rem; margin-bottom: 1rem; }
+    .profile h3 { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.4rem; }
+    .profile p { font-size: 0.84rem; color: var(--gray-400); line-height: 1.55; font-weight: 300; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials {
+      padding: 7rem 2.5rem;
+      border-top: 1px solid var(--gray-800);
+    }
+    .testimonials-inner { max-width: 1100px; margin: 0 auto; }
+    .testimonials h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 3.5rem;
+    }
+    .testimonials h2 em { font-style: italic; color: var(--gray-600); }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 1px;
+      background: var(--gray-800);
+    }
+    .testimonial-card {
+      background: var(--black);
+      padding: 2.5rem 2rem;
+      transition: background 0.25s;
+    }
+    .testimonial-card:hover { background: var(--gray-900); }
+    .testimonial-quote {
+      font-size: 0.95rem;
+      color: var(--gray-400);
+      line-height: 1.75;
+      font-weight: 300;
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+    .testimonial-quote::before { content: '\201C'; }
+    .testimonial-quote::after  { content: '\201D'; }
+    .testimonial-author { display: flex; align-items: center; gap: 0.9rem; }
+    .testimonial-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: var(--gray-800);
+      border: 1px solid var(--gray-800);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .testimonial-name  { font-size: 0.88rem; font-weight: 600; margin-bottom: 0.15rem; }
+    .testimonial-role  { font-size: 0.78rem; color: var(--gray-600); }
+
+    /* ── FAQ ── */
+    .faq {
+      padding: 7rem 2.5rem;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .faq h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 3rem;
+    }
+    .faq-item { border-top: 1px solid var(--gray-800); padding: 1.6rem 0; }
+    .faq-q {
+      font-size: 0.98rem;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 0.7rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    .faq-q .faq-arrow { font-size: 1.1rem; color: var(--gray-700); flex-shrink: 0; transition: transform 0.25s; }
+    .faq-item.open .faq-arrow { transform: rotate(45deg); }
+    .faq-a {
+      font-size: 0.88rem;
+      color: var(--gray-400);
+      line-height: 1.7;
+      font-weight: 300;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, opacity 0.3s;
+      opacity: 0;
+    }
+    .faq-item.open .faq-a { max-height: 400px; opacity: 1; }
+
+    /* ── CTA FINAL ── */
+    .cta-final {
+      padding: 8rem 2.5rem;
+      background: var(--white);
+      color: var(--black);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-final::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,0,0,0.04) 0%, transparent 70%);
+    }
+    .cta-final h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      letter-spacing: -0.03em;
+      margin-bottom: 1.2rem;
+      line-height: 1.05;
+      position: relative;
+    }
+    .cta-final h2 em { font-style: italic; color: #666666; }
+    .cta-final p {
+      font-size: 1rem;
+      color: #555555;
+      max-width: 500px;
+      margin: 0 auto 2.8rem;
+      line-height: 1.65;
+      font-weight: 300;
+      position: relative;
+    }
+    .btn-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      background: var(--black);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 1rem 2.2rem;
+      text-decoration: none;
+      border: 2px solid var(--black);
+      transition: background 0.2s, color 0.2s;
+      position: relative;
+      margin-bottom: 1rem;
+    }
+    .btn-wa:hover { background: #333; border-color: #333; color: var(--white); }
+    .cta-note { font-size: 0.78rem; color: #888888; position: relative; }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2.5rem 2.5rem;
+      border-top: 1px solid var(--gray-800);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-logo { display: flex; align-items: center; }
+    .footer-logo img { height: clamp(28px, 3vw, 38px); width: auto; filter: invert(1); opacity: 0.7; }
+    footer p { font-size: 0.78rem; color: var(--gray-500); }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { font-size: 0.78rem; color: var(--gray-600); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gray-300); }
+
+    /* ── WHATSAPP FLOAT ── */
+    .wa-float {
+      position: fixed;
+      bottom: 1.8rem; right: 1.8rem;
+      z-index: 999;
+      width: 58px; height: 58px;
+      border-radius: 50%;
+      background: #25D366;
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .wa-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.55); }
+
+    /* ── REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 720px) {
+      nav { padding: 1rem 1.4rem; }
+      .hero, .etapas, .forwho, .testimonials, .faq, .cta-final { padding-left: 1.4rem; padding-right: 1.4rem; }
+      .forwho-inner { padding: 0; }
+      .etapa-header { grid-template-columns: 1fr; gap: 0.5rem; }
+      .etapa-num { font-size: 3rem; }
+      .guarantee { flex-direction: column; gap: 0.8rem; }
+      footer { flex-direction: column; align-items: flex-start; }
+      .context-bar { padding-left: 1.4rem; padding-right: 1.4rem; font-size: 0.78rem; }
+      .cb-sep { display: none; }
+      .wa-float { bottom: 1.2rem; right: 1.2rem; width: 52px; height: 52px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="logo"><img src="Logo Budgt transparente.png" alt="Budgt" /></a>
+    <a href="https://wa.me/56997135470?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20los%20servicios%20de%20Budgt." class="nav-cta" target="_blank" rel="noopener">Hablar con nosotros</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-tag">Digitalización paso a paso</div>
+    <h1>Tu negocio en internet,<br><em>de menor a mayor.</em></h1>
+    <p class="hero-sub">Primero que te encuentren. Después, que sepas qué hace tu competencia. Dos pasos claros, sin tecnicismos, sin contratos largos.</p>
+    <div class="hero-actions">
+      <a href="https://wa.me/56997135470?text=Hola%2C%20quiero%20digitalizar%20mi%20negocio%20con%20Budgt." class="btn-primary" target="_blank" rel="noopener">Quiero empezar</a>
+      <a href="#etapas" class="btn-ghost">Ver las etapas →</a>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      Desplázate
+    </div>
+  </section>
+
+  <!-- CONTEXT BAR -->
+  <div class="context-bar">
+    Trabajamos con negocios de todo Chile
+    <span class="cb-sep">·</span>
+    100% remoto
+    <span class="cb-sep">·</span>
+    Sin conocimientos técnicos requeridos
+  </div>
+
+  <!-- ETAPAS -->
+  <section class="etapas" id="etapas">
+    <div class="etapas-intro reveal">
+      <h2>Dos etapas. Una sola dirección.</h2>
+      <p>Cada etapa tiene sentido por sí sola. Pero juntas, hacen que tu negocio sea encontrado y que empieces a competir con información real.</p>
+    </div>
+
+    <!-- ETAPA 1 -->
+    <div class="etapa-header reveal">
+      <div class="etapa-num">01</div>
+      <div class="etapa-meta">
+        <div class="etapa-label">Etapa 1 — Que te encuentren</div>
+        <h2 class="etapa-title">Presencia digital</h2>
+        <p class="etapa-desc">Antes de cualquier otra cosa, tu negocio tiene que existir en internet. Diseñamos tu página web, configuramos tu perfil en Google Maps y activamos tus redes sociales. Cuando alguien te busque, vas a aparecer.</p>
+      </div>
+    </div>
+
+    <div class="plans">
+      <div class="plan reveal">
+        <div class="plan-tag">Landing page básica</div>
+        <div class="plan-price">$150.000</div>
+        <div class="plan-period">CLP · pago único</div>
+        <ul class="plan-features">
+          <li>Diseño de landing page profesional (una página)</li>
+          <li>Secciones de presentación, servicios y contacto</li>
+          <li>Adaptada para verse bien en celular</li>
+          <li>Configuración de perfil de Google Business</li>
+          <li>Apareces en Google Maps cuando te buscan</li>
+          <li>Entrega en 5 días hábiles</li>
+        </ul>
+        <a href="https://wa.me/56997135470?text=Hola%2C%20me%20interesa%20el%20servicio%20de%20Landing%20Page%20para%20mi%20negocio." class="plan-btn" target="_blank" rel="noopener">Quiero mi página web</a>
+      </div>
+      <div class="plan featured reveal">
+        <div class="plan-tag">Pack completo · Ahorro $20.000</div>
+        <div class="plan-price">$190.000</div>
+        <div class="plan-period">CLP · pago único</div>
+        <ul class="plan-features">
+          <li>Todo lo de la landing page básica</li>
+          <li>Configuración y optimización de perfil en Instagram y/o Facebook</li>
+          <li>Foto de portada y perfil con tu marca</li>
+          <li>Descripción redactada y optimizada</li>
+          <li>Primeras 3 publicaciones de presentación</li>
+          <li>Entrega en 5 días hábiles</li>
+        </ul>
+        <a href="https://wa.me/56997135470?text=Hola%2C%20me%20interesa%20el%20Pack%20Completo%20de%20Presencia%20Digital%20para%20mi%20negocio." class="plan-btn" target="_blank" rel="noopener">Quiero los dos servicios</a>
+      </div>
+      <div class="plan reveal">
+        <div class="plan-tag">Activación de redes sociales</div>
+        <div class="plan-price">$60.000</div>
+        <div class="plan-period">CLP · pago único</div>
+        <ul class="plan-features">
+          <li>Configuración y optimización de perfil en Instagram y/o Facebook</li>
+          <li>Foto de portada y foto de perfil con tu marca</li>
+          <li>Descripción del negocio redactada y optimizada</li>
+          <li>Primeras 3 publicaciones de presentación</li>
+          <li>Perfil listo para empezar a publicar</li>
+          <li>Entrega en 3 días hábiles</li>
+        </ul>
+        <a href="https://wa.me/56997135470?text=Hola%2C%20me%20interesa%20el%20servicio%20de%20Activaci%C3%B3n%20de%20Redes%20Sociales%20para%20mi%20negocio." class="plan-btn" target="_blank" rel="noopener">Quiero activar mis redes</a>
+      </div>
+    </div>
+
+    <div class="guarantee reveal">
+      <div class="guarantee-icon">📅</div>
+      <div class="guarantee-text">
+        <h4>Entrega en el plazo acordado, o te devolvemos el dinero</h4>
+        <p>Nos comprometemos con los plazos: 5 días hábiles para la landing page, 3 días para la activación de redes. Si no cumplimos, devolvemos el pago sin discusión.</p>
+      </div>
+    </div>
+
+    <!-- SEPARADOR -->
+    <div class="etapa-separator reveal">
+      ↓ &nbsp; Una vez online, el siguiente paso es saber qué hace tu competencia.
+    </div>
+
+    <!-- ETAPA 2 -->
+    <div class="etapa-header reveal">
+      <div class="etapa-num">02</div>
+      <div class="etapa-meta">
+        <div class="etapa-label">Etapa 2 — Que sepas qué pasa</div>
+        <h2 class="etapa-title">Análisis de competidores</h2>
+        <p class="etapa-desc">Cada lunes te mandamos un resumen por WhatsApp contándote qué publicó tu competencia, qué les está funcionando y qué podrías hacer tú esta semana. Tú solo lees y decides. Sin dashboards, sin plataformas que aprender.</p>
+      </div>
+    </div>
+
+    <p class="etapa-intro-note reveal">Puedes contratar esta etapa aunque todavía no hayas hecho la Etapa 1. Pero si recién estás digitalizando tu negocio, te recomendamos empezar por arriba.</p>
+
+    <div class="plans">
+      <div class="plan reveal">
+        <div class="plan-tag">Básico</div>
+        <div class="plan-price">$19.990</div>
+        <div class="plan-period">CLP / mes</div>
+        <ul class="plan-features">
+          <li>Monitoreo simple de hasta 2 competidores</li>
+          <li>1 resumen semanal vía WhatsApp</li>
+          <li>Detección básica de tendencias de tu rubro</li>
+        </ul>
+        <a href="https://wa.me/56997135470?text=Hola%2C%20me%20interesa%20el%20plan%20B%C3%A1sico%20de%20an%C3%A1lisis%20de%20competidores." class="plan-btn" target="_blank" rel="noopener">Quiero empezar</a>
+      </div>
+      <div class="plan featured reveal">
+        <div class="plan-tag">Más popular</div>
+        <div class="plan-price">$59.990</div>
+        <div class="plan-period">CLP / mes</div>
+        <ul class="plan-features">
+          <li>Monitoreo de hasta 6 competidores</li>
+          <li>Resumen semanal con recomendaciones</li>
+          <li>Detección ampliada de tendencias</li>
+          <li>1 sesión mensual de revisión (30 min)</li>
+          <li>Soporte prioritario por WhatsApp</li>
+        </ul>
+        <a href="https://wa.me/56997135470?text=Hola%2C%20me%20interesa%20el%20plan%20Popular%20de%20an%C3%A1lisis%20de%20competidores." class="plan-btn" target="_blank" rel="noopener">Este es el mío</a>
+      </div>
+      <div class="plan reveal">
+        <div class="plan-tag">A medida</div>
+        <div class="plan-price">Cotiza</div>
+        <div class="plan-period">según tu necesidad</div>
+        <ul class="plan-features">
+          <li>Competidores ilimitados</li>
+          <li>Informes personalizados (diarios, semanales o mensuales)</li>
+          <li>Análisis de campañas específicas</li>
+          <li>Sesiones de estrategia quincenales</li>
+        </ul>
+        <a href="https://wa.me/56997135470?text=Hola%2C%20me%20interesa%20el%20plan%20A%20medida%20de%20an%C3%A1lisis%20de%20competidores." class="plan-btn" target="_blank" rel="noopener">Conversemos</a>
+      </div>
+    </div>
+
+    <div class="guarantee reveal">
+      <div class="guarantee-icon">🛡️</div>
+      <div class="guarantee-text">
+        <h4>Garantía de satisfacción</h4>
+        <p>Si después de tu primer resumen sientes que no era lo que necesitabas, te devolvemos el dinero. Sin preguntas, sin burocracia. Queremos que pruebes sin riesgo.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- PARA QUIEN -->
+  <section class="forwho">
+    <div class="forwho-inner">
+      <h2 class="reveal">¿Tienes un negocio que funciona bien pero que <em>nadie encuentra online</em>?</h2>
+      <div class="profiles">
+        <div class="profile reveal">
+          <div class="profile-emoji">🏪</div>
+          <h3>Tienes una tienda o local físico</h3>
+          <p>Atiendes bien a tus clientes presenciales, pero cuando alguien te busca en Google, no apareces. Pierdes a todos los que preguntan online antes de salir a buscar.</p>
+        </div>
+        <div class="profile reveal">
+          <div class="profile-emoji">🔧</div>
+          <h3>Ofreces servicios a domicilio</h3>
+          <p>Plomero, electricista, gasista, jardinero, pintor. Tus clientes te encuentran por el boca a boca, pero te estás perdiendo a todos los que googlean directamente.</p>
+        </div>
+        <div class="profile reveal">
+          <div class="profile-emoji">💬</div>
+          <h3>Vendes solo por WhatsApp</h3>
+          <p>Tu número circula entre conocidos, pero no tienes nada que mostrarle a alguien que no te conoce. Una página web cambia eso de inmediato.</p>
+        </div>
+        <div class="profile reveal">
+          <div class="profile-emoji">🚀</div>
+          <h3>Recién empezaste tu negocio</h3>
+          <p>Quieres arrancar con el pie derecho y tener presencia digital desde el principio, sin pagar una agencia entera ni esperar semanas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS -->
+  <section class="testimonials">
+    <div class="testimonials-inner">
+      <h2 class="reveal">Lo que dicen quienes <em>ya lo usan</em></h2>
+      <div class="testimonials-grid">
+
+        <div class="testimonial-card reveal">
+          <p class="testimonial-quote">Muy buen servicio pero un poco adictivo, empece con el plan simple y rapidamente escalamos al otro nivel. Luis me ayudo mucho a mejorar mi estrategia en redes sociales y sobre todo a mejorar las ventas.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">🧑‍💻</div>
+            <div>
+              <div class="testimonial-name">Daniela F.</div>
+              <div class="testimonial-role">Emprendedora digital, Concepción</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal">
+          <p class="testimonial-quote">Me ayuda mucho con la gestion de instagram. Ahora me llega un resumen cada lunes y tengo claro que es lo que esta publicando mi competencia y le funciona. Me ayudaron mucho con el tema de los precios, muy buen servicio</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">🛍️</div>
+            <div>
+              <div class="testimonial-name">Valentina R.</div>
+              <div class="testimonial-role">Tienda de ropa online, Santiago</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card reveal">
+          <p class="testimonial-quote">Los chicos tienen mucha paciencia y eso se agradece. Me ayudaron a mejorar mi la visibilidad de mi negocio en las redes</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">🍽️</div>
+            <div>
+              <div class="testimonial-name">Carlos M.</div>
+              <div class="testimonial-role">Dueño de restaurante, Viña del Mar</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <h2 class="reveal">Preguntas frecuentes</h2>
+
+    <div class="faq-item reveal">
+      <div class="faq-q">¿Necesito saber de tecnología para contratar esto? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">No. Nosotros nos encargamos de todo el trabajo técnico. Tú solo nos cuentas sobre tu negocio y nosotros hacemos el resto. Al final recibes todo funcionando, escrito en lenguaje simple, sin necesidad de saber nada técnico.</div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-q">¿Puedo contratar solo una etapa? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Sí. Puedes contratar solo la Etapa 1 (presencia digital), solo la Etapa 2 (análisis de competidores), o ambas. No hay paquete obligatorio. Eso sí, si recién estás digitalizando tu negocio, tiene más sentido empezar por la Etapa 1.</div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-q">¿Qué incluye exactamente la landing page? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Una página web de una sola página con secciones de presentación (quién eres), servicios o productos que ofreces, y datos de contacto. Adaptada para verse bien en celular y computador. Además configuramos tu perfil de Google Business para que aparezcas en Google Maps.</div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-q">¿En cuánto tiempo veo resultados del análisis de competidores? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">La primera semana ya tienes tu primer resumen. Una vez que nos comentes sobre tu negocio, en 48 horas recibirás tu primer informe con información relevante sobre tu competencia y las tendencias de tu rubro. Después seguimos enviándote el resumen el día que tú nos indiques.</div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-q">¿Trabajan con negocios fuera de Santiago? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Sí. El servicio es completamente remoto y trabajamos con negocios en todo Chile. Toda la coordinación es por WhatsApp o email, así que no importa dónde estés.</div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-q">¿Cómo se paga? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Acordamos los detalles por WhatsApp y el pago es por transferencia bancaria. Para los servicios de presencia digital (Etapa 1), el pago es al inicio. Para el análisis de competidores (Etapa 2), es mensual. Una vez confirmado el pago, empezamos de inmediato.</div>
+    </div>
+
+    <div class="faq-item reveal">
+      <div class="faq-q">¿Puedo cancelar el análisis de competidores cuando quiera? <span class="faq-arrow">+</span></div>
+      <div class="faq-a">Sí. El servicio es mensual y puedes cancelar en cualquier momento sin costo adicional. Solo necesitas avisarnos antes del siguiente ciclo de facturación.</div>
+    </div>
+
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final" id="contacto">
+    <h2>Tu negocio merece aparecer <em>y competir.</em></h2>
+    <p>Escríbenos por WhatsApp. Te respondemos el mismo día.</p>
+    <a href="https://wa.me/56997135470?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20los%20servicios%20de%20Budgt." class="btn-wa" target="_blank" rel="noopener">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.533 5.852L.057 23.5l5.797-1.52A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.9 9.9 0 0 1-5.032-1.371l-.361-.214-3.741.981.999-3.648-.235-.374A9.86 9.86 0 0 1 2.1 12c0-5.461 4.439-9.9 9.9-9.9 5.462 0 9.9 4.439 9.9 9.9 0 5.462-4.438 9.9-9.9 9.9z"/></svg>
+      Hablar con un asesor ahora
+    </a>
+    <p class="cta-note">Respondemos en menos de 24 horas, de lunes a viernes.</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo"><img src="Logo Budgt transparente.png" alt="Budgt" /></div>
+    <p>Digitalización para negocios chilenos — Budgt © 2025</p>
+    <div class="footer-links">
+      <a href="licitaciones.html">Vende al Estado</a>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP FLOAT -->
+  <a class="wa-float" href="https://wa.me/56997135470?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20los%20servicios%20de%20Budgt." target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.533 5.852L.057 23.5l5.797-1.52A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.9a9.9 9.9 0 0 1-5.032-1.371l-.361-.214-3.741.981.999-3.648-.235-.374A9.86 9.86 0 0 1 2.1 12c0-5.461 4.439-9.9 9.9-9.9 5.462 0 9.9 4.439 9.9 9.9 0 5.462-4.438 9.9-9.9 9.9z"/></svg>
+  </a>
+
+  <script>
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 60);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.querySelector('.faq-q').addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
+</body>
+</html>
