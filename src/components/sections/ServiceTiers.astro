@@ -1,0 +1,58 @@
+---
+import PlanCard from '../ui/PlanCard.astro';
+import { plans } from '../../data/services';
+---
+
+<section class="product-section" id="servicios">
+  <div class="container">
+    <span class="section-label">Planes y precios</span>
+    <h2 class="section-title reveal">Elige cómo <em>digitalizarte</em></h2>
+    <p class="section-sub reveal">
+      Desde presencia web básica hasta un sistema de ventas con IA.<br/>
+      Todos los planes incluyen sitio en Astro, SEO y botón WhatsApp.
+    </p>
+
+    <div class="plans-grid">
+      {plans.map((plan) => <PlanCard plan={plan} />)}
+    </div>
+
+    <p class="plans-note reveal">
+      Todos los precios en CLP + IVA. El sitio web es tuyo, siempre.
+    </p>
+  </div>
+</section>
+
+<style>
+  .section-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    color: var(--white);
+    margin-bottom: 0.75rem;
+  }
+  .section-title em { font-style: italic; color: var(--gray-500); }
+
+  .section-sub {
+    font-size: 1rem;
+    color: var(--gray-600);
+    line-height: 1.65;
+    margin-bottom: 3rem;
+  }
+
+  .plans-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  .plans-note {
+    margin-top: 1.5rem;
+    font-size: 0.78rem;
+    color: var(--gray-700);
+    text-align: center;
+  }
+
+  @media (max-width: 900px) {
+    .plans-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+  }
+</style>

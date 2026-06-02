@@ -1,0 +1,159 @@
+---
+const PHONE = '56997135470';
+const MESSAGE = encodeURIComponent('Hola Budgt, quiero digitalizar mi negocio. ¿Por dónde empezamos?');
+const waHref = `https://wa.me/${PHONE}?text=${MESSAGE}`;
+
+const navLinks = [
+  { label: 'Presencia Digital', href: '/presencia-digital' },
+  { label: 'Negocio en Línea', href: '/negocio-en-linea' },
+  { label: 'Sistema de Conversión', href: '/sistema-conversion' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header>
+  <nav class="nav-inner container">
+    <a href="/" class="nav-logo" aria-label="Budgt — Inicio">
+      <img src="/logo-transparente.png" alt="Budgt" width="90" height="32" />
+    </a>
+
+    <ul class="nav-links" role="list">
+      {navLinks.map(({ label, href }) => (
+        <li>
+          <a href={href} class:list={['nav-link', { active: currentPath.startsWith(href) }]}>
+            {label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <a href={waHref} class="nav-cta" target="_blank" rel="noopener noreferrer">
+      Contactar →
+    </a>
+
+    <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" hidden>
+    <ul role="list">
+      {navLinks.map(({ label, href }) => (
+        <li><a href={href}>{label}</a></li>
+      ))}
+      <li>
+        <a href={waHref} class="btn-wa mobile-wa" target="_blank" rel="noopener noreferrer">
+          Contactar por WhatsApp
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<style>
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--gray-800);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    height: 64px;
+  }
+
+  .nav-logo img {
+    height: 28px;
+    width: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+    transition: opacity var(--transition);
+  }
+  .nav-logo:hover img { opacity: 1; }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 0.25rem;
+    margin-left: auto;
+  }
+
+  .nav-link {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--gray-600);
+    padding: 0.4rem 0.75rem;
+    border-radius: 6px;
+    transition: color var(--transition), background var(--transition);
+  }
+  .nav-link:hover, .nav-link.active {
+    color: var(--white);
+    background: var(--gray-800);
+  }
+
+  .nav-cta {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--black);
+    background: var(--white);
+    padding: 0.45rem 1rem;
+    border-radius: 6px;
+    white-space: nowrap;
+    transition: opacity var(--transition);
+    margin-left: 0.5rem;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    margin-left: auto;
+  }
+  .menu-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--white);
+    border-radius: 2px;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+
+  .mobile-menu {
+    background: var(--gray-900);
+    border-top: 1px solid var(--gray-800);
+    padding: 1.25rem 1.5rem 1.5rem;
+  }
+  .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .mobile-menu a { display: block; padding: 0.6rem 0; font-size: 0.95rem; color: var(--gray-400); }
+  .mobile-wa { margin-top: 0.5rem; text-align: center; border-radius: 8px; }
+
+  @media (max-width: 900px) {
+    .nav-links, .nav-cta { display: none; }
+    .menu-toggle { display: flex; }
+  }
+</style>
+
+<script>
+  const toggle = document.querySelector('.menu-toggle') as HTMLButtonElement;
+  const menu = document.querySelector('.mobile-menu') as HTMLElement;
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = !menu.hidden;
+    menu.hidden = isOpen;
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+  });
+</script>

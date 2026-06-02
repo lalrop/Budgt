@@ -1,0 +1,99 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="/logo-transparente.png" alt="Budgt" width="80" height="28" />
+      <p class="footer-tagline">Digitalizamos tu negocio.<br/>Tú te enfocas en crecer.</p>
+    </div>
+
+    <nav class="footer-nav" aria-label="Navegación del pie de página">
+      <div class="footer-col">
+        <h3 class="footer-heading">Servicios</h3>
+        <ul>
+          <li><a href="/presencia-digital">Presencia Digital</a></li>
+          <li><a href="/negocio-en-linea">Negocio en Línea</a></li>
+          <li><a href="/sistema-conversion">Sistema de Conversión</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-heading">Empresa</h3>
+        <ul>
+          <li><a href="/#nosotros">Nosotros</a></li>
+          <li><a href="/#faq">Preguntas frecuentes</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <span>&copy; {year} Budgt. Todos los derechos reservados.</span>
+      <span>+56 9 7736 7018</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  footer {
+    border-top: 1px solid var(--gray-800);
+    padding-top: 3.5rem;
+    margin-top: 0;
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .footer-brand img { height: 26px; width: auto; margin-bottom: 1rem; }
+  .footer-tagline {
+    font-size: 0.85rem;
+    color: var(--gray-600);
+    line-height: 1.5;
+  }
+
+  .footer-nav {
+    display: flex;
+    gap: 3rem;
+  }
+
+  .footer-heading {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray-600);
+    margin-bottom: 1rem;
+  }
+
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .footer-col a {
+    font-size: 0.85rem;
+    color: var(--gray-500);
+    transition: color var(--transition);
+  }
+  .footer-col a:hover { color: var(--white); }
+
+  .footer-bottom {
+    border-top: 1px solid var(--gray-800);
+    padding: 1.25rem 0;
+  }
+  .footer-bottom-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    color: var(--gray-700);
+  }
+
+  @media (max-width: 720px) {
+    .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-nav { flex-direction: column; gap: 1.5rem; }
+    .footer-bottom-inner { flex-direction: column; gap: 0.4rem; text-align: center; }
+  }
+</style>

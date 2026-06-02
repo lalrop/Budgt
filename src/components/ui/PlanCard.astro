@@ -1,0 +1,153 @@
+---
+import type { Plan } from '../../data/services';
+import { waLink } from '../../data/services';
+
+interface Props {
+  plan: Plan;
+}
+const { plan } = Astro.props;
+const href = waLink(`Hola Budgt, me interesa el plan ${plan.name}. ¿Podemos conversar?`);
+---
+
+<article class:list={['plan-card', { featured: plan.featured }]}>
+  {plan.badge && <span class="plan-badge">{plan.badge}</span>}
+
+  <div class="plan-header">
+    <h3 class="plan-name">{plan.name}</h3>
+    <p class="plan-tagline">{plan.tagline}</p>
+  </div>
+
+  <div class="plan-price">
+    <div class="price-setup">
+      <span class="price-label">{plan.monthlyPrice ? 'Configuración' : 'Precio único'}</span>
+      <span class="price-amount">{plan.setupPrice}</span>
+    </div>
+    {plan.monthlyPrice && (
+      <div class="price-monthly">
+        <span class="price-label">Mensualidad</span>
+        <span class="price-amount-sm">{plan.monthlyPrice}</span>
+      </div>
+    )}
+  </div>
+
+  <ul class="plan-includes">
+    {plan.includes.map((item) => (
+      <li>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <circle cx="7" cy="7" r="7" fill="currentColor" opacity="0.12"/>
+          <path d="M4 7l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        {item}
+      </li>
+    ))}
+  </ul>
+
+  <a href={href} class:list={[plan.featured ? 'btn-primary' : 'btn-ghost']} target="_blank" rel="noopener noreferrer">
+    {plan.cta} {!plan.featured && '→'}
+  </a>
+</article>
+
+<style>
+  .plan-card {
+    background: var(--gray-900);
+    border: 1px solid var(--gray-800);
+    border-radius: var(--radius);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+    transition: border-color var(--transition);
+  }
+  .plan-card:hover { border-color: var(--gray-700); }
+
+  .plan-card.featured {
+    background: var(--white);
+    border-color: var(--white);
+  }
+  .plan-card.featured .plan-name,
+  .plan-card.featured .plan-tagline,
+  .plan-card.featured .price-label,
+  .plan-card.featured .price-amount,
+  .plan-card.featured .price-amount-sm,
+  .plan-card.featured .plan-includes li { color: var(--black); }
+  .plan-card.featured .plan-includes svg { color: var(--black); }
+  .plan-card.featured .btn-primary {
+    background: var(--black);
+    color: var(--white);
+    width: 100%;
+    justify-content: center;
+  }
+
+  .plan-badge {
+    position: absolute;
+    top: -0.6rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--black);
+    color: var(--white);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.75rem;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .plan-card.featured .plan-badge {
+    background: var(--black);
+    color: var(--white);
+  }
+
+  .plan-name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.3rem;
+  }
+  .plan-tagline {
+    font-size: 0.85rem;
+    color: var(--gray-600);
+  }
+
+  .plan-price {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.2rem 0;
+    border-top: 1px solid var(--gray-800);
+    border-bottom: 1px solid var(--gray-800);
+  }
+  .plan-card.featured .plan-price {
+    border-color: rgba(0,0,0,0.12);
+  }
+
+  .price-setup, .price-monthly { display: flex; justify-content: space-between; align-items: baseline; }
+  .price-label { font-size: 0.78rem; color: var(--gray-600); }
+  .price-amount { font-family: var(--font-serif); font-size: 1.6rem; color: var(--white); }
+  .price-amount-sm { font-size: 1rem; font-weight: 600; color: var(--gray-500); }
+
+  .plan-includes {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    flex: 1;
+  }
+  .plan-includes li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.83rem;
+    color: var(--gray-500);
+    line-height: 1.4;
+  }
+  .plan-includes svg { flex-shrink: 0; margin-top: 2px; color: var(--gray-500); }
+
+  .btn-ghost {
+    align-self: flex-start;
+    font-size: 0.88rem;
+    color: var(--gray-500);
+  }
+  .btn-ghost:hover { color: var(--white); }
+</style>

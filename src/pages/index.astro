@@ -1,0 +1,179 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/sections/Hero.astro';
+import ServiceTiers from '../components/sections/ServiceTiers.astro';
+import ProblemSection from '../components/sections/ProblemSection.astro';
+import Testimonials from '../components/sections/Testimonials.astro';
+import FAQ from '../components/sections/FAQ.astro';
+import CTAFinal from '../components/sections/CTAFinal.astro';
+import { faqGeneral } from '../data/faq';
+
+const problems = [
+  {
+    number: '01',
+    title: 'Invisible en Google',
+    description: 'Tus clientes te buscan en Google, pero encuentran a tu competencia. Sin sitio web optimizado, no existes para los buscadores.',
+  },
+  {
+    number: '02',
+    title: 'Dependencia de redes sociales',
+    description: 'Instagram y TikTok cambian sus algoritmos cuando quieren. Si mañana cae tu alcance, ¿tienes algún canal propio?',
+  },
+  {
+    number: '03',
+    title: 'DMs que nunca terminan',
+    description: 'Responder manualmente cada consulta te roba tiempo. Sin automatización, no puedes escalar sin contratar más personas.',
+  },
+  {
+    number: '04',
+    title: 'Sin infraestructura propia',
+    description: 'No tienes emails capturados, ni CRM, ni forma de contactar a tus clientes sin depender de una plataforma de terceros.',
+  },
+];
+---
+
+<BaseLayout
+  title="Budgt | Digitalización para emprendedores y empresas en Chile"
+  description="Creamos tu sitio web profesional, te posicionamos en Google y automatizamos tu atención al cliente. Planes desde $299.000 CLP."
+>
+  <Hero
+    tag="Agencia de digitalización"
+    title="Tu negocio merece"
+    titleAccent="más que Instagram."
+    subtitle="Creamos tu sitio web, te posicionamos en Google y automatizamos tu atención al cliente. Para emprendedores y empresas que quieren crecer sin depender de algoritmos."
+    ctaPrimary="Digitalizar mi negocio"
+    ctaSecondary="Ver planes"
+    ctaSecondaryHref="/#servicios"
+  />
+
+  <!-- Barra de credibilidad -->
+  <div class="credibility-bar">
+    <div class="container credibility-inner">
+      <span class="cred-stat"><strong>+30</strong> negocios digitalizados</span>
+      <span class="cred-divider" aria-hidden="true">·</span>
+      <span class="cred-stat"><strong>100%</strong> con sitio propio</span>
+      <span class="cred-divider" aria-hidden="true">·</span>
+      <span class="cred-stat">Entrega en <strong>7–21 días</strong></span>
+      <span class="cred-divider" aria-hidden="true">·</span>
+      <span class="cred-stat">Basados en <strong>Chile 🇨🇱</strong></span>
+    </div>
+  </div>
+
+  <ProblemSection problems={problems} />
+
+  <ServiceTiers />
+
+  <Testimonials />
+
+  <!-- Sección "Lo que NO hacemos" -->
+  <section class="product-section not-section">
+    <div class="container">
+      <span class="section-label">Nuestra diferencia</span>
+      <h2 class="not-title reveal">Lo que <em>no</em> hacemos</h2>
+      <div class="not-grid">
+        <div class="not-item reveal">
+          <span class="not-x" aria-hidden="true">✕</span>
+          <div>
+            <strong>Plantillas genéricas</strong>
+            <p>Cada sitio es diseñado para el negocio y el cliente específico, no para "cualquier empresa".</p>
+          </div>
+        </div>
+        <div class="not-item reveal">
+          <span class="not-x" aria-hidden="true">✕</span>
+          <div>
+            <strong>Promesas sin métricas</strong>
+            <p>Entregamos reportes mensuales con datos reales de tráfico, posición y leads generados.</p>
+          </div>
+        </div>
+        <div class="not-item reveal">
+          <span class="not-x" aria-hidden="true">✕</span>
+          <div>
+            <strong>Sitios que no cargan</strong>
+            <p>Astro genera sitios estáticos que cargan en menos de 1 segundo. Cada segundo de carga reduce conversiones un 7%.</p>
+          </div>
+        </div>
+        <div class="not-item reveal">
+          <span class="not-x" aria-hidden="true">✕</span>
+          <div>
+            <strong>Desaparecer tras la entrega</strong>
+            <p>En los planes Medio y Avanzado somos tu equipo digital mensual, no un proveedor puntual.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FAQ items={faqGeneral} />
+
+  <CTAFinal />
+</BaseLayout>
+
+<style>
+  .credibility-bar {
+    background: var(--gray-900);
+    border-top: 1px solid var(--gray-800);
+    border-bottom: 1px solid var(--gray-800);
+    padding: 1.25rem 0;
+  }
+  .credibility-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .cred-stat { font-size: 0.85rem; color: var(--gray-600); }
+  .cred-stat strong { color: var(--white); }
+  .cred-divider { color: var(--gray-800); }
+
+  .not-section { background: var(--black); }
+  .not-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.7rem, 3vw, 2.4rem);
+    color: var(--white);
+    margin-bottom: 2rem;
+  }
+  .not-title em { font-style: italic; color: var(--gray-600); }
+
+  .not-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .not-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1.5rem;
+    background: var(--gray-900);
+    border: 1px solid var(--gray-800);
+    border-radius: var(--radius);
+  }
+
+  .not-x {
+    font-size: 1.1rem;
+    color: var(--gray-700);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .not-item strong {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+  }
+
+  .not-item p {
+    font-size: 0.84rem;
+    color: var(--gray-600);
+    line-height: 1.55;
+  }
+
+  @media (max-width: 720px) {
+    .not-grid { grid-template-columns: 1fr; }
+    .credibility-inner { gap: 1rem; }
+    .cred-divider { display: none; }
+  }
+</style>

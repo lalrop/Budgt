@@ -1,0 +1,178 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/sections/Hero.astro';
+import ServiceCard from '../components/ui/ServiceCard.astro';
+import PlanCard from '../components/ui/PlanCard.astro';
+import FAQ from '../components/sections/FAQ.astro';
+import CTAFinal from '../components/sections/CTAFinal.astro';
+import { plans } from '../data/services';
+import { faqGeneral } from '../data/faq';
+
+const plan = plans[0];
+
+const services = [
+  {
+    icon: '🌐',
+    title: 'Sitio web en Astro',
+    description: 'Hasta 5 páginas profesionales: Home, Servicios, Nosotros, Contacto y una adicional. Carga en menos de 1 segundo.',
+  },
+  {
+    icon: '📍',
+    title: 'Google Business Profile',
+    description: 'Aparece en Google Maps cuando alguien busca tu tipo de negocio en tu ciudad. Configurado y optimizado.',
+  },
+  {
+    icon: '🔍',
+    title: 'SEO on-page',
+    description: 'Meta tags, Open Graph, sitemap.xml y robots.txt correctamente configurados para que Google te encuentre.',
+  },
+  {
+    icon: '💬',
+    title: 'Botón WhatsApp',
+    description: 'Integración directa con mensaje predefinido. Tus visitantes te contactan con un clic.',
+  },
+  {
+    icon: '📬',
+    title: 'Formulario de contacto',
+    description: 'Captura de consultas directo a tu email. Sin backend, sin costo adicional.',
+  },
+  {
+    icon: '🚀',
+    title: 'Deploy incluido',
+    description: 'Configuramos Netlify o Vercel por ti. Hosting gratuito, HTTPS automático, CDN global.',
+  },
+];
+
+const howItWorks = [
+  { step: '01', title: 'Briefing', desc: 'Cuéntanos de tu negocio en 15 minutos por WhatsApp.' },
+  { step: '02', title: 'Diseño', desc: 'Adaptamos la estructura a tu rubro e identidad visual.' },
+  { step: '03', title: 'Revisión', desc: 'Ves el avance y pides ajustes. Máximo 2 rondas.' },
+  { step: '04', title: 'Entrega', desc: 'Sitio publicado con dominio y Google Business activo.' },
+];
+---
+
+<BaseLayout
+  title="Presencia Digital | Sitio web + SEO para emprendedores — Budgt"
+  description="Sitio web profesional en Astro con SEO y Google Business Profile. Pago único desde $299.000 CLP. Entrega en 7–10 días hábiles."
+>
+  <Hero
+    tag="Plan Básico"
+    title="Tu negocio en Google"
+    titleAccent="en 10 días."
+    subtitle="Sitio web profesional + Google Business Profile + SEO básico. Pago único, sin mensualidad. El primer paso para dejar de depender de redes sociales."
+    ctaPrimary="Quiero mi sitio web"
+    ctaSecondary="Ver todos los planes"
+    ctaSecondaryHref="/#servicios"
+    waMessage="Hola Budgt, me interesa el plan Presencia Digital ($299.000). ¿Por dónde empezamos?"
+  />
+
+  <!-- Qué incluye -->
+  <section class="product-section">
+    <div class="container">
+      <span class="section-label">Qué incluye</span>
+      <h2 class="section-title reveal">Todo lo que necesitas<br/><em>para empezar bien.</em></h2>
+
+      <div class="services-grid">
+        {services.map((s) => <ServiceCard {...s} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Precio -->
+  <section class="product-section price-section">
+    <div class="container price-inner">
+      <div class="price-text">
+        <span class="section-label">Inversión</span>
+        <h2 class="reveal">Un solo pago.<br/><em>Sin sorpresas.</em></h2>
+        <p class="reveal">Pagas una vez y el sitio es tuyo para siempre. Sin contratos mensuales, sin cargos ocultos.</p>
+        <p class="price-note reveal">¿Quieres más? Puedes hacer upgrade al plan Medio en cualquier momento.</p>
+      </div>
+      <PlanCard plan={plan} />
+    </div>
+  </section>
+
+  <!-- Cómo funciona -->
+  <section class="product-section how-section">
+    <div class="container">
+      <span class="section-label">El proceso</span>
+      <h2 class="section-title reveal">De cero a publicado<br/><em>en 4 pasos.</em></h2>
+
+      <div class="steps-grid">
+        {howItWorks.map((hw) => (
+          <div class="step reveal">
+            <span class="step-num">{hw.step}</span>
+            <h3 class="step-title">{hw.title}</h3>
+            <p class="step-desc">{hw.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <FAQ items={faqGeneral} label="Dudas frecuentes" title="Preguntas sobre el plan Básico" />
+
+  <CTAFinal
+    title="¿Listo para aparecer en Google?"
+    subtitle="Escríbenos hoy y en menos de 24 horas tienes una propuesta con fecha de entrega."
+    ctaLabel="Quiero mi sitio web"
+    waMessage="Hola Budgt, me interesa el plan Presencia Digital ($299.000). ¿Por dónde empezamos?"
+  />
+</BaseLayout>
+
+<style>
+  .section-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    color: var(--white);
+    margin-bottom: 2.5rem;
+  }
+  .section-title em { font-style: italic; color: var(--gray-500); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .price-section { background: var(--gray-900); }
+  .price-inner {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 4rem;
+    align-items: center;
+  }
+  .price-text { display: flex; flex-direction: column; gap: 1rem; }
+  .price-text h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    color: var(--white);
+    line-height: 1.15;
+  }
+  .price-text h2 em { font-style: italic; color: var(--gray-500); }
+  .price-text p { font-size: 0.95rem; color: var(--gray-600); line-height: 1.6; }
+  .price-note { font-size: 0.82rem !important; color: var(--gray-700) !important; }
+
+  .how-section { background: var(--black); }
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+  .step { display: flex; flex-direction: column; gap: 0.6rem; }
+  .step-num {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    color: var(--gray-800);
+    line-height: 1;
+  }
+  .step-title { font-size: 1rem; font-weight: 600; color: var(--white); }
+  .step-desc { font-size: 0.85rem; color: var(--gray-600); line-height: 1.5; }
+
+  @media (max-width: 900px) {
+    .price-inner { grid-template-columns: 1fr; }
+    .steps-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 720px) {
+    .steps-grid { grid-template-columns: 1fr; }
+  }
+</style>

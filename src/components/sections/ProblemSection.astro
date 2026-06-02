@@ -1,0 +1,82 @@
+---
+interface Problem {
+  number: string;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  problems: Problem[];
+  label?: string;
+  title?: string;
+}
+
+const {
+  label = 'El problema',
+  title = '¿Te identificas con esto?',
+  problems,
+} = Astro.props;
+---
+
+<section class="product-section problem-section">
+  <div class="container">
+    <span class="section-label">{label}</span>
+    <h2 class="section-title reveal">{title}</h2>
+
+    <div class="problems-grid">
+      {problems.map((p) => (
+        <div class="problem-card reveal">
+          <span class="problem-num">{p.number}</span>
+          <h3 class="problem-title">{p.title}</h3>
+          <p class="problem-desc">{p.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .problem-section { background: var(--gray-900); }
+
+  .section-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.7rem, 3vw, 2.4rem);
+    color: var(--white);
+    margin-bottom: 2.5rem;
+  }
+
+  .problems-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .problem-card {
+    background: var(--black);
+    border: 1px solid var(--gray-800);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .problem-num {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    color: var(--gray-800);
+    line-height: 1;
+  }
+
+  .problem-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .problem-desc {
+    font-size: 0.85rem;
+    color: var(--gray-600);
+    line-height: 1.55;
+  }
+</style>

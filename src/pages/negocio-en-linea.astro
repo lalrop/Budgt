@@ -1,0 +1,147 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/sections/Hero.astro';
+import ServiceCard from '../components/ui/ServiceCard.astro';
+import PlanCard from '../components/ui/PlanCard.astro';
+import Testimonials from '../components/sections/Testimonials.astro';
+import FAQ from '../components/sections/FAQ.astro';
+import CTAFinal from '../components/sections/CTAFinal.astro';
+import { plans } from '../data/services';
+import { faqGeneral } from '../data/faq';
+
+const plan = plans[1];
+
+const services = [
+  {
+    icon: '🌐',
+    title: 'Sitio extendido (10 páginas + blog)',
+    description: 'Más páginas para más servicios, más blog para atraer tráfico orgánico mes a mes.',
+  },
+  {
+    icon: '📈',
+    title: 'SEO avanzado mensual',
+    description: '3 backlinks por mes, auditoría técnica y 1 artículo optimizado mensual para posicionarte en búsquedas clave.',
+  },
+  {
+    icon: '📍',
+    title: 'GEO local avanzado',
+    description: 'Directorios locales del rubro: Páginas Amarillas, Yelp, Houzz, TripAdvisor y más, según tu industria.',
+  },
+  {
+    icon: '🤖',
+    title: 'Chatbot de WhatsApp',
+    description: 'Respuestas automáticas a las preguntas más frecuentes. Filtra consultas sin que tengas que estar pendiente.',
+  },
+  {
+    icon: '📊',
+    title: 'CRM y Analytics',
+    description: 'Google Analytics 4, Search Console y HubSpot Free integrados. Sabes exactamente qué funciona.',
+  },
+  {
+    icon: '📋',
+    title: 'Reporte mensual',
+    description: 'Informe claro con tráfico, posición SEO, leads generados y recomendaciones del mes.',
+  },
+];
+---
+
+<BaseLayout
+  title="Negocio en Línea | SEO avanzado + Chatbot WhatsApp — Budgt"
+  description="Sitio web + SEO avanzado + Chatbot WhatsApp para captar clientes de forma automática. Configuración $599.000 + $149.000/mes."
+>
+  <Hero
+    tag="Plan Medio — El más popular"
+    title="Capta clientes"
+    titleAccent="mientras duermes."
+    subtitle="SEO avanzado, chatbot de WhatsApp y CRM integrado. Tu negocio trabaja aunque tú no estés mirando el teléfono."
+    ctaPrimary="Quiero captar más clientes"
+    ctaSecondary="Ver todos los planes"
+    ctaSecondaryHref="/#servicios"
+    waMessage="Hola Budgt, me interesa el plan Negocio en Línea ($599.000 + $149.000/mes). ¿Podemos conversar?"
+  />
+
+  <!-- Qué incluye -->
+  <section class="product-section">
+    <div class="container">
+      <span class="section-label">Qué incluye</span>
+      <h2 class="section-title reveal">Todo lo del Básico,<br/><em>más lo que convierte.</em></h2>
+
+      <div class="services-grid">
+        {services.map((s) => <ServiceCard {...s} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Precio -->
+  <section class="product-section price-section">
+    <div class="container price-inner">
+      <div class="price-text">
+        <span class="section-label">Inversión</span>
+        <h2 class="reveal">Setup único.<br/><em>Optimización continua.</em></h2>
+        <p class="reveal">Pagas la configuración una vez. La mensualidad financia el SEO activo, el chatbot y el soporte que hace crecer tu posición mes a mes.</p>
+        <div class="roi-box reveal">
+          <strong>¿Vale la pena?</strong>
+          <p>Un cliente nuevo por mes desde Google puede recuperar la inversión. El SEO es un activo que crece con el tiempo.</p>
+        </div>
+      </div>
+      <PlanCard plan={plan} />
+    </div>
+  </section>
+
+  <Testimonials />
+
+  <FAQ items={faqGeneral} label="Dudas frecuentes" title="Preguntas sobre el plan Medio" />
+
+  <CTAFinal
+    title="¿Listo para que Google trabaje por ti?"
+    subtitle="Escríbenos y en menos de 24 horas tienes una propuesta con proyección de tráfico para tu negocio."
+    ctaLabel="Quiero captar más clientes"
+    waMessage="Hola Budgt, me interesa el plan Negocio en Línea ($599.000 + $149.000/mes). ¿Podemos conversar?"
+  />
+</BaseLayout>
+
+<style>
+  .section-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    color: var(--white);
+    margin-bottom: 2.5rem;
+  }
+  .section-title em { font-style: italic; color: var(--gray-500); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .price-section { background: var(--gray-900); }
+  .price-inner {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 4rem;
+    align-items: center;
+  }
+  .price-text { display: flex; flex-direction: column; gap: 1rem; }
+  .price-text h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    color: var(--white);
+    line-height: 1.15;
+  }
+  .price-text h2 em { font-style: italic; color: var(--gray-500); }
+  .price-text p { font-size: 0.95rem; color: var(--gray-600); line-height: 1.6; }
+
+  .roi-box {
+    background: var(--black);
+    border: 1px solid var(--gray-800);
+    border-radius: var(--radius-sm);
+    padding: 1.25rem;
+  }
+  .roi-box strong { display: block; font-size: 0.9rem; color: var(--white); margin-bottom: 0.4rem; }
+  .roi-box p { font-size: 0.83rem; color: var(--gray-600); line-height: 1.5; }
+
+  @media (max-width: 900px) {
+    .price-inner { grid-template-columns: 1fr; }
+  }
+</style>

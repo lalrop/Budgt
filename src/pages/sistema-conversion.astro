@@ -1,0 +1,250 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/sections/Hero.astro';
+import ServiceCard from '../components/ui/ServiceCard.astro';
+import PlanCard from '../components/ui/PlanCard.astro';
+import Testimonials from '../components/sections/Testimonials.astro';
+import FAQ from '../components/sections/FAQ.astro';
+import CTAFinal from '../components/sections/CTAFinal.astro';
+import { plans } from '../data/services';
+import { faqGeneral, faqAvanzado } from '../data/faq';
+
+const plan = plans[2];
+const allFaq = [...faqAvanzado, ...faqGeneral];
+
+const services = [
+  {
+    icon: '🤖',
+    title: 'Chatbot IA (GPT-4o)',
+    description: 'Califica leads automáticamente 24/7, responde preguntas complejas y solo transfiere cuando es un prospecto listo para comprar.',
+  },
+  {
+    icon: '🎯',
+    title: 'Funnel de ventas automatizado',
+    description: 'Captura → nurturing por WhatsApp/email → cierre. Cada prospecto recibe el mensaje correcto en el momento correcto.',
+  },
+  {
+    icon: '📧',
+    title: 'Email marketing automatizado',
+    description: 'Secuencias de bienvenida, seguimiento y reactivación. Tus contactos no se enfrían aunque no les escribas.',
+  },
+  {
+    icon: '🔬',
+    title: 'Landing pages con A/B testing',
+    description: 'Páginas específicas por servicio optimizadas para conversión. Probamos qué versión vende más y escalamos la ganadora.',
+  },
+  {
+    icon: '📣',
+    title: 'Google Ads gestionado',
+    description: 'Gestión de campañas incluida en la mensualidad. Solo debes presupuestar la pauta ($100–200 USD/mes recomendado).',
+  },
+  {
+    icon: '🔎',
+    title: 'Inteligencia de mercado',
+    description: 'Análisis mensual de 2 competidores: keywords, contenido, backlinks. Sabes qué están haciendo antes que tú.',
+  },
+];
+
+const metrics = [
+  { number: '24/7', label: 'El chatbot califica leads' },
+  { number: '<1s', label: 'Velocidad de carga del sitio' },
+  { number: '2x', label: 'Rondas de ajuste por mes' },
+  { number: '<24h', label: 'Tiempo de respuesta soporte' },
+];
+---
+
+<BaseLayout
+  title="Sistema de Conversión | Ventas automáticas con IA — Budgt"
+  description="Chatbot IA, funnel de ventas, email marketing y Google Ads. Sistema completo de ventas automatizado. Configuración $1.199.000 + $349.000/mes."
+>
+  <Hero
+    tag="Plan Avanzado — Máximo impacto"
+    title="Tu sistema de ventas"
+    titleAccent="en automático."
+    subtitle="Chatbot con IA que califica leads, funnel de ventas automatizado y Google Ads gestionado. Vende mientras duermes, sin contratar equipo de ventas."
+    ctaPrimary="Quiero vender en automático"
+    ctaSecondary="Ver todos los planes"
+    ctaSecondaryHref="/#servicios"
+    waMessage="Hola Budgt, me interesa el plan Sistema de Conversión ($1.199.000 + $349.000/mes). ¿Podemos agendar una llamada?"
+  />
+
+  <!-- Métricas clave -->
+  <div class="metrics-bar">
+    <div class="container metrics-inner">
+      {metrics.map((m) => (
+        <div class="metric">
+          <span class="metric-num">{m.number}</span>
+          <span class="metric-label">{m.label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Qué incluye -->
+  <section class="product-section">
+    <div class="container">
+      <span class="section-label">Qué incluye</span>
+      <h2 class="section-title reveal">Todo lo del Medio,<br/><em>más el motor de ventas.</em></h2>
+
+      <div class="services-grid">
+        {services.map((s) => <ServiceCard {...s} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Cómo funciona el sistema -->
+  <section class="product-section funnel-section">
+    <div class="container">
+      <span class="section-label">El sistema</span>
+      <h2 class="section-title reveal">Así convierte<br/><em>tu embudo automatizado.</em></h2>
+
+      <div class="funnel-steps">
+        <div class="funnel-step reveal">
+          <div class="funnel-icon">🎯</div>
+          <h3>Atrae</h3>
+          <p>Google Ads + SEO traen tráfico calificado a tu landing page.</p>
+        </div>
+        <div class="funnel-arrow" aria-hidden="true">→</div>
+        <div class="funnel-step reveal">
+          <div class="funnel-icon">🤖</div>
+          <h3>Califica</h3>
+          <p>El chatbot IA pregunta, filtra y solo escala los leads que valen.</p>
+        </div>
+        <div class="funnel-arrow" aria-hidden="true">→</div>
+        <div class="funnel-step reveal">
+          <div class="funnel-icon">📧</div>
+          <h3>Nutre</h3>
+          <p>Email y WhatsApp automatizados mantienen caliente al prospecto.</p>
+        </div>
+        <div class="funnel-arrow" aria-hidden="true">→</div>
+        <div class="funnel-step reveal">
+          <div class="funnel-icon">💰</div>
+          <h3>Cierra</h3>
+          <p>Tú hablas solo con quien está listo. El sistema hace el resto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Precio -->
+  <section class="product-section price-section">
+    <div class="container price-inner">
+      <div class="price-text">
+        <span class="section-label">Inversión</span>
+        <h2 class="reveal">Un sistema completo<br/><em>por menos que un empleado.</em></h2>
+        <p class="reveal">Un vendedor en Chile cuesta $600.000–$900.000/mes sin contar leyes sociales. El Sistema de Conversión trabaja 24/7 por $349.000/mes.</p>
+        <div class="roi-box reveal">
+          <strong>ROI esperado</strong>
+          <p>Con 2–3 clientes adicionales por mes generados por el sistema, la inversión se recupera. Muchos clientes lo logran en el primer mes.</p>
+        </div>
+      </div>
+      <PlanCard plan={plan} />
+    </div>
+  </section>
+
+  <Testimonials />
+
+  <FAQ items={allFaq} label="Dudas sobre el plan Avanzado" title="Todo lo que necesitas saber" />
+
+  <CTAFinal
+    title="¿Listo para escalar sin contratar?"
+    subtitle="Agenda una llamada de 30 minutos. Te mostramos exactamente cómo implementaríamos el sistema para tu negocio."
+    ctaLabel="Agendar llamada estratégica"
+    waMessage="Hola Budgt, me interesa el plan Sistema de Conversión. ¿Podemos agendar una llamada de 30 minutos?"
+  />
+</BaseLayout>
+
+<style>
+  .section-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    color: var(--white);
+    margin-bottom: 2.5rem;
+  }
+  .section-title em { font-style: italic; color: var(--gray-500); }
+
+  .metrics-bar {
+    background: var(--gray-900);
+    border-top: 1px solid var(--gray-800);
+    border-bottom: 1px solid var(--gray-800);
+    padding: 2rem 0;
+  }
+  .metrics-inner {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+  }
+  .metric { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
+  .metric-num {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    color: var(--white);
+  }
+  .metric-label { font-size: 0.78rem; color: var(--gray-600); text-align: center; }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .funnel-section { background: var(--gray-900); }
+  .funnel-steps {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .funnel-step {
+    flex: 1;
+    min-width: 160px;
+    background: var(--black);
+    border: 1px solid var(--gray-800);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .funnel-icon { font-size: 1.5rem; }
+  .funnel-step h3 { font-size: 1rem; font-weight: 600; color: var(--white); }
+  .funnel-step p { font-size: 0.82rem; color: var(--gray-600); line-height: 1.5; }
+  .funnel-arrow { font-size: 1.2rem; color: var(--gray-700); flex-shrink: 0; }
+
+  .price-section { background: var(--black); }
+  .price-inner {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 4rem;
+    align-items: center;
+  }
+  .price-text { display: flex; flex-direction: column; gap: 1rem; }
+  .price-text h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    color: var(--white);
+    line-height: 1.15;
+  }
+  .price-text h2 em { font-style: italic; color: var(--gray-500); }
+  .price-text p { font-size: 0.95rem; color: var(--gray-600); line-height: 1.6; }
+
+  .roi-box {
+    background: var(--gray-900);
+    border: 1px solid var(--gray-800);
+    border-radius: var(--radius-sm);
+    padding: 1.25rem;
+  }
+  .roi-box strong { display: block; font-size: 0.9rem; color: var(--white); margin-bottom: 0.4rem; }
+  .roi-box p { font-size: 0.83rem; color: var(--gray-600); line-height: 1.5; }
+
+  @media (max-width: 900px) {
+    .price-inner { grid-template-columns: 1fr; }
+    .funnel-arrow { transform: rotate(90deg); }
+    .metrics-inner { gap: 2rem; }
+  }
+  @media (max-width: 720px) {
+    .funnel-steps { flex-direction: column; }
+    .funnel-arrow { transform: rotate(90deg); }
+  }
+</style>
