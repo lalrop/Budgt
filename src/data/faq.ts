@@ -6,7 +6,7 @@ export interface FAQItem {
 export const faqGeneral: FAQItem[] = [
   {
     q: '¿Cuánto tiempo tarda en estar listo mi sitio web?',
-    a: 'El plan Básico se entrega en 7–10 días hábiles. Los planes Medio y Avanzado demoran entre 15 y 21 días por la configuración adicional de automatizaciones.',
+    a: 'El plan Básico se entrega en 1–3 días hábiles. Los planes Medio y Avanzado demoran entre 5 y 10 días hábiles por la configuración adicional de automatizaciones.',
   },
   {
     q: '¿Necesito saber programar para mantener el sitio?',
