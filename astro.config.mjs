@@ -3,7 +3,8 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://budgt.cl',
+  site: 'https://lalrop.github.io',
+  base: '/Budgt',
   integrations: [sitemap()],
   output: 'static',
 });
