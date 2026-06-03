@@ -14,6 +14,16 @@ const {
 } = Astro.props;
 ---
 
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": items.map(item => ({
+    "@type": "Question",
+    "name": item.q,
+    "acceptedAnswer": { "@type": "Answer", "text": item.a }
+  }))
+})} />
+
 <section class="product-section faq-section" id="faq">
   <div class="container">
     <span class="section-label">{label}</span>

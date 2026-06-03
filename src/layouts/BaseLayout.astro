@@ -15,8 +15,53 @@ const {
   title,
   description,
   canonical = Astro.url.href,
-  ogImage = '/og-default.png',
+  ogImage = 'https://budgt.cl/og-default.png',
 } = Astro.props;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://budgt.cl",
+  "name": "Budgt",
+  "description": "Agencia especializada en digitalización para emprendedores, empresas y creadores de contenido en Chile.",
+  "url": "https://budgt.cl",
+  "logo": "https://budgt.cl/logo.png",
+  "image": "https://budgt.cl/logo.png",
+  "telephone": "+56997135470",
+  "areaServed": { "@type": "Country", "name": "Chile" },
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "CL",
+    "addressLocality": "Santiago"
+  },
+  "serviceType": ["Diseño web", "SEO", "Automatización", "Marketing digital"],
+  "priceRange": "$299.000 – $1.199.000 CLP",
+  "currenciesAccepted": "CLP",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Planes de digitalización",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": { "@type": "Service", "name": "Presencia Digital", "description": "Sitio web profesional + SEO + Google Business Profile." },
+        "price": "299000",
+        "priceCurrency": "CLP"
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": { "@type": "Service", "name": "Negocio en Línea", "description": "Sitio web extendido + SEO avanzado + Chatbot WhatsApp + CRM." },
+        "price": "599000",
+        "priceCurrency": "CLP"
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": { "@type": "Service", "name": "Sistema de Conversión", "description": "Funnel de ventas automatizado con IA + Google Ads + Email marketing." },
+        "price": "1199000",
+        "priceCurrency": "CLP"
+      }
+    ]
+  }
+};
 ---
 
 <!doctype html>
@@ -25,7 +70,9 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0a0a0a" />
     <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <!-- SEO primario -->
     <title>{title}</title>
@@ -34,31 +81,25 @@ const {
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Budgt" />
     <meta property="og:url" content={canonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={title} />
     <meta property="og:locale" content="es_CL" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@budgt_cl" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
-    <!-- JSON-LD LocalBusiness -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "ProfessionalService",
-        "name": "Budgt",
-        "description": "Agencia especializada en digitalización para emprendedores, empresas y creadores de contenido.",
-        "url": "https://budgt.cl",
-        "telephone": "+56997135470",
-        "areaServed": "CL",
-        "serviceType": ["Diseño web", "SEO", "Automatización", "Marketing digital"]
-      }
-    </script>
+    <!-- JSON-LD ProfessionalService -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
   <body>
     <Header />
