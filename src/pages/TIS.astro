@@ -1,0 +1,804 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CTAFinal from '../components/sections/CTAFinal.astro';
+
+const PHONE = '56997135470';
+const waMessage = 'Hola Budgt, llegué por el enlace especial. Me interesa conocer los servicios para mi actividad. ¿Podemos conversar con discreción?';
+const waHref = `https://wa.me/${PHONE}?text=${encodeURIComponent(waMessage)}`;
+
+const waSvg = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>`;
+
+const problems = [
+  {
+    icon: '📱',
+    title: 'El teléfono nunca descansa',
+    description: 'Consultas a cualquier hora: tarifas, disponibilidad, condiciones. Tú no puedes —ni debes— estar siempre disponible. Tu bot, sí.',
+  },
+  {
+    icon: '⏳',
+    title: 'Clientes que no respetan tu tiempo',
+    description: 'Preguntan, negocian, desaparecen. Cada mensaje sin respuesta confirmada es energía regalada. El chatbot filtra antes de que lleguen a ti.',
+  },
+  {
+    icon: '🪞',
+    title: 'Tu imagen vale antes de que contestes',
+    description: 'La primera impresión ocurre en una foto, un banner, un color. Si tu visual no cautiva, el mensaje ni se abre.',
+  },
+  {
+    icon: '🔐',
+    title: 'Gestionar todo sola es insostenible',
+    description: 'Respuestas, agenda, cobros, recordatorios. Automatizar parte de eso no es un lujo: es lo que te permite enfocarte en lo que realmente importa.',
+  },
+];
+
+const chatbotFeatures = [
+  {
+    icon: '🌙',
+    title: 'Disponible cuando tú no puedes',
+    description: 'El bot responde las consultas iniciales: tarifas, disponibilidad, condiciones generales. Tú apareces cuando el cliente ya está listo.',
+  },
+  {
+    icon: '🎯',
+    title: 'Filtra quién llega hasta ti',
+    description: 'Antes de que leas un mensaje, el bot ya evaluó si la persona cumple tus criterios. Tú defines las reglas. Solo pasan los serios.',
+  },
+  {
+    icon: '📅',
+    title: 'Agenda sin comprometerte de más',
+    description: 'Muestra tu disponibilidad en tiempo real y coordina citas sin que tengas que estar pendiente del teléfono. Sin cruces, sin olvidos.',
+  },
+  {
+    icon: '🔒',
+    title: 'Tu número real, siempre protegido',
+    description: 'El bot opera desde un número dedicado si lo prefieres. Tu contacto privado permanece privado en todo momento.',
+  },
+  {
+    icon: '💬',
+    title: 'Tu voz, tu estilo, tus límites',
+    description: 'El bot habla como tú. Define el tono, las respuestas y hasta dónde llega la conversación antes de que intervengas. Cero improvisación.',
+  },
+  {
+    icon: '📊',
+    title: 'Sabe cuándo escalarte',
+    description: 'Si una consulta requiere tu atención directa, el sistema te avisa y te pasa el hilo. Nada importante se pierde, nada te compromete sin querer.',
+  },
+];
+
+const graphicFeatures = [
+  {
+    icon: '✨',
+    title: 'Fotos que venden sin revelar',
+    description: 'Imágenes trabajadas para cautivar sin comprometer tu identidad. El misterio también es una estrategia, y en Budgt sabemos usarlo.',
+  },
+  {
+    icon: '📲',
+    title: 'Contenido para todas tus plataformas',
+    description: 'Piezas para redes, plataformas de suscripción y canales privados. Con la estética, el formato y las dimensiones correctas para cada una.',
+  },
+  {
+    icon: '👑',
+    title: 'Tu marca, tu nombre, tu territorio',
+    description: 'Una identidad visual que construye reputación. Para que te recuerden aunque cambies de plataforma o de número de contacto.',
+  },
+  {
+    icon: '💧',
+    title: 'Protección de contenido incluida',
+    description: 'Marca de agua en todo lo que produces. Visible o invisible según prefieras. Tu trabajo, protegido desde el primer archivo.',
+  },
+];
+
+const steps = [
+  {
+    number: '01',
+    title: 'Conversamos en privado',
+    description: 'Sin formularios, sin datos innecesarios. Cuéntanos qué necesitas por WhatsApp, con toda la confianza.',
+  },
+  {
+    number: '02',
+    title: 'Diseñamos a tu medida',
+    description: 'El chatbot o el material gráfico se construye según tu servicio, tu clientela y tus condiciones. Nada genérico.',
+  },
+  {
+    number: '03',
+    title: 'Revisión sin apuro',
+    description: 'Antes de activar o entregar, lo revisamos contigo. Lo que no te convence, lo cambiamos. Una ronda incluida.',
+  },
+  {
+    number: '04',
+    title: 'Tú a lo tuyo',
+    description: 'El sistema trabaja. Los clientes llegan filtrados. La imagen convence. Tú decides cuándo y con quién activarte.',
+  },
+];
+
+const faqItems = [
+  {
+    question: '¿El chatbot puede responder sobre tarifas y disponibilidad sin que yo escriba?',
+    answer: 'Sí. Tú defines exactamente qué se responde y qué no. El bot puede informar tus tarifas, tu disponibilidad y tus condiciones generales, sin improvisar ni comprometerte en nada que no hayas aprobado previamente.',
+  },
+  {
+    question: '¿Qué pasa si un cliente pregunta algo que el bot no puede manejar?',
+    answer: 'El sistema detecta esas situaciones y te avisa para que tomes el hilo tú misma. Nada queda sin respuesta ni te expone a conversaciones que no esperabas.',
+  },
+  {
+    question: '¿Cómo protegen mi identidad y mis datos personales?',
+    answer: 'No guardamos información sensible tuya. El bot opera con un número dedicado si lo prefieres. Tu nombre real, tu domicilio y tus datos de contacto privado nunca quedan expuestos en el proceso de atención.',
+  },
+  {
+    question: '¿Puedo usar el material gráfico en OnlyFans, Privacy u otras plataformas de suscripción?',
+    answer: 'Sí. El apoyo gráfico se adapta a los formatos y dimensiones de cada plataforma. Sin logos corporativos, con la estética que tú elijas, lista para publicar.',
+  },
+  {
+    question: '¿Cuánto demora tener todo funcionando?',
+    answer: 'El chatbot entre 5 y 10 días hábiles desde que confirmamos los detalles. El material gráfico básico en 3 a 5 días. Depende de la complejidad y de qué tan rápido coordinamos los detalles contigo.',
+  },
+  {
+    question: '¿Puedo hacer cambios después de la entrega?',
+    answer: 'Incluimos una ronda de ajustes en todos los paquetes. Si después necesitas actualizaciones —cambio de tarifas, nueva estética, nuevas plataformas— las coordinamos con tarifa preferencial para clientas activas.',
+  },
+];
+---
+
+<BaseLayout
+  title="Servicios para Trabajadoras Independientes — Budgt TIS"
+  description="Chatbots con IA y apoyo gráfico diseñados para trabajadoras sexuales independientes. Tecnología discreta, segura y hecha a tu medida."
+  noindex={true}
+>
+
+  <!-- ── Hero ── -->
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="hero-glow"></div>
+      <div class="hero-grid"></div>
+    </div>
+
+    <div class="container hero-inner">
+      <div class="hero-brand">
+        <img src="/logo-transparente.png" alt="Budgt" class="hero-logo" width="200" height="72" />
+        <div class="hero-brand-rule"></div>
+      </div>
+
+      <span class="section-label hero-tag">Acceso privado · Solo por invitación</span>
+
+      <h1 class="hero-title">
+        Tú pones las reglas.
+        <em class="hero-accent">La tecnología trabaja para ti.</em>
+      </h1>
+
+      <p class="hero-sub">
+        Chatbots con IA que atienden, filtran y agendan antes de que tú intervengas.
+        Imagen que cautiva antes de que respondas.
+        Para trabajadoras independientes que saben exactamente lo que valen.
+      </p>
+
+      <div class="hero-actions">
+        <a href={waHref} class="btn-wa" target="_blank" rel="noopener noreferrer">
+          <Fragment set:html={waSvg} />
+          Quiero saber más
+        </a>
+        <a href="#servicios-tis" class="btn-ghost">
+          Ver servicios →
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-scroll" aria-hidden="true">
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ── Credibilidad ── -->
+  <section class="credibility-bar">
+    <div class="container credibility-inner">
+      <div class="cred-item">
+        <strong>24/7</strong>
+        <span>El bot trabaja cuando tú no</span>
+      </div>
+      <div class="cred-divider" aria-hidden="true"></div>
+      <div class="cred-item">
+        <strong>100% confidencial</strong>
+        <span>Sin datos expuestos</span>
+      </div>
+      <div class="cred-divider" aria-hidden="true"></div>
+      <div class="cred-item">
+        <strong>5–10 días</strong>
+        <span>Chatbot activo y funcionando</span>
+      </div>
+      <div class="cred-divider" aria-hidden="true"></div>
+      <div class="cred-item">
+        <strong>Sin juicios 🇨🇱</strong>
+        <span>Te atendemos con respeto</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ── Problema ── -->
+  <section class="product-section" id="problemas-tis">
+    <div class="container">
+      <span class="tis-label">¿Te suena familiar?</span>
+      <h2 class="section-title reveal">
+        Tu trabajo es exigente.<br/>
+        <em>La gestión no debería serlo también.</em>
+      </h2>
+      <p class="section-intro reveal">
+        Independiente no significa sola. Estas son las fricciones más comunes entre trabajadoras independientes,
+        y todas tienen solución.
+      </p>
+
+      <div class="problems-grid">
+        {problems.map((p) => (
+          <div class="problem-card reveal">
+            <span class="problem-icon" aria-hidden="true">{p.icon}</span>
+            <h3 class="problem-title">{p.title}</h3>
+            <p class="problem-desc">{p.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ── Chatbot ── -->
+  <section class="product-section" id="servicios-tis">
+    <div class="container">
+      <span class="tis-label">Servicio 01 — Automatización inteligente</span>
+      <h2 class="section-title reveal">
+        Un asistente que nunca duerme<br/>
+        <em>y siempre habla como tú.</em>
+      </h2>
+      <p class="section-intro reveal">
+        El chatbot responde, filtra y agenda por ti. Configurado con tu voz, tus tarifas,
+        tus condiciones y el nivel de privacidad que necesitas. Tú decides cuándo entrar a la conversación.
+      </p>
+
+      <div class="services-grid">
+        {chatbotFeatures.map((s) => (
+          <div class="service-card reveal">
+            <span class="service-icon" aria-hidden="true">{s.icon}</span>
+            <h3 class="service-title">{s.title}</h3>
+            <p class="service-desc">{s.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="service-cta reveal">
+        <a href={waHref} class="btn-wa" target="_blank" rel="noopener noreferrer">
+          <Fragment set:html={waSvg} />
+          Quiero un chatbot para mi actividad
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ── Gráfico ── -->
+  <section class="product-section graphic-section">
+    <div class="container">
+      <span class="tis-label">Servicio 02 — Imagen y presencia</span>
+      <h2 class="section-title reveal">
+        La primera impresión<br/>
+        <em>ocurre antes de que respondas.</em>
+      </h2>
+      <p class="section-intro reveal">
+        Material visual que cautiva, genera confianza y protege tu contenido.
+        Hecho a tu medida, con la estética y discreción que tu actividad requiere.
+      </p>
+
+      <div class="services-grid">
+        {graphicFeatures.map((s) => (
+          <div class="service-card reveal">
+            <span class="service-icon" aria-hidden="true">{s.icon}</span>
+            <h3 class="service-title">{s.title}</h3>
+            <p class="service-desc">{s.description}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="service-cta reveal">
+        <a href={waHref} class="btn-wa" target="_blank" rel="noopener noreferrer">
+          <Fragment set:html={waSvg} />
+          Quiero apoyo con mi imagen
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ── Proceso ── -->
+  <section class="product-section process-section">
+    <div class="container">
+      <span class="tis-label">Cómo funciona</span>
+      <h2 class="section-title reveal">
+        Simple, discreto<br/>
+        <em>y completamente a tu ritmo.</em>
+      </h2>
+
+      <div class="steps-grid">
+        {steps.map((step) => (
+          <div class="step-card reveal">
+            <span class="step-number" aria-hidden="true">{step.number}</span>
+            <h3 class="step-title">{step.title}</h3>
+            <p class="step-desc">{step.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <!-- ── FAQ ── -->
+  <section class="product-section" id="faq-tis">
+    <div class="container faq-container">
+      <span class="tis-label">Preguntas frecuentes</span>
+      <h2 class="section-title reveal">
+        Lo que nos preguntan<br/>
+        <em>antes de dar el paso.</em>
+      </h2>
+
+      <div class="faq-list">
+        {faqItems.map((item, i) => (
+          <div class="faq-item reveal" data-index={i}>
+            <button class="faq-trigger" aria-expanded="false">
+              <span class="faq-question">{item.question}</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer">
+              <p>{item.answer}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA Final ── -->
+  <CTAFinal
+    title="Tú pones las condiciones. Nosotras ponemos la tecnología."
+    subtitle="Escríbenos en privado. En menos de 24 horas tienes una propuesta hecha para tu realidad."
+    ctaLabel="Hablar con Budgt"
+    waMessage={waMessage}
+  />
+
+</BaseLayout>
+
+<style>
+  /* ── Variables de color TIS ── */
+  :root {
+    --tis-rose: #c14b6e;
+    --tis-rose-dim: rgba(193, 75, 110, 0.10);
+    --tis-rose-glow: rgba(193, 75, 110, 0.22);
+    --tis-rose-border: rgba(193, 75, 110, 0.30);
+    --tis-gold: #c9a264;
+  }
+
+  /* ── Label de sección con color TIS ── */
+  .tis-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--tis-rose);
+    margin-bottom: 1.2rem;
+    opacity: 0.9;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 0 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  /* Glow en rosa profundo en lugar de blanco */
+  .hero-glow {
+    position: absolute;
+    top: -15%;
+    left: -5%;
+    width: 60%;
+    height: 70%;
+    background: radial-gradient(ellipse at 35% 40%, var(--tis-rose-glow) 0%, transparent 65%);
+  }
+
+  /* Grid con tinte rosado */
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(193, 75, 110, 0.10) 1px, transparent 1px);
+    background-size: 28px 28px;
+    mask-image: radial-gradient(ellipse 90% 55% at 30% 20%, black 0%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 90% 55% at 30% 20%, black 0%, transparent 100%);
+  }
+
+  .hero-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.75rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .hero-logo {
+    height: 48px;
+    width: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+  }
+
+  /* Línea decorativa en rosa */
+  .hero-brand-rule {
+    width: 48px;
+    height: 1px;
+    background: linear-gradient(to right, var(--tis-rose), transparent);
+  }
+
+  .hero-inner {
+    position: relative;
+    max-width: 760px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .hero-tag {
+    margin-bottom: -0.5rem;
+    color: var(--tis-rose) !important;
+  }
+
+  .hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.4rem, 5.5vw, 4rem);
+    color: var(--white);
+    line-height: 1.1;
+  }
+
+  /* Accent en rosa cálido */
+  .hero-accent {
+    display: block;
+    font-style: italic;
+    color: var(--tis-rose);
+    opacity: 0.85;
+  }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    color: var(--gray-600);
+    line-height: 1.65;
+    max-width: 580px;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Línea de scroll en rosa */
+  .hero-scroll-line {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, transparent, var(--tis-rose));
+    animation: scrollLine 2s ease-in-out infinite;
+    opacity: 0.6;
+  }
+
+  @keyframes scrollLine {
+    0%, 100% { opacity: 0.25; transform: scaleY(1); }
+    50% { opacity: 0.7; transform: scaleY(1.15); }
+  }
+
+  /* ── Credibilidad ── */
+  .credibility-bar {
+    background: var(--gray-900);
+    border-top: 1px solid var(--tis-rose-border);
+    border-bottom: 1px solid var(--tis-rose-border);
+    padding: 2.5rem 0;
+  }
+
+  .credibility-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .cred-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .cred-item strong {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .cred-item span {
+    font-size: 0.78rem;
+    color: var(--gray-600);
+  }
+
+  .cred-divider {
+    width: 1px;
+    height: 32px;
+    background: var(--tis-rose-border);
+  }
+
+  /* ── Secciones genéricas ── */
+  .section-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    color: var(--white);
+    margin-bottom: 1rem;
+    line-height: 1.15;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--tis-rose);
+    opacity: 0.85;
+  }
+
+  .section-intro {
+    font-size: 0.98rem;
+    color: var(--gray-600);
+    line-height: 1.65;
+    max-width: 560px;
+    margin-bottom: 2.5rem;
+  }
+
+  /* ── Problemas ── */
+  .problems-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1rem;
+  }
+
+  .problem-card {
+    background: var(--gray-900);
+    border: 1px solid var(--gray-800);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: border-color var(--transition);
+  }
+
+  .problem-card:hover { border-color: var(--tis-rose-border); }
+
+  .problem-icon { font-size: 1.6rem; }
+
+  .problem-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .problem-desc {
+    font-size: 0.85rem;
+    color: var(--gray-600);
+    line-height: 1.55;
+  }
+
+  /* ── Cards de servicio (inline, sin importar ServiceCard) ── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .service-card {
+    background: var(--gray-900);
+    border: 1px solid var(--gray-800);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: border-color var(--transition);
+  }
+
+  .service-card:hover { border-color: var(--tis-rose-border); }
+
+  .service-icon { font-size: 1.6rem; }
+
+  .service-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .service-desc {
+    font-size: 0.85rem;
+    color: var(--gray-600);
+    line-height: 1.55;
+  }
+
+  .service-cta {
+    margin-top: 2.5rem;
+  }
+
+  /* ── Sección gráfico ── */
+  .graphic-section {
+    background: var(--gray-900);
+  }
+
+  /* ── Proceso ── */
+  .process-section { background: var(--black); }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    margin-top: 1rem;
+  }
+
+  .step-card {
+    background: var(--gray-900);
+    border: 1px solid var(--gray-800);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: border-color var(--transition);
+  }
+
+  .step-card:hover { border-color: var(--tis-rose-border); }
+
+  /* Números en rosa oscuro */
+  .step-number {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    color: var(--tis-rose);
+    opacity: 0.35;
+    line-height: 1;
+  }
+
+  .step-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .step-desc {
+    font-size: 0.85rem;
+    color: var(--gray-600);
+    line-height: 1.55;
+  }
+
+  /* ── FAQ ── */
+  .faq-container {
+    max-width: 720px;
+  }
+
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--gray-800);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-top: 1rem;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--gray-800);
+  }
+
+  .faq-item:last-child { border-bottom: none; }
+
+  .faq-trigger {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    color: var(--white);
+    transition: background var(--transition);
+  }
+
+  .faq-trigger:hover { background: var(--gray-900); }
+
+  .faq-question {
+    font-size: 0.92rem;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .faq-icon {
+    flex-shrink: 0;
+    color: var(--tis-rose);
+    opacity: 0.7;
+    transition: transform 0.3s ease;
+  }
+
+  .faq-trigger[aria-expanded="true"] .faq-icon {
+    transform: rotate(180deg);
+    opacity: 1;
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .faq-answer p {
+    padding: 0 1.5rem 1.25rem;
+    font-size: 0.875rem;
+    color: var(--gray-600);
+    line-height: 1.65;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    .steps-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 720px) {
+    .hero { padding: 7rem 0 4rem; }
+    .hero-actions { flex-direction: column; align-items: flex-start; }
+    .credibility-inner { gap: 1rem; }
+    .cred-divider { display: none; }
+    .steps-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.faq-trigger').forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      const item = trigger.closest('.faq-item') as HTMLElement;
+      const answer = item.querySelector('.faq-answer') as HTMLElement;
+      const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+
+      document.querySelectorAll('.faq-trigger').forEach((t) => {
+        t.setAttribute('aria-expanded', 'false');
+        const a = t.closest('.faq-item')?.querySelector('.faq-answer') as HTMLElement;
+        if (a) a.style.maxHeight = '0';
+      });
+
+      if (!isOpen) {
+        trigger.setAttribute('aria-expanded', 'true');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+</script>

@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /TIS
 
 Sitemap: https://budgt.cl/sitemap-index.xml
