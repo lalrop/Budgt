@@ -1,0 +1,1701 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FAQItem from '../components/FAQItem.astro';
+import { getWhatsAppUrl } from '../utils/constants';
+
+const waGeneral     = getWhatsAppUrl('Hola, me interesa conocer los servicios de Budgt TIS para trabajadoras independientes.');
+const waChatbot     = getWhatsAppUrl('Hola, me interesa el Chatbot WhatsApp 24/7 de Budgt TIS.');
+const waMarca       = getWhatsAppUrl('Hola, me interesa el servicio de identidad visual y marca personal de Budgt TIS.');
+const waProteccion  = getWhatsAppUrl('Hola, me interesa el servicio de protección de contenido y anti-piratería de Budgt TIS.');
+const waCapacitacion= getWhatsAppUrl('Hola, me interesa una sesión de capacitación 1-a-1 con Budgt TIS.');
+const waSetupPlat   = getWhatsAppUrl('Hola, me interesa el Setup inicial de plataformas (OnlyFans / Fansly / Privacy) de Budgt TIS.');
+const waReportes    = getWhatsAppUrl('Hola, me interesa el servicio de reportería y análisis mensual de Budgt TIS.');
+const waPagina      = getWhatsAppUrl('Hola, me interesa la página web con booking protegido de Budgt TIS.');
+const waInicio      = getWhatsAppUrl('Hola, me interesa el Plan Inicio de Budgt TIS (~$50.000 CLP/mes).');
+const waCrecimiento = getWhatsAppUrl('Hola, me interesa el Plan Crecimiento de Budgt TIS (~$259.000 CLP/mes). Es el más vendido.');
+const waSetupUnico  = getWhatsAppUrl('Hola, me interesa el Plan Setup Único de Budgt TIS (~$499.000 CLP pago único).');
+const waPremium     = getWhatsAppUrl('Hola, me interesa el Plan Premium de Budgt TIS (~$699.000 CLP/mes).');
+const waWebBooking  = getWhatsAppUrl('Hola, me interesa agregar la página web con booking protegido de Budgt TIS ($450.000 CLP).');
+
+const problemas = [
+  { icon: '📱', titulo: 'El teléfono no para',       descripcion: 'Responder 200 veces al día cuánto cobras, dónde quedas y si atiendes hoy. Con el teléfono en la mano hasta la madrugada, sin poder desconectarte.' },
+  { icon: '⏳', titulo: 'Clientes que no concretan', descripcion: 'Pierdes 2 horas diarias con personas que preguntan, preguntan, preguntan… y nunca reservan. Tiempo que no recuperas.' },
+  { icon: '📷', titulo: 'Tu imagen no te representa',descripcion: 'Tienes foto de hace 3 años porque editar, publicar y mantener redes toma tiempo que no tienes — o energía que no te sobra.' },
+  { icon: '🧠', titulo: 'Todo en tu cabeza',         descripcion: 'La agenda, los clientes fijos, los pagos pendientes, los follow-ups. Sin sistema. Sin ayuda. Solo tú y tu memoria.' },
+  { icon: '🔓', titulo: 'El contenido que te roban', descripcion: 'Fotos tuyas circulando gratis en Telegram, foros o grupos. Sin tu permiso. Sin consecuencias para quien lo sube. Sin que nadie te avise.' },
+  { icon: '📊', titulo: 'No sabes qué funciona',     descripcion: 'Publicas, contestas, trabajas… pero no tienes idea si tus precios están bien, qué días generan más reservas, o qué canal te trae clientes reales.' },
+];
+
+const faqs = [
+  { question: '¿Cómo sé que mis datos están seguros?',           answer: 'Toda la comunicación va encriptada. No almacenamos fotos ni videos tuyos en nuestros servidores. Los accesos a tus plataformas los manejas tú — nosotros configuramos, tú controlas.' },
+  { question: '¿Trabajan con chicas trans?',                     answer: 'Sí, con orgullo. Budgt TIS es un espacio para todas las trabajadoras independientes — cis, trans y no binaries. Sin excepciones.' },
+  { question: '¿Aceptan clientas masculinas?',                   answer: 'Sí. El servicio está pensado para trabajadoras sexuales independientes de todos los géneros. Si trabajas de forma independiente, estás bienvenida/o/e.' },
+  { question: '¿Puedo contratar solo un servicio?',              answer: 'Absolutamente. No tienes que tomar un paquete completo si no lo necesitas. Muchas clientas empiezan con un servicio y van sumando cuando están listas.' },
+  { question: '¿Qué pasa si me arrepiento o quiero cancelar?',   answer: 'Sin lock-in, sin penalizaciones. Los planes mensuales los cancelas cuando quieras, avisándonos antes del siguiente ciclo. El setup único ya quedó hecho — es tuyo para siempre.' },
+  { question: '¿Cómo es la primera conversación?',               answer: 'Por WhatsApp. Sin formularios, sin nombres reales si no quieres, sin preguntas incómodas. Tú marcas el ritmo.' },
+  { question: '¿Trabajan con personas fuera de Santiago?',       answer: 'Sí, 100% remoto. Tenemos clientas en Santiago, Valparaíso, Concepción, Temuco y otras ciudades. Todo se hace por WhatsApp y videollamada.' },
+  { question: '¿Cuánto tarda en estar listo el chatbot?',        answer: 'Entre 5 y 10 días hábiles desde que aprobás la configuración. Nada se activa sin tu visto bueno.' },
+  { question: '¿Tienen experiencia con OnlyFans, Fansly y Privacy?', answer: 'Sí. Conocemos las particularidades de cada plataforma, sus algoritmos, sus restricciones y sus oportunidades. No empezamos de cero cada vez.' },
+];
+---
+
+<BaseLayout
+  title="Budgt TIS — Digitalización para trabajadoras independientes en Chile"
+  description="Chatbot 24/7, marca personal, protección de contenido y más. Tecnología diseñada para trabajadoras sexuales independientes. Confidencial, sin juicios, 100% Chile."
+  page="tis"
+  canonical="https://budgt.cl/TIS"
+  navLinks={[
+    { text: 'Servicios',   href: '#servicios'   },
+    { text: 'Planes',      href: '#planes'       },
+    { text: 'Testimonios', href: '#testimonios'  },
+    { text: 'FAQ',         href: '#faq'          },
+  ]}
+  navCtaText="Escribirnos →"
+>
+
+<!-- ==================== HERO ==================== -->
+<section class="tis-hero">
+  <div class="tis-hero-tag">Budgt TIS · Solo para independientes · 🇨🇱 Chile</div>
+  <h1>Deja de responder<br /><em>lo mismo 200 veces al día.</em></h1>
+  <p class="tis-hero-sub">
+    Budgt TIS es la agencia chilena que digitaliza tu negocio independiente — chatbot con IA,
+    marca personal, protección de contenido y mucho más. Sin juicios. Sin letra chica. 100% confidencial.
+  </p>
+  <div class="tis-hero-actions">
+    <a href={waGeneral} class="tis-btn-wa" target="_blank" rel="noopener">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.167 1.618 5.955L.057 23.928a.5.5 0 0 0 .611.611l5.973-1.561A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.96 9.96 0 0 1-5.073-1.384l-.363-.215-3.763.984.984-3.763-.215-.363A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      Hablar por WhatsApp
+    </a>
+    <a href="#planes" class="tis-btn-ghost">Ver planes y precios ↓</a>
+  </div>
+  <div class="tis-hero-badges">
+    <span class="tis-badge">🇨🇱 Chile</span>
+    <span class="tis-badge-sep">·</span>
+    <span class="tis-badge">Sin juicios</span>
+    <span class="tis-badge-sep">·</span>
+    <span class="tis-badge">Confidencial</span>
+    <span class="tis-badge-sep">·</span>
+    <span class="tis-badge">24/7</span>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Desplázate</span>
+  </div>
+</section>
+
+<!-- ==================== TRUST BAR ==================== -->
+<div class="tis-trust-bar">
+  <div class="trust-item">🔒 Acceso privado · Solo por invitación</div>
+  <span class="trust-sep">·</span>
+  <div class="trust-item">👩 Mujeres al frente del proyecto</div>
+  <span class="trust-sep">·</span>
+  <div class="trust-item">✅ +200 clientas atendidas</div>
+  <span class="trust-sep">·</span>
+  <div class="trust-item">🎛️ 100% bajo tu control, siempre</div>
+</div>
+
+<!-- ==================== TE ENTENDEMOS ==================== -->
+<section class="tis-section">
+  <div class="tis-container">
+    <div class="section-label reveal">Te entendemos</div>
+    <h2 class="reveal">Sabemos bien cómo es el día a día.<br /><em>No lo asumimos. Lo escuchamos.</em></h2>
+    <div class="problemas-grid reveal">
+      {problemas.map((p) => (
+        <div class="problema-card">
+          <div class="problema-icon">{p.icon}</div>
+          <h3>{p.titulo}</h3>
+          <p>{p.descripcion}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SERVICIOS ==================== -->
+<section class="tis-section tis-section--dark" id="servicios">
+  <div class="tis-container">
+    <div class="section-label reveal">Servicios</div>
+    <h2 class="reveal">Lo que hacemos — y por qué importa.<br /><em>Siete servicios hechos para ti.</em></h2>
+
+    <!-- ——— 01 Chatbot ——— -->
+    <div class="servicio-block reveal">
+      <div class="servicio-content">
+        <div class="servicio-header">
+          <div class="servicio-num">01</div>
+          <div>
+            <h3>Chatbot 24/7 — Tu primer filtro inteligente</h3>
+            <p class="servicio-desc">Un asistente que responde, filtra y agenda por ti. A las 3 AM, un domingo o mientras estás atendiendo.</p>
+          </div>
+        </div>
+        <ul class="servicio-bullets">
+          <li>Responde preguntas frecuentes automáticamente (tarifas, zonas, disponibilidad)</li>
+          <li>Filtra clientes según tus criterios — tú defines quién pasa</li>
+          <li>Agenda citas directo al calendario sin que tú toques el teléfono</li>
+          <li>Número dedicado separado de tu WhatsApp personal</li>
+          <li>Escala a ti solo cuando de verdad se necesita</li>
+        </ul>
+        <div class="servicio-testimonio">
+          <p>"Valentina, Valparaíso — Pasé de 140 mensajes diarios a revisar máximo 20. En 3 semanas."</p>
+          <span class="testimonio-meta">Caso piloto · enero 2026</span>
+        </div>
+        <a href={waChatbot} class="tis-btn-servicio" target="_blank" rel="noopener">Quiero mi chatbot →</a>
+      </div>
+
+      <!-- MOCKUP: conversación WhatsApp -->
+      <div class="servicio-mockup">
+        <div class="mock-phone">
+          <div class="mock-wa">
+            <div class="mock-wa-header">
+              <div class="mock-wa-avatar">🤖</div>
+              <div class="mock-wa-info">
+                <span class="mock-wa-name">Bot TIS</span>
+                <span class="mock-wa-status">● en línea</span>
+              </div>
+              <span class="mock-wa-lock">🔒</span>
+            </div>
+            <div class="mock-wa-body">
+              <div class="mock-bubble mock-bubble--in">Hola, ¿cuánto cobras?</div>
+              <div class="mock-bubble mock-bubble--out">¡Hola! 👋 Para orientarte, ¿en qué ciudad estás?</div>
+              <div class="mock-bubble mock-bubble--in">Santiago</div>
+              <div class="mock-bubble mock-bubble--out">Perfecto ✓ Precios desde $XX. ¿Agendo para esta semana? 📅</div>
+              <div class="mock-bubble mock-bubble--in">Sí, el jueves</div>
+              <div class="mock-bubble mock-bubble--out mock-bubble--typing">Reservado para el jueves ✅<br/><span class="mock-ts">Respuesta automática · 03:17 AM</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ——— 02 Identidad visual ——— -->
+    <div class="servicio-block reveal">
+      <div class="servicio-content">
+        <div class="servicio-header">
+          <div class="servicio-num">02</div>
+          <div>
+            <h3>Identidad visual y marca personal</h3>
+            <p class="servicio-desc">Un avatar, banners y posts que te representen — sin exponer lo que no quieres exponer, con la estética que tú eliges.</p>
+          </div>
+        </div>
+        <ul class="servicio-bullets">
+          <li>Diseño de avatar personalizado (cara visible u oculta, tú decides)</li>
+          <li>Banners para redes sociales, OnlyFans, Fansly y Privacy</li>
+          <li>Pack de posts editables para publicar sin depender de nadie</li>
+          <li>Identidad visual coherente que transmite profesionalismo</li>
+        </ul>
+        <div class="servicio-testimonio">
+          <p>"Isidora, Santiago — 'Antes subía cualquier cosa. Ahora mi perfil tiene cohesión y la gente lo nota.'"</p>
+          <span class="testimonio-meta">Caso piloto · febrero 2026</span>
+        </div>
+        <a href={waMarca} class="tis-btn-servicio" target="_blank" rel="noopener">Quiero mi marca personal →</a>
+      </div>
+
+      <!-- MOCKUP: perfil de marca -->
+      <div class="servicio-mockup">
+        <div class="mock-brand">
+          <div class="mock-banner-bg"></div>
+          <div class="mock-brand-body">
+            <div class="mock-avatar-wrap">
+              <div class="mock-avatar-ring">
+                <div class="mock-avatar-inner">✦</div>
+              </div>
+            </div>
+            <div class="mock-brand-name">@mi.nombre.oficial</div>
+            <div class="mock-brand-bio">Independiente · Santiago 🇨🇱</div>
+            <div class="mock-brand-stats">
+              <span><strong>1.4k</strong> seguidores</span>
+              <span><strong>98</strong> posts</span>
+            </div>
+            <div class="mock-posts-grid">
+              <div class="mock-post mock-post--a"></div>
+              <div class="mock-post mock-post--b"></div>
+              <div class="mock-post mock-post--c"></div>
+              <div class="mock-post mock-post--d"></div>
+              <div class="mock-post mock-post--e"></div>
+              <div class="mock-post mock-post--f"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ——— 03 Protección ——— -->
+    <div class="servicio-block reveal">
+      <div class="servicio-content">
+        <div class="servicio-header">
+          <div class="servicio-num">03</div>
+          <div>
+            <h3>Protección de contenido y anti-piratería</h3>
+            <p class="servicio-desc">Marca de agua inteligente, monitoreo activo de leaks y gestión de takedowns DMCA. Porque lo que creas te pertenece.</p>
+          </div>
+        </div>
+        <ul class="servicio-bullets">
+          <li>Marca de agua personalizada en fotos y videos antes de publicar</li>
+          <li>Monitoreo continuo en foros, Telegram, sitios de descarga y redes</li>
+          <li>Gestión de takedowns DMCA (notificaciones legales de eliminación)</li>
+          <li>Alertas en tiempo real si aparece contenido tuyo sin permiso</li>
+        </ul>
+        <div class="servicio-testimonio">
+          <p>"Andrea, Concepción — 'Llevaba 2 años con fotos mías en un foro. En 10 días las bajaron.'"</p>
+          <span class="testimonio-meta">Caso piloto · marzo 2026</span>
+        </div>
+        <a href={waProteccion} class="tis-btn-servicio" target="_blank" rel="noopener">Proteger mi contenido →</a>
+      </div>
+
+      <!-- MOCKUP: imagen con marca de agua + alerta -->
+      <div class="servicio-mockup">
+        <div class="mock-protect-wrap">
+          <div class="mock-protect-img">
+            <div class="mock-img-gradient"></div>
+            <div class="mock-watermark-grid" aria-hidden="true">
+              {Array.from({length: 9}).map(() => (
+                <span class="mock-wm-text">© @mi.nombre · TIS</span>
+              ))}
+            </div>
+            <div class="mock-protect-badge">🛡️ Contenido protegido</div>
+          </div>
+          <div class="mock-alert-strip mock-alert-strip--warn">
+            <span class="mock-alert-dot"></span>
+            Detección en Telegram — takedown enviado
+          </div>
+          <div class="mock-alert-strip mock-alert-strip--ok">
+            <span class="mock-alert-dot mock-alert-dot--ok"></span>
+            Contenido eliminado · hace 8 horas
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ——— 04 Capacitación ——— -->
+    <div class="servicio-block reveal">
+      <div class="servicio-content">
+        <div class="servicio-header">
+          <div class="servicio-num">04</div>
+          <div>
+            <h3>Capacitación 1-a-1</h3>
+            <p class="servicio-desc">Sesiones personalizadas para que entiendas las herramientas, las plataformas y cómo protegerte digitalmente — sin jerga técnica, a tu ritmo.</p>
+          </div>
+        </div>
+        <ul class="servicio-bullets">
+          <li>Configuración y uso de redes sociales, OnlyFans, Fansly o Privacy</li>
+          <li>Seguridad digital: qué compartir, qué nunca compartir, cómo separar identidades</li>
+          <li>Cómo usar el chatbot, la agenda y las métricas sin necesitar a nadie</li>
+          <li>Sesiones por videollamada, privadas, sin grabaciones</li>
+        </ul>
+        <div class="servicio-testimonio">
+          <p>"Catalina, Viña del Mar — 'Nunca había entendido realmente cómo funcionaba el algoritmo de OF. Después de la sesión, todo cambió.'"</p>
+          <span class="testimonio-meta">Caso piloto · abril 2026</span>
+        </div>
+        <a href={waCapacitacion} class="tis-btn-servicio" target="_blank" rel="noopener">Quiero una sesión →</a>
+      </div>
+
+      <!-- MOCKUP: videollamada -->
+      <div class="servicio-mockup">
+        <div class="mock-call">
+          <div class="mock-call-screen">
+            <div class="mock-call-main">
+              <div class="mock-call-avatar mock-call-avatar--tutor">T</div>
+              <div class="mock-call-label">Tutora TIS · compartiendo pantalla</div>
+              <div class="mock-call-screenshare">
+                <div class="mock-ss-bar"></div>
+                <div class="mock-ss-bar mock-ss-bar--long"></div>
+                <div class="mock-ss-bar mock-ss-bar--med"></div>
+                <div class="mock-ss-bar"></div>
+              </div>
+            </div>
+            <div class="mock-call-self">
+              <div class="mock-call-avatar mock-call-avatar--self">Tú</div>
+            </div>
+          </div>
+          <div class="mock-call-controls">
+            <div class="mock-ctrl">🎤</div>
+            <div class="mock-ctrl mock-ctrl--hang">✕</div>
+            <div class="mock-ctrl">📷</div>
+          </div>
+          <div class="mock-call-badge">🔒 Sesión privada · sin grabación</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ——— 05 Setup plataformas ——— -->
+    <div class="servicio-block reveal">
+      <div class="servicio-content">
+        <div class="servicio-header">
+          <div class="servicio-num">05</div>
+          <div>
+            <h3>Setup inicial OnlyFans / Fansly / Privacy</h3>
+            <p class="servicio-desc">Configuramos tu cuenta, tus precios, tus mensajes automáticos y tu estrategia de contenido — para que empieces a generar ingresos sin pasos en falso.</p>
+          </div>
+        </div>
+        <ul class="servicio-bullets">
+          <li>Apertura y configuración completa de la plataforma que elijas</li>
+          <li>Definición de precios (suscripción, PPV, mensajes de pago)</li>
+          <li>Mensajes de bienvenida y respuestas automáticas listas para usar</li>
+          <li>Estrategia inicial de contenido y frecuencia de publicación</li>
+        </ul>
+        <div class="servicio-testimonio">
+          <p>"Daniela, Santiago — 'Me demoré 4 meses en abrir mi OnlyFans por miedo a hacerlo mal. Con Budgt TIS lo tuve listo en una semana.'"</p>
+          <span class="testimonio-meta">Caso piloto · diciembre 2025</span>
+        </div>
+        <a href={waSetupPlat} class="tis-btn-servicio" target="_blank" rel="noopener">Quiero mi setup →</a>
+      </div>
+
+      <!-- MOCKUP: perfil de plataforma -->
+      <div class="servicio-mockup">
+        <div class="mock-platform">
+          <div class="mock-plat-cover"></div>
+          <div class="mock-plat-body">
+            <div class="mock-plat-avatar">M</div>
+            <div class="mock-plat-name">@mi_perfil_oficial</div>
+            <div class="mock-plat-stats">
+              <div class="mock-plat-stat"><strong>284</strong><span>Fans</span></div>
+              <div class="mock-plat-stat"><strong>$18</strong><span>/ mes</span></div>
+              <div class="mock-plat-stat"><strong>52</strong><span>Posts</span></div>
+            </div>
+            <div class="mock-plat-checks">
+              <div class="mock-check mock-check--done">✓ Precio de suscripción configurado</div>
+              <div class="mock-check mock-check--done">✓ Mensaje de bienvenida automático</div>
+              <div class="mock-check mock-check--done">✓ Estrategia de contenido lista</div>
+              <div class="mock-check mock-check--done">✓ PPV configurado desde $X</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ——— 06 Reportería ——— -->
+    <div class="servicio-block reveal">
+      <div class="servicio-content">
+        <div class="servicio-header">
+          <div class="servicio-num">06</div>
+          <div>
+            <h3>Reportería y análisis mensual</h3>
+            <p class="servicio-desc">Un informe mensual claro, en español simple, con los números que importan — para que tomes decisiones con información, no con intuición.</p>
+          </div>
+        </div>
+        <ul class="servicio-bullets">
+          <li>Métricas de tus redes y plataformas en un solo lugar</li>
+          <li>Análisis de qué días, horarios y formatos te generan más ingresos</li>
+          <li>Recomendaciones concretas para el mes siguiente</li>
+          <li>Sin hojas de cálculo complicadas — directo al grano</li>
+        </ul>
+        <div class="servicio-testimonio">
+          <p>"Karla, Temuco — 'El reporte me mostró que los martes eran mis mejores días y yo los tenía bloqueados. Cambié la agenda y subí un 20%.'"</p>
+          <span class="testimonio-meta">Caso piloto · febrero 2026</span>
+        </div>
+        <a href={waReportes} class="tis-btn-servicio" target="_blank" rel="noopener">Quiero mis reportes →</a>
+      </div>
+
+      <!-- MOCKUP: dashboard con gráfico -->
+      <div class="servicio-mockup">
+        <div class="mock-dashboard">
+          <div class="mock-dash-header">
+            <div>
+              <div class="mock-dash-title">Ingresos · Junio 2026</div>
+              <div class="mock-dash-sub">vs. mes anterior</div>
+            </div>
+            <div class="mock-dash-kpi">+34% <span>↑</span></div>
+          </div>
+          <div class="mock-chart">
+            <div class="mock-bar-wrap"><div class="mock-bar" style="height:45%"></div><span>L</span></div>
+            <div class="mock-bar-wrap"><div class="mock-bar" style="height:68%"></div><span>M</span></div>
+            <div class="mock-bar-wrap"><div class="mock-bar mock-bar--accent" style="height:100%"></div><span>X</span></div>
+            <div class="mock-bar-wrap"><div class="mock-bar" style="height:52%"></div><span>J</span></div>
+            <div class="mock-bar-wrap"><div class="mock-bar" style="height:82%"></div><span>V</span></div>
+            <div class="mock-bar-wrap"><div class="mock-bar" style="height:33%"></div><span>S</span></div>
+            <div class="mock-bar-wrap"><div class="mock-bar" style="height:18%"></div><span>D</span></div>
+          </div>
+          <div class="mock-dash-insight">📈 Miércoles es tu mejor día — no lo bloquees</div>
+          <div class="mock-dash-tags">
+            <span class="mock-tag">Reservas +21%</span>
+            <span class="mock-tag">OF +15%</span>
+            <span class="mock-tag">WhatsApp ×3</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ——— 07 Página web ——— -->
+    <div class="servicio-block reveal">
+      <div class="servicio-content">
+        <div class="servicio-header">
+          <div class="servicio-num">07</div>
+          <div>
+            <h3>Página web con booking protegido</h3>
+            <p class="servicio-desc">Una landing page privada con galería protegida, calendario de reservas y link directo a WhatsApp. Tu hub digital, bajo tu dominio.</p>
+          </div>
+        </div>
+        <ul class="servicio-bullets">
+          <li>Diseño elegante, dark mode, adaptado a tu identidad visual</li>
+          <li>Galería protegida (sin descarga directa, con marca de agua)</li>
+          <li>Calendario de booking privado — solo ven lo que tú muestras</li>
+          <li>Link directo a WhatsApp y formulario de contacto filtrado</li>
+          <li>SSL, hosting incluido, sin que tengas que tocar nada técnico</li>
+        </ul>
+        <div class="servicio-testimonio">
+          <p>"Sofía, Santiago — 'Dejé de depender del Instagram de moda. Ahora mando mis clientes fijos a mi página y es otro nivel de profesionalismo.'"</p>
+          <span class="testimonio-meta">Caso piloto · enero 2026</span>
+        </div>
+        <a href={waPagina} class="tis-btn-servicio" target="_blank" rel="noopener">Quiero mi página web →</a>
+      </div>
+
+      <!-- MOCKUP: mini landing page -->
+      <div class="servicio-mockup">
+        <div class="mock-web">
+          <div class="mock-web-nav">
+            <span class="mock-web-logo">✦ mi página</span>
+            <span class="mock-web-navbtn">Reservar</span>
+          </div>
+          <div class="mock-web-hero">
+            <div class="mock-web-hero-text">
+              <div class="mock-web-h1"></div>
+              <div class="mock-web-p"></div>
+            </div>
+          </div>
+          <div class="mock-web-gallery">
+            <div class="mock-web-img mock-web-img--lg">
+              <span class="mock-web-wm">© @mi.nombre</span>
+            </div>
+            <div class="mock-web-img">
+              <span class="mock-web-wm">© @mi.nombre</span>
+            </div>
+            <div class="mock-web-img">
+              <span class="mock-web-wm">© @mi.nombre</span>
+            </div>
+          </div>
+          <div class="mock-web-cal">
+            <div class="mock-cal-title">Disponibilidad</div>
+            <div class="mock-cal-grid">
+              {['L','M','X','J','V','S','D'].map((d) => (
+                <div class="mock-cal-day">{d}</div>
+              ))}
+              {[1,2,3,4,5,6,7,8,9,10,11,12,13,14].map((n) => (
+                <div class:list={['mock-cal-num', { 'mock-cal-num--avail': [2,4,5,9,11,12].includes(n), 'mock-cal-num--taken': [1,6,8].includes(n) }]}>{n}</div>
+              ))}
+            </div>
+            <div class="mock-cal-legend">
+              <span class="mock-leg mock-leg--avail">Disponible</span>
+              <span class="mock-leg mock-leg--taken">Ocupado</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==================== CÓMO FUNCIONA ==================== -->
+<section class="tis-section">
+  <div class="tis-container">
+    <div class="section-label reveal">El proceso</div>
+    <h2 class="reveal">Simple. Privado. A tu ritmo.</h2>
+    <div class="pasos-grid reveal">
+      <div class="paso">
+        <div class="paso-num">01</div>
+        <h3>Conversamos en privado</h3>
+        <p>Nos escribes por WhatsApp. Sin formularios raros, sin dar datos que no quieras dar. Solo conversamos.</p>
+      </div>
+      <div class="paso">
+        <div class="paso-num">02</div>
+        <h3>Diseñamos a tu medida</h3>
+        <p>No hay un plan estándar que te imponemos. Entendemos qué necesitas y armamos algo que tenga sentido para tu negocio y tu realidad.</p>
+      </div>
+      <div class="paso">
+        <div class="paso-num">03</div>
+        <h3>Revisamos contigo</h3>
+        <p>Antes de activar nada, tú lo ves, lo aprobás y lo ajustás. Nada se lanza sin tu visto bueno.</p>
+      </div>
+      <div class="paso">
+        <div class="paso-num">04</div>
+        <h3>Tú a lo tuyo</h3>
+        <p>Nosotros nos encargamos de lo técnico. Tú de lo que haces mejor. Simple.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== PLANES Y PRECIOS ==================== -->
+<section class="tis-section tis-section--dark" id="planes">
+  <div class="tis-container">
+    <div class="section-label reveal">Planes y precios</div>
+    <h2 class="reveal">Precios claros. Sin sorpresas.<br /><em>Sin letra chica. Sin lock-in.</em></h2>
+
+    <div class="planes-grid reveal">
+      <div class="plan-tis">
+        <div class="plan-tis-tag">Inicio</div>
+        <div class="plan-tis-price">
+          <span class="plan-usd">55 USD<span class="plan-period">/mes</span></span>
+          <span class="plan-clp">~$50.000 CLP/mes</span>
+        </div>
+        <div class="plan-tis-ideal">Para empezar con lo esencial</div>
+        <ul class="plan-tis-features">
+          <li class="feat-yes">Chatbot WhatsApp 24/7 básico</li>
+          <li class="feat-no">Identidad visual</li>
+          <li class="feat-no">Protección de contenido</li>
+          <li class="feat-no">Setup plataformas</li>
+          <li class="feat-no">Reportería mensual</li>
+          <li class="feat-no">Capacitación 1-a-1</li>
+          <li class="feat-no">Soporte prioritario</li>
+        </ul>
+        <a href={waInicio} class="plan-tis-btn" target="_blank" rel="noopener">Empezar →</a>
+      </div>
+
+      <div class="plan-tis plan-tis--featured">
+        <div class="plan-tis-popular">⭐ Más vendido</div>
+        <div class="plan-tis-tag">Crecimiento</div>
+        <div class="plan-tis-price">
+          <span class="plan-usd">281 USD<span class="plan-period">/mes</span></span>
+          <span class="plan-clp">~$259.000 CLP/mes</span>
+        </div>
+        <div class="plan-tis-ideal">Para crecer con herramientas completas</div>
+        <ul class="plan-tis-features">
+          <li class="feat-yes">Chatbot WhatsApp 24/7 avanzado</li>
+          <li class="feat-yes">Identidad visual completa</li>
+          <li class="feat-yes">Protección de contenido</li>
+          <li class="feat-yes">Setup OnlyFans / Fansly / Privacy</li>
+          <li class="feat-yes">Reportería mensual</li>
+          <li class="feat-yes">1 sesión de capacitación</li>
+          <li class="feat-no">Soporte prioritario</li>
+        </ul>
+        <a href={waCrecimiento} class="plan-tis-btn" target="_blank" rel="noopener">Empezar →</a>
+      </div>
+
+      <div class="plan-tis">
+        <div class="plan-tis-tag">Setup Único</div>
+        <div class="plan-tis-price">
+          <span class="plan-usd">540 USD</span>
+          <span class="plan-clp">~$499.000 CLP · pago único</span>
+        </div>
+        <div class="plan-tis-ideal">Arranca bien sin mensualidad</div>
+        <ul class="plan-tis-features">
+          <li class="feat-yes">Chatbot WhatsApp configurado</li>
+          <li class="feat-yes">Identidad visual completa</li>
+          <li class="feat-yes">Protección de contenido</li>
+          <li class="feat-yes">Setup OnlyFans / Fansly / Privacy</li>
+          <li class="feat-no">Reportería mensual</li>
+          <li class="feat-yes">2 sesiones de capacitación</li>
+          <li class="feat-no">Soporte prioritario</li>
+        </ul>
+        <a href={waSetupUnico} class="plan-tis-btn" target="_blank" rel="noopener">Empezar →</a>
+      </div>
+
+      <div class="plan-tis">
+        <div class="plan-tis-tag">Premium</div>
+        <div class="plan-tis-price">
+          <span class="plan-usd">760 USD<span class="plan-period">/mes</span></span>
+          <span class="plan-clp">~$699.000 CLP/mes</span>
+        </div>
+        <div class="plan-tis-ideal">Para escalar sin límites</div>
+        <ul class="plan-tis-features">
+          <li class="feat-yes">Chatbot WhatsApp full</li>
+          <li class="feat-yes">Identidad visual completa</li>
+          <li class="feat-yes">Protección de contenido</li>
+          <li class="feat-yes">Setup OnlyFans / Fansly / Privacy</li>
+          <li class="feat-yes">Reportería mensual</li>
+          <li class="feat-yes">Capacitación ilimitada</li>
+          <li class="feat-yes">Soporte prioritario</li>
+        </ul>
+        <a href={waPremium} class="plan-tis-btn" target="_blank" rel="noopener">Empezar →</a>
+      </div>
+    </div>
+
+    <div class="plan-web reveal">
+      <div class="plan-web-inner">
+        <div>
+          <div class="plan-web-label">Servicio independiente — se suma a cualquier plan</div>
+          <h3>Página web con booking protegido</h3>
+          <p>Galería protegida, calendario de reservas y WhatsApp integrado. Bajo tu dominio.</p>
+        </div>
+        <div class="plan-web-precio">
+          <div class="plan-web-monto">$450.000 <span>CLP</span></div>
+          <div class="plan-web-sub">pago único + $35.000/mes mantención</div>
+          <a href={waWebBooking} class="plan-tis-btn" target="_blank" rel="noopener">Lo quiero →</a>
+        </div>
+      </div>
+    </div>
+
+    <p class="planes-nota reveal">
+      Sin contratos de largo plazo. Cancelas cuando quieras, sin penalizaciones.<br />
+      ¿No sabes cuál elegir? Escríbenos y te ayudamos a decidir sin presionarte.
+    </p>
+  </div>
+</section>
+
+<!-- ==================== TESTIMONIOS ==================== -->
+<section class="tis-section" id="testimonios">
+  <div class="tis-container">
+    <div class="section-label reveal">Testimonios</div>
+    <h2 class="reveal">Lo que dicen las que ya dieron el paso.</h2>
+    <div class="testimonios-grid reveal">
+      <div class="testimonio-card">
+        <div class="testimonio-avatar">C</div>
+        <blockquote>"Empecé con el chatbot en marzo. Antes respondía 80 mensajes al día. Ahora reviso máximo 15. Recuperé casi 2 horas diarias que usaba en eso."</blockquote>
+        <div class="testimonio-footer">
+          <strong>Camila</strong>
+          <span>Santiago · 6 meses como clienta</span>
+          <span class="testimonio-piloto">Caso piloto · octubre 2025</span>
+        </div>
+      </div>
+      <div class="testimonio-card">
+        <div class="testimonio-avatar">V</div>
+        <blockquote>"Tenía fotos mías circulando en Telegram hace más de un año. Nadie me había dicho que se podía hacer algo. En 10 días Budgt TIS las bajó. No lo podía creer."</blockquote>
+        <div class="testimonio-footer">
+          <strong>Valentina</strong>
+          <span>Viña del Mar · 4 meses como clienta</span>
+          <span class="testimonio-piloto">Caso piloto · enero 2026</span>
+        </div>
+      </div>
+      <div class="testimonio-card">
+        <div class="testimonio-avatar">F</div>
+        <blockquote>"Mi OnlyFans llevaba 6 meses estancado. Después del análisis mensual y dos ajustes, triplicé mis suscriptoras en 45 días. Ahora sé exactamente qué publicar y cuándo."</blockquote>
+        <div class="testimonio-footer">
+          <strong>Fernanda</strong>
+          <span>Concepción · 8 meses como clienta</span>
+          <span class="testimonio-piloto">Caso piloto · noviembre 2025</span>
+        </div>
+      </div>
+    </div>
+    <p class="testimonios-disclaimer reveal">Seudónimos utilizados con autorización. Fotos difuminadas por privacidad. Los resultados varían según el contexto de cada clienta.</p>
+  </div>
+</section>
+
+<!-- ==================== FAQ ==================== -->
+<section class="tis-section tis-section--dark" id="faq">
+  <div class="tis-container tis-container--narrow">
+    <div class="section-label reveal">FAQ</div>
+    <h2 class="reveal">Preguntas frecuentes.<br /><em>Si la tuya no está acá, escríbenos.</em></h2>
+    {faqs.map((faq) => (
+      <FAQItem question={faq.question} answer={faq.answer} />
+    ))}
+  </div>
+</section>
+
+<!-- ==================== CTA FINAL ==================== -->
+<section class="tis-cta-final">
+  <div class="tis-container tis-cta-inner">
+    <h2 class="reveal">Tú pones las condiciones.<br /><em>Budgt TIS pone la tecnología.</em></h2>
+    <p class="reveal">Sin compromiso. Sin juicios. Respuesta en menos de 24 horas.</p>
+    <a href={waGeneral} class="tis-btn-wa tis-btn-wa--large reveal" target="_blank" rel="noopener">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.167 1.618 5.955L.057 23.928a.5.5 0 0 0 .611.611l5.973-1.561A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.96 9.96 0 0 1-5.073-1.384l-.363-.215-3.763.984.984-3.763-.215-.363A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      Escribirnos por WhatsApp
+    </a>
+    <p class="tis-cta-badges reveal">🔒 Conversación privada · 🇨🇱 Equipo chileno · ✅ Sin compromiso</p>
+  </div>
+</section>
+
+</BaseLayout>
+
+<style>
+/* =====================================================
+   VARIABLES — paleta rose/mauve para TIS
+   ===================================================== */
+:root {
+  --tis-rose:      #c4748a;
+  --tis-rose-lt:   #d9a0b0;
+  --tis-rose-dim:  rgba(196, 116, 138, 0.12);
+  --tis-rose-faint:rgba(196, 116, 138, 0.06);
+  --tis-gold:      #c9a882;
+}
+
+/* =====================================================
+   HERO
+   ===================================================== */
+.tis-hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 7rem 2.5rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.tis-hero::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 60vw;
+  height: 60vw;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--tis-rose-dim) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.tis-hero-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--tis-rose);
+  border: 1px solid rgba(196, 116, 138, 0.35);
+  padding: 0.35rem 0.9rem;
+  margin-bottom: 2.2rem;
+  width: fit-content;
+}
+
+.tis-hero h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  max-width: 900px;
+  margin-bottom: 1.8rem;
+}
+
+.tis-hero h1 em { font-style: italic; color: var(--gray-400); }
+
+.tis-hero-sub {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--gray-400);
+  max-width: 580px;
+  line-height: 1.72;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+}
+
+.tis-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.tis-hero-badges { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+.tis-badge { font-size: 0.78rem; color: var(--gray-500); }
+.tis-badge-sep { color: var(--gray-700); }
+
+.hero-scroll {
+  position: absolute;
+  bottom: 2rem;
+  left: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--gray-600);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.scroll-line {
+  width: 40px;
+  height: 1px;
+  background: var(--gray-600);
+  animation: scrollLine 2s ease-in-out infinite;
+}
+
+@keyframes scrollLine {
+  0%, 100% { transform: scaleX(1); opacity: 1; }
+  50%       { transform: scaleX(0.4); opacity: 0.4; }
+}
+
+/* =====================================================
+   BOTONES
+   ===================================================== */
+.tis-btn-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: var(--wa-green);
+  color: var(--white);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.9rem 2rem;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.tis-btn-wa:hover { opacity: 0.88; }
+.tis-btn-wa--large { font-size: 1.05rem; padding: 1.1rem 2.6rem; margin-bottom: 1.2rem; }
+
+.tis-btn-ghost {
+  color: var(--gray-400);
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.tis-btn-ghost:hover { color: var(--white); }
+
+.tis-btn-servicio {
+  display: inline-block;
+  padding: 0.75rem 1.8rem;
+  border: 1px solid var(--gray-700);
+  color: var(--white);
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+  margin-top: 1.2rem;
+}
+.tis-btn-servicio:hover { border-color: var(--tis-rose); color: var(--tis-rose); }
+
+/* =====================================================
+   TRUST BAR
+   ===================================================== */
+.tis-trust-bar {
+  background: var(--gray-900);
+  border-top: 1px solid var(--gray-800);
+  border-bottom: 1px solid var(--gray-800);
+  padding: 1rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.trust-item { font-size: 0.82rem; color: var(--gray-400); }
+.trust-sep  { color: var(--gray-700); }
+
+/* =====================================================
+   SECCIONES
+   ===================================================== */
+.tis-section { padding: 7rem 2.5rem; }
+.tis-section--dark {
+  background: var(--gray-900);
+  border-top: 1px solid var(--gray-800);
+  border-bottom: 1px solid var(--gray-800);
+}
+.tis-container         { max-width: 1100px; margin: 0 auto; }
+.tis-container--narrow { max-width: 760px; }
+
+.tis-section h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.9rem, 3.5vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 3.5rem;
+}
+.tis-section h2 em { font-style: italic; color: var(--gray-500); }
+
+/* =====================================================
+   PROBLEMAS
+   ===================================================== */
+.problemas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1px;
+  background: var(--gray-800);
+}
+
+.problema-card {
+  background: var(--black);
+  padding: 2rem 1.8rem;
+  transition: background 0.2s;
+  border-top: 2px solid transparent;
+  transition: background 0.2s, border-color 0.2s;
+}
+.problema-card:hover { background: var(--gray-900); border-top-color: var(--tis-rose); }
+.problema-icon { font-size: 1.4rem; margin-bottom: 1rem; }
+.problema-card h3 {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.3;
+  margin-bottom: 0.8rem;
+  color: var(--white);
+}
+.problema-card p { font-size: 0.85rem; color: var(--gray-500); line-height: 1.75; font-weight: 300; }
+
+/* =====================================================
+   SERVICIOS — layout con mockup
+   ===================================================== */
+.servicio-block {
+  border-top: 1px solid var(--gray-800);
+  padding: 4rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.servicio-block:last-child { border-bottom: 1px solid var(--gray-800); }
+
+.servicio-content { display: flex; flex-direction: column; }
+
+.servicio-header {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+.servicio-num {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: var(--tis-rose);
+  opacity: 0.4;
+  flex-shrink: 0;
+  line-height: 1;
+  margin-top: 0.2rem;
+  min-width: 2.2rem;
+}
+.servicio-header h3 {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+  color: var(--white);
+}
+.servicio-desc { font-size: 0.9rem; color: var(--gray-400); line-height: 1.7; font-weight: 300; }
+
+.servicio-bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+  padding-left: 0.2rem;
+}
+.servicio-bullets li {
+  font-size: 0.88rem;
+  color: var(--gray-400);
+  line-height: 1.55;
+  font-weight: 300;
+  padding-left: 1.3rem;
+  position: relative;
+}
+.servicio-bullets li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--tis-rose);
+  font-size: 0.8rem;
+}
+
+.servicio-testimonio {
+  border-left: 2px solid var(--tis-rose);
+  padding-left: 1rem;
+  margin-bottom: 0;
+}
+.servicio-testimonio p {
+  font-size: 0.85rem;
+  color: var(--gray-400);
+  font-style: italic;
+  line-height: 1.65;
+  margin-bottom: 0.3rem;
+}
+.testimonio-meta { font-size: 0.75rem; color: var(--gray-600); font-style: normal; }
+
+/* =====================================================
+   MOCKUP BASE
+   ===================================================== */
+.servicio-mockup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ——— Mockup 01: WhatsApp ——— */
+.mock-phone {
+  width: 100%;
+  max-width: 310px;
+  border: 1px solid var(--gray-800);
+  border-radius: 2px;
+  overflow: hidden;
+  background: #111;
+  box-shadow: 0 0 40px var(--tis-rose-dim);
+}
+
+.mock-wa-header {
+  background: #1a1a2e;
+  padding: 0.8rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.mock-wa-avatar {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: var(--tis-rose-dim);
+  border: 1px solid var(--tis-rose);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; flex-shrink: 0;
+}
+.mock-wa-info { flex: 1; }
+.mock-wa-name  { font-size: 0.82rem; font-weight: 600; color: var(--white); }
+.mock-wa-status{ font-size: 0.7rem; color: #4ade80; }
+.mock-wa-lock  { font-size: 0.75rem; color: var(--gray-700); }
+
+.mock-wa-body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  background: #0d0d1a;
+  min-height: 240px;
+}
+
+.mock-bubble {
+  padding: 0.55rem 0.8rem;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  max-width: 85%;
+}
+.mock-bubble--in {
+  background: var(--gray-800);
+  color: var(--gray-300);
+  align-self: flex-start;
+}
+.mock-bubble--out {
+  background: rgba(196, 116, 138, 0.18);
+  border: 1px solid rgba(196, 116, 138, 0.25);
+  color: var(--gray-200);
+  align-self: flex-end;
+  text-align: right;
+}
+.mock-ts {
+  display: block;
+  font-size: 0.65rem;
+  color: var(--tis-rose);
+  margin-top: 0.3rem;
+}
+
+/* ——— Mockup 02: Marca personal ——— */
+.mock-brand {
+  width: 100%;
+  max-width: 320px;
+  border: 1px solid var(--gray-800);
+  overflow: hidden;
+  background: #0f0f0f;
+  box-shadow: 0 0 40px var(--tis-rose-dim);
+}
+.mock-banner-bg {
+  height: 80px;
+  background: linear-gradient(135deg, #2a1020 0%, #1a0a2a 50%, #200a1a 100%);
+  position: relative;
+}
+.mock-banner-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(196,116,138,0.07) 0px, rgba(196,116,138,0.07) 1px,
+    transparent 1px, transparent 14px
+  );
+}
+.mock-brand-body { padding: 0 1rem 1rem; }
+.mock-avatar-wrap { margin-top: -22px; margin-bottom: 0.5rem; }
+.mock-avatar-ring {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--tis-rose), var(--tis-gold));
+  padding: 2px;
+}
+.mock-avatar-inner {
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  background: #0f0f0f;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; color: var(--tis-rose);
+}
+.mock-brand-name { font-size: 0.82rem; font-weight: 600; color: var(--white); margin-bottom: 0.2rem; }
+.mock-brand-bio  { font-size: 0.72rem; color: var(--gray-500); margin-bottom: 0.6rem; }
+.mock-brand-stats {
+  display: flex; gap: 1rem;
+  font-size: 0.72rem; color: var(--gray-400);
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--gray-800);
+}
+.mock-brand-stats strong { color: var(--white); }
+.mock-posts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+.mock-post { aspect-ratio: 1; border-radius: 1px; }
+.mock-post--a { background: linear-gradient(135deg, #3a1a2a, #2a0a1a); }
+.mock-post--b { background: linear-gradient(135deg, #1a1a3a, #0a0a2a); }
+.mock-post--c { background: linear-gradient(135deg, #2a1a1a, #1a0a0a); }
+.mock-post--d { background: linear-gradient(135deg, #1a2a2a, rgba(196,116,138,0.15)); }
+.mock-post--e { background: linear-gradient(135deg, #2a1a3a, #1a0a2a); }
+.mock-post--f { background: linear-gradient(135deg, #3a2a1a, #2a1a0a); }
+
+/* ——— Mockup 03: Protección ——— */
+.mock-protect-wrap {
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.mock-protect-img {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+  border: 1px solid var(--gray-800);
+  box-shadow: 0 0 40px var(--tis-rose-dim);
+}
+.mock-img-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #2a1020 0%, #200a1a 40%, #1a0a2a 100%);
+}
+.mock-watermark-grid {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-template-rows: repeat(3,1fr);
+  align-items: center;
+  justify-items: center;
+  pointer-events: none;
+}
+.mock-wm-text {
+  font-size: 0.58rem;
+  color: rgba(255,255,255,0.18);
+  transform: rotate(-30deg);
+  white-space: nowrap;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+.mock-protect-badge {
+  position: absolute;
+  bottom: 0.6rem;
+  right: 0.6rem;
+  background: rgba(196,116,138,0.2);
+  border: 1px solid var(--tis-rose);
+  color: var(--tis-rose-lt);
+  font-size: 0.68rem;
+  padding: 0.25rem 0.6rem;
+  font-weight: 500;
+}
+.mock-alert-strip {
+  padding: 0.6rem 0.9rem;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--gray-800);
+  font-weight: 400;
+}
+.mock-alert-strip--warn { color: #f59e0b; background: rgba(245,158,11,0.06); }
+.mock-alert-strip--ok   { color: #4ade80; background: rgba(74,222,128,0.06); }
+.mock-alert-dot { width: 6px; height: 6px; border-radius: 50%; background: #f59e0b; flex-shrink: 0; }
+.mock-alert-dot--ok { background: #4ade80; }
+
+/* ——— Mockup 04: Videollamada ——— */
+.mock-call {
+  width: 100%;
+  max-width: 320px;
+  background: #0d0d1a;
+  border: 1px solid var(--gray-800);
+  overflow: hidden;
+  box-shadow: 0 0 40px var(--tis-rose-dim);
+}
+.mock-call-screen {
+  position: relative;
+  height: 180px;
+  background: #080814;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mock-call-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+.mock-call-avatar {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 600; font-size: 1.1rem;
+}
+.mock-call-avatar--tutor {
+  background: var(--tis-rose-dim);
+  border: 2px solid var(--tis-rose);
+  color: var(--tis-rose-lt);
+}
+.mock-call-avatar--self {
+  background: var(--gray-800);
+  border: 1px solid var(--gray-700);
+  color: var(--gray-400);
+  width: 36px; height: 36px; font-size: 0.7rem;
+}
+.mock-call-label {
+  font-size: 0.68rem;
+  color: var(--gray-500);
+  text-align: center;
+}
+.mock-call-screenshare {
+  width: 90px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--gray-800);
+  padding: 0.4rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.mock-ss-bar {
+  height: 3px;
+  background: var(--gray-700);
+  border-radius: 2px;
+  width: 60%;
+}
+.mock-ss-bar--long { width: 100%; }
+.mock-ss-bar--med  { width: 80%; }
+.mock-call-self {
+  position: absolute;
+  bottom: 0.7rem;
+  right: 0.7rem;
+}
+.mock-call-controls {
+  padding: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  border-top: 1px solid var(--gray-800);
+}
+.mock-ctrl {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: var(--gray-800);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem;
+  cursor: default;
+}
+.mock-ctrl--hang {
+  background: #dc2626;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.mock-call-badge {
+  text-align: center;
+  font-size: 0.68rem;
+  color: var(--gray-600);
+  padding: 0.4rem;
+  border-top: 1px solid var(--gray-800);
+}
+
+/* ——— Mockup 05: Plataforma ——— */
+.mock-platform {
+  width: 100%;
+  max-width: 320px;
+  border: 1px solid var(--gray-800);
+  overflow: hidden;
+  background: #0d0d0d;
+  box-shadow: 0 0 40px var(--tis-rose-dim);
+}
+.mock-plat-cover {
+  height: 70px;
+  background: linear-gradient(135deg, #2a0a1a 0%, #1a0a2a 60%, #200a15 100%);
+}
+.mock-plat-body { padding: 0 1rem 1rem; }
+.mock-plat-avatar {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--tis-rose), var(--tis-gold));
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 1.1rem;
+  color: var(--white);
+  margin-top: -21px;
+  margin-bottom: 0.5rem;
+  border: 2px solid #0d0d0d;
+}
+.mock-plat-name { font-size: 0.82rem; font-weight: 600; color: var(--white); margin-bottom: 0.6rem; }
+.mock-plat-stats {
+  display: flex;
+  gap: 0;
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--gray-800);
+}
+.mock-plat-stat {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+.mock-plat-stat strong { font-size: 0.95rem; color: var(--white); font-weight: 700; }
+.mock-plat-stat span  { font-size: 0.65rem; color: var(--gray-500); }
+.mock-plat-checks { display: flex; flex-direction: column; gap: 0.45rem; }
+.mock-check { font-size: 0.72rem; color: var(--gray-400); }
+.mock-check--done { color: #4ade80; }
+.mock-check--done::before { content: ''; }
+
+/* ——— Mockup 06: Dashboard ——— */
+.mock-dashboard {
+  width: 100%;
+  max-width: 320px;
+  background: #0d0d0d;
+  border: 1px solid var(--gray-800);
+  padding: 1.2rem;
+  box-shadow: 0 0 40px var(--tis-rose-dim);
+}
+.mock-dash-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+.mock-dash-title { font-size: 0.8rem; font-weight: 600; color: var(--white); }
+.mock-dash-sub   { font-size: 0.68rem; color: var(--gray-600); margin-top: 0.1rem; }
+.mock-dash-kpi   { font-family: var(--font-serif); font-size: 1.5rem; color: #4ade80; line-height: 1; }
+.mock-dash-kpi span { font-size: 0.9rem; }
+
+.mock-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 100px;
+  margin-bottom: 0.8rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid var(--gray-800);
+  position: relative;
+}
+.mock-bar-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  height: 100%;
+  justify-content: flex-end;
+}
+.mock-bar {
+  width: 100%;
+  background: var(--gray-800);
+  border-radius: 1px 1px 0 0;
+  transition: background 0.2s;
+}
+.mock-bar--accent { background: var(--tis-rose) !important; }
+.mock-bar-wrap span {
+  font-size: 0.6rem;
+  color: var(--gray-600);
+  position: absolute;
+  bottom: 0;
+}
+.mock-bar-wrap:nth-child(1) span { left: calc(0 * (100%/7) + 2px); }
+.mock-bar-wrap:nth-child(2) span { left: calc(1 * (100%/7) + 2px); }
+.mock-bar-wrap:nth-child(3) span { left: calc(2 * (100%/7) + 2px); }
+.mock-bar-wrap:nth-child(4) span { left: calc(3 * (100%/7) + 2px); }
+.mock-bar-wrap:nth-child(5) span { left: calc(4 * (100%/7) + 2px); }
+.mock-bar-wrap:nth-child(6) span { left: calc(5 * (100%/7) + 2px); }
+.mock-bar-wrap:nth-child(7) span { left: calc(6 * (100%/7) + 2px); }
+
+.mock-dash-insight {
+  font-size: 0.75rem;
+  color: var(--tis-rose-lt);
+  margin-bottom: 0.8rem;
+  font-style: italic;
+}
+.mock-dash-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.mock-tag {
+  font-size: 0.65rem;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid rgba(196,116,138,0.3);
+  color: var(--tis-rose-lt);
+  background: var(--tis-rose-faint);
+}
+
+/* ——— Mockup 07: Página web ——— */
+.mock-web {
+  width: 100%;
+  max-width: 320px;
+  background: #090909;
+  border: 1px solid var(--gray-800);
+  overflow: hidden;
+  font-size: 0.72rem;
+  box-shadow: 0 0 40px var(--tis-rose-dim);
+}
+.mock-web-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0.8rem;
+  border-bottom: 1px solid var(--gray-800);
+  background: rgba(255,255,255,0.02);
+}
+.mock-web-logo    { color: var(--tis-rose); font-weight: 600; letter-spacing: 0.05em; }
+.mock-web-navbtn  { font-size: 0.65rem; border: 1px solid var(--tis-rose); color: var(--tis-rose); padding: 0.2rem 0.5rem; }
+
+.mock-web-hero {
+  padding: 0.8rem;
+  background: linear-gradient(135deg, #150a12 0%, #0a0a18 100%);
+  border-bottom: 1px solid var(--gray-800);
+}
+.mock-web-h1 { height: 8px; background: var(--gray-700); border-radius: 2px; margin-bottom: 5px; width: 70%; }
+.mock-web-p  { height: 5px; background: var(--gray-800); border-radius: 2px; width: 50%; }
+
+.mock-web-gallery {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 60px 60px;
+  gap: 2px;
+  padding: 0.5rem;
+}
+.mock-web-img {
+  background: var(--gray-800);
+  position: relative;
+  overflow: hidden;
+  display: flex; align-items: flex-end; justify-content: flex-end;
+  padding: 3px;
+}
+.mock-web-img--lg { grid-row: span 2; background: linear-gradient(135deg, #2a0a1a, #1a0a2a); }
+.mock-web-img:not(.mock-web-img--lg) { background: linear-gradient(135deg, #1a0a1a, #120a1a); }
+.mock-web-wm { font-size: 0.5rem; color: rgba(255,255,255,0.2); white-space: nowrap; }
+
+.mock-web-cal { padding: 0.6rem 0.8rem 0.8rem; }
+.mock-cal-title { font-size: 0.7rem; font-weight: 600; color: var(--gray-400); margin-bottom: 0.5rem; }
+.mock-cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+.mock-cal-day {
+  text-align: center;
+  font-size: 0.55rem;
+  color: var(--gray-600);
+  padding: 2px 0;
+  font-weight: 600;
+}
+.mock-cal-num {
+  text-align: center;
+  font-size: 0.6rem;
+  color: var(--gray-600);
+  padding: 3px 0;
+  border-radius: 1px;
+}
+.mock-cal-num--avail { background: rgba(196,116,138,0.15); color: var(--tis-rose-lt); }
+.mock-cal-num--taken { background: var(--gray-800); color: var(--gray-700); }
+.mock-cal-legend {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 0.4rem;
+}
+.mock-leg { font-size: 0.58rem; color: var(--gray-500); display: flex; align-items: center; gap: 0.3rem; }
+.mock-leg::before { content: ''; width: 8px; height: 8px; border-radius: 1px; }
+.mock-leg--avail::before { background: rgba(196,116,138,0.3); }
+.mock-leg--taken::before { background: var(--gray-800); }
+
+/* =====================================================
+   CÓMO FUNCIONA
+   ===================================================== */
+.pasos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1px;
+  background: var(--gray-800);
+}
+.paso {
+  background: var(--black);
+  padding: 2.5rem 2rem;
+  border-top: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+.paso:hover { border-top-color: var(--tis-rose); }
+.paso-num { font-family: var(--font-serif); font-size: 3rem; color: var(--gray-800); line-height: 1; margin-bottom: 1.2rem; }
+.paso h3  { font-family: var(--font-sans); font-size: 0.95rem; font-weight: 600; letter-spacing: 0; margin-bottom: 0.7rem; color: var(--white); }
+.paso p   { font-size: 0.85rem; color: var(--gray-500); line-height: 1.75; font-weight: 300; }
+
+/* =====================================================
+   PLANES
+   ===================================================== */
+.planes-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--gray-800);
+  margin-bottom: 1.5rem;
+}
+
+.plan-tis {
+  background: var(--black);
+  padding: 2.5rem 2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-top: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+.plan-tis:hover { border-top-color: var(--tis-rose); }
+.plan-tis--featured { background: var(--white); color: var(--black); border-top-color: var(--tis-rose) !important; }
+
+.plan-tis-popular {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--tis-rose);
+  margin-bottom: 0.4rem;
+}
+.plan-tis-tag {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.2rem;
+  color: var(--white);
+}
+.plan-tis--featured .plan-tis-tag { color: var(--black); }
+
+.plan-tis-price { margin-bottom: 0.5rem; }
+.plan-usd {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--white);
+}
+.plan-tis--featured .plan-usd { color: var(--black); }
+.plan-period { font-size: 1rem; font-family: var(--font-sans); letter-spacing: 0; color: var(--gray-500); }
+.plan-tis--featured .plan-period { color: #888; }
+.plan-clp { display: block; font-size: 0.78rem; color: var(--gray-600); font-weight: 300; margin-top: 0.3rem; }
+.plan-tis--featured .plan-clp { color: #888; }
+
+.plan-tis-ideal {
+  font-size: 0.78rem; color: var(--gray-600); margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem; border-bottom: 1px solid var(--gray-800);
+  font-weight: 300; line-height: 1.4;
+}
+.plan-tis--featured .plan-tis-ideal { color: #777; border-color: #ddd; }
+
+.plan-tis-features { display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 2rem; flex: 1; }
+.plan-tis-features li { font-size: 0.82rem; font-weight: 300; padding-left: 1.4rem; position: relative; line-height: 1.45; }
+
+.feat-yes { color: var(--gray-300); }
+.feat-yes::before { content: '✓'; position: absolute; left: 0; color: var(--tis-rose); font-weight: 600; }
+.plan-tis--featured .feat-yes { color: #333; }
+.plan-tis--featured .feat-yes::before { color: #c4748a; }
+
+.feat-no { color: var(--gray-700); }
+.feat-no::before { content: '–'; position: absolute; left: 0; color: var(--gray-700); }
+.plan-tis--featured .feat-no { color: #bbb; }
+.plan-tis--featured .feat-no::before { color: #bbb; }
+
+.plan-tis-btn {
+  display: block;
+  text-align: center;
+  padding: 0.85rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-decoration: none;
+  border: 1px solid var(--gray-800);
+  color: var(--white);
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+  letter-spacing: 0.02em;
+}
+.plan-tis-btn:hover { border-color: var(--tis-rose); color: var(--tis-rose); }
+.plan-tis--featured .plan-tis-btn { background: var(--black); color: var(--white); border-color: var(--black); }
+.plan-tis--featured .plan-tis-btn:hover { background: #2a1020; border-color: var(--tis-rose); color: var(--tis-rose); }
+
+.plan-web { border: 1px solid var(--gray-800); margin-bottom: 2rem; }
+.plan-web-inner {
+  padding: 2rem 2.2rem;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 2rem; flex-wrap: wrap;
+}
+.plan-web-label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--tis-rose); margin-bottom: 0.5rem; font-weight: 500; }
+.plan-web h3   { font-family: var(--font-sans); font-size: 1rem; font-weight: 600; letter-spacing: 0; margin-bottom: 0.4rem; color: var(--white); }
+.plan-web p    { font-size: 0.82rem; color: var(--gray-500); font-weight: 300; }
+.plan-web-precio { text-align: right; flex-shrink: 0; }
+.plan-web-monto { font-family: var(--font-serif); font-size: 2rem; letter-spacing: -0.02em; margin-bottom: 0.2rem; color: var(--white); }
+.plan-web-monto span { font-size: 1rem; color: var(--gray-500); }
+.plan-web-sub { font-size: 0.78rem; color: var(--gray-500); font-weight: 300; margin-bottom: 1rem; }
+.planes-nota  { font-size: 0.85rem; color: var(--gray-500); line-height: 1.75; font-weight: 300; }
+
+/* =====================================================
+   TESTIMONIOS
+   ===================================================== */
+.testimonios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1px;
+  background: var(--gray-800);
+  margin-bottom: 1.5rem;
+}
+.testimonio-card {
+  background: var(--black);
+  padding: 2.5rem 2rem;
+  display: flex; flex-direction: column; gap: 1.5rem;
+  border-top: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+.testimonio-card:hover { border-top-color: var(--tis-rose); }
+.testimonio-avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--tis-rose-dim);
+  border: 1px solid rgba(196,116,138,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-serif); font-size: 1.2rem;
+  color: var(--tis-rose);
+  filter: blur(0.4px);
+  flex-shrink: 0;
+}
+.testimonio-card blockquote { font-size: 0.9rem; color: var(--gray-300); line-height: 1.75; font-style: italic; font-weight: 300; flex: 1; }
+.testimonio-footer { display: flex; flex-direction: column; gap: 0.2rem; }
+.testimonio-footer strong { font-size: 0.88rem; font-weight: 600; color: var(--white); }
+.testimonio-footer span   { font-size: 0.78rem; color: var(--gray-500); font-weight: 300; }
+.testimonio-piloto { color: var(--gray-700) !important; font-size: 0.72rem !important; }
+.testimonios-disclaimer { font-size: 0.78rem; color: var(--gray-700); font-weight: 300; font-style: italic; }
+
+/* =====================================================
+   CTA FINAL
+   ===================================================== */
+.tis-cta-final {
+  padding: 8rem 2.5rem;
+  background: var(--white);
+  color: var(--black);
+  position: relative;
+  overflow: hidden;
+}
+.tis-cta-final::before {
+  content: '';
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,116,138,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.tis-cta-inner { text-align: center; position: relative; }
+.tis-cta-final h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  letter-spacing: -0.03em;
+  margin-bottom: 1.2rem;
+  line-height: 1.1;
+  color: var(--black);
+}
+.tis-cta-final h2 em { font-style: italic; color: var(--gray-600); }
+.tis-cta-final p { font-size: 1rem; color: var(--gray-600); margin: 0 auto 2.5rem; line-height: 1.6; font-weight: 300; }
+.tis-cta-badges { margin-top: 1rem; font-size: 0.82rem; color: var(--gray-500); }
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+@media (max-width: 1024px) {
+  .planes-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 820px) {
+  .servicio-block { grid-template-columns: 1fr; gap: 2.5rem; }
+  .servicio-mockup { order: -1; }
+}
+
+@media (max-width: 720px) {
+  .tis-hero,
+  .tis-section,
+  .tis-cta-final,
+  .tis-trust-bar { padding-left: 1.4rem; padding-right: 1.4rem; }
+  .tis-section   { padding-top: 5rem; padding-bottom: 5rem; }
+  .planes-grid   { grid-template-columns: 1fr; }
+  .pasos-grid    { grid-template-columns: 1fr; }
+  .plan-web-inner{ flex-direction: column; align-items: flex-start; }
+  .plan-web-precio{ text-align: left; width: 100%; }
+  .hero-scroll   { left: 1.4rem; }
+  .tis-hero-actions { flex-direction: column; align-items: flex-start; }
+}
+</style>

@@ -1,0 +1,97 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+import { SITE_CONFIG, WHATSAPP_MESSAGES } from '../utils/constants';
+
+interface NavLink {
+  text: string;
+  href: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  page?: keyof typeof WHATSAPP_MESSAGES;
+  navLinks?: NavLink[];
+  navCtaText?: string;
+}
+
+const {
+  title,
+  description,
+  canonical = SITE_CONFIG.url,
+  page = 'general',
+  navLinks,
+  navCtaText,
+} = Astro.props;
+
+const whatsappMessage = WHATSAPP_MESSAGES[page];
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/png" href="/Logo Budgt transparente.png" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Budgt",
+        "description": "Automatización de contenido, atención al cliente e inteligencia de mercado para pequeños negocios en Chile.",
+        "url": "https://budgt.cl",
+        "areaServed": "Chile",
+        "priceRange": "$$"
+      }
+    </script>
+  </head>
+  <body>
+    <Nav phone={SITE_CONFIG.phone} whatsappMessage={whatsappMessage} links={navLinks} ctaText={navCtaText} />
+    <main>
+      <slot />
+    </main>
+    <Footer phone={SITE_CONFIG.phone} whatsappMessage={whatsappMessage} />
+    <WhatsAppFloat phone={SITE_CONFIG.phone} message={whatsappMessage} />
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add('visible');
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.7s ease,
+      transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>

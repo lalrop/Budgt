@@ -1,0 +1,45 @@
+---
+interface Props {
+  emoji: string;
+  title: string;
+  description: string;
+}
+
+const { emoji, title, description } = Astro.props;
+---
+
+<div class="profile">
+  <div class="profile-emoji">{emoji}</div>
+  <h3>{title}</h3>
+  <p>{description}</p>
+</div>
+
+<style>
+  .profile {
+    padding: 2rem 1.8rem;
+    border: 1px solid var(--gray-800);
+    transition: border-color 0.25s;
+  }
+
+  .profile:hover {
+    border-color: var(--gray-700);
+  }
+
+  .profile-emoji {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .profile h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+
+  .profile p {
+    font-size: 0.84rem;
+    color: var(--gray-400);
+    line-height: 1.55;
+    font-weight: 300;
+  }
+</style>

@@ -1,0 +1,685 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PlanCard from '../components/PlanCard.astro';
+import ProfileCard from '../components/ProfileCard.astro';
+import FAQItem from '../components/FAQItem.astro';
+import GuaranteeBadge from '../components/GuaranteeBadge.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import { SITE_CONFIG, getWhatsAppUrl } from '../utils/constants';
+
+const waGeneral = getWhatsAppUrl('Hola, quiero conocer más sobre los servicios de Budgt.');
+
+// Service 1: Básico
+const basicoFeatures = [
+  { text: 'Landing page profesional de 1 página' },
+  { text: 'Dominio .cl + SSL incluidos por 1 año' },
+  { text: 'Diseño responsive (móvil y escritorio)' },
+  { text: 'Botón de WhatsApp integrado' },
+  { text: 'SEO on-page básico' },
+  { text: 'Formulario de contacto' },
+  { text: 'Entrega en 5 días hábiles' },
+];
+
+// Service 2: Medio
+const medioFeatures = [
+  { text: 'Todo lo del plan Básico' },
+  { text: 'Chatbot IA para WhatsApp 24/7' },
+  { text: 'Captura de leads automática' },
+  { text: 'Google Business Profile configurado' },
+  { text: 'Base de conocimiento personalizada' },
+  { text: 'Informes mensuales de consultas' },
+  { text: '1 sesión mensual de estrategia (30 min)' },
+];
+
+// Service 3: Avanzado
+const avanzadoFeatures = [
+  { text: 'Todo lo del plan Medio' },
+  { text: 'SEO Local y GEO optimizado' },
+  { text: 'Automatización de prospección' },
+  { text: '8 posts/mes en redes sociales' },
+  { text: '1 newsletter mensual' },
+  { text: 'Dashboard de métricas (Power BI)' },
+  { text: '2 sesiones mensuales de estrategia (45 min)' },
+];
+
+const profiles = [
+  { emoji: '🏪', title: 'Tiendas y locales físicos', description: 'que quieren capturar clientes que buscan online' },
+  { emoji: '🔧', title: 'Servicios a domicilio', description: 'que pierden llamadas fuera del horario de trabajo' },
+  { emoji: '📱', title: 'Negocios por WhatsApp', description: 'que necesitan escalar sin contratar personal' },
+  { emoji: '🚀', title: 'Emprendedores que arrancan', description: 'quieren empezar con una presencia profesional desde el día uno' },
+];
+
+const faqs = [
+  { question: '¿Necesito saber de tecnología para contratar esto?', answer: 'No. Nos encargamos de todo el trabajo técnico. Tú solo nos cuentas sobre tu negocio y nosotros hacemos el resto. Al final recibes todo funcionando, explicado en lenguaje simple.' },
+  { question: '¿Trabajan con negocios fuera de Santiago?', answer: 'Sí. El servicio es completamente remoto y trabajamos con negocios en todo Chile. Toda la coordinación es por WhatsApp o email, sin importar dónde estés.' },
+  { question: '¿Puedo contratar solo un servicio o necesito tomar todos?', answer: 'Puedes contratar solo el servicio que necesitas ahora. No hay paquete obligatorio ni dependencia entre productos. Eso sí, si los combinas, se potencian mucho mejor.' },
+  { question: '¿Cómo se paga?', answer: 'Acordamos los detalles por WhatsApp y el pago es por transferencia bancaria. Para servicios de setup (web, chatbot), el pago es al inicio. Para planes mensuales, se cobra al inicio de cada ciclo.' },
+  { question: '¿Puedo cancelar cuando quiera?', answer: 'Sí. Los servicios mensuales no tienen permanencia mínima. Puedes cancelar en cualquier momento avisándonos antes del siguiente ciclo de facturación.' },
+  { question: '¿Qué pasa si no me convence el primer mes?', answer: 'Garantía de satisfacción en todos nuestros servicios: si después del primer resumen, clip o entrega sientes que no era lo que necesitabas, te devolvemos el dinero. Sin preguntas, sin burocracia.' },
+  { question: '¿Con qué herramientas trabajan?', answer: 'Usamos tecnología de punta: inteligencia artificial (Claude, Whisper), automatización (Python, Apify), email marketing (Brevo), análisis de datos (Power BI) y WhatsApp Business API. Tú no necesitas conocer ninguna de ellas.' },
+];
+
+const whyNot = [
+  { bad: 'Te dan acceso a una plataforma y te dejan explorar solo', good: 'Estudiamos los datos y te presentamos solo lo que te sirve' },
+  { bad: 'Filtras tú, lees tú, decides a ciegas', good: 'Filtramos, analizamos y te enviamos el resumen listo' },
+  { bad: 'Pagas aunque no uses la plataforma ese mes', good: 'Pagas solo por un servicio activo que trabaja para ti' },
+];
+---
+
+<BaseLayout
+  title="Budgt — Tecnología e inteligencia para pequeños negocios de Chile"
+  description="Automatizamos el contenido, la atención al cliente y la inteligencia de mercado de tu negocio. Para que tú te dediques a lo que realmente importa. Planes desde $390.000."
+  page="general"
+>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-tag">Budgt · Tecnología para negocios reales · Chile</div>
+    <h1>Tu negocio tiene todo para crecer. <em>Solo le falta la tecnología correcta.</em></h1>
+    <p class="hero-sub">
+      Digitalizamos tu negocio de forma integral: web profesional, chatbot de atención y
+      presencia en Google. Para que dejes de perder clientes y empezar a captar más.
+    </p>
+    <div class="hero-actions">
+      <a href="#servicios" class="btn-primary">Ver planes y precios</a>
+      <a href={waGeneral} class="btn-ghost" target="_blank" rel="noopener">
+        Hablar con un asesor →
+      </a>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>Desplázate</span>
+    </div>
+  </section>
+
+  <!-- Credibility Bar -->
+  <div class="credibility-bar">
+    <div class="cred-item"><strong>+30</strong> negocios digitalizados</div>
+    <span class="cred-sep">·</span>
+    <div class="cred-item"><strong>Resultados</strong> desde semana 1</div>
+    <span class="cred-sep">·</span>
+    <div class="cred-item"><strong>100%</strong> remoto · todo Chile</div>
+    <span class="cred-sep">·</span>
+    <div class="cred-item"><strong>Sin contratos</strong> largos ni letra chica</div>
+  </div>
+
+  <!-- Services Section -->
+  <section class="product-section" id="servicios">
+    <div class="section-label reveal">Nuestros servicios</div>
+
+    <!-- Plans Grid -->
+    <div class="plans-grid reveal">
+      <PlanCard
+        name="Básico"
+        price="$390.000"
+        period="CLP · pago único"
+        features={basicoFeatures}
+        ctaText="Quiero mi web"
+        ctaUrl={getWhatsAppUrl('Hola, me interesa el plan Básico de Budgt.Quiero una landing page profesional.')}
+        tag="Pago único"
+      />
+      <PlanCard
+        name="Medio"
+        price="$249.000"
+        period="CLP setup + $79.000/mes"
+        features={medioFeatures}
+        ctaText="Empezar con Mi Negocio Responde Solo"
+        ctaUrl={getWhatsAppUrl('Hola, me interesa el plan Medio de Budgt.Quiero un chatbot para mi negocio.')}
+        featured={true}
+        tag="Más popular"
+      />
+      <PlanCard
+        name="Avanzado"
+        price="$490.000"
+        period="CLP setup + $149.000/mes"
+        features={avanzadoFeatures}
+        ctaText="Quiero la máquina de clientes"
+        ctaUrl={getWhatsAppUrl('Hola, me interesa el plan Avanzado de Budgt.Quiero digitalizar mi negocio por completo.')}
+        tag="Todo incluido"
+      />
+    </div>
+
+    <GuaranteeBadge
+      icon="🛡️"
+      title="Garantía de satisfacción"
+      description="Si después de tu primera entrega sientes que no era lo que necesitabas, te devolvemos el dinero. Sin preguntas, sin burocracia. Queremos que pruebes sin riesgo."
+    />
+  </section>
+
+  <!-- Profiles Section -->
+  <section class="profiles-section">
+    <h2 class="reveal">¿Para quién es esto?</h2>
+    <div class="profiles-grid">
+      {profiles.map((profile) => (
+        <ProfileCard
+          emoji={profile.emoji}
+          title={profile.title}
+          description={profile.description}
+        />
+      ))}
+    </div>
+  </section>
+
+  <!-- Why Not Section -->
+  <section class="compare-section">
+    <div class="compare-inner">
+      <div class="section-label reveal">Lo que NO hacemos</div>
+      <h2 class="reveal" style="margin-bottom: 1rem;">Y por qué importa saberlo</h2>
+      <div class="compare-grid reveal">
+        <div class="compare-row-head">
+          <div class="compare-label">Lo que hacen los demás</div>
+          <div class="compare-label ours">Lo que hace Budgt</div>
+        </div>
+        {whyNot.map((item) => (
+          <div class="compare-row">
+            <div class="compare-text-bad">{item.bad}</div>
+            <div class="compare-text-good">{item.good}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about">
+    <div class="about-inner">
+      <div>
+        <div class="section-label reveal">Quiénes somos</div>
+        <h2 class="reveal">Un equipo pequeño con <em>mucha experiencia.</em></h2>
+        <p class="reveal">
+          Somos un equipo pequeño con experiencia en apoyo a pequeñas y medianas empresas y amplia
+          formación en herramientas tecnológicas e inteligencia artificial. Nos movemos en el
+          espacio donde la tecnología se vuelve práctica para los negocios que más lo necesitan.
+        </p>
+        <p class="reveal">
+          Hablamos tu idioma: traducimos el lenguaje del marketing digital, la inteligencia
+          artificial y las ventas a términos del día a día. Sin humo, sin promesas vacías.
+        </p>
+      </div>
+      <div class="about-stats reveal">
+        <div class="about-stat">
+          <div class="about-stat-num">3</div>
+          <div class="about-stat-label">personas detrás de Budgt</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-num">+30</div>
+          <div class="about-stat-label">negocios que ya crecen con nosotros</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-num">3</div>
+          <div class="about-stat-label">servicios activos disponibles hoy</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-num">100%</div>
+          <div class="about-stat-label">enfocados en pequeñas empresas</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section">
+    <h2 class="reveal">Preguntas frecuentes</h2>
+    {faqs.map((faq) => (
+      <FAQItem question={faq.question} answer={faq.answer} />
+    ))}
+  </section>
+
+  <!-- CTA Final -->
+  <section class="cta-final">
+    <h2 class="reveal">¿Listo para dar el <em>siguiente paso?</em></h2>
+    <p class="reveal">
+      Escríbenos por WhatsApp. Te respondemos el mismo día. Cuéntanos sobre tu negocio y te
+      orientamos hacia el servicio que más te conviene. Sin compromiso, sin presión.
+    </p>
+    <a href={waGeneral} class="btn-wa reveal" target="_blank" rel="noopener">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.167 1.618 5.955L.057 23.928a.5.5 0 0 0 .611.611l5.973-1.561A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.96 9.96 0 0 1-5.073-1.384l-.363-.215-3.763.984.984-3.763-.215-.363A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+      </svg>
+      Escribirnos por WhatsApp
+    </a>
+    <p class="cta-note reveal">Respondemos en menos de 24 horas · Sin compromiso</p>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 7rem 2.5rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(80, 80, 80, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    border: 1px solid var(--gray-700);
+    padding: 0.35rem 0.9rem;
+    margin-bottom: 2.2rem;
+    width: fit-content;
+  }
+
+  .hero h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    max-width: 900px;
+    margin-bottom: 1.8rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gray-400);
+  }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--gray-400);
+    max-width: 600px;
+    line-height: 1.65;
+    margin-bottom: 3rem;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--white);
+    color: var(--black);
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.9rem 2.2rem;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s;
+  }
+
+  .btn-primary:hover {
+    background: var(--gray-300);
+  }
+
+  .btn-ghost {
+    color: var(--gray-400);
+    font-size: 0.9rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: color 0.2s;
+  }
+
+  .btn-ghost:hover {
+    color: var(--white);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--gray-600);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .scroll-line {
+    width: 40px;
+    height: 1px;
+    background: var(--gray-600);
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollLine {
+    0%,
+    100% {
+      transform: scaleX(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scaleX(0.4);
+      opacity: 0.4;
+    }
+  }
+
+  .credibility-bar {
+    background: var(--gray-900);
+    border-top: 1px solid var(--gray-800);
+    border-bottom: 1px solid var(--gray-800);
+    padding: 1rem 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .cred-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    color: var(--gray-400);
+  }
+
+  .cred-item strong {
+    color: var(--white);
+  }
+
+  .cred-sep {
+    color: var(--gray-700);
+  }
+
+  .product-section {
+    padding: 7rem 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2px;
+    background: var(--gray-800);
+    margin-bottom: 2rem;
+  }
+
+  .profiles-section {
+    padding: 7rem 2.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .profiles-section h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 3rem;
+  }
+
+  .profiles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .compare-section {
+    padding: 7rem 2.5rem;
+    background: var(--gray-900);
+    border-top: 1px solid var(--gray-800);
+  }
+
+  .compare-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--gray-800);
+    margin-top: 3rem;
+  }
+
+  .compare-row {
+    background: var(--gray-900);
+    padding: 1.4rem 1.6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .compare-row-head {
+    background: var(--black);
+    padding: 0.9rem 1.6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .compare-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+  }
+
+  .compare-label.ours {
+    color: var(--white);
+  }
+
+  .compare-text-bad {
+    font-size: 0.88rem;
+    color: var(--gray-500);
+    line-height: 1.5;
+    font-weight: 300;
+    text-decoration: line-through;
+    text-decoration-color: var(--gray-700);
+  }
+
+  .compare-text-good {
+    font-size: 0.88rem;
+    color: var(--gray-300);
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+  .about {
+    padding: 7rem 2.5rem;
+    background: var(--gray-900);
+    border-top: 1px solid var(--gray-800);
+  }
+
+  .about-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .about h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.8rem;
+  }
+
+  .about h2 em {
+    font-style: italic;
+    color: var(--gray-400);
+  }
+
+  .about p {
+    font-size: 1rem;
+    color: var(--gray-400);
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 1.2rem;
+  }
+
+  .about p:last-child {
+    margin-bottom: 0;
+  }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--gray-800);
+  }
+
+  .about-stat {
+    background: var(--gray-900);
+    padding: 2rem 1.8rem;
+    transition: background 0.25s;
+  }
+
+  .about-stat:hover {
+    background: var(--gray-800);
+  }
+
+  .about-stat-num {
+    font-family: var(--font-serif);
+    font-size: 2.4rem;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  .about-stat-label {
+    font-size: 0.82rem;
+    color: var(--gray-400);
+    font-weight: 300;
+    line-height: 1.4;
+  }
+
+  .faq-section {
+    padding: 7rem 2.5rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-section h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 3rem;
+  }
+
+  .cta-final {
+    padding: 8rem 2.5rem;
+    background: var(--white);
+    color: var(--black);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-final::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.04) 0%, transparent 70%);
+  }
+
+  .cta-final h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    letter-spacing: -0.03em;
+    margin-bottom: 1.2rem;
+    line-height: 1.05;
+    position: relative;
+  }
+
+  .cta-final h2 em {
+    font-style: italic;
+    color: var(--gray-600);
+  }
+
+  .cta-final > p {
+    font-size: 1rem;
+    color: var(--gray-600);
+    max-width: 500px;
+    margin: 0 auto 2.8rem;
+    line-height: 1.65;
+    font-weight: 300;
+    position: relative;
+  }
+
+  .btn-wa {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 1rem 2.2rem;
+    text-decoration: none;
+    border: 2px solid var(--black);
+    transition:
+      background 0.2s,
+      color 0.2s;
+    position: relative;
+    margin-bottom: 1rem;
+  }
+
+  .btn-wa:hover {
+    background: var(--gray-300);
+    border-color: var(--gray-300);
+    color: var(--black);
+  }
+
+  .cta-note {
+    font-size: 0.78rem;
+    color: var(--gray-500);
+    position: relative;
+  }
+
+  @media (max-width: 720px) {
+    .hero,
+    .product-section,
+    .about,
+    .compare-section,
+    .faq-section,
+    .cta-final,
+    .credibility-bar,
+    .profiles-section {
+      padding-left: 1.4rem;
+      padding-right: 1.4rem;
+    }
+
+    .about-inner {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .compare-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .plans-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

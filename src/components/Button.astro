@@ -1,0 +1,51 @@
+---
+interface Props {
+  href: string;
+  variant?: 'primary' | 'ghost' | 'wa';
+  label: string;
+  showArrow?: boolean;
+}
+
+const { href, variant = 'primary', label, showArrow = false } = Astro.props;
+---
+
+<a href={href} class:list={['btn', variant]} target="_blank" rel="noopener">
+  {label}
+  {showArrow && <span class="arrow">→</span>}
+</a>
+
+<style>
+  .btn {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.9rem 2.2rem;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s;
+  }
+
+  .btn.primary {
+    background: var(--white);
+    color: var(--black);
+  }
+
+  .btn.primary:hover {
+    background: var(--gray-300);
+  }
+
+  .btn.ghost {
+    background: transparent;
+    color: var(--gray-400);
+    padding: 0;
+  }
+
+  .btn.ghost:hover {
+    color: var(--white);
+  }
+
+  .arrow {
+    margin-left: 0.4rem;
+  }
+</style>

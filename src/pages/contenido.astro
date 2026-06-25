@@ -1,0 +1,606 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PlanCard from '../components/PlanCard.astro';
+import ProfileCard from '../components/ProfileCard.astro';
+import FAQItem from '../components/FAQItem.astro';
+import GuaranteeBadge from '../components/GuaranteeBadge.astro';
+import { getWhatsAppUrl } from '../utils/constants';
+
+const waContenido = getWhatsAppUrl('Hola, me interesa el servicio de Contenido que Trabaja de Budgt.');
+
+const profiles = [
+  { emoji: '🎙️', title: 'Podcasters y YouTubers', description: 'que graban horas de contenido pero no lo distribuyen bien' },
+  { emoji: '💡', title: 'Coaches y consultores', description: 'que comparten su conocimiento pero no tienen tiempo de producir' },
+  { emoji: '🌟', title: 'Emprendedores con marca personal', description: 'que quieren presencia constante sin vivir en el celular' },
+  { emoji: '📚', title: 'Infoproductores', description: 'que necesitan visibilidad para vender sus cursos y asesorías' },
+];
+
+const plans = [
+  {
+    name: 'Básico',
+    price: '$149.000',
+    period: 'CLP / mes',
+    features: [
+      { text: '1 video o podcast largo/semana' },
+      { text: '4 clips verticales/semana (16/mes)' },
+      { text: 'Subtítulos automáticos incluidos' },
+      { text: 'Hook de apertura redactado por IA' },
+      { text: 'Copy para descripción y hashtags' },
+      { text: 'Entrega en 48 hrs hábiles' },
+      { text: 'Formato para 1 red social' },
+    ],
+    ctaText: 'Empezar con el Básico',
+    ctaUrl: getWhatsAppUrl('Hola, me interesa el plan Básico de Contenido que Trabaja de Budgt.'),
+    tag: 'Pago único mensual',
+  },
+  {
+    name: 'Medio',
+    price: '$249.000',
+    period: 'CLP / mes',
+    features: [
+      { text: 'Todo lo del plan Básico' },
+      { text: '8 clips verticales/semana (32/mes)' },
+      { text: '4 posts/carrusel derivados del contenido' },
+      { text: 'Newsletter mensual derivada del contenido' },
+      { text: 'Calendario editorial completo' },
+      { text: 'Entrega en 24 hrs hábiles' },
+      { text: 'Formato para 2 redes sociales' },
+      { text: '1 sesión mensual de estrategia (30 min)' },
+    ],
+    ctaText: 'Este es el mío',
+    ctaUrl: getWhatsAppUrl('Hola, me interesa el plan Medio de Contenido que Trabaja de Budgt.'),
+    featured: true,
+    tag: 'Más popular',
+  },
+  {
+    name: 'Premium',
+    price: '$390.000',
+    period: 'CLP / mes',
+    features: [
+      { text: 'Todo lo del plan Medio' },
+      { text: '12 clips verticales/semana (48/mes)' },
+      { text: 'Gestión de comunidad (WhatsApp/Telegram)' },
+      { text: 'Formato para todas tus redes' },
+      { text: '1 sesión quincenal de estrategia (45 min)' },
+      { text: 'Soporte prioritario 24/7' },
+    ],
+    ctaText: 'Quiero el Premium',
+    ctaUrl: getWhatsAppUrl('Hola, me interesa el plan Premium de Contenido que Trabaja de Budgt.'),
+    tag: 'Todo incluido',
+  },
+];
+
+const faqs = [
+  { question: '¿Necesito saber de edición de video?', answer: 'No. Tú solo grabas y nos mandas el video. Nosotros nos encargamos de la edición, subtítulos, cortes y todo el contenido derivable. Tú solo subes.' },
+  { question: '¿En qué formatos entregan los clips?', answer: 'Depende del plan. El Básico entrega para 1 red social (Instagram o TikTok), el Medio para 2, y el Premium para todas las que uses. Los formatos incluyen vertical 9:16 para Reels/TikTok/Shorts.' },
+  { question: '¿Qué incluye exactamente el copy?', answer: 'Cada clip incluye: hook de apertura redactado por IA, copy para la descripción y hashtags optimizados para el algoritmo. Los posts incluyen texto completo para publicar.' },
+  { question: '¿Puedo dar retroalimentación sobre el contenido?', answer: 'Sí. Los planes Medio y Premium incluyen sesiones de estrategia donde revisamos juntos qué está funcionando y ajustamos el enfoque.' },
+  { question: '¿Puedo cancelar cuando quiera?', answer: 'Sí. No hay permanencia mínima. Puedes cancelar en cualquier momento avisándonos antes del siguiente ciclo de facturación.' },
+];
+---
+
+<BaseLayout
+  title="Contenido que Trabaja — Budgt | Clips, posts y carruseles con IA"
+  description="Automatizamos la producción de contenido para tu negocio: clips para Reels, TikTok y Shorts, posts, carruseles y newsletter. Graba tu video. Nosotros producimos todo."
+  page="contenido"
+>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-tag">Contenido que Trabaja · Budgt</div>
+    <h1>Grabas contenido valioso. <em>Nosotros lo convertimos en todo lo que necesitas.</em></h1>
+    <p class="hero-sub">
+      Tienes ideas, tienes conocimiento, tienes algo importante que decir. Pero entre grabar, editar,
+      subtitular, cortar clips, redactar posts y programar publicaciones... el contenido nunca sale
+      a tiempo o sale a medias. Nosotros lo resolvemos.
+    </p>
+    <div class="hero-actions">
+      <a href="#planes" class="btn-primary">Ver planes y precios</a>
+      <a href={waContenido} class="btn-ghost" target="_blank" rel="noopener">
+        Hablar con un asesor →
+      </a>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>Desplázate</span>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="intro">
+    <div class="intro-inner">
+      <div>
+        <div class="section-label reveal">Cómo funciona</div>
+        <h2 class="reveal">Tú subes un video. <em>Nosotros producimos todo.</em></h2>
+      </div>
+      <div>
+        <p class="reveal">
+          Tomamos tu video o podcast de la semana y lo convertimos automáticamente en clips para
+          Reels, TikTok y Shorts —con subtítulos, hooks y copy listos para pegar— más los posts y
+          carruseles que acompañan cada pieza.
+        </p>
+        <p class="reveal">
+          Nuestro sistema extrae los mejores momentos, genera subtítulos, corta los clips y redacta
+          el copy. Revisamos y enviamos. Tú solo publicas y monitoreas los resultados.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Profiles -->
+  <section class="profiles-section">
+    <h2 class="reveal">¿Para quién es esto?</h2>
+    <div class="profiles-grid">
+      {profiles.map((profile) => (
+        <ProfileCard
+          emoji={profile.emoji}
+          title={profile.title}
+          description={profile.description}
+        />
+      ))}
+    </div>
+  </section>
+
+  <!-- Plans -->
+  <section class="plans-section" id="planes">
+    <div class="plans-inner">
+      <div class="plans-header">
+        <h2 class="reveal">Planes de <em>Contenido que Trabaja</em></h2>
+        <p class="reveal">Transparentes, sin letra chica. Elige según cuánto contenido necesitas producir.</p>
+      </div>
+      <div class="plans-grid reveal">
+        {plans.map((plan) => (
+          <PlanCard
+            name={plan.name}
+            price={plan.price}
+            period={plan.period}
+            features={plan.features}
+            ctaText={plan.ctaText}
+            ctaUrl={plan.ctaUrl}
+            featured={plan.featured || false}
+            tag={plan.tag}
+          />
+        ))}
+      </div>
+      <GuaranteeBadge
+        icon="🛡️"
+        title="Garantía de satisfacción"
+        description="Si después de tu primer clip sientes que no era lo que necesitabas, te devolvemos el dinero. Sin preguntas, sin burocracia."
+      />
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="how-section">
+    <div class="how-inner">
+      <h2 class="reveal">Cómo funciona</h2>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <h3>Nos cuentas tu marca</h3>
+            <p>Cuéntanos sobre tu negocio, tu audiencia y en qué redes quieres estar. En 24 hrs tenemos tu perfil armado.</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <h3>Subes tu contenido</h3>
+            <p>Cada semana nos mandas por WhatsApp o Drive tu video o audio. Eso es todo lo que tienes que hacer.</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <h3>Nosotros producimos todo</h3>
+            <p>Nuestro sistema extrae los mejores momentos, genera subtítulos, corta los clips y redacta el copy.</p>
+          </div>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <h3>Tú publicas y creces</h3>
+            <p>Recibes los archivos listos para subir. Tú decides cuándo y cómo publicar. Sin presión, sin dependencia.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <h2 class="reveal">Preguntas frecuentes</h2>
+    {faqs.map((faq) => (
+      <FAQItem question={faq.question} answer={faq.answer} />
+    ))}
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-final">
+    <h2 class="reveal">Tu contenido merece <em>llegar más lejos.</em></h2>
+    <p class="reveal">
+      Escríbenos por WhatsApp. Te respondemos el mismo día. Cuéntanos sobre tu proyecto y te orientamos
+      hacia el plan que más te conviene.
+    </p>
+    <a href={waContenido} class="btn-wa reveal" target="_blank" rel="noopener">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.167 1.618 5.955L.057 23.928a.5.5 0 0 0 .611.611l5.973-1.561A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.96 9.96 0 0 1-5.073-1.384l-.363-.215-3.763.984.984-3.763-.215-.363A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+      </svg>
+      Hablar con un asesor
+    </a>
+    <p class="cta-note reveal">Respondemos en menos de 24 horas · Sin compromiso</p>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 7rem 2.5rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(80, 80, 80, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    border: 1px solid var(--gray-700);
+    padding: 0.35rem 0.9rem;
+    margin-bottom: 2.2rem;
+    width: fit-content;
+  }
+
+  .hero h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    max-width: 900px;
+    margin-bottom: 1.8rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gray-400);
+  }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--gray-400);
+    max-width: 600px;
+    line-height: 1.65;
+    margin-bottom: 3rem;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--white);
+    color: var(--black);
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.9rem 2.2rem;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s;
+  }
+
+  .btn-primary:hover {
+    background: var(--gray-300);
+  }
+
+  .btn-ghost {
+    color: var(--gray-400);
+    font-size: 0.9rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: color 0.2s;
+  }
+
+  .btn-ghost:hover {
+    color: var(--white);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--gray-600);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .scroll-line {
+    width: 40px;
+    height: 1px;
+    background: var(--gray-600);
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollLine {
+    0%, 100% { transform: scaleX(1); opacity: 1; }
+    50% { transform: scaleX(0.4); opacity: 0.4; }
+  }
+
+  .intro {
+    padding: 7rem 2.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .intro-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .intro h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .intro h2 em {
+    font-style: italic;
+    color: var(--gray-400);
+  }
+
+  .intro p {
+    font-size: 1rem;
+    color: var(--gray-400);
+    line-height: 1.75;
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+
+  .intro p:last-child {
+    margin-bottom: 0;
+  }
+
+  .profiles-section {
+    padding: 0 2.5rem 7rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .profiles-section h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 3rem;
+  }
+
+  .profiles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .plans-section {
+    padding: 7rem 2.5rem;
+    background: var(--gray-900);
+    border-top: 1px solid var(--gray-800);
+  }
+
+  .plans-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .plans-header {
+    margin-bottom: 4rem;
+  }
+
+  .plans-header h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .plans-header h2 em {
+    font-style: italic;
+    color: var(--gray-400);
+  }
+
+  .plans-header p {
+    font-size: 1rem;
+    color: var(--gray-400);
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  .plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2px;
+    background: var(--gray-800);
+    margin-bottom: 2rem;
+  }
+
+  .how-section {
+    padding: 7rem 2.5rem;
+  }
+
+  .how-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .how-inner h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 4rem;
+  }
+
+  .steps {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .step {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 2rem;
+    padding: 2.2rem 0;
+    border-top: 1px solid var(--gray-800);
+    align-items: start;
+  }
+
+  .step-num {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    color: var(--gray-700);
+    line-height: 1;
+    padding-top: 0.1rem;
+  }
+
+  .step-content h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .step-content p {
+    font-size: 0.9rem;
+    color: var(--gray-400);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  .faq-section {
+    padding: 7rem 2.5rem;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .faq-section h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 3rem;
+  }
+
+  .cta-final {
+    padding: 8rem 2.5rem;
+    background: var(--white);
+    color: var(--black);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-final::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.04) 0%, transparent 70%);
+  }
+
+  .cta-final h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    letter-spacing: -0.03em;
+    margin-bottom: 1.2rem;
+    line-height: 1.05;
+    position: relative;
+  }
+
+  .cta-final h2 em {
+    font-style: italic;
+    color: var(--gray-600);
+  }
+
+  .cta-final > p {
+    font-size: 1rem;
+    color: var(--gray-600);
+    max-width: 500px;
+    margin: 0 auto 2.8rem;
+    line-height: 1.65;
+    font-weight: 300;
+    position: relative;
+  }
+
+  .btn-wa {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 1rem 2.2rem;
+    text-decoration: none;
+    border: 2px solid var(--black);
+    transition: background 0.2s, color 0.2s;
+    position: relative;
+    margin-bottom: 1rem;
+  }
+
+  .btn-wa:hover {
+    background: var(--gray-300);
+    border-color: var(--gray-300);
+    color: var(--black);
+  }
+
+  .cta-note {
+    font-size: 0.78rem;
+    color: var(--gray-500);
+    position: relative;
+  }
+
+  @media (max-width: 720px) {
+    .hero, .intro, .profiles-section, .plans-section, .how-section, .faq-section, .cta-final {
+      padding-left: 1.4rem;
+      padding-right: 1.4rem;
+    }
+
+    .intro-inner,
+    .plans-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+</style>

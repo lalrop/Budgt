@@ -1,0 +1,789 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PlanCard from '../components/PlanCard.astro';
+import ProfileCard from '../components/ProfileCard.astro';
+import FAQItem from '../components/FAQItem.astro';
+import GuaranteeBadge from '../components/GuaranteeBadge.astro';
+import { getWhatsAppUrl } from '../utils/constants';
+
+const waMercado = getWhatsAppUrl('Hola, me interesa saber más sobre Inteligencia de Mercado de Budgt.');
+
+const profiles = [
+  { emoji: '🏢', title: 'Dueños de negocios', description: 'que quieren tomar decisiones basadas en datos, no en intuición' },
+  { emoji: '🛒', title: 'Comercios y tiendas', description: 'que quieren saber qué precios y promociones usa su competencia' },
+  { emoji: '📈', title: 'Emprendedores en crecimiento', description: 'que buscan detectar oportunidades antes que los demás' },
+  { emoji: '📲', title: 'Marcas con redes sociales', description: 'que quieren saber qué contenido funciona en su rubro' },
+];
+
+const whyNot = [
+  { bad: 'Te dan acceso a una plataforma y te dejan explorar solo', good: 'Estudiamos los datos y te presentamos solo lo que te sirve' },
+  { bad: 'Filtras tú, lees tú, decides a ciegas', good: 'Filtramos, analizamos y te enviamos el resumen listo' },
+  { bad: 'Pagas aunque no uses la plataforma ese mes', good: 'Pagas solo por un servicio activo que trabaja para ti' },
+];
+
+const plans = [
+  {
+    name: 'Básico',
+    price: '$49.990',
+    period: 'CLP / mes',
+    features: [
+      { text: 'Monitoreo de hasta 2 competidores' },
+      { text: '1 resumen semanal vía WhatsApp' },
+      { text: 'Detección básica de tendencias del rubro' },
+      { text: 'Alertas de cambios importantes' },
+    ],
+    ctaText: 'Quiero empezar',
+    ctaUrl: getWhatsAppUrl('Hola, me interesa el plan Básico de Inteligencia de Mercado de Budgt.'),
+    tag: 'Pago mensual',
+  },
+  {
+    name: 'Medio',
+    price: '$79.990',
+    period: 'CLP / mes',
+    features: [
+      { text: 'Monitoreo de hasta 6 competidores' },
+      { text: 'Resumen semanal con recomendaciones' },
+      { text: 'Detección ampliada de tendencias' },
+      { text: 'Análisis de precios y promociones' },
+      { text: 'Benchmarking de precios y contenido' },
+      { text: '1 sesión mensual de revisión (30 min)' },
+      { text: 'Soporte prioritario WhatsApp' },
+    ],
+    ctaText: 'Este es el mío',
+    ctaUrl: getWhatsAppUrl('Hola, me interesa el plan Medio de Inteligencia de Mercado de Budgt.'),
+    featured: true,
+    tag: 'Más popular',
+  },
+  {
+    name: 'Premium',
+    price: '$149.990',
+    period: 'CLP / mes',
+    features: [
+      { text: 'Competidores ilimitados' },
+      { text: 'Dashboard visual de métricas (Power BI)' },
+      { text: 'Informes personalizados (semanal + mensual)' },
+      { text: 'Análisis de campañas específicas' },
+      { text: 'Alertas en tiempo real' },
+      { text: 'Sesiones de estrategia quincenales (45 min)' },
+    ],
+    ctaText: 'Quiero el Premium',
+    ctaUrl: getWhatsAppUrl('Hola, me interesa el plan Premium de Inteligencia de Mercado de Budgt.'),
+    tag: 'Todo incluido',
+  },
+];
+
+const faqs = [
+  { question: '¿Necesito saber de tecnología para contratar esto?', answer: 'No. Todo el análisis lo hacemos nosotros. Tú solo recibes el resumen por WhatsApp, listo para leer y actuar. Sin dashboards, sin plataformas que aprender.' },
+  { question: '¿Cómo eligen a los competidores que monitorean?', answer: 'Nos cuentas tu negocio, tu rubro y los negocios que sabes que son tu competencia directa. Nosotros confirmamos y empezamos a monitorear. Si no estás seguro de quiénes son, te ayudamos a identificarlos.' },
+  { question: '¿Qué redes sociales monitorean?', answer: 'Monitoreamos Instagram, Facebook, TikTok y web de la competencia. En el plan Básico nos enfocamos en una red principal. En los planes Medio y Premium cubrimos todas.' },
+  { question: '¿El resumen es solo de competidores o también incluye tendencias del rubro?', answer: 'Incluye ambos. El resumen semanal cubre: qué publicaron tus competidores, qué les funcionó, cambios de precios y promociones, y tendencias que están ganando fuerza en tu rubro.' },
+  { question: '¿Puedo cancelar cuando quiera?', answer: 'Sí. Los servicios mensuales no tienen permanencia mínima. Puedes cancelar en cualquier momento avisándonos antes del siguiente ciclo de facturación.' },
+];
+
+const sampleReport = {
+  date: 'Lunes 26 de Mayo, 2026',
+  executive: 'Esta semana tu competencia publicó 23 veces. 3 de ellas fueron sobre promociones de temporada. Las que más engagement generaron fueron las que incluían contenido de video corto.',
+  competitors: [
+    { name: 'Tienda El Sol', action: 'bajó precios en 4 productos del catálogo. Están promocionando jerseys de invierno con un 20% de descuento. Engagement alto (+40% vs semana anterior).' },
+    { name: 'Sports Center', action: 'lanzó una campaña de fidelización en Instagram con sorteos. Tono más casual que la semana anterior. La audiencia respondió bien.' },
+  ],
+  yourBusiness: 'Publicaste 2 veces esta semana. El post más visto fue el de los nuevos productos. Necesitas más frecuencia para competir.',
+  recommendations: [
+    'Considera hacer una promoción de temporada similar a la de El Sol. El timing es bueno (inicio de frío).',
+    'Tu contenido de video tuvo 3x más alcance que las imágenes. Prioriza clips cortos esta semana.',
+    'El precio del producto X en tu competencia está 15% por debajo del tuyo. Revisa tu estrategia de precios.',
+  ],
+};
+---
+
+<BaseLayout
+  title="Inteligencia de Mercado — Budgt | Análisis de competidores para negocios"
+  description="Saber qué hace tu competencia, antes de que ellos sepan lo que haces tú. Resumen semanal vía WhatsApp con análisis de precios, tendencias y contenido. Desde $49.990/mes."
+  page="mercado"
+>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-tag">Inteligencia de Mercado · Budgt</div>
+    <h1>Saber qué hace tu competencia. <em>Antes de que ellos sepan lo que haces tú.</em></h1>
+    <p class="hero-sub">
+      Cada semana tu competencia publica, ajusta precios, lanza promociones y cambia su estrategia.
+      Tú te enteras? La mayoría de los pequeños negocios operan a ciegas: toman decisiones basadas
+      en intuición, no en datos.
+    </p>
+    <div class="hero-actions">
+      <a href="#planes" class="btn-primary">Ver planes y precios</a>
+      <a href={waMercado} class="btn-ghost" target="_blank" rel="noopener">
+        Hablar con un asesor →
+      </a>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>Desplázate</span>
+    </div>
+  </section>
+
+  <!-- Problem -->
+  <section class="problem-section">
+    <div class="problem-inner">
+      <div>
+        <div class="section-label reveal">El problema</div>
+        <h2 class="reveal">La mayoría opera <em>a ciegas.</em></h2>
+        <p class="reveal">
+          Cada semana tu competencia publica, ajusta precios y lanza promociones. ¿Tú te enteras?
+          La realidad es que la mayoría de los pequeños negocios toman decisiones basadas en
+          intuición, no en datos.
+        </p>
+        <p class="reveal">
+          Sin información confiable, terminas adivinando: qué precios poner, qué contenido
+          publicar, qué promociones hacer. Y muchas veces, descubres lo que funciona cuando ya es tarde.
+        </p>
+      </div>
+      <div class="problem-cards reveal">
+        <div class="problem-card">
+          <h4>No sabes qué publica tu competencia</h4>
+          <p>No tienes tiempo de revisar sus redes, sus precios, sus promociones. Operas sin saber qué están haciendo los demás.</p>
+        </div>
+        <div class="problem-card">
+          <h4>Las decisiones se toman con intuición</h4>
+          <p>Pones un precio porque "suena bien", publicas algo porque "crees que funciona". Sin datos que respalden nada.</p>
+        </div>
+        <div class="problem-card">
+          <h4>Llegas tarde a las tendencias</h4>
+          <p>Cuando te enteras de que algo funcionó, ya pasó. La oportunidad se fue con ella.</p>
+        </div>
+        <div class="problem-card">
+          <h4>No tienes claridad sobre tu posición</h4>
+          <p>No sabes si estás por encima o por debajo de tu competencia en precios, si tu contenido está funcionando o qué podrías mejorar.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Profiles -->
+  <section class="profiles-section">
+    <h2 class="reveal">¿Para quién es esto?</h2>
+    <div class="profiles-grid">
+      {profiles.map((profile) => (
+        <ProfileCard
+          emoji={profile.emoji}
+          title={profile.title}
+          description={profile.description}
+        />
+      ))}
+    </div>
+  </section>
+
+  <!-- Compare -->
+  <section class="compare-section">
+    <div class="compare-inner">
+      <div class="section-label reveal">Lo que NO hacemos</div>
+      <h2 class="reveal">Y por qué importa saberlo</h2>
+      <div class="compare-grid reveal">
+        <div class="compare-row-head">
+          <div class="compare-label">Lo que hacen los demás</div>
+          <div class="compare-label ours">Lo que hace Budgt</div>
+        </div>
+        {whyNot.map((item) => (
+          <div class="compare-row">
+            <div class="compare-text-bad">{item.bad}</div>
+            <div class="compare-text-good">{item.good}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Plans -->
+  <section class="plans-section" id="planes">
+    <div class="plans-inner">
+      <div class="plans-header">
+        <h2 class="reveal">Planes de <em>Inteligencia de Mercado</em></h2>
+        <p class="reveal">Transparentes, sin letra chica. Elige según cuánto monitoreo necesitas.</p>
+      </div>
+      <div class="plans-grid reveal">
+        {plans.map((plan) => (
+          <PlanCard
+            name={plan.name}
+            price={plan.price}
+            period={plan.period}
+            features={plan.features}
+            ctaText={plan.ctaText}
+            ctaUrl={plan.ctaUrl}
+            featured={plan.featured || false}
+            tag={plan.tag}
+          />
+        ))}
+      </div>
+      <GuaranteeBadge
+        icon="🛡️"
+        title="Garantía de satisfacción"
+        description="Si después de tu primer resumen sientes que no era lo que necesitabas, te devolvemos el dinero. Sin preguntas, sin burocracia."
+      />
+    </div>
+  </section>
+
+  <!-- Sample Report -->
+  <section class="sample-section">
+    <div class="sample-inner">
+      <h2 class="reveal">Así se ve tu resumen semanal</h2>
+      <p class="reveal">
+        Cada semana recibes un mensaje de WhatsApp con todo lo que necesitas saber para tomar
+        mejores decisiones. Claro, concreto y accionable.
+      </p>
+      <div class="sample-card reveal">
+        <div class="sample-card-header">
+          <span class="sample-date">{sampleReport.date}</span>
+          <span class="sample-section-label">· Tu resumen semanal de inteligencia</span>
+        </div>
+        <h4>🎯 Resumen ejecutivo</h4>
+        <p>{sampleReport.executive}</p>
+        <h4 style="margin-top: 1.2rem;">📊 ¿Qué hizo tu competencia?</h4>
+        {sampleReport.competitors.map((c) => (
+          <p><strong>{c.name}</strong> {c.action}</p>
+        ))}
+        <p><strong>Tu negocio:</strong> {sampleReport.yourBusiness}</p>
+        <h4 style="margin-top: 1.2rem;">💡 Recomendaciones para esta semana</h4>
+        {sampleReport.recommendations.map((r, i) => (
+          <p>{i + 1}. {r}</p>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <h2 class="reveal">Preguntas frecuentes</h2>
+    {faqs.map((faq) => (
+      <FAQItem question={faq.question} answer={faq.answer} />
+    ))}
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-final">
+    <h2 class="reveal">Deja de adivinar. <em>Empieza a saber.</em></h2>
+    <p class="reveal">
+      Escríbenos por WhatsApp. Te respondemos el mismo día. Cuéntanos sobre tu negocio y te orientamos
+      hacia el plan que más te conviene.
+    </p>
+    <a href={waMercado} class="btn-wa reveal" target="_blank" rel="noopener">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.167 1.618 5.955L.057 23.928a.5.5 0 0 0 .611.611l5.973-1.561A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.96 9.96 0 0 1-5.073-1.384l-.363-.215-3.763.984.984-3.763-.215-.363A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+      </svg>
+      Hablar con un asesor
+    </a>
+    <p class="cta-note reveal">Respondemos en menos de 24 horas · Sin compromiso</p>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 7rem 2.5rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(80, 80, 80, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    border: 1px solid var(--gray-700);
+    padding: 0.35rem 0.9rem;
+    margin-bottom: 2.2rem;
+    width: fit-content;
+  }
+
+  .hero h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    max-width: 900px;
+    margin-bottom: 1.8rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gray-400);
+  }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--gray-400);
+    max-width: 600px;
+    line-height: 1.65;
+    margin-bottom: 3rem;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--white);
+    color: var(--black);
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.9rem 2.2rem;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s;
+  }
+
+  .btn-primary:hover {
+    background: var(--gray-300);
+  }
+
+  .btn-ghost {
+    color: var(--gray-400);
+    font-size: 0.9rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: color 0.2s;
+  }
+
+  .btn-ghost:hover {
+    color: var(--white);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--gray-600);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .scroll-line {
+    width: 40px;
+    height: 1px;
+    background: var(--gray-600);
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollLine {
+    0%, 100% { transform: scaleX(1); opacity: 1; }
+    50% { transform: scaleX(0.4); opacity: 0.4; }
+  }
+
+  .problem-section {
+    padding: 7rem 2.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .problem-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .problem-inner h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .problem-inner h2 em {
+    font-style: italic;
+    color: var(--gray-400);
+  }
+
+  .problem-inner p {
+    font-size: 1rem;
+    color: var(--gray-400);
+    line-height: 1.75;
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+
+  .problem-inner p:last-child {
+    margin-bottom: 0;
+  }
+
+  .problem-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--gray-800);
+  }
+
+  .problem-card {
+    background: var(--black);
+    padding: 1.8rem 1.6rem;
+  }
+
+  .problem-card h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+
+  .problem-card p {
+    font-size: 0.85rem;
+    color: var(--gray-400);
+    line-height: 1.55;
+    font-weight: 300;
+  }
+
+  .profiles-section {
+    padding: 0 2.5rem 7rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .profiles-section h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 3rem;
+  }
+
+  .profiles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .compare-section {
+    padding: 7rem 2.5rem;
+    background: var(--gray-900);
+    border-top: 1px solid var(--gray-800);
+  }
+
+  .compare-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .compare-inner > h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .compare-inner > p {
+    font-size: 1rem;
+    color: var(--gray-400);
+    line-height: 1.75;
+    font-weight: 300;
+    margin-bottom: 3rem;
+  }
+
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--gray-800);
+    margin-top: 3rem;
+  }
+
+  .compare-row {
+    background: var(--gray-900);
+    padding: 1.4rem 1.6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .compare-row-head {
+    background: var(--black);
+    padding: 0.9rem 1.6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .compare-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray-500);
+  }
+
+  .compare-label.ours {
+    color: var(--white);
+  }
+
+  .compare-text-bad {
+    font-size: 0.88rem;
+    color: var(--gray-500);
+    line-height: 1.5;
+    font-weight: 300;
+    text-decoration: line-through;
+    text-decoration-color: var(--gray-700);
+  }
+
+  .compare-text-good {
+    font-size: 0.88rem;
+    color: var(--gray-300);
+    line-height: 1.5;
+    font-weight: 400;
+  }
+
+  .plans-section {
+    padding: 7rem 2.5rem;
+  }
+
+  .plans-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .plans-header {
+    margin-bottom: 4rem;
+  }
+
+  .plans-header h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .plans-header h2 em {
+    font-style: italic;
+    color: var(--gray-400);
+  }
+
+  .plans-header p {
+    font-size: 1rem;
+    color: var(--gray-400);
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  .plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2px;
+    background: var(--gray-800);
+    margin-bottom: 2rem;
+  }
+
+  .sample-section {
+    padding: 7rem 2.5rem;
+    background: var(--gray-900);
+    border-top: 1px solid var(--gray-800);
+  }
+
+  .sample-inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .sample-inner h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .sample-inner > p {
+    font-size: 0.95rem;
+    color: var(--gray-400);
+    line-height: 1.65;
+    font-weight: 300;
+    margin-bottom: 3rem;
+  }
+
+  .sample-card {
+    background: var(--black);
+    border: 1px solid var(--gray-800);
+    padding: 2rem 1.8rem;
+  }
+
+  .sample-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--gray-800);
+  }
+
+  .sample-date {
+    font-size: 0.75rem;
+    color: var(--gray-500);
+    letter-spacing: 0.05em;
+  }
+
+  .sample-section-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gray-600);
+  }
+
+  .sample-card h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+  }
+
+  .sample-card p {
+    font-size: 0.85rem;
+    color: var(--gray-400);
+    line-height: 1.65;
+    font-weight: 300;
+    margin-bottom: 0.8rem;
+  }
+
+  .sample-card p:last-child {
+    margin-bottom: 0;
+  }
+
+  .sample-highlight {
+    background: var(--gray-900);
+    padding: 1rem 1.2rem;
+    margin-top: 1rem;
+    border-left: 2px solid var(--gray-700);
+  }
+
+  .sample-highlight p {
+    font-size: 0.82rem;
+    color: var(--gray-300);
+    margin-bottom: 0;
+  }
+
+  .faq-section {
+    padding: 7rem 2.5rem;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .faq-section h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 3rem;
+  }
+
+  .cta-final {
+    padding: 8rem 2.5rem;
+    background: var(--white);
+    color: var(--black);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-final::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.04) 0%, transparent 70%);
+  }
+
+  .cta-final h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    letter-spacing: -0.03em;
+    margin-bottom: 1.2rem;
+    line-height: 1.05;
+    position: relative;
+  }
+
+  .cta-final h2 em {
+    font-style: italic;
+    color: var(--gray-600);
+  }
+
+  .cta-final > p {
+    font-size: 1rem;
+    color: var(--gray-600);
+    max-width: 500px;
+    margin: 0 auto 2.8rem;
+    line-height: 1.65;
+    font-weight: 300;
+    position: relative;
+  }
+
+  .btn-wa {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 1rem 2.2rem;
+    text-decoration: none;
+    border: 2px solid var(--black);
+    transition: background 0.2s, color 0.2s;
+    position: relative;
+    margin-bottom: 1rem;
+  }
+
+  .btn-wa:hover {
+    background: var(--gray-300);
+    border-color: var(--gray-300);
+    color: var(--black);
+  }
+
+  .cta-note {
+    font-size: 0.78rem;
+    color: var(--gray-500);
+    position: relative;
+  }
+
+  @media (max-width: 720px) {
+    .hero, .problem-section, .profiles-section, .compare-section, .plans-section, .sample-section, .faq-section, .cta-final {
+      padding-left: 1.4rem;
+      padding-right: 1.4rem;
+    }
+
+    .problem-inner,
+    .compare-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .plans-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

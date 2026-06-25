@@ -1,0 +1,77 @@
+---
+interface Props {
+  phone: string;
+  whatsappMessage: string;
+}
+
+const { phone, whatsappMessage } = Astro.props;
+const waUrl = `https://wa.me/${phone.replace('+', '')}?text=${encodeURIComponent(whatsappMessage)}`;
+---
+
+<footer>
+  <div class="footer-logo">
+    <img src="/Logo Budgt transparente.png" alt="Budgt" />
+  </div>
+  <div class="footer-links">
+    <a href="/contenido">Contenido</a>
+    <a href="/automatico">Automático</a>
+    <a href="/mercado">Mercado</a>
+  </div>
+  <p>© 2025 Budgt · Chile</p>
+</footer>
+
+<style>
+  footer {
+    padding: 2.5rem;
+    border-top: 1px solid var(--gray-800);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .footer-logo img {
+    height: clamp(28px, 3vw, 38px);
+    width: auto;
+    filter: invert(1);
+    opacity: 0.7;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .footer-links a {
+    font-size: 0.78rem;
+    color: var(--gray-500);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover {
+    color: var(--gray-300);
+  }
+
+  footer p {
+    font-size: 0.78rem;
+    color: var(--gray-400);
+  }
+
+  @media (max-width: 720px) {
+    footer {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .footer-links {
+      flex-wrap: wrap;
+    }
+  }
+</style>

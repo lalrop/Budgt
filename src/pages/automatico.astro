@@ -1,0 +1,564 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PlanCard from '../components/PlanCard.astro';
+import ProfileCard from '../components/ProfileCard.astro';
+import FAQItem from '../components/FAQItem.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import GuaranteeBadge from '../components/GuaranteeBadge.astro';
+import { getWhatsAppUrl } from '../utils/constants';
+
+const waAutomatico = getWhatsAppUrl('Hola, me interesa Tu Negocio en Automático de Budgt.');
+
+const profiles = [
+  { emoji: '🏪', title: 'Tiendas y locales físicos', description: 'que quieren capturar clientes que buscan online' },
+  { emoji: '🔧', title: 'Servicios a domicilio', description: 'que pierden llamadas fuera del horario de trabajo' },
+  { emoji: '📱', title: 'Negocios por WhatsApp', description: 'que necesitan escalar sin contratar personal' },
+  { emoji: '🚀', title: 'Emprendedores que arrancan', description: 'quieren empezar con una presencia profesional desde el día uno' },
+];
+
+const features = [
+  { icon: '🌙', title: 'Respuestas fuera de horario', description: 'Mientras duermes, comes o estás en otra reunión, tu chatbot responde. Preguntas frecuentes, precios, horarios, ubicación. Sin que tengas que hacer nada.' },
+  { icon: '📋', title: 'Captura de leads mientras hablas', description: 'El chatbot registra cada consulta, captura datos de contacto y los guarda organizados. Después los exportas a tu CRM o los ves en tu dashboard.' },
+  { icon: '📅', title: 'Agenda sin errores ni olvidos', description: 'El cliente pide hora por WhatsApp, el chatbot verifica disponibilidad y confirma. Todo automático, sin idas y vueltas por chat.' },
+  { icon: '📊', title: 'Métricas que realmente importan', description: 'Sabes cuántas consultas recibiste, qué preguntas se repiten más, qué horarios tienen más demanda. Decisiones basadas en datos, no en intuición.' },
+  { icon: '🔄', title: 'Derivación a humano cuando hace falta', description: 'Cuando el chatbot no puede responder, deriva la conversación a ti con todo el contexto. El cliente nunca se queda sin respuesta.' },
+  { icon: '🌐', title: 'Tu negocio aparece en Google Maps', description: 'Configuramos tu perfil de Google Business. Cuando alguien busque "tienda cerca de mí" o "servicio en [ciudad]", tu negocio aparece con la información correcta.' },
+];
+
+const plans = [
+  {
+    name: 'Básico',
+    price: '$390.000',
+    period: 'CLP · pago único + $19.000/mes',
+    features: [
+      { text: 'Landing page profesional (1 página)' },
+      { text: 'Secciones: quiénes somos, servicios, contacto' },
+      { text: 'Adaptada para celular' },
+      { text: 'Dominio .cl + SSL incluidos' },
+      { text: 'Botón WhatsApp + formulario Brevo' },
+      { text: 'Google Business configurado (apareces en Maps)' },
+      { text: 'Entrega en 5 días hábiles' },
+    ],
+    ctaText: 'Quiero mi web',
+    ctaUrl: getWhatsAppUrl('Hola, me interesa el plan Básico de Tu Negocio en Automático de Budgt.'),
+    tag: 'Setup + mensual',
+  },
+  {
+    name: 'Medio',
+    price: '$249.000',
+    period: 'CLP setup + $79.000/mes',
+    features: [
+      { text: 'Web del plan Básico incluida' },
+      { text: 'Chatbot IA para WhatsApp Business' },
+      { text: 'Responde preguntas frecuentes 24/7' },
+      { text: 'Captura de leads automática' },
+      { text: 'Derivación a humano cuando hace falta' },
+      { text: 'Base de conocimiento con tu información' },
+      { text: 'Reportes mensuales de consultas' },
+      { text: '1 sesión mensual de revisión (30 min)' },
+    ],
+    ctaText: 'Quiero el chatbot',
+    ctaUrl: getWhatsAppUrl('Hola, me interesa el plan Medio de Tu Negocio en Automático de Budgt.'),
+    featured: true,
+    tag: 'Más popular',
+  },
+  {
+    name: 'Premium',
+    price: '$249.000',
+    period: 'CLP / mes (todo incluido)',
+    features: [
+      { text: 'Todo lo del plan Medio' },
+      { text: '8 posts/mes en redes (redactados con IA)' },
+      { text: '1 newsletter mensual a tus clientes (Brevo)' },
+      { text: 'Agendamiento de citas integrado' },
+      { text: 'Dashboard de métricas (Power BI)' },
+      { text: 'Soporte prioritario WhatsApp 48 hrs' },
+      { text: 'Actualización mensual de contenido' },
+      { text: 'Sesiones de estrategia quincenales (45 min)' },
+    ],
+    ctaText: 'Lo quiero todo',
+    ctaUrl: getWhatsAppUrl('Hola, me interesa el plan Premium de Tu Negocio en Automático de Budgt.'),
+    tag: 'Todo incluido',
+  },
+];
+
+const faqs = [
+  { question: '¿Necesito saber de tecnología para contratar esto?', answer: 'No. Nos encargamos de todo el trabajo técnico. Tú solo nos cuentas sobre tu negocio y nosotros hacemos el resto. Al final recibes todo funcionando, explicado en lenguaje simple.' },
+  { question: '¿Qué es exactamente el chatbot?', answer: 'Es un bot de WhatsApp Business potenciado con inteligencia artificial. Responde preguntas frecuentes de tus clientes, captura datos de contacto, agenda horas y deriva a un humano cuando no puede resolver algo. Todo funciona 24/7.' },
+  { question: '¿El chatbot responde cosas que yo no quiero que responda?', answer: 'El chatbot funciona con una base de conocimiento que construimos juntos con tu información. Solo responde lo que tú le enseñes. Si no sabe algo, deriva a un humano (tú) con el contexto de la conversación.' },
+  { question: '¿Puedo ver las conversaciones que maneja el chatbot?', answer: 'Sí. Los planes Medio y Premium incluyen reportes mensuales con métricas de consultas, preguntas más frecuentes y tasa de resolución. El plan Premium incluye dashboard en Power BI.' },
+  { question: '¿Puedo cancelar cuando quiera?', answer: 'Sí. Los servicios mensuales no tienen permanencia mínima. Puedes cancelar en cualquier momento avisándonos antes del siguiente ciclo de facturación.' },
+];
+---
+
+<BaseLayout
+  title="Tu Negocio en Automático — Budgt | Web + Chatbot IA + Redes"
+  description="Tu negocio abierto, respondiendo y vendiendo aunque estés durmiendo. Landing page profesional, chatbot WhatsApp con IA y gestión de redes. Desde $390.000."
+  page="automatico"
+>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-tag">Tu Negocio en Automático · Budgt</div>
+    <h1>Tu negocio abierto, <em>respondiendo y vendiendo.</em> Aunque estés dormido.</h1>
+    <p class="hero-sub">
+      La mayoría de los pequeños negocios pierden clientes entre las 6 PM y las 9 AM. En ese
+      horario, alguien pregunta por WhatsApp, nadie responde, y se va a la competencia. Con Tu
+      Negocio en Automático, tu empresa tiene presencia digital profesional desde el primer día.
+    </p>
+    <div class="hero-actions">
+      <a href="#planes" class="btn-primary">Ver planes y precios</a>
+      <a href={waAutomatico} class="btn-ghost" target="_blank" rel="noopener">
+        Hablar con un asesor →
+      </a>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>Desplázate</span>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="intro">
+    <div class="intro-inner">
+      <div>
+        <div class="section-label reveal">Qué incluye</div>
+        <h2 class="reveal">Todo lo que necesita <em>tu negocio para funcionar solo.</em></h2>
+      </div>
+      <div>
+        <p class="reveal">
+          Tu Negocio en Automático integra página web profesional, chatbot inteligente para WhatsApp
+          Business que responde 24/7, agenda citas y captura leads, más un sistema de posts y
+          newsletter que mantiene tu marca activa sin que tengas que estar pendiente.
+        </p>
+        <p class="reveal">
+          Cada componente trabaja en conjunto para que tu negocio siga operando incluso cuando no
+          estás disponible. Información clara, respuestas rápidas, clientes capturados.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Profiles -->
+  <section class="profiles-section">
+    <h2 class="reveal">¿Para quién es esto?</h2>
+    <div class="profiles-grid">
+      {profiles.map((profile) => (
+        <ProfileCard
+          emoji={profile.emoji}
+          title={profile.title}
+          description={profile.description}
+        />
+      ))}
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features-section">
+    <div class="features-inner">
+      <div class="section-label reveal">Qué resuelve</div>
+      <h2 class="reveal" style="margin-bottom: 1rem;">Problemas que resolvemos <em> todos los días</em></h2>
+      <div class="features-grid reveal">
+        {features.map((feature) => (
+          <FeatureCard
+            icon={feature.icon}
+            title={feature.title}
+            description={feature.description}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Plans -->
+  <section class="plans-section" id="planes">
+    <div class="plans-inner">
+      <div class="plans-header">
+        <h2 class="reveal">Planes de <em>Tu Negocio en Automático</em></h2>
+        <p class="reveal">Transparentes, sin letra chica. Elige según cuánto automatizado necesita tu negocio.</p>
+      </div>
+      <div class="plans-grid reveal">
+        {plans.map((plan) => (
+          <PlanCard
+            name={plan.name}
+            price={plan.price}
+            period={plan.period}
+            features={plan.features}
+            ctaText={plan.ctaText}
+            ctaUrl={plan.ctaUrl}
+            featured={plan.featured || false}
+            tag={plan.tag}
+          />
+        ))}
+      </div>
+      <GuaranteeBadge
+        icon="📅"
+        title="Entrega en el plazo acordado o te devolvemos el dinero"
+        description="5 días para la web · 3 días para el chatbot. Si no cumplimos, devolvemos el pago sin preguntas. Nos comprometemos con los plazos porque sabemos que tu negocio no puede esperar."
+      />
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <h2 class="reveal">Preguntas frecuentes</h2>
+    {faqs.map((faq) => (
+      <FAQItem question={faq.question} answer={faq.answer} />
+    ))}
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-final">
+    <h2 class="reveal">Tu negocio merece <em>funcionar solo.</em></h2>
+    <p class="reveal">
+      Escríbenos por WhatsApp. Te respondemos el mismo día. Cuéntanos sobre tu negocio y te orientamos
+      hacia el plan que más te conviene.
+    </p>
+    <a href={waAutomatico} class="btn-wa reveal" target="_blank" rel="noopener">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.167 1.618 5.955L.057 23.928a.5.5 0 0 0 .611.611l5.973-1.561A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.96 9.96 0 0 1-5.073-1.384l-.363-.215-3.763.984.984-3.763-.215-.363A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+      </svg>
+      Hablar con un asesor
+    </a>
+    <p class="cta-note reveal">Respondemos en menos de 24 horas · Sin compromiso</p>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 7rem 2.5rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(80, 80, 80, 0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    border: 1px solid var(--gray-700);
+    padding: 0.35rem 0.9rem;
+    margin-bottom: 2.2rem;
+    width: fit-content;
+  }
+
+  .hero h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    max-width: 900px;
+    margin-bottom: 1.8rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gray-400);
+  }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--gray-400);
+    max-width: 600px;
+    line-height: 1.65;
+    margin-bottom: 3rem;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--white);
+    color: var(--black);
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 0.9rem 2.2rem;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s;
+  }
+
+  .btn-primary:hover {
+    background: var(--gray-300);
+  }
+
+  .btn-ghost {
+    color: var(--gray-400);
+    font-size: 0.9rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: color 0.2s;
+  }
+
+  .btn-ghost:hover {
+    color: var(--white);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--gray-600);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .scroll-line {
+    width: 40px;
+    height: 1px;
+    background: var(--gray-600);
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollLine {
+    0%, 100% { transform: scaleX(1); opacity: 1; }
+    50% { transform: scaleX(0.4); opacity: 0.4; }
+  }
+
+  .intro {
+    padding: 7rem 2.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .intro-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .intro h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .intro h2 em {
+    font-style: italic;
+    color: var(--gray-400);
+  }
+
+  .intro p {
+    font-size: 1rem;
+    color: var(--gray-400);
+    line-height: 1.75;
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+
+  .intro p:last-child {
+    margin-bottom: 0;
+  }
+
+  .profiles-section {
+    padding: 0 2.5rem 7rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .profiles-section h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 3rem;
+  }
+
+  .profiles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .features-section {
+    padding: 7rem 2.5rem;
+    background: var(--gray-900);
+    border-top: 1px solid var(--gray-800);
+  }
+
+  .features-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1px;
+    background: var(--gray-800);
+    margin-top: 3rem;
+  }
+
+  .plans-section {
+    padding: 7rem 2.5rem;
+  }
+
+  .plans-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .plans-header {
+    margin-bottom: 4rem;
+  }
+
+  .plans-header h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+  }
+
+  .plans-header h2 em {
+    font-style: italic;
+    color: var(--gray-400);
+  }
+
+  .plans-header p {
+    font-size: 1rem;
+    color: var(--gray-400);
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  .plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2px;
+    background: var(--gray-800);
+    margin-bottom: 2rem;
+  }
+
+  .faq-section {
+    padding: 7rem 2.5rem;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .faq-section h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 3rem;
+  }
+
+  .cta-final {
+    padding: 8rem 2.5rem;
+    background: var(--white);
+    color: var(--black);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-final::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.04) 0%, transparent 70%);
+  }
+
+  .cta-final h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    letter-spacing: -0.03em;
+    margin-bottom: 1.2rem;
+    line-height: 1.05;
+    position: relative;
+  }
+
+  .cta-final h2 em {
+    font-style: italic;
+    color: var(--gray-600);
+  }
+
+  .cta-final > p {
+    font-size: 1rem;
+    color: var(--gray-600);
+    max-width: 500px;
+    margin: 0 auto 2.8rem;
+    line-height: 1.65;
+    font-weight: 300;
+    position: relative;
+  }
+
+  .btn-wa {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 1rem 2.2rem;
+    text-decoration: none;
+    border: 2px solid var(--black);
+    transition: background 0.2s, color 0.2s;
+    position: relative;
+    margin-bottom: 1rem;
+  }
+
+  .btn-wa:hover {
+    background: var(--gray-300);
+    border-color: var(--gray-300);
+    color: var(--black);
+  }
+
+  .cta-note {
+    font-size: 0.78rem;
+    color: var(--gray-500);
+    position: relative;
+  }
+
+  @media (max-width: 720px) {
+    .hero, .intro, .profiles-section, .plans-section, .features-section, .faq-section, .cta-final {
+      padding-left: 1.4rem;
+      padding-right: 1.4rem;
+    }
+
+    .intro-inner,
+    .plans-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+</style>

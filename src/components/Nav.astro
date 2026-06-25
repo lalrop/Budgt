@@ -1,0 +1,114 @@
+---
+interface NavLink {
+  text: string;
+  href: string;
+}
+
+interface Props {
+  phone: string;
+  whatsappMessage: string;
+  links?: NavLink[];
+  ctaText?: string;
+}
+
+const { phone, whatsappMessage, links, ctaText = 'Hablar con nosotros' } = Astro.props;
+const waUrl = `https://wa.me/${phone.replace('+', '')}?text=${encodeURIComponent(whatsappMessage)}`;
+
+const defaultLinks: NavLink[] = [
+  { text: 'Contenido',  href: '/contenido'  },
+  { text: 'Automático', href: '/automatico' },
+  { text: 'Mercado',    href: '/mercado'    },
+];
+
+const navLinks = links ?? defaultLinks;
+---
+
+<nav>
+  <a href="/" class="logo">
+    <img src="/Logo Budgt transparente.png" alt="Budgt" />
+  </a>
+  <div class="nav-links">
+    {navLinks.map((link) => (
+      <a href={link.href} class="nav-link">{link.text}</a>
+    ))}
+  </div>
+  <a href={waUrl} class="nav-cta" target="_blank" rel="noopener">
+    {ctaText}
+  </a>
+</nav>
+
+<style>
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 2.5rem;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--gray-800);
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo img {
+    height: 40px;
+    width: auto;
+    filter: invert(1);
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-link {
+    color: var(--gray-400);
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+  }
+
+  .nav-link:hover {
+    color: var(--white);
+  }
+
+  .nav-cta {
+    background: var(--white);
+    color: var(--black);
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+    padding: 0.6rem 1.4rem;
+    border: none;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .nav-cta:hover {
+    background: var(--gray-300);
+  }
+
+  @media (max-width: 900px) {
+    .nav-links {
+      display: none;
+    }
+  }
+
+  @media (max-width: 720px) {
+    nav {
+      padding: 1rem 1.4rem;
+    }
+  }
+</style>
