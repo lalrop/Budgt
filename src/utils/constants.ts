@@ -12,6 +12,7 @@ export const WHATSAPP_MESSAGES = {
   automatico: 'Hola, me interesa Tu Negocio en Automático de Budgt.',
   mercado: 'Hola, me interesa saber más sobre Inteligencia de Mercado de Budgt.',
   tis: 'Hola, me interesa conocer los servicios de Budgt TIS para trabajadoras independientes.',
+  emprende: 'Hola, me interesa digitalizar mi negocio con Budgt Emprende.',
 } as const;
 
 export function getWhatsAppUrl(message: string): string {
