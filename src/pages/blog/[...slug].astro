@@ -1,0 +1,271 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const waUrl = `https://wa.me/56997135470?text=${encodeURIComponent('Hola, leí el artículo "' + post.data.title + '" en el blog de Budgt y me interesa saber más.')}`;
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": post.data.title,
+  "description": post.data.description,
+  "datePublished": post.data.pubDate.toISOString(),
+  "author": { "@type": "Organization", "name": "Budgt", "url": "https://budgt.cl" },
+  "publisher": { "@type": "Organization", "name": "Budgt", "url": "https://budgt.cl" },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": `https://budgt.cl/blog/${post.id}` }
+};
+---
+
+<BaseLayout
+  title={`${post.data.title} | Budgt`}
+  description={post.data.description}
+  canonical={`https://budgt.cl/blog/${post.id}`}
+>
+  <script type="application/ld+json" slot="head" set:html={JSON.stringify(articleSchema)} />
+
+  <article class="blog-article">
+    <div class="article-header">
+      <a href="/blog" class="article-back">← Volver al blog</a>
+
+      <div class="article-meta">
+        <time datetime={post.data.pubDate.toISOString()}>
+          {post.data.pubDate.toLocaleDateString('es-CL', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </time>
+        <span class="article-author">por {post.data.author}</span>
+      </div>
+
+      <h1>{post.data.title}</h1>
+      <p class="article-desc">{post.data.description}</p>
+
+      <div class="article-tags">
+        {post.data.tags.map(tag => <span class="blog-tag">{tag}</span>)}
+      </div>
+    </div>
+
+    <div class="article-body">
+      <Content />
+    </div>
+
+    <div class="article-footer">
+      <div class="article-cta">
+        <h2>¿Quieres aplicar esto en tu negocio?</h2>
+        <p>Conversemos por WhatsApp — sin compromiso y en lenguaje simple.</p>
+        <a href={waUrl} target="_blank" rel="noopener" class="article-cta-btn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.167 1.618 5.955L.057 23.928a.5.5 0 0 0 .611.611l5.973-1.561A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.96 9.96 0 0 1-5.073-1.384l-.363-.215-3.763.984.984-3.763-.215-.363A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          Escribir a Budgt por WhatsApp
+        </a>
+        <a href="/blog" class="article-back-link">Ver más artículos</a>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .blog-article {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 2rem 6rem;
+  }
+
+  .article-header {
+    padding: clamp(3.5rem, 7vw, 6rem) 0 3rem;
+    border-bottom: 1px solid var(--gray-800);
+    margin-bottom: 3rem;
+  }
+
+  .article-back {
+    font-size: 0.78rem;
+    color: var(--gray-600);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    display: inline-block;
+    margin-bottom: 2rem;
+    transition: color 0.2s;
+  }
+  .article-back:hover { color: var(--gray-300); }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .article-meta time,
+  .article-author {
+    font-size: 0.75rem;
+    color: var(--gray-600);
+    font-weight: 300;
+  }
+
+  .article-header h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 1rem;
+    font-weight: 400;
+  }
+
+  .article-desc {
+    font-size: 1rem;
+    color: var(--gray-400);
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+  }
+
+  .article-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .blog-tag {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--emp-accent, #e07b3a);
+    background: rgba(224,123,58,0.1);
+    padding: 0.15rem 0.5rem;
+    border-radius: 99px;
+  }
+
+  /* ── Contenido del artículo (markdown) ── */
+  .article-body {
+    line-height: 1.8;
+    color: var(--gray-300);
+    font-weight: 300;
+  }
+
+  .article-body :global(h2) {
+    font-family: var(--font-serif);
+    font-size: clamp(1.3rem, 3vw, 1.7rem);
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-top: 2.8rem;
+    margin-bottom: 0.9rem;
+    font-weight: 400;
+    line-height: 1.2;
+  }
+
+  .article-body :global(h3) {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gray-200);
+    margin-top: 2rem;
+    margin-bottom: 0.6rem;
+    letter-spacing: 0.01em;
+  }
+
+  .article-body :global(p) {
+    margin-bottom: 1.4rem;
+    font-size: clamp(0.95rem, 2vw, 1rem);
+  }
+
+  .article-body :global(ul),
+  .article-body :global(ol) {
+    margin: 0 0 1.4rem 1.5rem;
+  }
+
+  .article-body :global(li) {
+    margin-bottom: 0.5rem;
+    font-size: clamp(0.95rem, 2vw, 1rem);
+  }
+
+  .article-body :global(strong) {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .article-body :global(a) {
+    color: var(--emp-accent, #e07b3a);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .article-body :global(blockquote) {
+    border-left: 3px solid var(--emp-accent, #e07b3a);
+    padding-left: 1.2rem;
+    margin: 2rem 0;
+    color: var(--gray-400);
+    font-style: italic;
+  }
+
+  .article-body :global(hr) {
+    border: none;
+    border-top: 1px solid var(--gray-800);
+    margin: 3rem 0;
+  }
+
+  /* ── CTA final ── */
+  .article-footer { margin-top: 4rem; }
+
+  .article-cta {
+    padding: 2.5rem 2rem;
+    border: 1px solid var(--gray-800);
+    background: rgba(255,255,255,0.02);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .article-cta h2 {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    font-weight: 400;
+  }
+
+  .article-cta p {
+    font-size: 0.9rem;
+    color: var(--gray-400);
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+  }
+
+  .article-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.6rem;
+    background: #25d366;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.88rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .article-cta-btn:hover { opacity: 0.88; }
+
+  .article-back-link {
+    font-size: 0.78rem;
+    color: var(--gray-600);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    margin-top: 0.5rem;
+    transition: color 0.2s;
+  }
+  .article-back-link:hover { color: var(--gray-300); }
+
+  @media (max-width: 600px) {
+    .blog-article { padding: 0 1.4rem 4rem; }
+  }
+</style>

@@ -1,0 +1,185 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const waUrl = `https://wa.me/56997135470?text=${encodeURIComponent('Hola, leí el blog de Budgt y me interesa saber más.')}`;
+---
+
+<BaseLayout
+  title="Blog — Recursos para emprendedores chilenos | Budgt"
+  description="Guías prácticas sobre digitalización, WhatsApp, Google Maps y tecnología para emprendedores y negocios pequeños en Chile. Sin tecnicismos."
+  canonical="https://budgt.cl/blog"
+>
+  <section class="blog-hero">
+    <span class="section-label">Recursos gratuitos</span>
+    <h1>Guías para <em>hacer crecer</em> tu negocio</h1>
+    <p class="blog-hero-sub">
+      Artículos prácticos sobre tecnología, automatización y marketing digital —
+      escritos para emprendedores que no tienen tiempo de enredarse con términos técnicos.
+    </p>
+  </section>
+
+  <section class="blog-grid">
+    {posts.map(post => (
+      <a href={`/blog/${post.id}`} class="blog-card reveal">
+        <div class="blog-card-meta">
+          <time datetime={post.data.pubDate.toISOString()}>
+            {post.data.pubDate.toLocaleDateString('es-CL', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </time>
+          {post.data.tags.slice(0, 2).map(tag => (
+            <span class="blog-tag">{tag}</span>
+          ))}
+        </div>
+        <h2 class="blog-card-title">{post.data.title}</h2>
+        <p class="blog-card-desc">{post.data.description}</p>
+        <span class="blog-card-cta">Leer artículo →</span>
+      </a>
+    ))}
+  </section>
+
+  <section class="blog-cta-strip">
+    <p>¿Tienes preguntas sobre tu negocio?</p>
+    <a href={waUrl} target="_blank" rel="noopener" class="blog-cta-btn">
+      Escríbenos por WhatsApp
+    </a>
+  </section>
+</BaseLayout>
+
+<style>
+  .blog-hero {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: clamp(4rem, 8vw, 7rem) 2rem 3rem;
+    text-align: center;
+  }
+
+  .blog-hero h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 1.2rem;
+  }
+
+  .blog-hero h1 em {
+    font-style: italic;
+    color: var(--gray-400);
+  }
+
+  .blog-hero-sub {
+    font-size: clamp(0.95rem, 2vw, 1.05rem);
+    color: var(--gray-400);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .blog-grid {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem 5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 1px;
+    background: var(--gray-800);
+  }
+
+  .blog-card {
+    background: var(--black);
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .blog-card:hover { background: rgba(255,255,255,0.025); }
+
+  .blog-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+
+  .blog-card-meta time {
+    font-size: 0.72rem;
+    color: var(--gray-600);
+    font-weight: 300;
+  }
+
+  .blog-tag {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--emp-accent, #e07b3a);
+    background: rgba(224,123,58,0.1);
+    padding: 0.15rem 0.5rem;
+    border-radius: 99px;
+  }
+
+  .blog-card-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.15rem, 2.5vw, 1.4rem);
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: var(--white);
+    font-weight: 400;
+  }
+
+  .blog-card-desc {
+    font-size: 0.85rem;
+    color: var(--gray-500);
+    line-height: 1.65;
+    font-weight: 300;
+    flex: 1;
+  }
+
+  .blog-card-cta {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--emp-accent, #e07b3a);
+    letter-spacing: 0.04em;
+    margin-top: 0.4rem;
+  }
+
+  .blog-cta-strip {
+    text-align: center;
+    padding: 3rem 2rem 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  .blog-cta-strip p {
+    color: var(--gray-400);
+    font-size: 1rem;
+    font-weight: 300;
+  }
+
+  .blog-cta-btn {
+    display: inline-block;
+    padding: 0.7rem 1.8rem;
+    background: #25d366;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.88rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  .blog-cta-btn:hover { opacity: 0.88; }
+
+  @media (max-width: 600px) {
+    .blog-grid { grid-template-columns: 1fr; }
+    .blog-card { padding: 2rem 1.4rem; }
+  }
+</style>
