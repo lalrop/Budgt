@@ -17,6 +17,7 @@ interface Props {
   page?: keyof typeof WHATSAPP_MESSAGES;
   navLinks?: NavLink[];
   navCtaText?: string;
+  ogImage?: string;
 }
 
 const {
@@ -26,9 +27,20 @@ const {
   page = 'general',
   navLinks,
   navCtaText,
+  ogImage = `${SITE_CONFIG.url}/Logo%20Budgt.png`,
 } = Astro.props;
 
 const whatsappMessage = WHATSAPP_MESSAGES[page];
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ANALYTICS — Reemplaza estos IDs con los tuyos antes de publicar
+// GA4:     Crea en analytics.google.com → Admin → Flujos de datos → ID de medición
+// Clarity: Crea en clarity.microsoft.com → Nuevo proyecto → ID del proyecto
+// Meta:    Crea en business.facebook.com → Administrador de eventos → Pixel → ID
+// ─────────────────────────────────────────────────────────────────────────────
+const GA4_ID      = 'G-XXXXXXXXXX';
+const CLARITY_ID  = 'XXXXXXXXXX';
+const META_PX_ID  = '0000000000000000';
 ---
 
 <!doctype html>
@@ -36,47 +48,159 @@ const whatsappMessage = WHATSAPP_MESSAGES[page];
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ── Primary Meta ─────────────────────────────── -->
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Budgt" />
+
+    <!-- ── Open Graph (Facebook, LinkedIn, WhatsApp preview) ── -->
+    <meta property="og:type"        content="website" />
+    <meta property="og:url"         content={canonical} />
+    <meta property="og:title"       content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image"       content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height"content="630" />
+    <meta property="og:locale"      content="es_CL" />
+    <meta property="og:site_name"   content="Budgt" />
+
+    <!-- ── Twitter / X Card ─────────────────────────── -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image"       content={ogImage} />
+
+    <!-- ── Fonts ─────────────────────────────────────── -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+    <!-- ── Favicon ───────────────────────────────────── -->
     <link rel="icon" type="image/png" href="/Logo Budgt transparente.png" />
+
+    <!-- ── Schema.org: Organización principal ────────── -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Budgt",
-        "description": "Automatización de contenido, atención al cliente e inteligencia de mercado para pequeños negocios en Chile.",
-        "url": "https://budgt.cl",
-        "areaServed": "Chile",
-        "priceRange": "$$"
+        "@graph": [
+          {
+            "@type": ["LocalBusiness", "ProfessionalService"],
+            "@id": "https://budgt.cl/#business",
+            "name": "Budgt",
+            "url": "https://budgt.cl",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://budgt.cl/Logo%20Budgt.png"
+            },
+            "description": "Agencia chilena de digitalización para emprendedores y pequeños negocios. Chatbot WhatsApp, páginas web, Google Business, tienda online, identidad visual y capacitación digital. Sin tecnicismos.",
+            "telephone": "+56997135470",
+            "areaServed": {"@type": "Country", "name": "Chile"},
+            "priceRange": "$$",
+            "knowsLanguage": "es-CL",
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Servicios de digitalización Budgt",
+              "itemListElement": [
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Chatbot WhatsApp 24/7 para negocios"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Identidad visual y marca profesional"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Google Business y visibilidad local"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Capacitación digital 1-a-1"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Tienda online y venta digital"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Reportería y análisis mensual"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Página web profesional para negocios chilenos"}}
+              ]
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://budgt.cl/#website",
+            "url": "https://budgt.cl",
+            "name": "Budgt",
+            "description": "Digitalización accesible para emprendedores chilenos",
+            "publisher": {"@id": "https://budgt.cl/#business"},
+            "inLanguage": "es-CL"
+          }
+        ]
       }
     </script>
+
+    <!-- ── Slot para schemas específicos de página (FAQ, Service, etc.) ── -->
+    <slot name="head" />
+
+    <!-- ══════════════════════════════════════════════════════
+         ANALYTICS — reemplaza los IDs arriba antes de publicar
+         ══════════════════════════════════════════════════════ -->
+
+    <!-- Google Analytics 4 -->
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}></script>
+    <script define:vars={{ GA4_ID }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', GA4_ID, { send_page_view: true });
+    </script>
+
+    <!-- Microsoft Clarity (heatmaps + grabaciones de sesión gratuitas) -->
+    <script define:vars={{ CLARITY_ID }}>
+      (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+      })(window,document,"clarity","script",CLARITY_ID);
+    </script>
+
+    <!-- Meta Pixel (Facebook + Instagram remarketing) -->
+    <script define:vars={{ META_PX_ID }}>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window,document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', META_PX_ID);
+      fbq('track', 'PageView');
+    </script>
+    <noscript>
+      <img height="1" width="1" style="display:none"
+        src={`https://www.facebook.com/tr?id=${META_PX_ID}&ev=PageView&noscript=1`}/>
+    </noscript>
+
   </head>
   <body>
-    <Nav phone={SITE_CONFIG.phone} whatsappMessage={whatsappMessage} links={navLinks} ctaText={navCtaText} />
+    <Nav
+      phone={SITE_CONFIG.phone}
+      whatsappMessage={whatsappMessage}
+      links={navLinks}
+      ctaText={navCtaText}
+    />
     <main>
       <slot />
     </main>
     <Footer phone={SITE_CONFIG.phone} whatsappMessage={whatsappMessage} />
     <WhatsAppFloat phone={SITE_CONFIG.phone} message={whatsappMessage} />
+
+    <!-- Intersection observer: activa animaciones .reveal al hacer scroll -->
     <script>
       const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((e) => {
-            if (e.isIntersecting) {
-              e.target.classList.add('visible');
-            }
-          });
-        },
-        { threshold: 0.12 }
+        (entries) => entries.forEach((e) => {
+          if (e.isIntersecting) e.target.classList.add('visible');
+        }),
+        { threshold: 0.10 }
       );
       document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+      // Rastreo de clics en WhatsApp hacia Meta Pixel y GA4
+      document.querySelectorAll('a[href*="wa.me"]').forEach((el) => {
+        el.addEventListener('click', () => {
+          if (typeof fbq !== 'undefined') fbq('track', 'Contact');
+          if (typeof gtag !== 'undefined') gtag('event', 'whatsapp_click', { event_category: 'engagement' });
+        });
+      });
     </script>
   </body>
 </html>
@@ -85,13 +209,112 @@ const whatsappMessage = WHATSAPP_MESSAGES[page];
   .reveal {
     opacity: 0;
     transform: translateY(28px);
-    transition:
-      opacity 0.7s ease,
-      transform 0.7s ease;
+    transition: opacity 0.7s ease, transform 0.7s ease;
   }
-
   .reveal.visible {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  /* Etiqueta de sección reutilizable en todas las páginas */
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gray-600);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  /* Badge de escasez global */
+  .cupos-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+    border-radius: 99px;
+    margin-bottom: 1.4rem;
+    width: fit-content;
+    animation: badgePulse 2.5s ease-in-out infinite;
+  }
+  @keyframes badgePulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.75; }
+  }
+
+  /* Bloque de garantía global */
+  .garantia-block {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    padding: 1.8rem 2rem;
+    border: 1px solid rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.02);
+    margin-bottom: 2.5rem;
+  }
+  .garantia-icon { font-size: 2rem; flex-shrink: 0; line-height: 1; }
+  .garantia-text h4 {
+    font-family: var(--font-sans);
+    font-size: 0.95rem; font-weight: 600; letter-spacing: 0;
+    margin-bottom: 0.4rem; color: var(--white);
+  }
+  .garantia-text p { font-size: 0.83rem; color: var(--gray-400); line-height: 1.65; font-weight: 300; }
+
+  /* Bloque de anclaje de precio */
+  .anchor-comparacion {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--gray-800);
+    margin-bottom: 2.5rem;
+  }
+  .anchor-item {
+    background: var(--black);
+    padding: 1.5rem 1.2rem;
+    text-align: center;
+  }
+  .anchor-item--highlight { background: rgba(255,255,255,0.03); }
+  .anchor-label { font-size: 0.68rem; color: var(--gray-600); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; font-weight: 500; }
+  .anchor-precio { font-family: var(--font-serif); font-size: 1.6rem; letter-spacing: -0.02em; color: var(--white); margin-bottom: 0.2rem; line-height: 1; }
+  .anchor-desc { font-size: 0.72rem; color: var(--gray-600); font-weight: 300; line-height: 1.4; }
+  .anchor-item--highlight .anchor-precio { color: var(--white); }
+
+  /* Contadores de prueba social */
+  .social-proof-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    padding: 2.5rem;
+    background: var(--gray-900);
+    border-bottom: 1px solid var(--gray-800);
+  }
+  .sp-stat {
+    flex: 1;
+    text-align: center;
+    padding: 0 2rem;
+    border-right: 1px solid var(--gray-800);
+  }
+  .sp-stat:last-child { border-right: none; }
+  .sp-num {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .sp-label { font-size: 0.78rem; color: var(--gray-500); font-weight: 300; line-height: 1.4; }
+
+  @media (max-width: 720px) {
+    .anchor-comparacion { grid-template-columns: 1fr; }
+    .social-proof-bar { flex-direction: column; gap: 1.5rem; }
+    .sp-stat { border-right: none; border-bottom: 1px solid var(--gray-800); padding: 0 0 1.5rem; width: 100%; }
+    .sp-stat:last-child { border-bottom: none; padding-bottom: 0; }
+    .garantia-block { flex-direction: column; }
   }
 </style>

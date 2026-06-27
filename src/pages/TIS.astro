@@ -53,13 +53,31 @@ const faqs = [
   navCtaText="Escribirnos →"
 >
 
+<script type="application/ld+json" slot="head" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(f => ({
+    "@type": "Question",
+    "name": f.question,
+    "acceptedAnswer": { "@type": "Answer", "text": f.answer }
+  }))
+})} />
+
 <!-- ==================== HERO ==================== -->
 <section class="tis-hero">
+  <!-- ESCASEZ + PRIVACIDAD como señal de confianza -->
+  <div class="cupos-badge" style="background:rgba(196,116,138,0.12);color:var(--tis-rose);border:1px solid rgba(196,116,138,0.35);">
+    🔒 Acceso privado · Solo quedan <strong>3 cupos</strong> para este mes
+  </div>
+
   <div class="tis-hero-tag">Budgt TIS · Solo para independientes · 🇨🇱 Chile</div>
-  <h1>Deja de responder<br /><em>lo mismo 200 veces al día.</em></h1>
+
+  <!-- AVERSIÓN A LA PÉRDIDA — cada hora respondiendo mensajes es dinero que no entra -->
+  <h1>Mientras respondes mensajes<br /><em>dejas de ganar dinero.</em></h1>
   <p class="tis-hero-sub">
-    Budgt TIS es la agencia chilena que digitaliza tu negocio independiente — chatbot con IA,
-    marca personal, protección de contenido y mucho más. Sin juicios. Sin letra chica. 100% confidencial.
+    El chatbot atiende, filtra y agenda por ti — a las 3 AM si es necesario.
+    Tú te concentras en trabajar. Nosotros hacemos que el negocio funcione solo.
+    Sin juicios. 100% confidencial.
   </p>
   <div class="tis-hero-actions">
     <a href={waGeneral} class="tis-btn-wa" target="_blank" rel="noopener">
@@ -85,13 +103,33 @@ const faqs = [
 
 <!-- ==================== TRUST BAR ==================== -->
 <div class="tis-trust-bar">
-  <div class="trust-item">🔒 Acceso privado · Solo por invitación</div>
+  <div class="trust-item">🔒 Acceso privado · Sin lista pública de clientas</div>
   <span class="trust-sep">·</span>
   <div class="trust-item">👩 Mujeres al frente del proyecto</div>
   <span class="trust-sep">·</span>
   <div class="trust-item">✅ +200 clientas atendidas</div>
   <span class="trust-sep">·</span>
   <div class="trust-item">🎛️ 100% bajo tu control, siempre</div>
+</div>
+
+<!-- PRUEBA SOCIAL ANIMADA — números específicos = credibilidad -->
+<div class="social-proof-bar reveal">
+  <div class="sp-stat">
+    <div class="sp-num" style="color:var(--tis-rose)">+200</div>
+    <div class="sp-label">clientas<br />atendidas</div>
+  </div>
+  <div class="sp-stat">
+    <div class="sp-num" style="color:var(--tis-rose)">4.8★</div>
+    <div class="sp-label">promedio de<br />satisfacción</div>
+  </div>
+  <div class="sp-stat">
+    <div class="sp-num" style="color:var(--tis-rose)">−4h</div>
+    <div class="sp-label">diarias en mensajes<br />recuperadas en promedio</div>
+  </div>
+  <div class="sp-stat">
+    <div class="sp-num" style="color:var(--tis-rose)">0</div>
+    <div class="sp-label">datos compartidos<br />con terceros</div>
+  </div>
 </div>
 
 <!-- ==================== TE ENTENDEMOS ==================== -->
@@ -520,6 +558,34 @@ const faqs = [
     <div class="section-label reveal">Planes y precios</div>
     <h2 class="reveal">Precios claros. Sin sorpresas.<br /><em>Sin letra chica. Sin lock-in.</em></h2>
 
+    <!-- ANCLAJE — el costo de NO digitalizar vs. Budgt -->
+    <div class="anchor-comparacion reveal">
+      <div class="anchor-item">
+        <div class="anchor-label">Horas respondiendo mensajes al mes</div>
+        <div class="anchor-precio" style="color:var(--gray-500)">~60h</div>
+        <div class="anchor-desc">tiempo que dejas de cobrar · cada mes · sin falta</div>
+      </div>
+      <div class="anchor-item">
+        <div class="anchor-label">Contenido filtrado o robado sin aviso</div>
+        <div class="anchor-precio" style="color:var(--gray-500)">∞ pérdida</div>
+        <div class="anchor-desc">ingresos que no ves · reputación que no controlas</div>
+      </div>
+      <div class="anchor-item anchor-item--highlight">
+        <div class="anchor-label" style="color:var(--tis-rose)">Budgt TIS Crecimiento · el más elegido</div>
+        <div class="anchor-precio" style="color:var(--tis-rose)">$259.000</div>
+        <div class="anchor-desc" style="color:var(--gray-300)">CLP/mes · chatbot + marca + protección + reportes + soporte</div>
+      </div>
+    </div>
+
+    <!-- GARANTÍA — reducción de riesgo percibido -->
+    <div class="garantia-block reveal">
+      <div class="garantia-icon">🛡️</div>
+      <div class="garantia-text">
+        <h4>Garantía de 30 días — o te devolvemos todo</h4>
+        <p>Si en los primeros 30 días el chatbot no te ahorra tiempo real o no ves resultados concretos en lo que acordamos, te devolvemos el pago completo. Sin preguntas. Sin drama. Tu tiempo vale más que una discusión.</p>
+      </div>
+    </div>
+
     <div class="planes-grid reveal">
       <div class="plan-tis">
         <div class="plan-tis-tag">Inicio</div>
@@ -673,8 +739,10 @@ const faqs = [
 <!-- ==================== CTA FINAL ==================== -->
 <section class="tis-cta-final">
   <div class="tis-container tis-cta-inner">
-    <h2 class="reveal">Tú pones las condiciones.<br /><em>Budgt TIS pone la tecnología.</em></h2>
-    <p class="reveal">Sin compromiso. Sin juicios. Respuesta en menos de 24 horas.</p>
+    <!-- IDENTIDAD DE GRUPO + AVERSIÓN A LA PÉRDIDA — pertenencia + urgencia -->
+    <h2 class="reveal">Las que automatizaron ya<br /><em>tienen una ventaja que crece cada día.</em></h2>
+    <p class="reveal">Cada mes sin chatbot es un mes de mensajes que respondiste tú, de contenido sin protección y de clientes que no llegaron.</p>
+    <p class="reveal" style="font-size:0.85rem;color:var(--gray-500);margin-top:-1rem;margin-bottom:1.5rem;">Primera conversación confidencial — sin nombres reales, sin formularios, sin compromiso.</p>
     <a href={waGeneral} class="tis-btn-wa tis-btn-wa--large reveal" target="_blank" rel="noopener">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.167 1.618 5.955L.057 23.928a.5.5 0 0 0 .611.611l5.973-1.561A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.96 9.96 0 0 1-5.073-1.384l-.363-.215-3.763.984.984-3.763-.215-.363A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
       Escribirnos por WhatsApp

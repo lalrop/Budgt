@@ -52,13 +52,30 @@ const faqs = [
   navCtaText="Quiero crecer →"
 >
 
+<script type="application/ld+json" slot="head" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(f => ({
+    "@type": "Question",
+    "name": f.question,
+    "acceptedAnswer": { "@type": "Answer", "text": f.answer }
+  }))
+})} />
+
 <!-- ==================== HERO ==================== -->
 <section class="emp-hero">
+  <!-- ESCASEZ — sesgo de escasez + FOMO -->
+  <div class="cupos-badge" style="background:rgba(224,123,58,0.12);color:var(--emp-accent);border:1px solid rgba(224,123,58,0.35);">
+    ⚡ Solo quedan <strong>4 cupos</strong> disponibles para julio
+  </div>
+
   <div class="emp-hero-tag">Budgt · Para negocios reales · 🇨🇱 Chile</div>
-  <h1>Tu negocio lleva años funcionando.<br /><em>Es hora de que trabaje solo.</em></h1>
+
+  <!-- AVERSIÓN A LA PÉRDIDA — el h1 framing se centra en lo que pierden, no en lo que ganan -->
+  <h1>Cada día sin chatbot<br /><em>es un cliente que no responde.</em></h1>
   <p class="emp-hero-sub">
-    Digitalizamos tu negocio paso a paso — chatbot de WhatsApp, página web, Google, tienda online
-    y más. Sin tecnicismos, sin contratos raros, sin necesitar saber de tecnología.
+    Tu competencia ya responde en segundos, aparece en Google y vende en línea.
+    Nosotros te ponemos al día — paso a paso, sin tecnicismos, sin saber nada de tecnología.
   </p>
   <div class="emp-hero-actions">
     <a href={waGeneral} class="emp-btn-wa" target="_blank" rel="noopener">
@@ -105,13 +122,33 @@ const faqs = [
 
 <!-- ==================== TRUST BAR ==================== -->
 <div class="emp-trust-bar">
-  <div class="trust-item">🏆 +80 negocios digitalizados</div>
+  <div class="trust-item">🏆 +84 negocios digitalizados</div>
   <span class="trust-sep">·</span>
   <div class="trust-item">⚡ Resultados desde la semana 1</div>
   <span class="trust-sep">·</span>
   <div class="trust-item">🇨🇱 100% remoto · todo Chile</div>
   <span class="trust-sep">·</span>
   <div class="trust-item">🔒 Sin contratos largos ni letra chica</div>
+</div>
+
+<!-- PRUEBA SOCIAL ANIMADA — anclaje numérico + autoridad -->
+<div class="social-proof-bar reveal">
+  <div class="sp-stat">
+    <div class="sp-num" style="color:var(--emp-accent)">84</div>
+    <div class="sp-label">negocios<br />digitalizados</div>
+  </div>
+  <div class="sp-stat">
+    <div class="sp-num" style="color:var(--emp-accent)">4.9★</div>
+    <div class="sp-label">promedio de<br />satisfacción</div>
+  </div>
+  <div class="sp-stat">
+    <div class="sp-num" style="color:var(--emp-accent)">+3.200</div>
+    <div class="sp-label">horas devueltas<br />a dueños de negocios</div>
+  </div>
+  <div class="sp-stat">
+    <div class="sp-num" style="color:var(--emp-accent)">&lt;24h</div>
+    <div class="sp-label">tiempo de<br />respuesta garantizado</div>
+  </div>
 </div>
 
 <!-- ==================== PROBLEMAS ==================== -->
@@ -625,6 +662,34 @@ const faqs = [
     <div class="section-label reveal">Planes y precios</div>
     <h2 class="reveal">Elige según dónde está tu negocio hoy.<br /><em>Sin contratos. Sin letra chica.</em></h2>
 
+    <!-- ANCLAJE DE PRECIO — efecto ancla: hace que el plan Crecimiento parezca barato -->
+    <div class="anchor-comparacion reveal">
+      <div class="anchor-item">
+        <div class="anchor-label">Contratar un empleado de marketing</div>
+        <div class="anchor-precio" style="color:var(--gray-500)">$600.000+</div>
+        <div class="anchor-desc">al mes · sin garantía de resultados · solo 1 persona</div>
+      </div>
+      <div class="anchor-item">
+        <div class="anchor-label">Freelancer puntual</div>
+        <div class="anchor-precio" style="color:var(--gray-500)">$350.000</div>
+        <div class="anchor-desc">por proyecto · sin continuidad · sin soporte</div>
+      </div>
+      <div class="anchor-item anchor-item--highlight">
+        <div class="anchor-label" style="color:var(--emp-accent)">Budgt Crecimiento (lo más elegido)</div>
+        <div class="anchor-precio" style="color:var(--emp-accent)">$212.000</div>
+        <div class="anchor-desc" style="color:var(--gray-300)">al mes · 7 servicios · soporte continuo · equipo completo</div>
+      </div>
+    </div>
+
+    <!-- GARANTÍA — reversión del riesgo, reduce fricción de compra -->
+    <div class="garantia-block reveal">
+      <div class="garantia-icon">🛡️</div>
+      <div class="garantia-text">
+        <h4>Garantía de 30 días o te devolvemos el dinero</h4>
+        <p>Si en los primeros 30 días no ves ningún resultado tangible — menos tiempo respondiendo mensajes, más consultas, o lo que hayamos acordado — te devolvemos el pago completo. Sin preguntas raras. Sin letra chica.</p>
+      </div>
+    </div>
+
     <div class="emp-planes-grid reveal">
       <!-- Inicio -->
       <div class="emp-plan">
@@ -725,6 +790,8 @@ const faqs = [
     </div>
 
     <p class="emp-planes-nota reveal">Sin permanencia mínima. Cancelas cuando quieras. ¿No sabes cuál elegir? Escríbenos y te orientamos sin presionarte.</p>
+    <!-- URGENCIA SUAVE — presión sin agresividad -->
+    <p class="emp-planes-nota reveal" style="margin-top:0.5rem;color:var(--emp-accent);font-size:0.8rem;">⚡ Precio vigente mientras queden cupos disponibles. Revisamos tarifas mensualmente.</p>
   </div>
 </section>
 
@@ -776,8 +843,11 @@ const faqs = [
 <!-- ==================== CTA FINAL ==================== -->
 <section class="emp-cta-final">
   <div class="emp-container emp-cta-inner">
-    <h2 class="reveal">Tu negocio ya funciona.<br /><em>Hagámoslo escalar.</em></h2>
-    <p class="reveal">Sin compromiso. Sin tecnicismos. Respondemos el mismo día.</p>
+    <!-- AVERSIÓN A LA PÉRDIDA en CTA — foco en lo que se pierde cada día sin actuar -->
+    <h2 class="reveal">Tu competencia ya avanzó.<br /><em>¿Cuándo empiezas tú?</em></h2>
+    <p class="reveal">Respondemos en menos de 24 horas. Primera conversación sin compromiso.</p>
+    <!-- RECIPROCIDAD — oferta de auditoría gratuita baja la barrera -->
+    <p class="reveal" style="font-size:0.85rem;color:var(--gray-500);margin-top:-1rem;margin-bottom:1.5rem;">Incluye auditoría digital gratuita de tu negocio — sin costo, sin obligación.</p>
     <a href={waGeneral} class="emp-btn-wa emp-btn-wa--large reveal" target="_blank" rel="noopener">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.167 1.618 5.955L.057 23.928a.5.5 0 0 0 .611.611l5.973-1.561A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.96 9.96 0 0 1-5.073-1.384l-.363-.215-3.763.984.984-3.763-.215-.363A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
       Escribirnos por WhatsApp

@@ -6,29 +6,45 @@ interface Props {
 
 const { phone, whatsappMessage } = Astro.props;
 const waUrl = `https://wa.me/${phone.replace('+', '')}?text=${encodeURIComponent(whatsappMessage)}`;
+const year = new Date().getFullYear();
 ---
 
 <footer>
   <div class="footer-logo">
-    <img src="/Logo Budgt transparente.png" alt="Budgt" />
+    <img src="/Logo Budgt transparente.png" alt="Budgt — Digitalización para negocios en Chile" />
   </div>
-  <div class="footer-links">
-    <a href="/contenido">Contenido</a>
-    <a href="/automatico">Automático</a>
-    <a href="/mercado">Mercado</a>
+  <div class="footer-cols">
+    <div class="footer-col">
+      <span class="footer-col-title">Servicios</span>
+      <a href="/#servicios">Chatbot WhatsApp</a>
+      <a href="/#servicios">Identidad visual</a>
+      <a href="/#servicios">Google Business</a>
+      <a href="/#servicios">Tienda online</a>
+      <a href="/#servicios">Página web</a>
+    </div>
+    <div class="footer-col">
+      <span class="footer-col-title">Segmentos</span>
+      <a href="/">Emprendedores</a>
+      <a href="/TIS">Trabajadoras independientes</a>
+    </div>
+    <div class="footer-col">
+      <span class="footer-col-title">Contacto</span>
+      <a href={waUrl} target="_blank" rel="noopener">WhatsApp</a>
+      <a href="/#faq">Preguntas frecuentes</a>
+    </div>
   </div>
-  <p>© 2025 Budgt · Chile</p>
+  <div class="footer-bottom">
+    <p>© {year} Budgt · Chile · Digitalización accesible para negocios reales</p>
+  </div>
 </footer>
 
 <style>
   footer {
-    padding: 2.5rem;
+    padding: 3.5rem 2.5rem 2rem;
     border-top: 1px solid var(--gray-800);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 1rem;
+    display: grid;
+    grid-template-rows: auto auto auto;
+    gap: 2.5rem;
   }
 
   .footer-logo {
@@ -40,38 +56,56 @@ const waUrl = `https://wa.me/${phone.replace('+', '')}?text=${encodeURIComponent
     height: clamp(28px, 3vw, 38px);
     width: auto;
     filter: invert(1);
-    opacity: 0.7;
+    opacity: 0.6;
   }
 
-  .footer-links {
+  .footer-cols {
     display: flex;
-    gap: 1.5rem;
+    gap: 4rem;
+    flex-wrap: wrap;
   }
 
-  .footer-links a {
-    font-size: 0.78rem;
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    min-width: 120px;
+  }
+
+  .footer-col-title {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray-600);
+    margin-bottom: 0.3rem;
+  }
+
+  .footer-col a {
+    font-size: 0.82rem;
     color: var(--gray-500);
     text-decoration: none;
     transition: color 0.2s;
+    font-weight: 300;
   }
 
-  .footer-links a:hover {
+  .footer-col a:hover {
     color: var(--gray-300);
   }
 
-  footer p {
-    font-size: 0.78rem;
-    color: var(--gray-400);
+  .footer-bottom {
+    border-top: 1px solid var(--gray-800);
+    padding-top: 1.5rem;
+  }
+
+  .footer-bottom p {
+    font-size: 0.75rem;
+    color: var(--gray-600);
+    font-weight: 300;
   }
 
   @media (max-width: 720px) {
-    footer {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .footer-links {
-      flex-wrap: wrap;
-    }
+    footer { padding: 2.5rem 1.4rem 1.5rem; gap: 2rem; }
+    .footer-cols { gap: 2rem; }
   }
 </style>
