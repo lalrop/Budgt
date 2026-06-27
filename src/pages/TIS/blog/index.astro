@@ -1,0 +1,224 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog-tis')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const waUrl = `https://wa.me/56997135470?text=${encodeURIComponent('Hola, leí el blog de Budgt TIS y me interesa saber más sobre sus servicios.')}`;
+---
+
+<BaseLayout
+  title="Blog TIS — Recursos para trabajadoras independientes | Budgt"
+  description="Guías sobre automatización, privacidad, protección de contenido y herramientas digitales para trabajadoras sexuales independientes en Chile. Confidencial."
+  page="tis"
+  canonical="https://budgt.cl/TIS/blog"
+  navLinks={[
+    { text: 'Servicios', href: '/TIS#servicios' },
+    { text: 'Planes',    href: '/TIS#planes'    },
+    { text: 'FAQ',       href: '/TIS#faq'       },
+    { text: 'Blog',      href: '/TIS/blog'      },
+  ]}
+  navCtaText="Escribirnos →"
+>
+  <section class="blog-hero">
+    <div class="tis-badge-hero">🔒 Espacio privado · Solo para independientes</div>
+    <span class="section-label">Recursos TIS</span>
+    <h1>Guías para <em>trabajar mejor</em>,<br />protegerte más</h1>
+    <p class="blog-hero-sub">
+      Artículos sobre automatización, privacidad y herramientas digitales —
+      escritos específicamente para trabajadoras independientes. Sin juicios. Sin tecnicismos.
+    </p>
+  </section>
+
+  <section class="blog-grid">
+    {posts.map(post => (
+      <a href={`/TIS/blog/${post.id}`} class="blog-card reveal">
+        <div class="blog-card-meta">
+          <time datetime={post.data.pubDate.toISOString()}>
+            {post.data.pubDate.toLocaleDateString('es-CL', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </time>
+          {post.data.tags.slice(0, 2).map(tag => (
+            <span class="blog-tag">{tag}</span>
+          ))}
+        </div>
+        <h2 class="blog-card-title">{post.data.title}</h2>
+        <p class="blog-card-desc">{post.data.description}</p>
+        <span class="blog-card-cta">Leer artículo →</span>
+      </a>
+    ))}
+  </section>
+
+  <section class="blog-cta-strip">
+    <p>¿Tienes preguntas sobre tu caso específico?</p>
+    <a href={waUrl} target="_blank" rel="noopener" class="blog-cta-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.167 1.618 5.955L.057 23.928a.5.5 0 0 0 .611.611l5.973-1.561A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.96 9.96 0 0 1-5.073-1.384l-.363-.215-3.763.984.984-3.763-.215-.363A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      Escribir a Budgt TIS
+    </a>
+    <a href="/TIS" class="blog-back-link">← Volver a Budgt TIS</a>
+  </section>
+</BaseLayout>
+
+<style>
+  :root { --tis-rose: #c4748a; }
+
+  .blog-hero {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: clamp(4rem, 8vw, 7rem) 2rem 3rem;
+    text-align: center;
+  }
+
+  .tis-badge-hero {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tis-rose);
+    background: rgba(196,116,138,0.1);
+    border: 1px solid rgba(196,116,138,0.25);
+    padding: 0.3rem 0.8rem;
+    border-radius: 99px;
+    margin-bottom: 1.2rem;
+  }
+
+  .blog-hero h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 1.2rem;
+  }
+
+  .blog-hero h1 em {
+    font-style: italic;
+    color: var(--tis-rose);
+  }
+
+  .blog-hero-sub {
+    font-size: clamp(0.95rem, 2vw, 1.05rem);
+    color: var(--gray-400);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .blog-grid {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem 5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 1px;
+    background: var(--gray-800);
+  }
+
+  .blog-card {
+    background: var(--black);
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .blog-card:hover { background: rgba(255,255,255,0.025); }
+
+  .blog-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+
+  .blog-card-meta time {
+    font-size: 0.72rem;
+    color: var(--gray-600);
+    font-weight: 300;
+  }
+
+  .blog-tag {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tis-rose);
+    background: rgba(196,116,138,0.1);
+    padding: 0.15rem 0.5rem;
+    border-radius: 99px;
+  }
+
+  .blog-card-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.15rem, 2.5vw, 1.4rem);
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: var(--white);
+    font-weight: 400;
+  }
+
+  .blog-card-desc {
+    font-size: 0.85rem;
+    color: var(--gray-500);
+    line-height: 1.65;
+    font-weight: 300;
+    flex: 1;
+  }
+
+  .blog-card-cta {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--tis-rose);
+    letter-spacing: 0.04em;
+    margin-top: 0.4rem;
+  }
+
+  .blog-cta-strip {
+    text-align: center;
+    padding: 3rem 2rem 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  .blog-cta-strip p {
+    color: var(--gray-400);
+    font-size: 1rem;
+    font-weight: 300;
+  }
+
+  .blog-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.8rem;
+    background: #25d366;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.88rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .blog-cta-btn:hover { opacity: 0.88; }
+
+  .blog-back-link {
+    font-size: 0.78rem;
+    color: var(--gray-600);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  .blog-back-link:hover { color: var(--gray-300); }
+
+  @media (max-width: 600px) {
+    .blog-grid { grid-template-columns: 1fr; }
+    .blog-card { padding: 2rem 1.4rem; }
+  }
+</style>
