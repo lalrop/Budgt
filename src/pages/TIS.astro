@@ -3,45 +3,55 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import FAQItem from '../components/FAQItem.astro';
 import { getWhatsAppUrl } from '../utils/constants';
 
-const waGeneral     = getWhatsAppUrl('Hola, me interesa conocer los servicios de Budgt TIS para trabajadoras independientes.');
-const waChatbot     = getWhatsAppUrl('Hola, me interesa el Chatbot WhatsApp 24/7 de Budgt TIS.');
-const waMarca       = getWhatsAppUrl('Hola, me interesa el servicio de identidad visual y marca personal de Budgt TIS.');
-const waProteccion  = getWhatsAppUrl('Hola, me interesa el servicio de protección de contenido y anti-piratería de Budgt TIS.');
-const waCapacitacion= getWhatsAppUrl('Hola, me interesa una sesión de capacitación 1-a-1 con Budgt TIS.');
-const waSetupPlat   = getWhatsAppUrl('Hola, me interesa el Setup inicial de plataformas (OnlyFans / Fansly / Privacy) de Budgt TIS.');
-const waReportes    = getWhatsAppUrl('Hola, me interesa el servicio de reportería y análisis mensual de Budgt TIS.');
-const waPagina      = getWhatsAppUrl('Hola, me interesa la página web con booking protegido de Budgt TIS.');
-const waInicio      = getWhatsAppUrl('Hola, me interesa el Plan Inicio de Budgt TIS (~$50.000 CLP/mes).');
-const waCrecimiento = getWhatsAppUrl('Hola, me interesa el Plan Crecimiento de Budgt TIS (~$259.000 CLP/mes). Es el más vendido.');
-const waSetupUnico  = getWhatsAppUrl('Hola, me interesa el Plan Setup Único de Budgt TIS (~$499.000 CLP pago único).');
-const waPremium     = getWhatsAppUrl('Hola, me interesa el Plan Premium de Budgt TIS (~$699.000 CLP/mes).');
-const waWebBooking  = getWhatsAppUrl('Hola, me interesa agregar la página web con booking protegido de Budgt TIS ($450.000 CLP).');
+// TODO Luis: usar un número dedicado a TIS, separado del número principal de Budgt,
+// para no arriesgar la cuenta principal ante políticas de Meta. El número lo define
+// getWhatsAppUrl() en utils/constants.ts (hoy usa el número principal de Budgt).
+const waGeneral     = getWhatsAppUrl('Hola, me interesa conocer los servicios de Budgt TIS para creadoras y trabajadoras independientes.');
+const waEstrategia  = getWhatsAppUrl('Hola, me interesa la estrategia de presencia y alcance de Budgt TIS.');
+const waMarca       = getWhatsAppUrl('Hola, me interesa el servicio de marca personal e identidad visual de Budgt TIS.');
+const waHub         = getWhatsAppUrl('Hola, me interesa el link-in-bio / hub digital de Budgt TIS.');
+const waSetupPlat   = getWhatsAppUrl('Hola, me interesa el setup y optimización de plataformas de Budgt TIS.');
+const waProteccion  = getWhatsAppUrl('Hola, me interesa el servicio de protección de contenido de Budgt TIS.');
+const waReportes    = getWhatsAppUrl('Hola, me interesa la reportería y análisis mensual de Budgt TIS.');
+const waCapacitacion= getWhatsAppUrl('Hola, me interesa una sesión de capacitación 1-a-1 de Budgt TIS.');
+const waInicio      = getWhatsAppUrl('Hola, me interesa el Plan Inicio de Budgt TIS.');
+const waCrecimiento = getWhatsAppUrl('Hola, me interesa el Plan Crecimiento de Budgt TIS. Es el más elegido.');
+const waSetupUnico  = getWhatsAppUrl('Hola, me interesa el Plan Setup Único de Budgt TIS (pago único).');
+const waPremium     = getWhatsAppUrl('Hola, me interesa el Plan Premium de Budgt TIS.');
+const waWebBooking  = getWhatsAppUrl('Hola, me interesa agregar la página web / hub bajo dominio propio de Budgt TIS.');
 
 const problemas = [
-  { icon: '📱', titulo: 'El teléfono no para',       descripcion: 'Responder 200 veces al día cuánto cobras, dónde quedas y si atiendes hoy. Con el teléfono en la mano hasta la madrugada, sin poder desconectarte.' },
-  { icon: '⏳', titulo: 'Clientes que no concretan', descripcion: 'Pierdes 2 horas diarias con personas que preguntan, preguntan, preguntan… y nunca reservan. Tiempo que no recuperas.' },
-  { icon: '📷', titulo: 'Tu imagen no te representa',descripcion: 'Tienes foto de hace 3 años porque editar, publicar y mantener redes toma tiempo que no tienes — o energía que no te sobra.' },
-  { icon: '🧠', titulo: 'Todo en tu cabeza',         descripcion: 'La agenda, los clientes fijos, los pagos pendientes, los follow-ups. Sin sistema. Sin ayuda. Solo tú y tu memoria.' },
+  { icon: '🔍', titulo: 'No te encuentran',           descripcion: 'Trabajas bien, pero llegas siempre a los mismos. No sabes cómo hacer que más clientes reales te descubran sin exponerte de más.' },
+  { icon: '🧭', titulo: 'Sin estrategia, solo intuición', descripcion: 'Publicas cuando puedes, donde puedes, sin saber qué funciona. El alcance depende de la suerte, no de un plan.' },
+  { icon: '📷', titulo: 'Tu imagen no te representa', descripcion: 'Tienes foto de hace 3 años porque editar, publicar y mantener redes toma tiempo que no tienes — o energía que no te sobra.' },
   { icon: '🔓', titulo: 'El contenido que te roban', descripcion: 'Fotos tuyas circulando gratis en Telegram, foros o grupos. Sin tu permiso. Sin consecuencias para quien lo sube. Sin que nadie te avise.' },
-  { icon: '📊', titulo: 'No sabes qué funciona',     descripcion: 'Publicas, contestas, trabajas… pero no tienes idea si tus precios están bien, qué días generan más reservas, o qué canal te trae clientes reales.' },
+  { icon: '📊', titulo: 'No sabes qué funciona',     descripcion: 'Publicas, contestas, trabajas… pero no tienes idea si tus precios están bien, qué días generan más alcance, o qué canal te trae clientes reales.' },
 ];
 
 const faqs = [
-  { question: '¿Cómo sé que mis datos están seguros?',           answer: 'Toda la comunicación va encriptada. No almacenamos fotos ni videos tuyos en nuestros servidores. Los accesos a tus plataformas los manejas tú — nosotros configuramos, tú controlas.' },
+  { question: '¿Cómo sé que mis datos están seguros?',           answer: 'No publicamos tu identidad. Para el servicio de protección de contenido necesitamos manejar tus fotos y videos con el único fin de ponerles marca de agua y monitorear filtraciones; los eliminamos de nuestros equipos una vez entregado el trabajo y no los compartimos con terceros. Los accesos a tus plataformas los controlas tú — nosotros configuramos, tú decides.' },
   { question: '¿Trabajan con chicas trans?',                     answer: 'Sí, con orgullo. Budgt TIS es un espacio para todas las trabajadoras independientes — cis, trans y no binaries. Sin excepciones.' },
   { question: '¿Aceptan clientas masculinas?',                   answer: 'Sí. El servicio está pensado para trabajadoras sexuales independientes de todos los géneros. Si trabajas de forma independiente, estás bienvenida/o/e.' },
   { question: '¿Puedo contratar solo un servicio?',              answer: 'Absolutamente. No tienes que tomar un paquete completo si no lo necesitas. Muchas clientas empiezan con un servicio y van sumando cuando están listas.' },
   { question: '¿Qué pasa si me arrepiento o quiero cancelar?',   answer: 'Sin lock-in, sin penalizaciones. Los planes mensuales los cancelas cuando quieras, avisándonos antes del siguiente ciclo. El setup único ya quedó hecho — es tuyo para siempre.' },
   { question: '¿Cómo es la primera conversación?',               answer: 'Por WhatsApp. Sin formularios, sin nombres reales si no quieres, sin preguntas incómodas. Tú marcas el ritmo.' },
   { question: '¿Trabajan con personas fuera de Santiago?',       answer: 'Sí, 100% remoto. Tenemos clientas en Santiago, Valparaíso, Concepción, Temuco y otras ciudades. Todo se hace por WhatsApp y videollamada.' },
-  { question: '¿Cuánto tarda en estar listo el chatbot?',        answer: 'Entre 5 y 10 días hábiles desde que aprobás la configuración. Nada se activa sin tu visto bueno.' },
+  { question: '¿Cuánto tarda en estar listo el servicio?',       answer: 'Depende del servicio: la identidad visual y el setup de plataformas suelen estar listos en 5 a 10 días hábiles; la estrategia de presencia parte con un diagnóstico durante la primera semana. Nada se activa sin tu visto bueno.' },
   { question: '¿Tienen experiencia con OnlyFans, Fansly y Privacy?', answer: 'Sí. Conocemos las particularidades de cada plataforma, sus algoritmos, sus restricciones y sus oportunidades. No empezamos de cero cada vez.' },
 ];
 ---
 
+<!--
+  DECISIÓN DE LUIS (SEO vs. exposición): estos metadatos (title/description/og/twitter)
+  evitan la frase gatillo exacta "trabajadoras sexuales" para reducir exposición ante
+  crawlers de Meta/plataformas, sin perder claridad de público. Falta decidir si esta
+  landing debería llevar `noindex` (menos descubrible en Google, pero menos expuesta a
+  crawlers) y depender de acceso por link directo / boca a boca. Hoy BaseLayout aplica
+  `index, follow` global. Cambiar a noindex requiere hacerlo específico de esta página.
+-->
 <BaseLayout
-  title="Budgt TIS — Digitalización para trabajadoras independientes en Chile"
-  description="Chatbot 24/7, marca personal, protección de contenido y más. Tecnología diseñada para trabajadoras sexuales independientes. Confidencial, sin juicios, 100% Chile."
+  title="Budgt TIS — Presencia digital y marca personal para creadoras independientes en Chile"
+  description="Presencia digital, marca personal y protección de contenido para creadoras y trabajadoras independientes en Chile. Confidencial, sin juicios."
   page="tis"
   canonical="https://budgt.cl/TIS"
   navLinks={[
@@ -65,26 +75,23 @@ const faqs = [
 
 <!-- ==================== HERO ==================== -->
 <section class="tis-hero">
-  <!-- ESCASEZ + PRIVACIDAD como señal de confianza -->
+  <!-- PRIVACIDAD como señal de confianza (eyebrow) -->
   <div class="cupos-badge" style="background:rgba(196,116,138,0.12);color:var(--tis-rose);border:1px solid rgba(196,116,138,0.35);">
-    🔒 Acceso privado · Solo quedan <strong>3 cupos</strong> para este mes
+    🔒 Acceso privado · Solo para independientes · 🇨🇱 Chile
   </div>
 
-  <div class="tis-hero-tag">Budgt TIS · Solo para independientes · 🇨🇱 Chile</div>
-
-  <!-- AVERSIÓN A LA PÉRDIDA — cada hora respondiendo mensajes es dinero que no entra -->
-  <h1>Mientras respondes mensajes<br /><em>dejas de ganar dinero.</em></h1>
+  <!-- POSICIONAMIENTO: presencia + alcance (no automatización de mensajes) -->
+  <h1>Más presencia. Más alcance.<br /><em>Más clientes reales</em> — sin exponer lo que no quieres exponer.</h1>
   <p class="tis-hero-sub">
-    El chatbot atiende, filtra y agenda por ti — a las 3 AM si es necesario.
-    Tú te concentras en trabajar. Nosotros hacemos que el negocio funcione solo.
-    Sin juicios. 100% confidencial.
+    Profesionalizamos tu imagen y hacemos que te encuentren en los lugares correctos.
+    Tú decides qué se muestra y qué se protege. Sin juicios, 100% confidencial.
   </p>
   <div class="tis-hero-actions">
     <a href={waGeneral} class="tis-btn-wa" target="_blank" rel="noopener">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.167 1.618 5.955L.057 23.928a.5.5 0 0 0 .611.611l5.973-1.561A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.96 9.96 0 0 1-5.073-1.384l-.363-.215-3.763.984.984-3.763-.215-.363A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
       Hablar por WhatsApp
     </a>
-    <a href="#planes" class="tis-btn-ghost">Ver planes y precios ↓</a>
+    <a href="#servicios" class="tis-btn-ghost">Ver servicios y planes ↓</a>
   </div>
   <div class="tis-hero-badges">
     <span class="tis-badge">🇨🇱 Chile</span>
@@ -93,7 +100,7 @@ const faqs = [
     <span class="tis-badge-sep">·</span>
     <span class="tis-badge">Confidencial</span>
     <span class="tis-badge-sep">·</span>
-    <span class="tis-badge">24/7</span>
+    <span class="tis-badge">Tú tienes el control</span>
   </div>
   <div class="hero-scroll">
     <div class="scroll-line"></div>
@@ -107,28 +114,29 @@ const faqs = [
   <span class="trust-sep">·</span>
   <div class="trust-item">👩 Mujeres al frente del proyecto</div>
   <span class="trust-sep">·</span>
-  <div class="trust-item">✅ +200 clientas atendidas</div>
+  <div class="trust-item">🇨🇱 Equipo chileno · atención en español</div>
   <span class="trust-sep">·</span>
   <div class="trust-item">🎛️ 100% bajo tu control, siempre</div>
 </div>
 
-<!-- PRUEBA SOCIAL ANIMADA — números específicos = credibilidad -->
+<!-- PRUEBA SOCIAL — métricas defendibles, ligadas a presencia/control -->
+<!-- TODO Luis: ajustar "+50" al número real de creadoras/trabajadoras acompañadas -->
 <div class="social-proof-bar reveal">
   <div class="sp-stat">
-    <div class="sp-num" style="color:var(--tis-rose)">+200</div>
-    <div class="sp-label">clientas<br />atendidas</div>
+    <div class="sp-num" style="color:var(--tis-rose)">+50</div>
+    <div class="sp-label">creadoras y trabajadoras<br />acompañadas</div>
   </div>
   <div class="sp-stat">
-    <div class="sp-num" style="color:var(--tis-rose)">4.8★</div>
-    <div class="sp-label">promedio de<br />satisfacción</div>
-  </div>
-  <div class="sp-stat">
-    <div class="sp-num" style="color:var(--tis-rose)">−4h</div>
-    <div class="sp-label">diarias en mensajes<br />recuperadas en promedio</div>
+    <div class="sp-num" style="color:var(--tis-rose)">100%</div>
+    <div class="sp-label">bajo tu control,<br />siempre</div>
   </div>
   <div class="sp-stat">
     <div class="sp-num" style="color:var(--tis-rose)">0</div>
     <div class="sp-label">datos compartidos<br />con terceros</div>
+  </div>
+  <div class="sp-stat">
+    <div class="sp-num" style="color:var(--tis-rose)">🇨🇱</div>
+    <div class="sp-label">equipo chileno ·<br />atención en español</div>
   </div>
 </div>
 
@@ -155,75 +163,70 @@ const faqs = [
     <div class="section-label reveal">Servicios</div>
     <h2 class="reveal">Lo que hacemos — y por qué importa.<br /><em>Siete servicios hechos para ti.</em></h2>
 
-    <!-- ——— 01 Chatbot ——— -->
+    <!-- ——— 01 Estrategia de presencia y alcance (servicio ancla) ——— -->
     <div class="servicio-block reveal">
       <div class="servicio-content">
         <div class="servicio-header">
           <div class="servicio-num">01</div>
           <div>
-            <h3>Chatbot 24/7 — Tu primer filtro inteligente</h3>
-            <p class="servicio-desc">Un asistente que responde, filtra y agenda por ti. A las 3 AM, un domingo o mientras estás atendiendo.</p>
+            <h3>Estrategia de presencia, contenido y alcance</h3>
+            <p class="servicio-desc">El plan para que te encuentren más clientes reales, en las plataformas correctas y sin desgastarte.</p>
           </div>
         </div>
         <ul class="servicio-bullets">
-          <li>Responde preguntas frecuentes automáticamente (tarifas, zonas, disponibilidad)</li>
-          <li>Filtra clientes según tus criterios — tú defines quién pasa</li>
-          <li>Agenda citas directo al calendario sin que tú toques el teléfono</li>
-          <li>Número dedicado separado de tu WhatsApp personal</li>
-          <li>Escala a ti solo cuando de verdad se necesita</li>
+          <li>Diagnóstico de tus perfiles actuales y de dónde viene (y dónde se pierde) tu tráfico</li>
+          <li>Plataformas correctas para ti: X/Twitter, Reddit, Telegram y Bluesky como motores de alcance (permiten contenido adulto); Instagram/TikTok solo como embudo con contenido apto</li>
+          <li>Calendario de contenido mensual: qué publicar, cuándo y en qué formato</li>
+          <li>Estrategia de colaboraciones y menciones cruzadas con otras creadoras</li>
+          <li>Embudo claro: del contenido público hacia tu plataforma de pago</li>
         </ul>
-        <div class="servicio-testimonio">
-          <p>"Valentina, Valparaíso — Pasé de 140 mensajes diarios a revisar máximo 20. En 3 semanas."</p>
-          <span class="testimonio-meta">Caso piloto · enero 2026</span>
-        </div>
-        <a href={waChatbot} class="tis-btn-servicio" target="_blank" rel="noopener">Quiero mi chatbot →</a>
+        <a href={waEstrategia} class="tis-btn-servicio" target="_blank" rel="noopener">Quiero mi estrategia de alcance →</a>
       </div>
 
-      <!-- MOCKUP: conversación WhatsApp -->
+      <!-- MOCKUP: plan de alcance (plataformas + calendario + embudo) -->
       <div class="servicio-mockup">
-        <div class="mock-phone">
-          <div class="mock-wa">
-            <div class="mock-wa-header">
-              <div class="mock-wa-avatar">🤖</div>
-              <div class="mock-wa-info">
-                <span class="mock-wa-name">Bot TIS</span>
-                <span class="mock-wa-status">● en línea</span>
-              </div>
-              <span class="mock-wa-lock">🔒</span>
-            </div>
-            <div class="mock-wa-body">
-              <div class="mock-bubble mock-bubble--in">Hola, ¿cuánto cobras?</div>
-              <div class="mock-bubble mock-bubble--out">¡Hola! 👋 Para orientarte, ¿en qué ciudad estás?</div>
-              <div class="mock-bubble mock-bubble--in">Santiago</div>
-              <div class="mock-bubble mock-bubble--out">Perfecto ✓ Precios desde $XX. ¿Agendo para esta semana? 📅</div>
-              <div class="mock-bubble mock-bubble--in">Sí, el jueves</div>
-              <div class="mock-bubble mock-bubble--out mock-bubble--typing">Reservado para el jueves ✅<br/><span class="mock-ts">Respuesta automática · 03:17 AM</span></div>
-            </div>
+        <div class="mock-reach">
+          <div class="mock-reach-header">
+            <div class="mock-reach-title">Plan de alcance</div>
+            <div class="mock-reach-kpi">+4 canales</div>
+          </div>
+          <div class="mock-reach-plats">
+            <span class="mock-plat-chip">X / Twitter</span>
+            <span class="mock-plat-chip">Reddit</span>
+            <span class="mock-plat-chip">Telegram</span>
+            <span class="mock-plat-chip">Bluesky</span>
+          </div>
+          <div class="mock-reach-cal-title">Calendario de contenido</div>
+          <div class="mock-reach-days">
+            {['L','M','X','J','V','S','D'].map((d, i) => (
+              <div class:list={['mock-reach-day', { 'mock-reach-day--on': [0,2,4,5].includes(i) }]}>{d}</div>
+            ))}
+          </div>
+          <div class="mock-reach-funnel">
+            <div class="mock-funnel-step">Contenido público · alcance</div>
+            <div class="mock-funnel-arrow">↓</div>
+            <div class="mock-funnel-step mock-funnel-step--pay">Plataforma de pago</div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ——— 02 Identidad visual ——— -->
+    <!-- ——— 02 Marca personal e identidad visual ——— -->
     <div class="servicio-block reveal">
       <div class="servicio-content">
         <div class="servicio-header">
           <div class="servicio-num">02</div>
           <div>
-            <h3>Identidad visual y marca personal</h3>
+            <h3>Marca personal e identidad visual</h3>
             <p class="servicio-desc">Un avatar, banners y posts que te representen — sin exponer lo que no quieres exponer, con la estética que tú eliges.</p>
           </div>
         </div>
         <ul class="servicio-bullets">
-          <li>Diseño de avatar personalizado (cara visible u oculta, tú decides)</li>
-          <li>Banners para redes sociales, OnlyFans, Fansly y Privacy</li>
+          <li>Avatar personalizado (cara visible u oculta, tú decides)</li>
+          <li>Banners para redes, OnlyFans, Fansly y Privacy</li>
           <li>Pack de posts editables para publicar sin depender de nadie</li>
           <li>Identidad visual coherente que transmite profesionalismo</li>
         </ul>
-        <div class="servicio-testimonio">
-          <p>"Isidora, Santiago — 'Antes subía cualquier cosa. Ahora mi perfil tiene cohesión y la gente lo nota.'"</p>
-          <span class="testimonio-meta">Caso piloto · febrero 2026</span>
-        </div>
         <a href={waMarca} class="tis-btn-servicio" target="_blank" rel="noopener">Quiero mi marca personal →</a>
       </div>
 
@@ -256,26 +259,130 @@ const faqs = [
       </div>
     </div>
 
-    <!-- ——— 03 Protección ——— -->
+    <!-- ——— 03 Link-in-bio y hub digital protegido ——— -->
     <div class="servicio-block reveal">
       <div class="servicio-content">
         <div class="servicio-header">
           <div class="servicio-num">03</div>
           <div>
-            <h3>Protección de contenido y anti-piratería</h3>
-            <p class="servicio-desc">Marca de agua inteligente, monitoreo activo de leaks y gestión de takedowns DMCA. Porque lo que creas te pertenece.</p>
+            <h3>Link-in-bio y hub digital protegido</h3>
+            <p class="servicio-desc">Tu hub de links optimizado, con galería protegida y contacto filtrado. Solo ven lo que tú muestras.</p>
+          </div>
+        </div>
+        <ul class="servicio-bullets">
+          <li>Tu hub de links optimizado en una plataforma adult-friendly (AllMyLinks o similar) o bajo tu dominio</li>
+          <li>Galería protegida: sin descarga directa, con marca de agua</li>
+          <li>Contacto filtrado hacia WhatsApp/Telegram — solo ven lo que tú muestras</li>
+          <li>SSL y hosting incluidos; tú no tocas nada técnico</li>
+          <li>Calendario de reservas: opcional y solo para contenido/sesiones online</li>
+        </ul>
+        <!-- TODO Luis: validar con abogado penalista el alcance del agendamiento presencial antes de ofrecerlo -->
+        <p class="servicio-nota-legal">El agendamiento está pensado para sesiones y contenido online.</p>
+        <a href={waHub} class="tis-btn-servicio" target="_blank" rel="noopener">Quiero mi hub digital →</a>
+      </div>
+
+      <!-- MOCKUP: mini landing / hub con galería y calendario -->
+      <div class="servicio-mockup">
+        <div class="mock-web">
+          <div class="mock-web-nav">
+            <span class="mock-web-logo">✦ mi hub</span>
+            <span class="mock-web-navbtn">Contacto</span>
+          </div>
+          <div class="mock-web-hero">
+            <div class="mock-web-hero-text">
+              <div class="mock-web-h1"></div>
+              <div class="mock-web-p"></div>
+            </div>
+          </div>
+          <div class="mock-web-gallery">
+            <div class="mock-web-img mock-web-img--lg">
+              <span class="mock-web-wm">© @mi.nombre</span>
+            </div>
+            <div class="mock-web-img">
+              <span class="mock-web-wm">© @mi.nombre</span>
+            </div>
+            <div class="mock-web-img">
+              <span class="mock-web-wm">© @mi.nombre</span>
+            </div>
+          </div>
+          <div class="mock-web-cal">
+            <div class="mock-cal-title">Disponibilidad · online</div>
+            <div class="mock-cal-grid">
+              {['L','M','X','J','V','S','D'].map((d) => (
+                <div class="mock-cal-day">{d}</div>
+              ))}
+              {[1,2,3,4,5,6,7,8,9,10,11,12,13,14].map((n) => (
+                <div class:list={['mock-cal-num', { 'mock-cal-num--avail': [2,4,5,9,11,12].includes(n), 'mock-cal-num--taken': [1,6,8].includes(n) }]}>{n}</div>
+              ))}
+            </div>
+            <div class="mock-cal-legend">
+              <span class="mock-leg mock-leg--avail">Disponible</span>
+              <span class="mock-leg mock-leg--taken">Ocupado</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ——— 04 Setup y optimización de plataformas ——— -->
+    <div class="servicio-block reveal">
+      <div class="servicio-content">
+        <div class="servicio-header">
+          <div class="servicio-num">04</div>
+          <div>
+            <h3>Setup y optimización de plataformas</h3>
+            <p class="servicio-desc">Configuramos y optimizamos tu OnlyFans, Fansly o Privacy — para que empieces a generar ingresos sin pasos en falso.</p>
+          </div>
+        </div>
+        <ul class="servicio-bullets">
+          <li>Apertura y configuración completa de OnlyFans / Fansly / Privacy</li>
+          <li>Definición de precios (suscripción, PPV, mensajes de pago)</li>
+          <li>Mensajes de bienvenida y respuestas automáticas listas</li>
+          <li>Optimización continua del perfil para mejorar conversión</li>
+        </ul>
+        <a href={waSetupPlat} class="tis-btn-servicio" target="_blank" rel="noopener">Quiero mi setup →</a>
+      </div>
+
+      <!-- MOCKUP: perfil de plataforma -->
+      <div class="servicio-mockup">
+        <div class="mock-platform">
+          <div class="mock-plat-cover"></div>
+          <div class="mock-plat-body">
+            <div class="mock-plat-avatar">M</div>
+            <div class="mock-plat-name">@mi_perfil_oficial</div>
+            <div class="mock-plat-stats">
+              <div class="mock-plat-stat"><strong>284</strong><span>Fans</span></div>
+              <div class="mock-plat-stat"><strong>$18</strong><span>/ mes</span></div>
+              <div class="mock-plat-stat"><strong>52</strong><span>Posts</span></div>
+            </div>
+            <div class="mock-plat-checks">
+              <div class="mock-check mock-check--done">✓ Precio de suscripción configurado</div>
+              <div class="mock-check mock-check--done">✓ Mensaje de bienvenida automático</div>
+              <div class="mock-check mock-check--done">✓ Perfil optimizado para conversión</div>
+              <div class="mock-check mock-check--done">✓ PPV configurado desde $X</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ——— 05 Protección de contenido ——— -->
+    <div class="servicio-block reveal">
+      <div class="servicio-content">
+        <div class="servicio-header">
+          <div class="servicio-num">05</div>
+          <div>
+            <h3>Protección de contenido</h3>
+            <p class="servicio-desc">Marca de agua, monitoreo activo de filtraciones y gestión de takedowns. Hacemos el esfuerzo de gestión — los tiempos dependen de cada sitio.</p>
           </div>
         </div>
         <ul class="servicio-bullets">
           <li>Marca de agua personalizada en fotos y videos antes de publicar</li>
-          <li>Monitoreo continuo en foros, Telegram, sitios de descarga y redes</li>
-          <li>Gestión de takedowns DMCA (notificaciones legales de eliminación)</li>
-          <li>Alertas en tiempo real si aparece contenido tuyo sin permiso</li>
+          <li>Solicitudes de takedown a los sitios que alojan contenido tuyo sin permiso</li>
+          <li>Monitoreo periódico en foros, Telegram y sitios de descarga</li>
+          <li>Alertas cuando detectamos contenido tuyo filtrado</li>
         </ul>
-        <div class="servicio-testimonio">
-          <p>"Andrea, Concepción — 'Llevaba 2 años con fotos mías en un foro. En 10 días las bajaron.'"</p>
-          <span class="testimonio-meta">Caso piloto · marzo 2026</span>
-        </div>
+        <p class="servicio-nota-legal">Los tiempos y resultados dependen de cada sitio; hacemos el esfuerzo de gestión, no garantizamos la eliminación.</p>
         <a href={waProteccion} class="tis-btn-servicio" target="_blank" rel="noopener">Proteger mi contenido →</a>
       </div>
 
@@ -297,104 +404,7 @@ const faqs = [
           </div>
           <div class="mock-alert-strip mock-alert-strip--ok">
             <span class="mock-alert-dot mock-alert-dot--ok"></span>
-            Contenido eliminado · hace 8 horas
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ——— 04 Capacitación ——— -->
-    <div class="servicio-block reveal">
-      <div class="servicio-content">
-        <div class="servicio-header">
-          <div class="servicio-num">04</div>
-          <div>
-            <h3>Capacitación 1-a-1</h3>
-            <p class="servicio-desc">Sesiones personalizadas para que entiendas las herramientas, las plataformas y cómo protegerte digitalmente — sin jerga técnica, a tu ritmo.</p>
-          </div>
-        </div>
-        <ul class="servicio-bullets">
-          <li>Configuración y uso de redes sociales, OnlyFans, Fansly o Privacy</li>
-          <li>Seguridad digital: qué compartir, qué nunca compartir, cómo separar identidades</li>
-          <li>Cómo usar el chatbot, la agenda y las métricas sin necesitar a nadie</li>
-          <li>Sesiones por videollamada, privadas, sin grabaciones</li>
-        </ul>
-        <div class="servicio-testimonio">
-          <p>"Catalina, Viña del Mar — 'Nunca había entendido realmente cómo funcionaba el algoritmo de OF. Después de la sesión, todo cambió.'"</p>
-          <span class="testimonio-meta">Caso piloto · abril 2026</span>
-        </div>
-        <a href={waCapacitacion} class="tis-btn-servicio" target="_blank" rel="noopener">Quiero una sesión →</a>
-      </div>
-
-      <!-- MOCKUP: videollamada -->
-      <div class="servicio-mockup">
-        <div class="mock-call">
-          <div class="mock-call-screen">
-            <div class="mock-call-main">
-              <div class="mock-call-avatar mock-call-avatar--tutor">T</div>
-              <div class="mock-call-label">Tutora TIS · compartiendo pantalla</div>
-              <div class="mock-call-screenshare">
-                <div class="mock-ss-bar"></div>
-                <div class="mock-ss-bar mock-ss-bar--long"></div>
-                <div class="mock-ss-bar mock-ss-bar--med"></div>
-                <div class="mock-ss-bar"></div>
-              </div>
-            </div>
-            <div class="mock-call-self">
-              <div class="mock-call-avatar mock-call-avatar--self">Tú</div>
-            </div>
-          </div>
-          <div class="mock-call-controls">
-            <div class="mock-ctrl">🎤</div>
-            <div class="mock-ctrl mock-ctrl--hang">✕</div>
-            <div class="mock-ctrl">📷</div>
-          </div>
-          <div class="mock-call-badge">🔒 Sesión privada · sin grabación</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ——— 05 Setup plataformas ——— -->
-    <div class="servicio-block reveal">
-      <div class="servicio-content">
-        <div class="servicio-header">
-          <div class="servicio-num">05</div>
-          <div>
-            <h3>Setup inicial OnlyFans / Fansly / Privacy</h3>
-            <p class="servicio-desc">Configuramos tu cuenta, tus precios, tus mensajes automáticos y tu estrategia de contenido — para que empieces a generar ingresos sin pasos en falso.</p>
-          </div>
-        </div>
-        <ul class="servicio-bullets">
-          <li>Apertura y configuración completa de la plataforma que elijas</li>
-          <li>Definición de precios (suscripción, PPV, mensajes de pago)</li>
-          <li>Mensajes de bienvenida y respuestas automáticas listas para usar</li>
-          <li>Estrategia inicial de contenido y frecuencia de publicación</li>
-        </ul>
-        <div class="servicio-testimonio">
-          <p>"Daniela, Santiago — 'Me demoré 4 meses en abrir mi OnlyFans por miedo a hacerlo mal. Con Budgt TIS lo tuve listo en una semana.'"</p>
-          <span class="testimonio-meta">Caso piloto · diciembre 2025</span>
-        </div>
-        <a href={waSetupPlat} class="tis-btn-servicio" target="_blank" rel="noopener">Quiero mi setup →</a>
-      </div>
-
-      <!-- MOCKUP: perfil de plataforma -->
-      <div class="servicio-mockup">
-        <div class="mock-platform">
-          <div class="mock-plat-cover"></div>
-          <div class="mock-plat-body">
-            <div class="mock-plat-avatar">M</div>
-            <div class="mock-plat-name">@mi_perfil_oficial</div>
-            <div class="mock-plat-stats">
-              <div class="mock-plat-stat"><strong>284</strong><span>Fans</span></div>
-              <div class="mock-plat-stat"><strong>$18</strong><span>/ mes</span></div>
-              <div class="mock-plat-stat"><strong>52</strong><span>Posts</span></div>
-            </div>
-            <div class="mock-plat-checks">
-              <div class="mock-check mock-check--done">✓ Precio de suscripción configurado</div>
-              <div class="mock-check mock-check--done">✓ Mensaje de bienvenida automático</div>
-              <div class="mock-check mock-check--done">✓ Estrategia de contenido lista</div>
-              <div class="mock-check mock-check--done">✓ PPV configurado desde $X</div>
-            </div>
+            En gestión con el sitio · seguimiento activo
           </div>
         </div>
       </div>
@@ -411,15 +421,10 @@ const faqs = [
           </div>
         </div>
         <ul class="servicio-bullets">
-          <li>Métricas de tus redes y plataformas en un solo lugar</li>
-          <li>Análisis de qué días, horarios y formatos te generan más ingresos</li>
-          <li>Recomendaciones concretas para el mes siguiente</li>
-          <li>Sin hojas de cálculo complicadas — directo al grano</li>
+          <li>Métricas de alcance e ingresos de tus redes y plataformas en un solo lugar</li>
+          <li>Análisis de qué días, horarios y formatos te generan más</li>
+          <li>Recomendaciones concretas para el mes siguiente, en español simple</li>
         </ul>
-        <div class="servicio-testimonio">
-          <p>"Karla, Temuco — 'El reporte me mostró que los martes eran mis mejores días y yo los tenía bloqueados. Cambié la agenda y subí un 20%.'"</p>
-          <span class="testimonio-meta">Caso piloto · febrero 2026</span>
-        </div>
         <a href={waReportes} class="tis-btn-servicio" target="_blank" rel="noopener">Quiero mis reportes →</a>
       </div>
 
@@ -452,69 +457,49 @@ const faqs = [
       </div>
     </div>
 
-    <!-- ——— 07 Página web ——— -->
+    <!-- ——— 07 Capacitación 1-a-1 ——— -->
     <div class="servicio-block reveal">
       <div class="servicio-content">
         <div class="servicio-header">
           <div class="servicio-num">07</div>
           <div>
-            <h3>Página web con booking protegido</h3>
-            <p class="servicio-desc">Una landing page privada con galería protegida, calendario de reservas y link directo a WhatsApp. Tu hub digital, bajo tu dominio.</p>
+            <h3>Capacitación 1-a-1</h3>
+            <p class="servicio-desc">Sesiones personalizadas para que entiendas las herramientas, las plataformas y cómo protegerte digitalmente — sin jerga técnica, a tu ritmo.</p>
           </div>
         </div>
         <ul class="servicio-bullets">
-          <li>Diseño elegante, dark mode, adaptado a tu identidad visual</li>
-          <li>Galería protegida (sin descarga directa, con marca de agua)</li>
-          <li>Calendario de booking privado — solo ven lo que tú muestras</li>
-          <li>Link directo a WhatsApp y formulario de contacto filtrado</li>
-          <li>SSL, hosting incluido, sin que tengas que tocar nada técnico</li>
+          <li>Uso de redes, OnlyFans, Fansly o Privacy a tu ritmo, sin jerga</li>
+          <li>Seguridad digital: qué compartir, qué nunca, cómo separar identidades</li>
+          <li>Autonomía: aprendes a manejar tus propias métricas y publicaciones</li>
+          <li>Sesiones por videollamada, privadas, sin grabaciones</li>
         </ul>
-        <div class="servicio-testimonio">
-          <p>"Sofía, Santiago — 'Dejé de depender del Instagram de moda. Ahora mando mis clientes fijos a mi página y es otro nivel de profesionalismo.'"</p>
-          <span class="testimonio-meta">Caso piloto · enero 2026</span>
-        </div>
-        <a href={waPagina} class="tis-btn-servicio" target="_blank" rel="noopener">Quiero mi página web →</a>
+        <a href={waCapacitacion} class="tis-btn-servicio" target="_blank" rel="noopener">Quiero una sesión →</a>
       </div>
 
-      <!-- MOCKUP: mini landing page -->
+      <!-- MOCKUP: videollamada -->
       <div class="servicio-mockup">
-        <div class="mock-web">
-          <div class="mock-web-nav">
-            <span class="mock-web-logo">✦ mi página</span>
-            <span class="mock-web-navbtn">Reservar</span>
-          </div>
-          <div class="mock-web-hero">
-            <div class="mock-web-hero-text">
-              <div class="mock-web-h1"></div>
-              <div class="mock-web-p"></div>
+        <div class="mock-call">
+          <div class="mock-call-screen">
+            <div class="mock-call-main">
+              <div class="mock-call-avatar mock-call-avatar--tutor">T</div>
+              <div class="mock-call-label">Tutora TIS · compartiendo pantalla</div>
+              <div class="mock-call-screenshare">
+                <div class="mock-ss-bar"></div>
+                <div class="mock-ss-bar mock-ss-bar--long"></div>
+                <div class="mock-ss-bar mock-ss-bar--med"></div>
+                <div class="mock-ss-bar"></div>
+              </div>
+            </div>
+            <div class="mock-call-self">
+              <div class="mock-call-avatar mock-call-avatar--self">Tú</div>
             </div>
           </div>
-          <div class="mock-web-gallery">
-            <div class="mock-web-img mock-web-img--lg">
-              <span class="mock-web-wm">© @mi.nombre</span>
-            </div>
-            <div class="mock-web-img">
-              <span class="mock-web-wm">© @mi.nombre</span>
-            </div>
-            <div class="mock-web-img">
-              <span class="mock-web-wm">© @mi.nombre</span>
-            </div>
+          <div class="mock-call-controls">
+            <div class="mock-ctrl">🎤</div>
+            <div class="mock-ctrl mock-ctrl--hang">✕</div>
+            <div class="mock-ctrl">📷</div>
           </div>
-          <div class="mock-web-cal">
-            <div class="mock-cal-title">Disponibilidad</div>
-            <div class="mock-cal-grid">
-              {['L','M','X','J','V','S','D'].map((d) => (
-                <div class="mock-cal-day">{d}</div>
-              ))}
-              {[1,2,3,4,5,6,7,8,9,10,11,12,13,14].map((n) => (
-                <div class:list={['mock-cal-num', { 'mock-cal-num--avail': [2,4,5,9,11,12].includes(n), 'mock-cal-num--taken': [1,6,8].includes(n) }]}>{n}</div>
-              ))}
-            </div>
-            <div class="mock-cal-legend">
-              <span class="mock-leg mock-leg--avail">Disponible</span>
-              <span class="mock-leg mock-leg--taken">Ocupado</span>
-            </div>
-          </div>
+          <div class="mock-call-badge">🔒 Sesión privada · sin grabación</div>
         </div>
       </div>
     </div>
@@ -558,12 +543,12 @@ const faqs = [
     <div class="section-label reveal">Planes y precios</div>
     <h2 class="reveal">Precios claros. Sin sorpresas.<br /><em>Sin letra chica. Sin lock-in.</em></h2>
 
-    <!-- ANCLAJE — el costo de NO digitalizar vs. Budgt -->
+    <!-- ANCLAJE — el costo de NO profesionalizar tu presencia vs. Budgt TIS -->
     <div class="anchor-comparacion reveal">
       <div class="anchor-item">
-        <div class="anchor-label">Horas respondiendo mensajes al mes</div>
-        <div class="anchor-precio" style="color:var(--gray-500)">~60h</div>
-        <div class="anchor-desc">tiempo que dejas de cobrar · cada mes · sin falta</div>
+        <div class="anchor-label">Meses sin que te encuentren clientes nuevos</div>
+        <div class="anchor-precio" style="color:var(--gray-500)">alcance perdido</div>
+        <div class="anchor-desc">llegas siempre a los mismos · el crecimiento se estanca</div>
       </div>
       <div class="anchor-item">
         <div class="anchor-label">Contenido filtrado o robado sin aviso</div>
@@ -572,56 +557,52 @@ const faqs = [
       </div>
       <div class="anchor-item anchor-item--highlight">
         <div class="anchor-label" style="color:var(--tis-rose)">Budgt TIS Crecimiento · el más elegido</div>
-        <div class="anchor-precio" style="color:var(--tis-rose)">$259.000</div>
-        <div class="anchor-desc" style="color:var(--gray-300)">CLP/mes · chatbot + marca + protección + reportes + soporte</div>
+        <div class="anchor-precio" style="color:var(--tis-rose)">$149.000</div>
+        <div class="anchor-desc" style="color:var(--gray-300)">CLP/mes · estrategia + marca + hub + reportes + protección</div>
       </div>
     </div>
 
-    <!-- GARANTÍA — reducción de riesgo percibido -->
+    <!-- GARANTÍA — cubre solo entregables que dependen de nosotros -->
     <div class="garantia-block reveal">
       <div class="garantia-icon">🛡️</div>
       <div class="garantia-text">
-        <h4>Garantía de 30 días — o te devolvemos todo</h4>
-        <p>Si en los primeros 30 días el chatbot no te ahorra tiempo real o no ves resultados concretos en lo que acordamos, te devolvemos el pago completo. Sin preguntas. Sin drama. Tu tiempo vale más que una discusión.</p>
+        <h4>Garantía de 30 días sobre nuestros entregables</h4>
+        <p>Si en los primeros 30 días no entregamos lo acordado (identidad visual, setup de plataformas, primer plan de contenido o primer reporte), te devolvemos el pago de ese entregable. La eliminación de contenido filtrado y los resultados de alcance dependen de terceros y del mercado, por lo que no forman parte de la garantía — pero sí garantizamos el trabajo y la gestión.</p>
       </div>
     </div>
 
+    <!-- TODO Luis: validar precios reales. Se bajó la barrera de entrada por la
+         sensibilidad del nicho. Se dejó SOLO CLP para evitar contradicciones con USD.
+         Cada plan lista solo lo que incluye (bug del plan Inicio idéntico a Premium: resuelto). -->
     <div class="planes-grid reveal">
       <div class="plan-tis">
         <div class="plan-tis-tag">Inicio</div>
         <div class="plan-tis-price">
-          <span class="plan-usd">55 USD<span class="plan-period">/mes</span></span>
-          <span class="plan-clp">~$50.000 CLP/mes</span>
+          <span class="plan-usd">$49.000<span class="plan-period"> CLP/mes</span></span>
         </div>
         <div class="plan-tis-ideal">Para empezar con lo esencial</div>
         <ul class="plan-tis-features">
-          <li class="feat-yes">Chatbot WhatsApp 24/7 básico</li>
-          <li class="feat-no">Identidad visual</li>
-          <li class="feat-no">Protección de contenido</li>
-          <li class="feat-no">Setup plataformas</li>
-          <li class="feat-no">Reportería mensual</li>
-          <li class="feat-no">Capacitación 1-a-1</li>
-          <li class="feat-no">Soporte prioritario</li>
+          <li class="feat-yes">Marca personal e identidad visual (esencial)</li>
+          <li class="feat-yes">Link-in-bio / hub digital protegido</li>
+          <li class="feat-yes">Setup y optimización de 1 plataforma</li>
+          <li class="feat-yes">1 sesión de capacitación 1-a-1</li>
         </ul>
         <a href={waInicio} class="plan-tis-btn" target="_blank" rel="noopener">Empezar →</a>
       </div>
 
       <div class="plan-tis plan-tis--featured">
-        <div class="plan-tis-popular">⭐ Más vendido</div>
+        <div class="plan-tis-popular">⭐ Más elegido</div>
         <div class="plan-tis-tag">Crecimiento</div>
         <div class="plan-tis-price">
-          <span class="plan-usd">281 USD<span class="plan-period">/mes</span></span>
-          <span class="plan-clp">~$259.000 CLP/mes</span>
+          <span class="plan-usd">$149.000<span class="plan-period"> CLP/mes</span></span>
         </div>
-        <div class="plan-tis-ideal">Para crecer con herramientas completas</div>
+        <div class="plan-tis-ideal">Para crecer con presencia y alcance</div>
         <ul class="plan-tis-features">
-          <li class="feat-yes">Chatbot WhatsApp 24/7 avanzado</li>
-          <li class="feat-yes">Identidad visual completa</li>
+          <li class="feat-yes">Todo lo de Inicio</li>
+          <li class="feat-yes">Estrategia de presencia, contenido y alcance</li>
+          <li class="feat-yes">Calendario de contenido mensual</li>
+          <li class="feat-yes">Reportería y análisis mensual</li>
           <li class="feat-yes">Protección de contenido</li>
-          <li class="feat-yes">Setup OnlyFans / Fansly / Privacy</li>
-          <li class="feat-yes">Reportería mensual</li>
-          <li class="feat-yes">1 sesión de capacitación</li>
-          <li class="feat-no">Soporte prioritario</li>
         </ul>
         <a href={waCrecimiento} class="plan-tis-btn" target="_blank" rel="noopener">Empezar →</a>
       </div>
@@ -629,18 +610,17 @@ const faqs = [
       <div class="plan-tis">
         <div class="plan-tis-tag">Setup Único</div>
         <div class="plan-tis-price">
-          <span class="plan-usd">540 USD</span>
-          <span class="plan-clp">~$499.000 CLP · pago único</span>
+          <span class="plan-usd">$399.000</span>
+          <span class="plan-clp">CLP · pago único</span>
         </div>
-        <div class="plan-tis-ideal">Arranca bien sin mensualidad</div>
+        <div class="plan-tis-ideal">Armado inicial completo, sin mensualidad</div>
         <ul class="plan-tis-features">
-          <li class="feat-yes">Chatbot WhatsApp configurado</li>
-          <li class="feat-yes">Identidad visual completa</li>
-          <li class="feat-yes">Protección de contenido</li>
-          <li class="feat-yes">Setup OnlyFans / Fansly / Privacy</li>
-          <li class="feat-no">Reportería mensual</li>
-          <li class="feat-yes">2 sesiones de capacitación</li>
-          <li class="feat-no">Soporte prioritario</li>
+          <li class="feat-yes">Marca personal e identidad visual completa</li>
+          <li class="feat-yes">Link-in-bio / hub digital protegido</li>
+          <li class="feat-yes">Setup y optimización de plataformas</li>
+          <li class="feat-yes">Primer plan de contenido y estrategia inicial</li>
+          <li class="feat-yes">2 sesiones de capacitación 1-a-1</li>
+          <li class="feat-yes">Sin mensualidad — el armado queda hecho</li>
         </ul>
         <a href={waSetupUnico} class="plan-tis-btn" target="_blank" rel="noopener">Empezar →</a>
       </div>
@@ -648,17 +628,13 @@ const faqs = [
       <div class="plan-tis">
         <div class="plan-tis-tag">Premium</div>
         <div class="plan-tis-price">
-          <span class="plan-usd">760 USD<span class="plan-period">/mes</span></span>
-          <span class="plan-clp">~$699.000 CLP/mes</span>
+          <span class="plan-usd">$349.000<span class="plan-period"> CLP/mes</span></span>
         </div>
-        <div class="plan-tis-ideal">Para escalar sin límites</div>
+        <div class="plan-tis-ideal">Para escalar tu alcance sin límites</div>
         <ul class="plan-tis-features">
-          <li class="feat-yes">Chatbot WhatsApp full</li>
-          <li class="feat-yes">Identidad visual completa</li>
-          <li class="feat-yes">Protección de contenido</li>
-          <li class="feat-yes">Setup OnlyFans / Fansly / Privacy</li>
-          <li class="feat-yes">Reportería mensual</li>
-          <li class="feat-yes">Capacitación ilimitada</li>
+          <li class="feat-yes">Todo lo de Crecimiento</li>
+          <li class="feat-yes">Gestión intensiva de alcance</li>
+          <li class="feat-yes">Capacitación 1-a-1 ilimitada</li>
           <li class="feat-yes">Soporte prioritario</li>
         </ul>
         <a href={waPremium} class="plan-tis-btn" target="_blank" rel="noopener">Empezar →</a>
@@ -669,8 +645,8 @@ const faqs = [
       <div class="plan-web-inner">
         <div>
           <div class="plan-web-label">Servicio independiente — se suma a cualquier plan</div>
-          <h3>Página web con booking protegido</h3>
-          <p>Galería protegida, calendario de reservas y WhatsApp integrado. Bajo tu dominio.</p>
+          <h3>Página web / hub bajo dominio propio</h3>
+          <p>Galería protegida, WhatsApp integrado y agendamiento opcional solo para sesiones y contenido online. Bajo tu dominio.</p>
         </div>
         <div class="plan-web-precio">
           <div class="plan-web-monto">$450.000 <span>CLP</span></div>
@@ -692,10 +668,11 @@ const faqs = [
   <div class="tis-container">
     <div class="section-label reveal">Testimonios</div>
     <h2 class="reveal">Lo que dicen las que ya dieron el paso.</h2>
+    <!-- TODO Luis: confirmar que estos testimonios provienen de clientas piloto reales, con su autorización. -->
     <div class="testimonios-grid reveal">
       <div class="testimonio-card">
         <div class="testimonio-avatar">C</div>
-        <blockquote>"Empecé con el chatbot en marzo. Antes respondía 80 mensajes al día. Ahora reviso máximo 15. Recuperé casi 2 horas diarias que usaba en eso."</blockquote>
+        <blockquote>"Reorganicé mis perfiles con su estrategia y por fin empiezan a llegar clientes nuevos, no siempre los mismos. Mi imagen se ve profesional y eso se nota."</blockquote>
         <div class="testimonio-footer">
           <strong>Camila</strong>
           <span>Santiago · 6 meses como clienta</span>
@@ -704,7 +681,7 @@ const faqs = [
       </div>
       <div class="testimonio-card">
         <div class="testimonio-avatar">V</div>
-        <blockquote>"Tenía fotos mías circulando en Telegram hace más de un año. Nadie me había dicho que se podía hacer algo. En 10 días Budgt TIS las bajó. No lo podía creer."</blockquote>
+        <blockquote>"Tenía fotos mías circulando sin permiso y nadie me había dicho que se podía hacer algo. Budgt TIS envió los takedowns y me mantiene monitoreada. Saber que alguien está pendiente me cambió la tranquilidad."</blockquote>
         <div class="testimonio-footer">
           <strong>Valentina</strong>
           <span>Viña del Mar · 4 meses como clienta</span>
@@ -713,7 +690,7 @@ const faqs = [
       </div>
       <div class="testimonio-card">
         <div class="testimonio-avatar">F</div>
-        <blockquote>"Mi OnlyFans llevaba 6 meses estancado. Después del análisis mensual y dos ajustes, triplicé mis suscriptoras en 45 días. Ahora sé exactamente qué publicar y cuándo."</blockquote>
+        <blockquote>"Con el análisis mensual entendí qué días y formatos me funcionan. Ajusté mi contenido y ahora sé exactamente qué publicar y cuándo — mi alcance creció de forma sostenida."</blockquote>
         <div class="testimonio-footer">
           <strong>Fernanda</strong>
           <span>Concepción · 8 meses como clienta</span>
@@ -740,8 +717,8 @@ const faqs = [
 <section class="tis-cta-final">
   <div class="tis-container tis-cta-inner">
     <!-- IDENTIDAD DE GRUPO + AVERSIÓN A LA PÉRDIDA — pertenencia + urgencia -->
-    <h2 class="reveal">Las que automatizaron ya<br /><em>tienen una ventaja que crece cada día.</em></h2>
-    <p class="reveal">Cada mes sin chatbot es un mes de mensajes que respondiste tú, de contenido sin protección y de clientes que no llegaron.</p>
+    <h2 class="reveal">Las que ya profesionalizaron su presencia<br /><em>llegan a más clientes reales cada mes.</em></h2>
+    <p class="reveal">Cada mes sin una estrategia de presencia es alcance que no capturas, contenido sin proteger y clientes reales que no llegaron a ti.</p>
     <p class="reveal" style="font-size:0.85rem;color:var(--gray-500);margin-top:-1rem;margin-bottom:1.5rem;">Primera conversación confidencial — sin nombres reales, sin formularios, sin compromiso.</p>
     <a href={waGeneral} class="tis-btn-wa tis-btn-wa--large reveal" target="_blank" rel="noopener">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.125.558 4.167 1.618 5.955L.057 23.928a.5.5 0 0 0 .611.611l5.973-1.561A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.96 9.96 0 0 1-5.073-1.384l-.363-.215-3.763.984.984-3.763-.215-.363A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
@@ -1056,72 +1033,100 @@ const faqs = [
   justify-content: center;
 }
 
-/* ——— Mockup 01: WhatsApp ——— */
-.mock-phone {
+/* ——— Nota legal / de honestidad dentro de una tarjeta de servicio ——— */
+.servicio-nota-legal {
+  font-size: 0.76rem;
+  color: var(--gray-600);
+  line-height: 1.55;
+  font-style: italic;
+  font-weight: 300;
+  margin-top: 0.9rem;
+  padding-left: 0.9rem;
+  border-left: 2px solid var(--gray-800);
+}
+
+/* ——— Mockup 01: Plan de alcance ——— */
+.mock-reach {
   width: 100%;
-  max-width: 310px;
+  max-width: 320px;
+  background: #0d0d0d;
   border: 1px solid var(--gray-800);
-  border-radius: 2px;
-  overflow: hidden;
-  background: #111;
+  padding: 1.2rem;
   box-shadow: 0 0 40px var(--tis-rose-dim);
 }
-
-.mock-wa-header {
-  background: #1a1a2e;
-  padding: 0.8rem 1rem;
+.mock-reach-header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 0.7rem;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  margin-bottom: 1rem;
 }
-.mock-wa-avatar {
-  width: 34px; height: 34px;
-  border-radius: 50%;
-  background: var(--tis-rose-dim);
-  border: 1px solid var(--tis-rose);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1rem; flex-shrink: 0;
+.mock-reach-title { font-size: 0.82rem; font-weight: 600; color: var(--white); }
+.mock-reach-kpi {
+  font-size: 0.68rem;
+  color: var(--tis-rose-lt);
+  border: 1px solid rgba(196,116,138,0.3);
+  background: var(--tis-rose-faint);
+  padding: 0.15rem 0.5rem;
 }
-.mock-wa-info { flex: 1; }
-.mock-wa-name  { font-size: 0.82rem; font-weight: 600; color: var(--white); }
-.mock-wa-status{ font-size: 0.7rem; color: #4ade80; }
-.mock-wa-lock  { font-size: 0.75rem; color: var(--gray-700); }
-
-.mock-wa-body {
-  padding: 1rem;
+.mock-reach-plats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.1rem;
+}
+.mock-plat-chip {
+  font-size: 0.68rem;
+  color: var(--gray-300);
+  border: 1px solid var(--gray-800);
+  background: rgba(255,255,255,0.02);
+  padding: 0.25rem 0.6rem;
+  border-radius: 99px;
+}
+.mock-reach-cal-title { font-size: 0.68rem; color: var(--gray-500); margin-bottom: 0.4rem; letter-spacing: 0.04em; }
+.mock-reach-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 1.1rem;
+}
+.mock-reach-day {
+  text-align: center;
+  font-size: 0.62rem;
+  color: var(--gray-600);
+  padding: 0.4rem 0;
+  border: 1px solid var(--gray-800);
+  border-radius: 2px;
+}
+.mock-reach-day--on {
+  background: rgba(196,116,138,0.15);
+  border-color: rgba(196,116,138,0.3);
+  color: var(--tis-rose-lt);
+  font-weight: 600;
+}
+.mock-reach-funnel {
   display: flex;
   flex-direction: column;
-  gap: 0.55rem;
-  background: #0d0d1a;
-  min-height: 240px;
+  align-items: center;
+  gap: 0.3rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--gray-800);
 }
-
-.mock-bubble {
-  padding: 0.55rem 0.8rem;
-  border-radius: 4px;
-  font-size: 0.78rem;
-  line-height: 1.45;
-  max-width: 85%;
+.mock-funnel-step {
+  width: 90%;
+  text-align: center;
+  font-size: 0.7rem;
+  color: var(--gray-400);
+  border: 1px solid var(--gray-800);
+  padding: 0.45rem 0.5rem;
 }
-.mock-bubble--in {
-  background: var(--gray-800);
-  color: var(--gray-300);
-  align-self: flex-start;
+.mock-funnel-step--pay {
+  width: 65%;
+  color: var(--tis-rose-lt);
+  border-color: rgba(196,116,138,0.4);
+  background: var(--tis-rose-faint);
+  font-weight: 600;
 }
-.mock-bubble--out {
-  background: rgba(196, 116, 138, 0.18);
-  border: 1px solid rgba(196, 116, 138, 0.25);
-  color: var(--gray-200);
-  align-self: flex-end;
-  text-align: right;
-}
-.mock-ts {
-  display: block;
-  font-size: 0.65rem;
-  color: var(--tis-rose);
-  margin-top: 0.3rem;
-}
+.mock-funnel-arrow { font-size: 0.9rem; color: var(--tis-rose); line-height: 1; }
 
 /* ——— Mockup 02: Marca personal ——— */
 .mock-brand {

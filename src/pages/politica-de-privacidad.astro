@@ -1,0 +1,198 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const lastUpdated = '22 de julio de 2026';
+const contactEmail = 'lalrop92@gmail.com';
+---
+
+<BaseLayout
+  title="Política de Privacidad — Budgt"
+  description="Política de privacidad de Budgt: qué datos recopilamos, cómo los usamos y cómo se tratan los datos de Google en nuestras automatizaciones."
+  page="general"
+  canonical="https://budgt.cl/politica-de-privacidad"
+  navLinks={[
+    { text: 'Inicio', href: '/' },
+  ]}
+  navCtaText="Hablar con nosotros"
+>
+
+<section class="legal">
+  <div class="container legal-container">
+    <div class="section-label reveal">Legal</div>
+    <h1 class="reveal">Política de Privacidad</h1>
+    <p class="legal-updated reveal">Última actualización: {lastUpdated}</p>
+
+    <div class="legal-body reveal">
+      <p>
+        Esta Política de Privacidad describe cómo <strong>Budgt</strong> ("nosotros", "nuestro")
+        recopila, usa, almacena y protege la información cuando utilizas nuestro sitio web
+        (<a href="https://budgt.cl">budgt.cl</a>) o los servicios de automatización que
+        entregamos a nuestros clientes, incluyendo integraciones construidas con
+        <strong> N8N</strong> que pueden conectarse a servicios de Google (Gmail, Google
+        Sheets, Google Calendar y Google Drive) en nombre de un negocio cliente.
+      </p>
+
+      <h2>1. Quiénes somos</h2>
+      <p>
+        Budgt es un servicio chileno de digitalización y automatización para pequeños
+        negocios y emprendedores. Puedes contactarnos en cualquier momento a través de
+        <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.
+      </p>
+
+      <h2>2. Qué información recopilamos</h2>
+      <p>Dependiendo de cómo interactúes con nosotros, podemos recopilar:</p>
+      <ul>
+        <li><strong>Datos de contacto:</strong> nombre, número de WhatsApp, correo electrónico y nombre del negocio, cuando nos escribes o contratas un servicio.</li>
+        <li><strong>Datos de uso del sitio:</strong> páginas visitadas, dispositivo y origen del tráfico, mediante herramientas de analítica (Google Analytics, Microsoft Clarity, Meta Pixel).</li>
+        <li><strong>Datos de cuentas de Google:</strong> cuando un cliente autoriza expresamente una automatización de Budgt a través de N8N, podemos acceder a datos de su cuenta de Google —como correos de Gmail, filas de Google Sheets, eventos de Google Calendar o archivos de Google Drive— únicamente dentro del alcance que el cliente autorizó.</li>
+      </ul>
+
+      <h2>3. Cómo usamos los datos de Google</h2>
+      <p>
+        El acceso a datos de Google se utiliza exclusivamente para ejecutar la
+        automatización que el cliente solicitó y autorizó (por ejemplo: leer o enviar
+        correos de atención a clientes, registrar información en una hoja de cálculo,
+        crear o consultar eventos de agenda, o guardar/leer archivos de trabajo).
+      </p>
+      <p>No usamos datos de Google para:</p>
+      <ul>
+        <li>Publicidad, incluida la publicidad remarketing propia o de terceros.</li>
+        <li>Venta o cesión a terceros con fines comerciales.</li>
+        <li>Entrenamiento de modelos de inteligencia artificial o machine learning de propósito general.</li>
+        <li>Ningún fin distinto al descrito y autorizado por el cliente al momento de conectar su cuenta.</li>
+      </ul>
+      <p>
+        El acceso a la API de Google por parte de las aplicaciones de Budgt cumple con la
+        <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Política de Datos de Usuario de los Servicios de API de Google</a>,
+        incluidos los requisitos de Uso Limitado (Limited Use).
+      </p>
+
+      <h2>4. Con quién compartimos información</h2>
+      <p>
+        No vendemos datos personales. Compartimos información únicamente con:
+      </p>
+      <ul>
+        <li>Proveedores de infraestructura necesarios para operar el servicio (por ejemplo, hosting, N8N autoalojado, proveedores de almacenamiento).</li>
+        <li>Autoridades competentes, cuando la ley chilena así lo exija.</li>
+      </ul>
+
+      <h2>5. Almacenamiento y seguridad</h2>
+      <p>
+        Los datos se almacenan en entornos con acceso restringido y se conservan solo por
+        el tiempo necesario para prestar el servicio contratado o cumplir obligaciones
+        legales. Un cliente puede solicitar en cualquier momento la eliminación de los
+        datos y la revocación del acceso de la automatización a su cuenta de Google.
+      </p>
+
+      <h2>6. Cómo revocar el acceso a tu cuenta de Google</h2>
+      <p>
+        Puedes revocar el acceso que le diste a una automatización de Budgt en cualquier
+        momento desde la página de
+        <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">permisos de tu cuenta de Google</a>.
+        Al revocarlo, la automatización dejará de poder acceder a tus datos.
+      </p>
+
+      <h2>7. Tus derechos</h2>
+      <p>
+        Puedes solicitarnos en cualquier momento acceder, corregir o eliminar tus datos
+        personales, u oponerte a un uso específico, escribiendo a
+        <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.
+      </p>
+
+      <h2>8. Cambios a esta política</h2>
+      <p>
+        Podemos actualizar esta política ocasionalmente. La fecha de la última
+        actualización se indica al inicio de esta página.
+      </p>
+
+      <h2>9. Contacto</h2>
+      <p>
+        Si tienes dudas sobre esta Política de Privacidad, escríbenos a
+        <a href={`mailto:${contactEmail}`}>{contactEmail}</a> o por
+        <a href="https://wa.me/56997135470" target="_blank" rel="noopener">WhatsApp</a>.
+      </p>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>
+
+<style>
+  .legal {
+    padding: 9rem 2.5rem 6rem;
+  }
+
+  .legal-container {
+    max-width: 760px;
+  }
+
+  .legal h1 {
+    font-size: clamp(2.2rem, 4vw, 3rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 0.6rem;
+  }
+
+  .legal-updated {
+    color: var(--gray-600);
+    font-size: 0.85rem;
+    font-weight: 300;
+    margin-bottom: 3rem;
+  }
+
+  .legal-body p {
+    color: var(--gray-400);
+    font-weight: 300;
+    line-height: 1.75;
+    margin-bottom: 1.3rem;
+  }
+
+  .legal-body h2 {
+    font-size: 1.3rem;
+    color: var(--white);
+    margin-top: 2.6rem;
+    margin-bottom: 1rem;
+  }
+
+  .legal-body ul {
+    margin: 0 0 1.3rem 0;
+    padding-left: 0;
+  }
+
+  .legal-body li {
+    color: var(--gray-400);
+    font-weight: 300;
+    line-height: 1.75;
+    padding-left: 1.4rem;
+    position: relative;
+    margin-bottom: 0.6rem;
+  }
+
+  .legal-body li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gray-600);
+  }
+
+  .legal-body a {
+    color: var(--white);
+    text-decoration: underline;
+    text-decoration-color: var(--gray-700);
+    text-underline-offset: 3px;
+  }
+
+  .legal-body a:hover {
+    text-decoration-color: var(--white);
+  }
+
+  .legal-body strong {
+    color: var(--white);
+    font-weight: 500;
+  }
+
+  @media (max-width: 720px) {
+    .legal {
+      padding: 7rem 1.4rem 4rem;
+    }
+  }
+</style>
